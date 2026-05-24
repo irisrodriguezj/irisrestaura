@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IRISRESTAURA — Conservación y restauración</title>
+  <meta name="description" content="Portfolio de conservación y restauración de bienes culturales. Procesos, intervenciones y documentación de obra." />
+  <meta property="og:title" content="IRISRESTAURA — Conservación y restauración" />
+  <meta property="og:description" content="Conservación, restauración y documentación de obra con una mirada precisa, sensible y contemporánea." />
+  <meta property="og:image" content="assets/images/portrait-after.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --rose-50: #fff8fa;
+      --rose-100: #f8e8ef;
+      --rose-200: #edccd7;
+      --rose-300: #dca8ba;
+      --rose-500: #b96f86;
+      --ink: #2a1a1f;
+      --muted: #7f6870;
+      --paper: #fffdf9;
+      --line: rgba(81, 40, 52, 0.16);
+      --gold: #a7834f;
+      --shadow: 0 24px 80px rgba(58, 25, 35, 0.12);
+      --radius: 28px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(255, 170, 160, .75), transparent 34rem),
+        radial-gradient(circle at 95% 18%, rgba(255, 225, 220, 1), transparent 28rem),
+        linear-gradient(180deg, #ffddcc 0%, #fffdf9 42%, #ffc9b3 100%);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .25;
+      z-index: 50;
+      background-image:
+        linear-gradient(rgba(255,255,255,.45) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.35) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, black, transparent 82%);
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1180px, calc(100% - 32px));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 14px 12px 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 253, 249, .74);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 12px 40px rgba(68, 30, 42, .08);
+      z-index: 30;
+    }
+
+    .brand {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 700;
+      letter-spacing: .12em;
+      font-size: clamp(18px, 2vw, 24px);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      font-size: 12px;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .nav-links a { padding: 10px 12px; border-radius: 999px; transition: .25s ease; }
+    .nav-links a:hover { background: var(--rose-100); color: var(--ink); }
+    .nav-links .pill {
+      background: var(--ink);
+      color: var(--paper);
+      padding-inline: 16px;
+    }
+    .nav-links .pill:hover { background: var(--rose-500); color: white; }
+
+    .hero {
+      min-height: 100svh;
+      position: relative;
+      display: grid;
+      place-items: center;
+      padding: 118px 0 80px;
+      isolation: isolate;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr minmax(300px, 560px) 1fr;
+      align-items: center;
+      gap: clamp(18px, 4vw, 42px);
+      width: min(1280px, calc(100% - 36px));
+      margin: auto;
+    }
+
+    .hero-title {
+      text-align: center;
+      z-index: 5;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 8px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: rgba(255,255,255,.55);
+    }
+
+    h1, h2, h3, .serif { font-family: "Cormorant Garamond", Georgia, serif; }
+    h1 {
+      margin: 20px 0 12px;
+      font-size: clamp(72px, 11.6vw, 172px);
+      line-height: .78;
+      letter-spacing: -.06em;
+      font-weight: 500;
+    }
+    .hero-title p {
+      margin: 0 auto;
+      max-width: 520px;
+      color: var(--muted);
+      font-size: clamp(15px, 1.5vw, 18px);
+      line-height: 1.65;
+    }
+
+    .hero-cta {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      transition: .25s ease;
+    }
+    .button.primary { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+    .button.primary:hover { background: var(--rose-500); border-color: var(--rose-500); transform: translateY(-2px); }
+    .button.secondary { background: rgba(255,255,255,.55); color: var(--ink); }
+    .button.secondary:hover { background: white; transform: translateY(-2px); }
+
+    .floating-stack {
+      display: grid;
+      gap: 18px;
+      align-content: center;
+    }
+    .float-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.75);
+      background: white;
+      box-shadow: var(--shadow);
+      transform: rotate(var(--r));
+      transition: .45s cubic-bezier(.2, .8, .2, 1);
+    }
+    .float-card:hover { transform: rotate(0deg) scale(1.025); }
+    .float-card.small { width: clamp(150px, 18vw, 240px); justify-self: end; }
+    .float-card.tall { width: clamp(190px, 21vw, 290px); justify-self: start; }
+    .float-card.wide { width: clamp(220px, 26vw, 360px); justify-self: end; }
+    .float-card img { aspect-ratio: var(--a); object-fit: cover; }
+
+    .scroll-note {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    section { padding: clamp(72px, 9vw, 132px) 0; }
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 32px;
+      align-items: end;
+      margin-bottom: 36px;
+    }
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(46px, 7vw, 96px);
+      line-height: .9;
+      font-weight: 500;
+      letter-spacing: -.04em;
+    }
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 620px;
+    }
+
+    .intro {
+      padding-top: 34px;
+    }
+    .intro-card {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: clamp(28px, 5vw, 72px);
+      padding: clamp(24px, 4vw, 54px);
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 12px);
+      background: rgba(255,255,255,.58);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+    .intro-card h2 {
+      margin: 0;
+      font-size: clamp(44px, 6vw, 88px);
+      line-height: .92;
+      font-weight: 500;
+      letter-spacing: -.04em;
+    }
+    .intro-card p {
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 16px;
+      margin: 0 0 18px;
+    }
+    .signature {
+      margin-top: 28px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: var(--ink);
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .signature:before { content: ""; width: 64px; height: 1px; background: var(--rose-500); }
+
+    .featured {
+      background: linear-gradient(180deg, transparent 0%, rgba(255,255,255,.44) 100%);
+    }
+    .featured-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .case-main {
+      position: sticky;
+      top: 110px;
+      align-self: start;
+      border-radius: calc(var(--radius) + 10px);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: var(--paper);
+      border: 1px solid var(--line);
+    }
+    .case-main img { aspect-ratio: 4/5; object-fit: cover; }
+    .caption {
+      padding: 16px 18px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .case-copy {
+      display: grid;
+      gap: 18px;
+    }
+    .case-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,253,249,.78);
+      padding: clamp(22px, 3vw, 36px);
+      box-shadow: 0 16px 60px rgba(58, 25, 35, .07);
+    }
+    .case-card h3 {
+      margin: 0 0 12px;
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1;
+      font-weight: 500;
+    }
+    .case-card p { margin: 0; color: var(--muted); line-height: 1.75; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 22px;
+    }
+    .meta {
+      padding: 16px;
+      border-radius: 18px;
+      background: var(--rose-50);
+      border: 1px solid var(--line);
+    }
+    .meta span { display: block; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+    .meta strong { font-weight: 500; }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    .process-item {
+      min-height: 220px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      background: rgba(255,255,255,.6);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: .25s ease;
+    }
+    .process-item:hover { transform: translateY(-5px); background: white; }
+    .process-item .num {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 42px;
+      color: var(--rose-500);
+    }
+    .process-item h3 { margin: 0 0 10px; font-size: 25px; font-weight: 500; }
+    .process-item p { margin: 0; color: var(--muted); line-height: 1.6; font-size: 14px; }
+
+    .gallery {
+      padding-top: 0;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: 90px;
+      gap: 14px;
+    }
+    .gallery-item {
+      position: relative;
+      border: 0;
+      padding: 0;
+      background: transparent;
+      border-radius: var(--radius);
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 14px 40px rgba(58, 25, 35, .10);
+      isolation: isolate;
+    }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: .5s ease; }
+    .gallery-item:hover img { transform: scale(1.04); }
+    .gallery-item:after {
+      content: attr(data-label);
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(255,253,249,.78);
+      backdrop-filter: blur(10px);
+      font-size: 10px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--ink);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: .25s ease;
+    }
+    .gallery-item:hover:after { opacity: 1; transform: translateY(0); }
+    .g1 { grid-column: span 5; grid-row: span 6; }
+    .g2 { grid-column: span 4; grid-row: span 4; }
+    .g3 { grid-column: span 3; grid-row: span 5; }
+    .g4 { grid-column: span 4; grid-row: span 5; }
+    .g5 { grid-column: span 5; grid-row: span 4; }
+    .g6 { grid-column: span 3; grid-row: span 4; }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: clamp(26px, 5vw, 70px);
+      align-items: center;
+    }
+    .portrait-card {
+      border-radius: calc(var(--radius) + 12px);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,.8);
+      transform: rotate(-1.4deg);
+    }
+    .portrait-card img { aspect-ratio: 4/5; object-fit: cover; }
+    .about-copy h2 { margin: 0 0 22px; font-size: clamp(48px, 7vw, 96px); line-height: .9; font-weight: 500; letter-spacing: -.04em; }
+    .about-copy p { color: var(--muted); line-height: 1.85; margin: 0 0 18px; }
+
+    .contact-card {
+      text-align: center;
+      padding: clamp(42px, 8vw, 96px) clamp(22px, 5vw, 64px);
+      border-radius: calc(var(--radius) + 20px);
+      background:
+        linear-gradient(rgba(255,255,255,.52), rgba(255,255,255,.52)),
+        url('assets/images/portrait-before.jpg') center/cover;
+      border: 1px solid rgba(255,255,255,.74);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+      isolation: isolate;
+    }
+    .contact-card:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(248,232,239,.92), rgba(255,253,249,.82));
+      z-index: -1;
+    }
+    .contact-card h2 { margin: 0 auto 18px; max-width: 780px; font-size: clamp(50px, 8vw, 116px); line-height: .86; font-weight: 500; letter-spacing: -.05em; }
+    .contact-card p { margin: 0 auto 28px; max-width: 560px; color: var(--muted); line-height: 1.75; }
+    .footer {
+      padding: 30px 0 42px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .footer .container { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(42, 26, 31, .88);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+    }
+    .lightbox.is-open { display: flex; }
+    .lightbox img {
+      max-height: 86svh;
+      max-width: min(1100px, 92vw);
+      object-fit: contain;
+      border-radius: 18px;
+      box-shadow: 0 24px 80px rgba(0,0,0,.36);
+    }
+    .lightbox button {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      border: 1px solid rgba(255,255,255,.3);
+      color: white;
+      background: rgba(255,255,255,.1);
+      border-radius: 999px;
+      padding: 12px 16px;
+      cursor: pointer;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-size: 11px;
+    }
+
+    @media (max-width: 960px) {
+      .nav-links a:not(.pill) { display: none; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .floating-stack {
+        grid-template-columns: repeat(3, 1fr);
+        order: 2;
+      }
+      .floating-stack.left { order: 2; }
+      .floating-stack.right { order: 3; }
+      .float-card.small, .float-card.tall, .float-card.wide { width: 100%; justify-self: stretch; }
+      .float-card img { aspect-ratio: 4/5; }
+      .section-head, .intro-card, .featured-grid, .about-grid { grid-template-columns: 1fr; }
+      .case-main { position: relative; top: 0; }
+      .process-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid { grid-auto-rows: 72px; }
+      .g1, .g2, .g3, .g4, .g5, .g6 { grid-column: span 6; grid-row: span 5; }
+    }
+
+    @media (max-width: 620px) {
+      .container { width: min(100% - 26px, 1180px); }
+      .nav { top: 10px; width: calc(100% - 20px); }
+      .brand { font-size: 17px; letter-spacing: .08em; }
+      .nav-links .pill { padding-inline: 12px; }
+      .hero { padding-top: 96px; }
+      h1 { font-size: clamp(62px, 19vw, 92px); }
+      .floating-stack { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .floating-stack .float-card:nth-child(3) { display: none; }
+      .intro-card { padding: 24px; }
+      .meta-grid, .process-grid { grid-template-columns: 1fr; }
+      .gallery-grid { display: block; }
+      .gallery-item { margin-bottom: 12px; height: 360px; }
+      .footer .container { display: grid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+
+  <header class="nav" aria-label="Navegación principal">
+    <a href="#inicio" class="brand">IRISRESTAURA</a>
+    <nav class="nav-links">
+      <a href="#trabajos">Trabajos</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a class="pill" href="https://www.instagram.com/irisrestaura/" target="_blank" rel="noreferrer">Instagram</a>
+    </nav>
+  </header>
+
+  <main id="inicio">
+    <section class="hero" aria-label="Presentación">
+      <div class="hero-grid">
+        <div class="floating-stack left">
+          <figure class="float-card tall" style="--r:-4deg; --a:4/5;"><img src="assets/images/frame-detail-thumb.jpg" alt="Intervención minuciosa sobre marco antiguo" /></figure>
+          <figure class="float-card small" style="--r:5deg; --a:4/5;"><img src="assets/images/ph-testing-thumb.jpg" alt="Pruebas de pH durante proceso de conservación" /></figure>
+          <figure class="float-card wide" style="--r:-2deg; --a:16/10;"><img src="assets/images/studio-easel-thumb.jpg" alt="Retrato sobre caballete en taller de restauración" /></figure>
+        </div>
+
+        <div class="hero-title">
+          <span class="eyebrow">Conservación · Restauración · Obra pictórica</span>
+          <h1>Materia<br />con memoria.</h1>
+          <p>IRISRESTAURA reúne procesos de restauración, documentación e intervención sobre obra pictórica y soportes históricos, con una mirada técnica, sensible y limpia.</p>
+          <div class="hero-cta">
+            <a class="button primary" href="#trabajos">Ver trabajos</a>
+            <a class="button secondary" href="#contacto">Contacto</a>
+          </div>
+        </div>
+
+        <div class="floating-stack right">
+          <figure class="float-card wide" style="--r:3deg; --a:16/11;"><img src="assets/images/portrait-before-thumb.jpg" alt="Detalle del retrato antes de la reintegración" /></figure>
+          <figure class="float-card tall" style="--r:-5deg; --a:4/5;"><img src="assets/images/surface-retouching-thumb.jpg" alt="Proceso manual de retirada y limpieza de superficie" /></figure>
+          <figure class="float-card small" style="--r:4deg; --a:4/5;"><img src="assets/images/portrait-after-thumb.jpg" alt="Resultado de retrato restaurado" /></figure>
+        </div>
+      </div>
+      <div class="scroll-note">Scroll</div>
+    </section>
+
+    <section class="intro">
+      <div class="container intro-card">
+        <div>
+          <span class="eyebrow">Estudio personal</span>
+          <h2>El gesto justo, en el lugar exacto.</h2>
+        </div>
+        <div>
+          <p>Una restauración no va de borrar el tiempo. Va de entenderlo. Cada pieza exige observar, documentar, probar y actuar con precisión para devolver legibilidad sin inventarse lo que la obra no pide.</p>
+          <p>Esta web funciona como portfolio vivo: una selección de procesos, detalles y resultados de Iris en su camino como conservadora-restauradora.</p>
+          <div class="signature">IRISRESTAURA</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="trabajos" class="featured">
+      <div class="container">
+        <div class="section-head">
+          <h2>Trabajos seleccionados</h2>
+          <p>La clave aquí no es enseñar solo la pieza final. Es enseñar criterio: estado de conservación, pruebas, intervención y resultado. Eso vende mucho más que una galería bonita y muda.</p>
+        </div>
+
+        <div class="featured-grid">
+          <figure class="case-main">
+            <img src="assets/images/portrait-after.jpg" alt="Retrato sobre lienzo tras intervención de restauración" />
+            <figcaption class="caption"><span>Retrato sobre lienzo</span><span>Proceso / resultado</span></figcaption>
+          </figure>
+
+          <div class="case-copy">
+            <article class="case-card">
+              <h3>Retrato sobre lienzo</h3>
+              <p>Intervención sobre pintura de caballete con alteraciones visibles en superficie, pérdidas puntuales y zonas de lectura interrumpida. El proyecto se plantea desde la documentación previa, pruebas controladas y una reintegración ajustada al estado real de la obra.</p>
+              <div class="meta-grid">
+                <div class="meta"><span>Área</span><strong>Pintura de caballete</strong></div>
+                <div class="meta"><span>Foco</span><strong>Limpieza y reintegración</strong></div>
+                <div class="meta"><span>Material</span><strong>Lienzo y marco</strong></div>
+                <div class="meta"><span>Estado</span><strong>Portfolio académico / profesional</strong></div>
+              </div>
+            </article>
+
+            <article class="case-card">
+              <h3>Antes, proceso y lectura final</h3>
+              <p>Las imágenes muestran distintas fases de trabajo: observación en taller, pruebas de compatibilidad, limpieza superficial, intervención sobre marco y documentación visual del resultado. El enfoque busca que el espectador entienda la pieza como objeto material, no solo como imagen.</p>
+            </article>
+
+            <article class="case-card">
+              <h3>Marco y soporte</h3>
+              <p>Además de la obra pictórica, el trabajo sobre soporte y marco aporta coherencia al conjunto: estabilización, retoque localizado y recuperación visual sin forzar una apariencia artificial.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="proceso">
+      <div class="container">
+        <div class="section-head">
+          <h2>Proceso</h2>
+          <p>Una web de restauración tiene que oler a método. Si solo enseña fotos bonitas, parece hobby. Si enseña proceso, empieza a parecer oficio.</p>
+        </div>
+        <div class="process-grid">
+          <article class="process-item">
+            <div class="num">01</div>
+            <div><h3>Observación</h3><p>Lectura del estado de conservación, patologías visibles y comportamiento de la superficie.</p></div>
+          </article>
+          <article class="process-item">
+            <div class="num">02</div>
+            <div><h3>Pruebas</h3><p>Ensayos previos y controlados para definir una intervención compatible y segura.</p></div>
+          </article>
+          <article class="process-item">
+            <div class="num">03</div>
+            <div><h3>Intervención</h3><p>Limpieza, consolidación o reintegración en función de lo que pide cada pieza.</p></div>
+          </article>
+          <article class="process-item">
+            <div class="num">04</div>
+            <div><h3>Documentación</h3><p>Registro visual del antes, durante y después para explicar el proceso con claridad.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery" aria-label="Galería de trabajos">
+      <div class="container">
+        <div class="gallery-grid">
+          <button class="gallery-item g1" data-label="Proceso manual" data-full="assets/images/varnish-cleaning.jpg"><img src="assets/images/varnish-cleaning-thumb.jpg" alt="Limpieza manual sobre retrato" /></button>
+          <button class="gallery-item g2" data-label="Retrato / detalle" data-full="assets/images/portrait-before.jpg"><img src="assets/images/portrait-before-thumb.jpg" alt="Detalle del retrato con pérdidas de capa pictórica" /></button>
+          <button class="gallery-item g3" data-label="Marco" data-full="assets/images/frame-detail.jpg"><img src="assets/images/frame-detail-thumb.jpg" alt="Retoque sobre marco antiguo" /></button>
+          <button class="gallery-item g4" data-label="Taller" data-full="assets/images/studio-easel.jpg"><img src="assets/images/studio-easel-thumb.jpg" alt="Obra en caballete dentro del taller" /></button>
+          <button class="gallery-item g5" data-label="Pruebas" data-full="assets/images/ph-testing.jpg"><img src="assets/images/ph-testing-thumb.jpg" alt="Pruebas de pH en superficie pictórica" /></button>
+          <button class="gallery-item g6" data-label="Soporte" data-full="assets/images/stretcher-intervention.jpg"><img src="assets/images/stretcher-intervention-thumb.jpg" alt="Intervención en parte trasera del soporte" /></button>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre-mi">
+      <div class="container about-grid">
+        <figure class="portrait-card">
+          <img src="assets/images/frame-retouching-wide.jpg" alt="Iris trabajando sobre un marco en el taller" />
+        </figure>
+        <div class="about-copy">
+          <span class="eyebrow">Sobre Iris</span>
+          <h2>Restaurar también es saber cuándo no tocar.</h2>
+          <p>Iris está finalizando sus estudios de restauración y empieza a desarrollar intervenciones propias, combinando sensibilidad por la obra, método de taller y una atención especial al detalle.</p>
+          <p>IRISRESTAURA nace como una forma clara de enseñar su proceso: no solo el resultado final, también la mano, el criterio y las decisiones que hay detrás de cada pieza.</p>
+          <a class="button secondary" href="https://www.instagram.com/irisrestaura/" target="_blank" rel="noreferrer">Ver Instagram</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="container">
+        <div class="contact-card">
+          <span class="eyebrow">Contacto</span>
+          <h2>¿Tienes una pieza que necesita mirada?</h2>
+          <p>Para consultas, encargos pequeños o seguimiento de nuevos trabajos, puedes contactar con Iris a través de Instagram.</p>
+          <div class="hero-cta">
+            <a class="button primary" href="https://www.instagram.com/irisrestaura/" target="_blank" rel="noreferrer">@irisrestaura</a>
+            <a class="button secondary" href="mailto:hola@irisrestaura.com">hola@irisrestaura.com</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <span>IRISRESTAURA © 2026</span>
+      <span>Conservación y restauración</span>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button type="button" id="closeLightbox">Cerrar</button>
+    <img src="" alt="Imagen ampliada" id="lightboxImg" />
+  </div>
+
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const closeLightbox = document.getElementById('closeLightbox');
+
+    document.querySelectorAll('.gallery-item').forEach((item) => {
+      item.addEventListener('click', () => {
+        lightboxImg.src = item.dataset.full;
+        lightbox.classList.add('is-open');
+        lightbox.setAttribute('aria-hidden', 'false');
+      });
+    });
+
+    function close() {
+      lightbox.classList.remove('is-open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightboxImg.src = '';
+    }
+
+    closeLightbox.addEventListener('click', close);
+    lightbox.addEventListener('click', (event) => {
+      if (event.target === lightbox) close();
+    });
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') close();
+    });
+  </script>
+</body>
+</html>
