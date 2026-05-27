@@ -520,8 +520,8 @@
       .nav-links .pill { padding-inline: 12px; font-size: 11px; }
 
       /* Hero */
-      .hero { padding: 86px 0 48px; }
-      .hero-grid { width: 100%; padding: 0 20px; }
+      .hero { padding: 86px 20px 48px; }
+      .hero-grid { width: 100%; margin: 0; padding: 0; max-width: 100%; }
       h1 { font-size: clamp(48px, 13vw, 72px); margin: 14px 0 10px; line-height: .84; }
       .hero-title p { font-size: 15px; }
       .scroll-note { display: none; }
@@ -529,7 +529,7 @@
 
       /* Floating cards: una fila compacta de 3, sin rotaciones */
       .floating-stack.right { display: none; }
-      .floating-stack.left { order: 2; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+      .floating-stack.left { order: 2; width: 100%; grid-template-columns: repeat(3, 1fr); gap: 8px; }
       .floating-stack .float-card:nth-child(3) { display: block; }
       .float-card { transform: none !important; border-radius: 16px; }
       .float-card img { aspect-ratio: 3/4; }
