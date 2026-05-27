@@ -496,13 +496,18 @@
       .nav-links a:not(.pill) { display: none; }
       .hero-grid { grid-template-columns: 1fr; }
       .floating-stack {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         order: 2;
       }
       .floating-stack.left { order: 2; }
       .floating-stack.right { order: 3; }
-      .float-card.small, .float-card.tall, .float-card.wide { width: 100%; justify-self: stretch; }
-      .float-card img { aspect-ratio: 4/5; }
+      .float-card.small, .float-card.tall, .float-card.wide {
+        width: 100%;
+        min-width: 0;
+        justify-self: stretch;
+      }
+      .float-card { transform: none !important; }
+      .float-card img { aspect-ratio: 3/4; }
       .section-head, .intro-card, .featured-grid, .about-grid { grid-template-columns: 1fr; }
       .case-main { position: relative; top: 0; }
       .process-grid { grid-template-columns: repeat(2, 1fr); }
@@ -537,7 +542,7 @@
 
       /* Floating cards: una fila compacta de 3, sin rotaciones */
       .floating-stack.right { display: none; }
-      .floating-stack.left { order: 2; width: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+      .floating-stack.left { order: 2; width: 100%; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
       .floating-stack .float-card:nth-child(3) { display: block; }
       .float-card { transform: none !important; border-radius: 16px; }
       .float-card img { aspect-ratio: 3/4; }
