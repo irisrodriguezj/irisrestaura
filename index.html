@@ -279,64 +279,73 @@
     .featured {
       background: linear-gradient(180deg, transparent 0%, rgba(255,255,255,.44) 100%);
     }
-    .featured-grid {
+
+    .works-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 28px;
     }
-    .case-main {
-      position: sticky;
-      top: 110px;
-      align-self: start;
-      border-radius: calc(var(--radius) + 10px);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      background: var(--paper);
-      border: 1px solid var(--line);
-    }
-    .case-main img { aspect-ratio: 4/5; object-fit: cover; }
-    .caption {
-      padding: 16px 18px;
+    .work-card {
       display: flex;
-      justify-content: space-between;
-      gap: 12px;
+      flex-direction: column;
+      border-radius: calc(var(--radius) + 6px);
+      overflow: hidden;
+      background: rgba(255,253,249,.82);
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 60px rgba(58, 25, 35, .09);
+      transition: transform .45s cubic-bezier(.2, .8, .2, 1), box-shadow .45s ease;
+      text-decoration: none;
+      color: inherit;
+      isolation: isolate;
+    }
+    .work-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 32px 90px rgba(58, 25, 35, .16);
+    }
+    .work-card-media {
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      background: var(--rose-50);
+    }
+    .work-card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .8s cubic-bezier(.2, .8, .2, 1);
+    }
+    .work-card:hover .work-card-media img { transform: scale(1.05); }
+    .work-card-body {
+      padding: 26px 26px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      flex: 1;
+    }
+    .work-card-meta {
       font-size: 11px;
-      letter-spacing: .12em;
+      letter-spacing: .18em;
       text-transform: uppercase;
       color: var(--muted);
     }
-    .case-copy {
-      display: grid;
-      gap: 18px;
-    }
-    .case-card {
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: rgba(255,253,249,.78);
-      padding: clamp(22px, 3vw, 36px);
-      box-shadow: 0 16px 60px rgba(58, 25, 35, .07);
-    }
-    .case-card h3 {
-      margin: 0 0 12px;
-      font-size: clamp(30px, 4vw, 48px);
-      line-height: 1;
+    .work-card-body h3 {
+      margin: 0;
+      font-size: clamp(24px, 2.4vw, 34px);
+      line-height: 1.05;
       font-weight: 500;
+      letter-spacing: -.01em;
     }
-    .case-card p { margin: 0; color: var(--muted); line-height: 1.75; }
-    .meta-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-top: 22px;
+    .work-card-arrow {
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--rose-500);
+      transition: gap .25s ease;
     }
-    .meta {
-      padding: 16px;
-      border-radius: 18px;
-      background: var(--rose-50);
-      border: 1px solid var(--line);
-    }
-    .meta span { display: block; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
-    .meta strong { font-weight: 500; }
+    .work-card:hover .work-card-arrow { gap: 12px; }
 
     .process-grid {
       display: grid;
@@ -509,8 +518,8 @@
       }
       .float-card { transform: none !important; }
       .float-card img { aspect-ratio: 3/4; }
-      .section-head, .intro-card, .featured-grid, .about-grid { grid-template-columns: 1fr; }
-      .case-main { position: relative; top: 0; }
+      .section-head, .intro-card, .about-grid { grid-template-columns: 1fr; }
+      .works-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
       .process-grid { grid-template-columns: repeat(2, 1fr); }
       .gallery-grid { grid-auto-rows: 72px; }
       .g1, .g2, .g3, .g4, .g5, .g6 { grid-column: span 6; grid-row: span 5; }
@@ -557,10 +566,10 @@
       .intro-card { padding: 22px 20px; gap: 18px; }
       .intro-card h2 { font-size: clamp(30px, 9vw, 48px); }
 
-      /* Cases */
-      .case-card { padding: 20px 16px; }
-      .case-card h3 { font-size: clamp(24px, 7vw, 36px); }
-      .meta-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+      /* Trabajos */
+      .works-grid { grid-template-columns: 1fr; gap: 18px; }
+      .work-card-body { padding: 20px 22px 24px; }
+      .work-card-body h3 { font-size: clamp(24px, 7vw, 34px); }
 
       /* Proceso */
       .process-grid { grid-template-columns: 1fr; gap: 10px; }
@@ -594,7 +603,6 @@
       h1 { font-size: 48px; }
       .hero-cta { flex-direction: column; align-items: stretch; }
       .hero-cta .button { text-align: center; }
-      .meta-grid { grid-template-columns: 1fr; }
       .gallery-item { height: 155px; }
       .g1 { height: 200px; }
     }
@@ -658,38 +666,21 @@
     <section id="trabajos" class="featured">
       <div class="container">
         <div class="section-head">
-          <h2>Trabajos seleccionados</h2>
-          <p>La clave aquí no es enseñar solo la pieza final. Es enseñar criterio: estado de conservación, pruebas, intervención y resultado. Eso vende mucho más que una galería bonita y muda.</p>
+          <h2>Trabajos</h2>
+          <p>Una selección de prácticas, intervenciones y proyectos personales. Cada uno cuenta su propio recorrido: estado inicial, decisiones, proceso y resultado.</p>
         </div>
 
-        <div class="featured-grid">
-          <figure class="case-main">
-            <img src="assets/images/portrait-after.jpg" alt="Retrato sobre lienzo tras intervención de restauración" />
-            <figcaption class="caption"><span>Retrato sobre lienzo</span><span>Proceso / resultado</span></figcaption>
-          </figure>
-
-          <div class="case-copy">
-            <article class="case-card">
-              <h3>Retrato sobre lienzo</h3>
-              <p>Intervención sobre pintura de caballete con alteraciones visibles en superficie, pérdidas puntuales y zonas de lectura interrumpida. El proyecto se plantea desde la documentación previa, pruebas controladas y una reintegración ajustada al estado real de la obra.</p>
-              <div class="meta-grid">
-                <div class="meta"><span>Área</span><strong>Pintura de caballete</strong></div>
-                <div class="meta"><span>Foco</span><strong>Limpieza y reintegración</strong></div>
-                <div class="meta"><span>Material</span><strong>Lienzo y marco</strong></div>
-                <div class="meta"><span>Estado</span><strong>Portfolio académico / profesional</strong></div>
-              </div>
-            </article>
-
-            <article class="case-card">
-              <h3>Antes, proceso y lectura final</h3>
-              <p>Las imágenes muestran distintas fases de trabajo: observación en taller, pruebas de compatibilidad, limpieza superficial, intervención sobre marco y documentación visual del resultado. El enfoque busca que el espectador entienda la pieza como objeto material, no solo como imagen.</p>
-            </article>
-
-            <article class="case-card">
-              <h3>Marco y soporte</h3>
-              <p>Además de la obra pictórica, el trabajo sobre soporte y marco aporta coherencia al conjunto: estabilización, retoque localizado y recuperación visual sin forzar una apariencia artificial.</p>
-            </article>
-          </div>
+        <div class="works-grid">
+          <a class="work-card" href="trabajos/parroquia-sant-agusti.html">
+            <div class="work-card-media">
+              <img src="assets/trabajos/parroquia-sant-agusti/portada.jpg" alt="Documentación de muro en la parroquia de Sant Agustí" loading="lazy" />
+            </div>
+            <div class="work-card-body">
+              <span class="work-card-meta">Raval, Barcelona · 2025</span>
+              <h3>Prácticas en la parroquia de Sant Agustí</h3>
+              <span class="work-card-arrow">Ver trabajo →</span>
+            </div>
+          </a>
         </div>
       </div>
     </section>

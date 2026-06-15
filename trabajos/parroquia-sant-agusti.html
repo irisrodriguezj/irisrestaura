@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prácticas en la parroquia de Sant Agustí — IRISRESTAURA</title>
+  <meta name="description" content="Documentación y prácticas de conservación en la parroquia de Sant Agustí (Raval, Barcelona), dirigidas por la ESCRBCC." />
+  <meta property="og:title" content="Prácticas en la parroquia de Sant Agustí — IRISRESTAURA" />
+  <meta property="og:description" content="Documentación e intervención sobre muro en la parroquia de Sant Agustí, Raval. Dirigido por l'ESCRBCC." />
+  <meta property="og:image" content="../assets/trabajos/parroquia-sant-agusti/portada.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --rose-50: #fff8fa;
+      --rose-100: #f8e8ef;
+      --rose-200: #edccd7;
+      --rose-300: #dca8ba;
+      --rose-500: #b96f86;
+      --ink: #2a1a1f;
+      --muted: #7f6870;
+      --paper: #fffdf9;
+      --line: rgba(81, 40, 52, 0.16);
+      --gold: #a7834f;
+      --shadow: 0 24px 80px rgba(58, 25, 35, 0.12);
+      --radius: 28px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(255, 170, 160, .65), transparent 34rem),
+        radial-gradient(circle at 95% 18%, rgba(255, 225, 220, 1), transparent 28rem),
+        linear-gradient(180deg, #ffddcc 0%, #fffdf9 42%, #ffc9b3 100%);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow-x: hidden;
+      max-width: 100%;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, .serif { font-family: "Cormorant Garamond", Georgia, serif; }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .25;
+      z-index: 50;
+      background-image:
+        linear-gradient(rgba(255,255,255,.45) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.35) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, black, transparent 82%);
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1180px, calc(100% - 32px));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 14px 12px 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 253, 249, .74);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 12px 40px rgba(68, 30, 42, .08);
+      z-index: 30;
+    }
+    .brand {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 700;
+      letter-spacing: .12em;
+      font-size: clamp(18px, 2vw, 24px);
+    }
+    .nav-links { display: flex; gap: 4px; align-items: center; font-size: 12px; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); }
+    .nav-links a { padding: 10px 12px; border-radius: 999px; transition: .25s ease; }
+    .nav-links a:hover { background: var(--rose-100); color: var(--ink); }
+    .nav-links .pill { background: var(--ink); color: var(--paper); padding-inline: 16px; }
+    .nav-links .pill:hover { background: var(--rose-500); color: white; }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 110px;
+      margin-bottom: 36px;
+      padding: 10px 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.55);
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: .25s ease;
+    }
+    .back-link:hover { background: white; color: var(--ink); transform: translateX(-4px); }
+
+    .work-header {
+      padding-bottom: 48px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 8px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: rgba(255,255,255,.55);
+    }
+    .work-title {
+      margin: 22px 0 18px;
+      font-size: clamp(48px, 7.5vw, 110px);
+      line-height: .88;
+      letter-spacing: -.04em;
+      font-weight: 500;
+      max-width: 18ch;
+    }
+    .work-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 28px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .work-meta span { position: relative; }
+    .work-meta span + span:before {
+      content: "";
+      position: absolute;
+      left: -16px; top: 50%;
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--rose-500);
+      transform: translateY(-50%);
+    }
+
+    .hero-image {
+      border-radius: calc(var(--radius) + 12px);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,.7);
+      margin-bottom: 64px;
+    }
+    .hero-image img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+    }
+
+    .work-content {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: clamp(28px, 5vw, 72px);
+      align-items: start;
+      padding-bottom: 72px;
+    }
+    .work-content h2 {
+      margin: 0;
+      font-size: clamp(34px, 4.6vw, 64px);
+      line-height: .95;
+      letter-spacing: -.03em;
+      font-weight: 500;
+    }
+    .work-content p {
+      color: var(--muted);
+      line-height: 1.85;
+      margin: 0 0 18px;
+      font-size: 16px;
+    }
+
+    .gallery-section { padding-bottom: 96px; }
+    .gallery-section h3 {
+      margin: 0 0 28px;
+      font-size: clamp(28px, 3.6vw, 44px);
+      font-weight: 500;
+      letter-spacing: -.02em;
+    }
+    .work-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+    .work-gallery .gallery-placeholder {
+      aspect-ratio: 4/3;
+      border-radius: var(--radius);
+      border: 1px dashed var(--line);
+      background: rgba(255,255,255,.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 24px;
+    }
+
+    .video-section { padding-bottom: 96px; }
+    .video-section h3 {
+      margin: 0 0 28px;
+      font-size: clamp(28px, 3.6vw, 44px);
+      font-weight: 500;
+      letter-spacing: -.02em;
+    }
+    .video-placeholder {
+      aspect-ratio: 16/9;
+      border-radius: calc(var(--radius) + 4px);
+      border: 1px dashed var(--line);
+      background: rgba(255,255,255,.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .work-footer {
+      padding: 64px 0 96px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      align-items: center;
+      text-align: center;
+      border-top: 1px solid var(--line);
+    }
+    .work-footer p { color: var(--muted); margin: 0; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 22px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      transition: .25s ease;
+    }
+    .button.primary { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+    .button.primary:hover { background: var(--rose-500); border-color: var(--rose-500); transform: translateY(-2px); }
+
+    .footer {
+      padding: 30px 0 42px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .footer .container { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+
+    @media (max-width: 960px) {
+      .nav-links a:not(.pill) { display: none; }
+      .work-content { grid-template-columns: 1fr; }
+      .work-gallery { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 620px) {
+      .container { width: min(100% - 24px, 1180px); }
+      .nav { top: 10px; width: calc(100% - 20px); padding: 10px 12px; }
+      .brand { font-size: 16px; letter-spacing: .07em; }
+      .nav-links .pill { padding-inline: 12px; font-size: 11px; }
+      .back-link { margin-top: 86px; margin-bottom: 22px; padding: 9px 16px; }
+      .work-title { font-size: clamp(38px, 11vw, 68px); margin: 18px 0 16px; }
+      .hero-image { margin-bottom: 40px; }
+      .work-content { padding-bottom: 48px; }
+      .gallery-section, .video-section { padding-bottom: 56px; }
+      .footer .container { display: grid; gap: 6px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+
+  <header class="nav" aria-label="Navegación principal">
+    <a href="../index.html#inicio" class="brand">IRISRESTAURA</a>
+    <nav class="nav-links">
+      <a href="../index.html#trabajos">Trabajos</a>
+      <a href="../index.html#proceso">Proceso</a>
+      <a href="../index.html#sobre-mi">Sobre mí</a>
+      <a class="pill" href="https://www.instagram.com/irisrestaura/" target="_blank" rel="noreferrer">Instagram</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <a class="back-link" href="../index.html#trabajos">← Volver a trabajos</a>
+
+      <header class="work-header">
+        <span class="eyebrow">Trabajo · Prácticas dirigidas</span>
+        <h1 class="work-title">Prácticas en la parroquia de Sant Agustí</h1>
+        <div class="work-meta">
+          <span>Raval, Barcelona</span>
+          <span>2025</span>
+          <span>Dirigido por l'ESCRBCC</span>
+        </div>
+      </header>
+
+      <figure class="hero-image">
+        <img src="../assets/trabajos/parroquia-sant-agusti/portada.jpg" alt="Documentación fotográfica de muro intervenido en la parroquia de Sant Agustí" />
+      </figure>
+
+      <section class="work-content">
+        <h2>Documentar antes de intervenir.</h2>
+        <div>
+          <p>Prácticas de conservación realizadas en la parroquia de Sant Agustí, en el Raval de Barcelona, en el marco de la formación dirigida por l'Escola Superior de Conservació i Restauració de Béns Culturals de Catalunya (ESCRBCC).</p>
+          <p>El trabajo se centra en la fase de documentación fotográfica y observación detallada de un paramento mural con varios niveles de policromía, lagunas, intervenciones anteriores y estratos visibles. Una etapa imprescindible antes de cualquier decisión sobre la pieza: leer lo que hay, registrar lo que se ve y entender el porqué de cada alteración.</p>
+          <p>Este tipo de intervenciones académicas, en un espacio patrimonial real y bajo dirección de la escuela, son el puente entre la formación y la práctica profesional: aportan rigor, método y la oportunidad de trabajar con piezas y soportes reales.</p>
+        </div>
+      </section>
+
+      <section class="gallery-section">
+        <h3>Galería</h3>
+        <div class="work-gallery">
+          <div class="gallery-placeholder">Próximamente · más fotos del proceso</div>
+          <div class="gallery-placeholder">Próximamente · detalle del muro</div>
+        </div>
+      </section>
+
+      <section class="video-section">
+        <h3>Vídeo del proceso</h3>
+        <div class="video-placeholder">Próximamente · vídeo de la intervención</div>
+      </section>
+
+      <section class="work-footer">
+        <p>¿Quieres ver más trabajos o seguir el proceso de Iris?</p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
+          <a class="button primary" href="../index.html#trabajos">Ver todos los trabajos</a>
+          <a class="button" href="https://www.instagram.com/irisrestaura/" target="_blank" rel="noreferrer">Instagram</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <span>IRISRESTAURA © 2026</span>
+      <span>Conservación y restauración</span>
+    </div>
+  </footer>
+</body>
+</html>

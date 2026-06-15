@@ -1,6 +1,7 @@
 .DS_Store
 .CONTEXTO_CONVERSACION.md
 GUIA_CLOUDFLARE.md
+.claude/
 node_modules/
 .env
 .env.local
