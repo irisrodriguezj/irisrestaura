@@ -41,7 +41,7 @@
       max-width: 100%;
     }
 
-    img { max-width: 100%; display: block; }
+    img, video { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
     h1, h2, h3, .serif { font-family: "Cormorant Garamond", Georgia, serif; }
 
@@ -63,6 +63,7 @@
       margin: 0 auto;
     }
 
+    /* ---- Nav ---- */
     .nav {
       position: fixed;
       top: 18px;
@@ -92,6 +93,7 @@
     .nav-links .pill { background: var(--ink); color: var(--paper); padding-inline: 16px; }
     .nav-links .pill:hover { background: var(--rose-500); color: white; }
 
+    /* ---- Back ---- */
     .back-link {
       display: inline-flex;
       align-items: center;
@@ -110,9 +112,8 @@
     }
     .back-link:hover { background: white; color: var(--ink); transform: translateX(-4px); }
 
-    .work-header {
-      padding-bottom: 48px;
-    }
+    /* ---- Header del trabajo ---- */
+    .work-header { padding-bottom: 44px; }
     .eyebrow {
       display: inline-flex;
       gap: 8px;
@@ -154,91 +155,115 @@
       transform: translateY(-50%);
     }
 
+    /* ---- Hero ---- */
     .hero-image {
       border-radius: calc(var(--radius) + 12px);
       overflow: hidden;
       box-shadow: var(--shadow);
       border: 1px solid rgba(255,255,255,.7);
-      margin-bottom: 64px;
+      margin-bottom: 72px;
     }
-    .hero-image img {
-      width: 100%;
-      aspect-ratio: 4/3;
-      object-fit: cover;
+    .hero-image img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+
+    /* ---- Story (texto + media intercalados) ---- */
+    .story {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(56px, 7vw, 96px);
+      padding-bottom: 88px;
+    }
+    .story-block { display: grid; align-items: center; gap: clamp(28px, 5vw, 64px); }
+
+    /* Bloque asimétrico: texto + media (50/50 en desktop, ratio variable) */
+    .story-block.split { grid-template-columns: 1fr 1fr; }
+    .story-block.split.weighted-text { grid-template-columns: 1.15fr .85fr; }
+    .story-block.split.weighted-media { grid-template-columns: .85fr 1.15fr; }
+    .story-block.split.reverse > *:first-child { order: 2; }
+    .story-block.split.reverse > *:last-child { order: 1; }
+
+    /* Bloque ancho completo (media gigante) */
+    .story-block.full { grid-template-columns: 1fr; }
+    .story-block.full .story-media { width: 100%; }
+
+    /* Bloque texto centrado + dos medias debajo */
+    .story-block.duo .story-text { max-width: 720px; margin: 0 auto 12px; text-align: center; }
+    .story-block.duo .story-media-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(14px, 2vw, 22px);
     }
 
-    .work-content {
-      display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: clamp(28px, 5vw, 72px);
-      align-items: start;
-      padding-bottom: 72px;
-    }
-    .work-content h2 {
-      margin: 0;
-      font-size: clamp(34px, 4.6vw, 64px);
-      line-height: .95;
+    .story-text h2 {
+      margin: 0 0 18px;
+      font-size: clamp(30px, 4vw, 54px);
+      line-height: .98;
       letter-spacing: -.03em;
       font-weight: 500;
     }
-    .work-content p {
+    .story-text h2 .accent { color: var(--rose-500); font-style: italic; }
+    .story-text p {
       color: var(--muted);
       line-height: 1.85;
-      margin: 0 0 18px;
+      margin: 0 0 14px;
       font-size: 16px;
     }
-
-    .gallery-section { padding-bottom: 96px; }
-    .gallery-section h3 {
-      margin: 0 0 28px;
-      font-size: clamp(28px, 3.6vw, 44px);
-      font-weight: 500;
-      letter-spacing: -.02em;
-    }
-    .work-gallery {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
-    .work-gallery .gallery-placeholder {
-      aspect-ratio: 4/3;
-      border-radius: var(--radius);
-      border: 1px dashed var(--line);
-      background: rgba(255,255,255,.45);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--muted);
+    .story-text .note {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.55);
+      border: 1px solid var(--line);
       font-size: 11px;
       letter-spacing: .16em;
       text-transform: uppercase;
-      text-align: center;
-      padding: 24px;
-    }
-
-    .video-section { padding-bottom: 96px; }
-    .video-section h3 {
-      margin: 0 0 28px;
-      font-size: clamp(28px, 3.6vw, 44px);
-      font-weight: 500;
-      letter-spacing: -.02em;
-    }
-    .video-placeholder {
-      aspect-ratio: 16/9;
-      border-radius: calc(var(--radius) + 4px);
-      border: 1px dashed var(--line);
-      background: rgba(255,255,255,.45);
-      display: flex;
-      align-items: center;
-      justify-content: center;
       color: var(--muted);
-      font-size: 12px;
-      letter-spacing: .16em;
-      text-transform: uppercase;
     }
 
+    .story-media {
+      border-radius: calc(var(--radius) + 6px);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,.7);
+      background: var(--rose-50);
+      position: relative;
+    }
+    .story-media img,
+    .story-media video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .story-media.portrait { aspect-ratio: 3/4; }
+    .story-media.square { aspect-ratio: 1/1; }
+    .story-media.wide { aspect-ratio: 16/9; }
+    .story-media.cinema { aspect-ratio: 21/9; }
+
+    .story-media.video-card:after {
+      content: "▶ vídeo";
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(255,253,249,.88);
+      backdrop-filter: blur(6px);
+      font-family: Inter, sans-serif;
+      font-size: 10px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--ink);
+      pointer-events: none;
+    }
+
+    /* Reveal animation */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .9s ease, transform .9s cubic-bezier(.2,.8,.2,1); }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+
+    /* ---- Cierre ---- */
     .work-footer {
-      padding: 64px 0 96px;
+      padding: 56px 0 96px;
       display: flex;
       flex-direction: column;
       gap: 24px;
@@ -246,7 +271,7 @@
       text-align: center;
       border-top: 1px solid var(--line);
     }
-    .work-footer p { color: var(--muted); margin: 0; }
+    .work-footer p { color: var(--muted); margin: 0; max-width: 540px; line-height: 1.7; }
     .button {
       display: inline-flex;
       align-items: center;
@@ -262,6 +287,7 @@
     }
     .button.primary { background: var(--ink); color: var(--paper); border-color: var(--ink); }
     .button.primary:hover { background: var(--rose-500); border-color: var(--rose-500); transform: translateY(-2px); }
+    .footer-buttons { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
 
     .footer {
       padding: 30px 0 42px;
@@ -272,22 +298,53 @@
     }
     .footer .container { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
 
+    /* ---- Tablet (≤ 960px) ---- */
     @media (max-width: 960px) {
       .nav-links a:not(.pill) { display: none; }
-      .work-content { grid-template-columns: 1fr; }
-      .work-gallery { grid-template-columns: 1fr; }
+      .story-block.split,
+      .story-block.split.weighted-text,
+      .story-block.split.weighted-media { grid-template-columns: 1fr; }
+      .story-block.split.reverse > *:first-child { order: 1; }
+      .story-block.split.reverse > *:last-child { order: 2; }
+      .story-block.duo .story-text { text-align: left; }
+      /* En mobile/tablet la imagen va siempre primero para que el texto entre debajo */
+      .story-block.split .story-media { order: 1; }
+      .story-block.split .story-text { order: 2; }
     }
 
+    /* ---- Móvil (≤ 620px) ---- */
     @media (max-width: 620px) {
       .container { width: min(100% - 24px, 1180px); }
       .nav { top: 10px; width: calc(100% - 20px); padding: 10px 12px; }
       .brand { font-size: 16px; letter-spacing: .07em; }
       .nav-links .pill { padding-inline: 12px; font-size: 11px; }
       .back-link { margin-top: 86px; margin-bottom: 22px; padding: 9px 16px; }
-      .work-title { font-size: clamp(38px, 11vw, 68px); margin: 18px 0 16px; }
-      .hero-image { margin-bottom: 40px; }
-      .work-content { padding-bottom: 48px; }
-      .gallery-section, .video-section { padding-bottom: 56px; }
+
+      .work-title { font-size: clamp(40px, 12vw, 64px); margin: 18px 0 16px; line-height: .9; }
+      .work-meta { gap: 8px 22px; font-size: 11px; }
+      .work-meta span + span:before { left: -14px; width: 3px; height: 3px; }
+
+      .hero-image { margin-bottom: 44px; border-radius: 22px; }
+      .hero-image img { aspect-ratio: 4/3; }
+
+      .story { gap: 44px; padding-bottom: 56px; }
+      .story-block { gap: 22px; }
+      .story-text h2 { font-size: clamp(26px, 8.5vw, 38px); margin-bottom: 14px; }
+      .story-text p { font-size: 15px; line-height: 1.75; }
+
+      .story-media { border-radius: 22px; }
+      .story-media.portrait { aspect-ratio: 4/5; }
+      .story-media.cinema { aspect-ratio: 16/10; }
+
+      .story-block.duo .story-media-pair {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .story-media.video-card:after { top: 12px; left: 12px; font-size: 9px; padding: 5px 10px; }
+
+      .work-footer { padding: 40px 0 64px; }
+      .footer-buttons .button { flex: 1 1 100%; min-width: 0; }
       .footer .container { display: grid; gap: 6px; }
     }
   </style>
@@ -323,31 +380,68 @@
         <img src="../assets/trabajos/parroquia-sant-agusti/portada.jpg" alt="Documentación fotográfica de muro intervenido en la parroquia de Sant Agustí" />
       </figure>
 
-      <section class="work-content">
-        <h2>Documentar antes de intervenir.</h2>
-        <div>
-          <p>Prácticas de conservación realizadas en la parroquia de Sant Agustí, en el Raval de Barcelona, en el marco de la formación dirigida por l'Escola Superior de Conservació i Restauració de Béns Culturals de Catalunya (ESCRBCC).</p>
-          <p>El trabajo se centra en la fase de documentación fotográfica y observación detallada de un paramento mural con varios niveles de policromía, lagunas, intervenciones anteriores y estratos visibles. Una etapa imprescindible antes de cualquier decisión sobre la pieza: leer lo que hay, registrar lo que se ve y entender el porqué de cada alteración.</p>
-          <p>Este tipo de intervenciones académicas, en un espacio patrimonial real y bajo dirección de la escuela, son el puente entre la formación y la práctica profesional: aportan rigor, método y la oportunidad de trabajar con piezas y soportes reales.</p>
-        </div>
-      </section>
+      <div class="story">
 
-      <section class="gallery-section">
-        <h3>Galería</h3>
-        <div class="work-gallery">
-          <div class="gallery-placeholder">Próximamente · más fotos del proceso</div>
-          <div class="gallery-placeholder">Próximamente · detalle del muro</div>
-        </div>
-      </section>
+        <!-- Bloque 1: texto principal + foto detalle -->
+        <section class="story-block split weighted-text reveal">
+          <div class="story-text">
+            <h2>Documentar <span class="accent">antes</span> de intervenir.</h2>
+            <p>Prácticas de conservación realizadas en la parroquia de Sant Agustí, en el Raval de Barcelona, en el marco de la formación dirigida por l'Escola Superior de Conservació i Restauració de Béns Culturals de Catalunya.</p>
+            <p>La primera fase del trabajo consiste en observar y registrar: leer lo que hay en el muro antes de tocar nada. Niveles de policromía, lagunas, intervenciones anteriores y estratos visibles que cuentan la historia de la pieza.</p>
+            <span class="note">Fase 01 · Observación y registro</span>
+          </div>
+          <div class="story-media portrait">
+            <img src="../assets/trabajos/parroquia-sant-agusti/foto-02.jpg" alt="Detalle de la superficie del muro" loading="lazy" />
+          </div>
+        </section>
 
-      <section class="video-section">
-        <h3>Vídeo del proceso</h3>
-        <div class="video-placeholder">Próximamente · vídeo de la intervención</div>
-      </section>
+        <!-- Bloque 2: vídeo ancho completo -->
+        <section class="story-block full reveal">
+          <div class="story-media video-card cinema">
+            <video autoplay loop muted playsinline preload="metadata">
+              <source src="../assets/trabajos/parroquia-sant-agusti/video-01.mp4" type="video/mp4">
+            </video>
+          </div>
+        </section>
+
+        <!-- Bloque 3: texto + vídeo lateral (reverse) -->
+        <section class="story-block split reverse reveal">
+          <div class="story-media video-card portrait">
+            <video autoplay loop muted playsinline preload="metadata">
+              <source src="../assets/trabajos/parroquia-sant-agusti/video-02.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="story-text">
+            <h2>Método de <span class="accent">taller</span> sobre el lugar.</h2>
+            <p>Trabajar en un espacio patrimonial real exige adaptar el método de taller al entorno: andamios, luz disponible, tiempos, espacio. Cada movimiento se piensa antes de hacerlo.</p>
+            <p>El registro fotográfico y de vídeo acompaña a cada gesto. Es la forma de poder volver atrás, comparar, y entender qué cambia con cada decisión.</p>
+            <span class="note">Fase 02 · Intervención dirigida</span>
+          </div>
+        </section>
+
+        <!-- Bloque 4: texto introductorio + dos vídeos cortos -->
+        <section class="story-block duo reveal">
+          <div class="story-text">
+            <h2>Detalles del <span class="accent">proceso</span>.</h2>
+            <p>Pequeños fragmentos del trabajo diario: el detalle del soporte, el gesto sobre la superficie, el ritmo de la intervención.</p>
+          </div>
+          <div class="story-media-pair">
+            <div class="story-media video-card portrait">
+              <video autoplay loop muted playsinline preload="metadata">
+                <source src="../assets/trabajos/parroquia-sant-agusti/video-03.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="story-media portrait">
+              <img src="../assets/trabajos/parroquia-sant-agusti/portada.jpg" alt="Iris documentando el muro" loading="lazy" />
+            </div>
+          </div>
+        </section>
+
+      </div>
 
       <section class="work-footer">
-        <p>¿Quieres ver más trabajos o seguir el proceso de Iris?</p>
-        <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
+        <p>Este tipo de prácticas son el puente entre la formación y la práctica profesional: rigor, método y trabajo con piezas y soportes reales.</p>
+        <div class="footer-buttons">
           <a class="button primary" href="../index.html#trabajos">Ver todos los trabajos</a>
           <a class="button" href="https://www.instagram.com/irisrestaura/" target="_blank" rel="noreferrer">Instagram</a>
         </div>
@@ -361,5 +455,29 @@
       <span>Conservación y restauración</span>
     </div>
   </footer>
+
+  <script>
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Asegurar que los vídeos hagan play en iOS Safari
+    document.querySelectorAll('video').forEach(v => {
+      v.muted = true;
+      const playIfVisible = () => {
+        const r = v.getBoundingClientRect();
+        if (r.top < innerHeight && r.bottom > 0) v.play().catch(() => {});
+      };
+      window.addEventListener('scroll', playIfVisible, { passive: true });
+      playIfVisible();
+    });
+  </script>
 </body>
 </html>
