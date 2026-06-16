@@ -209,6 +209,25 @@
       z-index: 1;
     }
 
+    /* Bloque antes/después */
+    .before-after-label {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: var(--ink);
+      color: var(--paper);
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .before-after-label.despues { background: var(--rose-500); }
+
     .story-text h2 {
       margin: 0 0 18px;
       font-size: clamp(30px, 4vw, 54px);
@@ -345,6 +364,7 @@
       .story-media.portrait { aspect-ratio: 4/5; }
       .story-media.cinema { aspect-ratio: 16/10; }
       .story-media.video-card:after { top: 12px; left: 12px; font-size: 9px; padding: 5px 10px; }
+      .before-after-label { top: 12px; left: 12px; font-size: 13px; padding: 6px 14px; }
       .story-block.duo .story-media-pair { grid-template-columns: 1fr; gap: 14px; }
       .coming-soon { padding: 28px 22px; border-radius: 22px; }
       .work-footer { padding: 40px 0 64px; }
@@ -488,6 +508,24 @@
               <video autoplay loop muted playsinline preload="metadata">
                 <source src="../assets/trabajos/palau-de-noguera/video-07.mp4" type="video/mp4">
               </video>
+            </div>
+          </div>
+        </section>
+
+        <!-- B9: Antes y después -->
+        <section class="story-block duo reveal">
+          <div class="story-text">
+            <h2>Antes y <span class="accent">después</span>.</h2>
+            <p>El resultado del trabajo se mide en el cambio sobre la pieza. La limpieza recupera la lectura del dorado y los colores originales, sin forzar lo que la obra no pide.</p>
+          </div>
+          <div class="story-media-pair">
+            <div class="story-media portrait">
+              <span class="before-after-label">Antes</span>
+              <img src="../assets/trabajos/palau-de-noguera/antes.jpg" alt="Retablo de la església de Palau de Noguera antes de la intervención" loading="lazy" />
+            </div>
+            <div class="story-media portrait">
+              <span class="before-after-label despues">Después</span>
+              <img src="../assets/trabajos/palau-de-noguera/despues.jpg" alt="Retablo de la església de Palau de Noguera después de la limpieza" loading="lazy" />
             </div>
           </div>
         </section>
