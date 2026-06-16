@@ -179,6 +179,7 @@
     .story-block.full .story-media { width: 100%; }
 
     /* Bloque duo: texto centrado + 2 medias lado a lado */
+    .story-block.duo { grid-template-columns: 1fr; }
     .story-block.duo .story-text { max-width: 720px; margin: 0 auto 12px; text-align: center; }
     .story-block.duo .story-media-pair {
       display: grid;
@@ -188,6 +189,24 @@
     .story-media.wide { aspect-ratio: 16/9; }
     .story-media.cinema { aspect-ratio: 21/9; }
     .story-media.square { aspect-ratio: 1/1; }
+
+    .story-media.video-card:after {
+      content: "▶ vídeo";
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(255,253,249,.88);
+      backdrop-filter: blur(6px);
+      font-family: Inter, sans-serif;
+      font-size: 10px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--ink);
+      pointer-events: none;
+      z-index: 1;
+    }
 
     .story-text h2 {
       margin: 0 0 18px;
@@ -324,6 +343,7 @@
       .story-media { border-radius: 22px; }
       .story-media.portrait { aspect-ratio: 4/5; }
       .story-media.cinema { aspect-ratio: 16/10; }
+      .story-media.video-card:after { top: 12px; left: 12px; font-size: 9px; padding: 5px 10px; }
       .story-block.duo .story-media-pair { grid-template-columns: 1fr; gap: 14px; }
       .coming-soon { padding: 28px 22px; border-radius: 22px; }
       .work-footer { padding: 40px 0 64px; }
@@ -365,7 +385,7 @@
 
       <div class="story">
 
-        <!-- Bloque 1: texto principal + foto vista trasera -->
+        <!-- B1: texto principal + foto vista trasera -->
         <section class="story-block split weighted-text reveal">
           <div class="story-text">
             <h2>Limpieza sobre <span class="accent">dorado</span> y policromía.</h2>
@@ -378,17 +398,21 @@
           </div>
         </section>
 
-        <!-- Bloque 2: detalle del dorado ancho completo -->
+        <!-- B2: vídeo cinemático ancho completo -->
         <section class="story-block full reveal">
-          <div class="story-media cinema">
-            <img src="../assets/trabajos/palau-de-noguera/foto-03.jpg" alt="Detalle del dorado policromado sobre el cuerpo del retablo" loading="lazy" />
+          <div class="story-media video-card cinema">
+            <video autoplay loop muted playsinline preload="metadata">
+              <source src="../assets/trabajos/palau-de-noguera/video-01.mp4" type="video/mp4">
+            </video>
           </div>
         </section>
 
-        <!-- Bloque 3: texto + foto zona estrecha (reverse) -->
+        <!-- B3: vídeo portrait + texto método (reverse) -->
         <section class="story-block split reverse reveal">
-          <div class="story-media portrait">
-            <img src="../assets/trabajos/palau-de-noguera/foto-04.jpg" alt="Limpieza con pincel sobre zona estrecha del retablo" loading="lazy" />
+          <div class="story-media video-card portrait">
+            <video autoplay loop muted playsinline preload="metadata">
+              <source src="../assets/trabajos/palau-de-noguera/video-02.mp4" type="video/mp4">
+            </video>
           </div>
           <div class="story-text">
             <h2>Mano fina sobre el <span class="accent">oro</span>.</h2>
@@ -398,7 +422,27 @@
           </div>
         </section>
 
-        <!-- Bloque 4: detalle ornamental con texto al lado -->
+        <!-- B4: texto centrado + 2 vídeos lado a lado -->
+        <section class="story-block duo reveal">
+          <div class="story-text">
+            <h2>Detalles del <span class="accent">proceso</span>.</h2>
+            <p>Pequeños fragmentos del trabajo diario: el gesto, el detalle ornamental y el ritmo del trabajo sobre la pieza.</p>
+          </div>
+          <div class="story-media-pair">
+            <div class="story-media video-card portrait">
+              <video autoplay loop muted playsinline preload="metadata">
+                <source src="../assets/trabajos/palau-de-noguera/video-03.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="story-media video-card portrait">
+              <video autoplay loop muted playsinline preload="metadata">
+                <source src="../assets/trabajos/palau-de-noguera/video-04.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </section>
+
+        <!-- B5: texto + foto close-up dorado -->
         <section class="story-block split weighted-media reveal">
           <div class="story-text">
             <h2>Detalle <span class="accent">ornamental</span>.</h2>
@@ -406,15 +450,55 @@
             <span class="note">Detalle · trabajo por fragmentos</span>
           </div>
           <div class="story-media portrait">
-            <img src="../assets/trabajos/palau-de-noguera/foto-05.jpg" alt="Trabajo de limpieza sobre detalle ornamental del retablo" loading="lazy" />
+            <img src="../assets/trabajos/palau-de-noguera/foto-03.jpg" alt="Detalle del dorado policromado sobre el cuerpo del retablo" loading="lazy" />
           </div>
         </section>
 
-        <!-- Próximamente: vídeo cuando llegue el material -->
-        <section class="reveal">
-          <div class="coming-soon">
-            <span>Próximamente</span>
-            <p>Quedan por llegar más fotografías y vídeos del proceso. En las próximas semanas se publicarán fragmentos adicionales de las distintas fases de la intervención.</p>
+        <!-- B6: vídeo cinemático ancho -->
+        <section class="story-block full reveal">
+          <div class="story-media video-card cinema">
+            <video autoplay loop muted playsinline preload="metadata">
+              <source src="../assets/trabajos/palau-de-noguera/video-05.mp4" type="video/mp4">
+            </video>
+          </div>
+        </section>
+
+        <!-- B7: foto zona estrecha + texto técnica -->
+        <section class="story-block split reveal">
+          <div class="story-media portrait">
+            <img src="../assets/trabajos/palau-de-noguera/foto-04.jpg" alt="Limpieza con pincel sobre zona estrecha del retablo" loading="lazy" />
+          </div>
+          <div class="story-text">
+            <h2>El tiempo del <span class="accent">trabajo</span>.</h2>
+            <p>Avanzar por la pieza supone ralentizar el gesto: el polvo y la suciedad acumulada durante años no se retiran en una sola pasada. Se trabaja por capas, observando cómo responde la superficie.</p>
+            <span class="note">Fase 03 · Trabajo por capas</span>
+          </div>
+        </section>
+
+        <!-- B8: texto centrado + 2 vídeos finales -->
+        <section class="story-block duo reveal">
+          <div class="story-text">
+            <h2>Ritmo y <span class="accent">observación</span>.</h2>
+            <p>Dos momentos del proceso continuo: limpiar, comparar, volver a leer la pieza antes de seguir.</p>
+          </div>
+          <div class="story-media-pair">
+            <div class="story-media video-card portrait">
+              <video autoplay loop muted playsinline preload="metadata">
+                <source src="../assets/trabajos/palau-de-noguera/video-06.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="story-media video-card portrait">
+              <video autoplay loop muted playsinline preload="metadata">
+                <source src="../assets/trabajos/palau-de-noguera/video-07.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </section>
+
+        <!-- B9: foto cierre -->
+        <section class="story-block full reveal">
+          <div class="story-media cinema">
+            <img src="../assets/trabajos/palau-de-noguera/foto-05.jpg" alt="Cierre del proceso de limpieza sobre el retablo" loading="lazy" />
           </div>
         </section>
 
@@ -438,6 +522,7 @@
   </footer>
 
   <script>
+    // Reveal on scroll
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
         if (e.isIntersecting) {
@@ -447,6 +532,17 @@
       });
     }, { threshold: 0.15 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Asegurar que los vídeos hagan play en iOS Safari
+    document.querySelectorAll('video').forEach(v => {
+      v.muted = true;
+      const playIfVisible = () => {
+        const r = v.getBoundingClientRect();
+        if (r.top < innerHeight && r.bottom > 0) v.play().catch(() => {});
+      };
+      window.addEventListener('scroll', playIfVisible, { passive: true });
+      playIfVisible();
+    });
   </script>
 </body>
 </html>
