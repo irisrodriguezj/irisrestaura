@@ -170,6 +170,24 @@
     .story-block { display: grid; align-items: center; gap: clamp(28px, 5vw, 64px); }
     .story-block.split { grid-template-columns: 1fr 1fr; }
     .story-block.split.weighted-text { grid-template-columns: 1.15fr .85fr; }
+    .story-block.split.weighted-media { grid-template-columns: .85fr 1.15fr; }
+    .story-block.split.reverse > *:first-child { order: 2; }
+    .story-block.split.reverse > *:last-child { order: 1; }
+
+    /* Bloque ancho completo */
+    .story-block.full { grid-template-columns: 1fr; }
+    .story-block.full .story-media { width: 100%; }
+
+    /* Bloque duo: texto centrado + 2 medias lado a lado */
+    .story-block.duo .story-text { max-width: 720px; margin: 0 auto 12px; text-align: center; }
+    .story-block.duo .story-media-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(14px, 2vw, 22px);
+    }
+    .story-media.wide { aspect-ratio: 16/9; }
+    .story-media.cinema { aspect-ratio: 21/9; }
+    .story-media.square { aspect-ratio: 1/1; }
 
     .story-text h2 {
       margin: 0 0 18px;
@@ -280,9 +298,13 @@
     @media (max-width: 960px) {
       .nav-links a:not(.pill) { display: none; }
       .story-block.split,
-      .story-block.split.weighted-text { grid-template-columns: 1fr; }
+      .story-block.split.weighted-text,
+      .story-block.split.weighted-media { grid-template-columns: 1fr; }
+      .story-block.split.reverse > *:first-child { order: 1; }
+      .story-block.split.reverse > *:last-child { order: 2; }
       .story-block.split .story-media { order: 1; }
       .story-block.split .story-text { order: 2; }
+      .story-block.duo .story-text { text-align: left; }
     }
 
     @media (max-width: 620px) {
@@ -301,6 +323,8 @@
       .story-text p { font-size: 15px; line-height: 1.75; }
       .story-media { border-radius: 22px; }
       .story-media.portrait { aspect-ratio: 4/5; }
+      .story-media.cinema { aspect-ratio: 16/10; }
+      .story-block.duo .story-media-pair { grid-template-columns: 1fr; gap: 14px; }
       .coming-soon { padding: 28px 22px; border-radius: 22px; }
       .work-footer { padding: 40px 0 64px; }
       .footer-buttons .button { flex: 1 1 100%; min-width: 0; }
@@ -341,6 +365,7 @@
 
       <div class="story">
 
+        <!-- Bloque 1: texto principal + foto vista trasera -->
         <section class="story-block split weighted-text reveal">
           <div class="story-text">
             <h2>Limpieza sobre <span class="accent">dorado</span> y policromía.</h2>
@@ -349,14 +374,51 @@
             <span class="note">Fase 01 · Limpieza superficial</span>
           </div>
           <div class="story-media portrait">
-            <img src="../assets/trabajos/palau-de-noguera/portada.jpg" alt="Detalle de la limpieza con pincel y aspirador sobre el retablo" loading="lazy" />
+            <img src="../assets/trabajos/palau-de-noguera/foto-02.jpg" alt="Iris frente al retablo, retirando polvo de las molduras doradas" loading="lazy" />
           </div>
         </section>
 
+        <!-- Bloque 2: detalle del dorado ancho completo -->
+        <section class="story-block full reveal">
+          <div class="story-media cinema">
+            <img src="../assets/trabajos/palau-de-noguera/foto-03.jpg" alt="Detalle del dorado policromado sobre el cuerpo del retablo" loading="lazy" />
+          </div>
+        </section>
+
+        <!-- Bloque 3: texto + foto zona estrecha (reverse) -->
+        <section class="story-block split reverse reveal">
+          <div class="story-media portrait">
+            <img src="../assets/trabajos/palau-de-noguera/foto-04.jpg" alt="Limpieza con pincel sobre zona estrecha del retablo" loading="lazy" />
+          </div>
+          <div class="story-text">
+            <h2>Mano fina sobre el <span class="accent">oro</span>.</h2>
+            <p>El dorado al agua y la policromía conviven sobre el mismo soporte con grados de resistencia muy diferentes. El pincel sustituye al aspirador cuando el material no admite ni una décima de presión más.</p>
+            <p>Cada decisión sobre la superficie se piensa antes de tomarla: dónde se entra, con qué herramienta, cuánto tiempo. La pieza marca el ritmo, no al revés.</p>
+            <span class="note">Fase 02 · Limpieza puntual con pincel</span>
+          </div>
+        </section>
+
+        <!-- Bloque 4: texto centrado + 2 fotos lado a lado -->
+        <section class="story-block duo reveal">
+          <div class="story-text">
+            <h2>Detalles del <span class="accent">proceso</span>.</h2>
+            <p>Pequeños fragmentos del trabajo: el gesto, el detalle ornamental y el cuidado con cada elemento del retablo.</p>
+          </div>
+          <div class="story-media-pair">
+            <div class="story-media portrait">
+              <img src="../assets/trabajos/palau-de-noguera/foto-05.jpg" alt="Trabajo de limpieza sobre detalle ornamental del retablo" loading="lazy" />
+            </div>
+            <div class="story-media portrait">
+              <img src="../assets/trabajos/palau-de-noguera/portada.jpg" alt="Visión general del proceso con aspirador y pincel" loading="lazy" />
+            </div>
+          </div>
+        </section>
+
+        <!-- Próximamente: vídeo cuando llegue el material -->
         <section class="reveal">
           <div class="coming-soon">
             <span>Próximamente</span>
-            <p>Iris está documentando el resto del proceso. En las próximas semanas se publicarán más fotos y vídeos de las distintas fases de la intervención.</p>
+            <p>Quedan por llegar los vídeos del proceso. En las próximas semanas se publicarán fragmentos en movimiento de las distintas fases de la intervención.</p>
           </div>
         </section>
 
