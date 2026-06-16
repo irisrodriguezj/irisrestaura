@@ -209,11 +209,10 @@
       z-index: 1;
     }
 
-    /* Bloque antes/después */
+    /* Bloque antes/después con slider */
     .before-after-label {
       position: absolute;
       top: 18px;
-      left: 18px;
       padding: 8px 18px;
       border-radius: 999px;
       background: var(--ink);
@@ -223,10 +222,79 @@
       font-weight: 500;
       letter-spacing: .14em;
       text-transform: uppercase;
-      z-index: 2;
+      z-index: 3;
       pointer-events: none;
     }
     .before-after-label.despues { background: var(--rose-500); }
+
+    .story-block.ba-block { grid-template-columns: 1fr; }
+    .story-block.ba-block .story-text { max-width: 720px; margin: 0 auto 24px; text-align: center; }
+
+    .ba-slider {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      aspect-ratio: 3/4;
+      border-radius: calc(var(--radius) + 6px);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,.7);
+      background: var(--rose-50);
+      user-select: none;
+      touch-action: none;
+      cursor: ew-resize;
+      isolation: isolate;
+    }
+    .ba-slider .ba-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      -webkit-user-drag: none;
+      pointer-events: none;
+    }
+    .ba-slider .ba-img.ba-after {
+      clip-path: inset(0 0 0 calc(var(--pos, 50) * 1%));
+    }
+    .ba-slider .ba-label-before { left: 18px; }
+    .ba-slider .ba-label-after { right: 18px; }
+
+    .ba-handle {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: calc(var(--pos, 50) * 1%);
+      width: 3px;
+      background: white;
+      transform: translateX(-1.5px);
+      box-shadow: 0 0 24px rgba(0,0,0,.45);
+      pointer-events: none;
+      z-index: 2;
+    }
+    .ba-handle-circle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: white;
+      box-shadow: 0 6px 24px rgba(58, 25, 35, .35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 24px;
+      color: var(--ink);
+      line-height: 1;
+      pointer-events: none;
+    }
+    .ba-handle-circle span { display: inline-block; }
 
     .story-text h2 {
       margin: 0 0 18px;
@@ -364,7 +432,11 @@
       .story-media.portrait { aspect-ratio: 4/5; }
       .story-media.cinema { aspect-ratio: 16/10; }
       .story-media.video-card:after { top: 12px; left: 12px; font-size: 9px; padding: 5px 10px; }
-      .before-after-label { top: 12px; left: 12px; font-size: 13px; padding: 6px 14px; }
+      .before-after-label { top: 12px; font-size: 13px; padding: 6px 14px; }
+      .ba-slider .ba-label-before { left: 12px; }
+      .ba-slider .ba-label-after { right: 12px; }
+      .ba-slider { aspect-ratio: 3/4; border-radius: 22px; }
+      .ba-handle-circle { width: 48px; height: 48px; font-size: 20px; }
       .story-block.duo .story-media-pair { grid-template-columns: 1fr; gap: 14px; }
       .coming-soon { padding: 28px 22px; border-radius: 22px; }
       .work-footer { padding: 40px 0 64px; }
@@ -512,20 +584,19 @@
           </div>
         </section>
 
-        <!-- B9: Antes y después -->
-        <section class="story-block duo reveal">
+        <!-- B9: Antes y después con slider arrastrable -->
+        <section class="story-block ba-block reveal">
           <div class="story-text">
             <h2>Antes y <span class="accent">después</span>.</h2>
-            <p>El resultado del trabajo se mide en el cambio sobre la pieza. La limpieza recupera la lectura del dorado y los colores originales, sin forzar lo que la obra no pide.</p>
+            <p>El resultado del trabajo se mide en el cambio sobre la pieza. Arrastra el control para comparar el estado del retablo antes y después de la limpieza.</p>
           </div>
-          <div class="story-media-pair">
-            <div class="story-media portrait">
-              <span class="before-after-label">Antes</span>
-              <img src="../assets/trabajos/palau-de-noguera/antes.jpg" alt="Retablo de la església de Palau de Noguera antes de la intervención" loading="lazy" />
-            </div>
-            <div class="story-media portrait">
-              <span class="before-after-label despues">Después</span>
-              <img src="../assets/trabajos/palau-de-noguera/despues.jpg" alt="Retablo de la església de Palau de Noguera después de la limpieza" loading="lazy" />
+          <div class="ba-slider" id="ba-slider" style="--pos: 50">
+            <img class="ba-img" src="../assets/trabajos/palau-de-noguera/antes.jpg" alt="Retablo antes de la intervención" loading="lazy" />
+            <img class="ba-img ba-after" src="../assets/trabajos/palau-de-noguera/despues.jpg" alt="Retablo después de la limpieza" loading="lazy" />
+            <span class="before-after-label ba-label-before">Antes</span>
+            <span class="before-after-label despues ba-label-after">Después</span>
+            <div class="ba-handle" aria-hidden="true">
+              <div class="ba-handle-circle"><span>‹</span><span>›</span></div>
             </div>
           </div>
         </section>
@@ -571,6 +642,42 @@
       window.addEventListener('scroll', playIfVisible, { passive: true });
       playIfVisible();
     });
+
+    // Antes/después: slider arrastrable
+    (function() {
+      const slider = document.getElementById('ba-slider');
+      if (!slider) return;
+      let dragging = false;
+
+      const setPos = (clientX) => {
+        const r = slider.getBoundingClientRect();
+        let p = ((clientX - r.left) / r.width) * 100;
+        p = Math.max(0, Math.min(100, p));
+        slider.style.setProperty('--pos', p);
+      };
+
+      const start = (e) => {
+        dragging = true;
+        const x = e.touches ? e.touches[0].clientX : e.clientX;
+        setPos(x);
+        e.preventDefault();
+      };
+      const move = (e) => {
+        if (!dragging) return;
+        const x = e.touches ? e.touches[0].clientX : e.clientX;
+        setPos(x);
+        e.preventDefault();
+      };
+      const end = () => { dragging = false; };
+
+      slider.addEventListener('mousedown', start);
+      slider.addEventListener('touchstart', start, { passive: false });
+      window.addEventListener('mousemove', move);
+      window.addEventListener('touchmove', move, { passive: false });
+      window.addEventListener('mouseup', end);
+      window.addEventListener('touchend', end);
+      window.addEventListener('touchcancel', end);
+    })();
   </script>
 </body>
 </html>
