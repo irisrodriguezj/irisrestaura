@@ -108,24 +108,19 @@
     .hero {
       min-height: 100svh;
       position: relative;
-      display: grid;
-      place-items: center;
-      padding: 118px 0 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 110px 0 80px;
+      overflow: hidden;
       isolation: isolate;
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr minmax(300px, 560px) 1fr;
-      align-items: center;
-      gap: clamp(18px, 4vw, 42px);
-      width: min(1280px, calc(100% - 36px));
-      margin: auto;
-    }
-
-    .hero-title {
+    .hero-text {
       text-align: center;
       z-index: 5;
+      position: relative;
+      padding: 0 20px;
     }
 
     .eyebrow {
@@ -150,7 +145,7 @@
       letter-spacing: -.06em;
       font-weight: 500;
     }
-    .hero-title p {
+    .hero-text p {
       margin: 0 auto;
       max-width: 520px;
       color: var(--muted);
@@ -183,26 +178,114 @@
     .button.secondary { background: rgba(255,255,255,.55); color: var(--ink); }
     .button.secondary:hover { background: white; transform: translateY(-2px); }
 
-    .floating-stack {
-      display: grid;
-      gap: 18px;
-      align-content: center;
+    /* === 3D Card Carousel === */
+    .carousel-stage {
+      width: 100%;
+      height: clamp(320px, 40vw, 480px);
+      perspective: 1400px;
+      perspective-origin: 50% 35%;
+      position: relative;
+      margin-top: 10px;
+      flex-shrink: 0;
     }
-    .float-card {
-      margin: 0;
-      border-radius: var(--radius);
+
+    .carousel-track {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+    }
+
+    .c-card {
+      position: absolute;
+      width: clamp(180px, 20vw, 270px);
+      height: clamp(240px, 28vw, 370px);
+      left: 50%;
+      top: 50%;
+      margin-left: calc(clamp(180px, 20vw, 270px) / -2);
+      margin-top: calc(clamp(240px, 28vw, 370px) / -2);
+      border-radius: 20px;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,.75);
-      background: white;
-      box-shadow: var(--shadow);
-      transform: rotate(var(--r));
-      transition: .45s cubic-bezier(.2, .8, .2, 1);
+      border: 1px solid rgba(255,255,255,.8);
+      box-shadow: 0 24px 60px rgba(58,25,35,.18);
+      cursor: pointer;
+      transition: transform .75s cubic-bezier(.2,.8,.2,1), opacity .75s ease, box-shadow .3s ease;
+      backface-visibility: hidden;
+      will-change: transform, opacity;
     }
-    .float-card:hover { transform: rotate(0deg) scale(1.025); }
-    .float-card.small { width: clamp(150px, 18vw, 240px); justify-self: end; }
-    .float-card.tall { width: clamp(190px, 21vw, 290px); justify-self: start; }
-    .float-card.wide { width: clamp(220px, 26vw, 360px); justify-self: end; }
-    .float-card img { aspect-ratio: var(--a); object-fit: cover; }
+    .c-card:hover { box-shadow: 0 32px 80px rgba(58,25,35,.28); }
+    .c-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+      transition: transform .6s ease;
+    }
+    .c-card:hover img { transform: scale(1.04); }
+
+    .c-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 52px 16px 16px;
+      background: linear-gradient(to top, rgba(42,26,31,.82) 0%, transparent 100%);
+      color: white;
+      font-size: 14px;
+      font-weight: 500;
+      opacity: 0;
+      transition: opacity .3s ease;
+    }
+    .c-card.is-active .c-label,
+    .c-card:hover .c-label { opacity: 1; }
+    .c-label span {
+      display: block;
+      font-size: 10px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      opacity: .7;
+      margin-top: 3px;
+    }
+
+    .c-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 1px solid var(--line);
+      background: rgba(255,253,249,.74);
+      backdrop-filter: blur(12px);
+      border-radius: 999px;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: .25s ease;
+      font-size: 18px;
+      color: var(--ink);
+    }
+    .c-nav:hover { background: white; box-shadow: 0 8px 24px rgba(58,25,35,.12); }
+    .c-prev { left: clamp(8px, 2vw, 28px); }
+    .c-next { right: clamp(8px, 2vw, 28px); }
+
+    .c-dots {
+      display: flex;
+      justify-content: center;
+      gap: 7px;
+      margin-top: 22px;
+      z-index: 5;
+    }
+    .c-dot {
+      width: 6px; height: 6px;
+      border-radius: 999px;
+      background: var(--rose-200);
+      transition: .3s ease;
+      cursor: pointer;
+      border: none;
+      padding: 0;
+    }
+    .c-dot.is-active { background: var(--ink); width: 20px; }
 
     .scroll-note {
       position: absolute;
@@ -504,20 +587,6 @@
     /* ---- Tablet (≤ 960px) ---- */
     @media (max-width: 960px) {
       .nav-links a:not(.pill) { display: none; }
-      .hero-grid { grid-template-columns: 1fr; }
-      .floating-stack {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        order: 2;
-      }
-      .floating-stack.left { order: 2; }
-      .floating-stack.right { order: 3; }
-      .float-card.small, .float-card.tall, .float-card.wide {
-        width: 100%;
-        min-width: 0;
-        justify-self: stretch;
-      }
-      .float-card { transform: none !important; }
-      .float-card img { aspect-ratio: 3/4; }
       .section-head, .intro-card, .about-grid { grid-template-columns: 1fr; }
       .works-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
       .process-grid { grid-template-columns: repeat(2, 1fr); }
@@ -529,53 +598,33 @@
     @media (max-width: 620px) {
       .container { width: min(100% - 24px, 1180px); }
 
-      /* Nav */
       .nav { top: 10px; width: calc(100% - 20px); padding: 10px 12px; }
       .brand { font-size: 16px; letter-spacing: .07em; }
       .nav-links .pill { padding-inline: 12px; font-size: 11px; }
 
-      /* Hero: display:block elimina el justify-items:center del grid padre */
-      .hero { display: block; padding: 86px 0 48px; }
-      .hero-grid {
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 24px;
-        width: calc(100% - 40px);
-        margin: 0 auto;
-        padding: 0;
-      }
+      .hero { padding: 86px 0 48px; }
       h1 { font-size: clamp(48px, 13vw, 72px); margin: 14px 0 10px; line-height: .84; }
-      .hero-title p { font-size: 15px; }
+      .hero-text p { font-size: 15px; }
       .scroll-note { display: none; }
       .hero-cta { gap: 10px; margin-top: 22px; }
 
-      /* Floating cards: una fila compacta de 3, sin rotaciones */
-      .floating-stack.right { display: none; }
-      .floating-stack.left { order: 2; width: 100%; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
-      .floating-stack .float-card:nth-child(3) { display: block; }
-      .float-card { transform: none !important; border-radius: 16px; }
-      .float-card img { aspect-ratio: 3/4; }
+      .carousel-stage { height: 300px; margin-top: 8px; }
+      .c-nav { width: 36px; height: 36px; font-size: 15px; }
 
-      /* Secciones */
       section { padding: clamp(48px, 8vw, 72px) 0; }
       .section-head { gap: 14px; margin-bottom: 20px; }
       .section-head h2 { font-size: clamp(34px, 10vw, 50px); }
 
-      /* Intro */
       .intro-card { padding: 22px 20px; gap: 18px; }
       .intro-card h2 { font-size: clamp(30px, 9vw, 48px); }
 
-      /* Trabajos */
       .works-grid { grid-template-columns: 1fr; gap: 18px; }
       .work-card-body { padding: 20px 22px 24px; }
       .work-card-body h3 { font-size: clamp(24px, 7vw, 34px); }
 
-      /* Proceso */
       .process-grid { grid-template-columns: 1fr; gap: 10px; }
       .process-item { min-height: auto; padding: 20px 18px; }
 
-      /* Galería: cuadrícula 2 columnas */
       .gallery-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -586,15 +635,12 @@
       .g1, .g2, .g3, .g4, .g5, .g6 { grid-column: span 1; grid-row: span 1; }
       .g1 { grid-column: span 2; height: 250px; }
 
-      /* Sobre mí */
       .portrait-card { transform: none; }
       .about-copy h2 { font-size: clamp(34px, 10vw, 52px); }
 
-      /* Contacto */
       .contact-card { padding: 36px 22px; }
       .contact-card h2 { font-size: clamp(34px, 10vw, 54px); line-height: .9; }
 
-      /* Footer */
       .footer .container { display: grid; gap: 6px; }
     }
 
@@ -622,30 +668,53 @@
   </header>
 
   <main id="inicio">
-    <section class="hero" aria-label="Presentación">
-      <div class="hero-grid">
-        <div class="floating-stack left">
-          <figure class="float-card tall" style="--r:-4deg; --a:4/5;"><img src="assets/images/frame-detail-thumb.jpg" alt="Intervención minuciosa sobre marco antiguo" /></figure>
-          <figure class="float-card small" style="--r:5deg; --a:4/5;"><img src="assets/images/ph-testing-thumb.jpg" alt="Pruebas de pH durante proceso de conservación" /></figure>
-          <figure class="float-card wide" style="--r:-2deg; --a:16/10;"><img src="assets/images/studio-easel-thumb.jpg" alt="Retrato sobre caballete en taller de restauración" /></figure>
-        </div>
-
-        <div class="hero-title">
-          <span class="eyebrow">Conservación · Restauración · Obra pictórica</span>
-          <h1>Materia<br />con memoria.</h1>
-          <p>IRISRESTAURA reúne procesos de restauración, documentación e intervención sobre obra pictórica y soportes históricos, con una mirada técnica, sensible y limpia.</p>
-          <div class="hero-cta">
-            <a class="button primary" href="#trabajos">Ver trabajos</a>
-            <a class="button secondary" href="#contacto">Contacto</a>
-          </div>
-        </div>
-
-        <div class="floating-stack right">
-          <figure class="float-card wide" style="--r:3deg; --a:16/11;"><img src="assets/images/portrait-before-thumb.jpg" alt="Detalle del retrato antes de la reintegración" /></figure>
-          <figure class="float-card tall" style="--r:-5deg; --a:4/5;"><img src="assets/images/surface-retouching-thumb.jpg" alt="Proceso manual de retirada y limpieza de superficie" /></figure>
-          <figure class="float-card small" style="--r:4deg; --a:4/5;"><img src="assets/images/portrait-after-thumb.jpg" alt="Resultado de retrato restaurado" /></figure>
+    <section class="hero" id="inicio" aria-label="Presentación">
+      <div class="hero-text">
+        <span class="eyebrow">Conservación · Restauración · Obra pictórica</span>
+        <h1>Materia<br />con memoria.</h1>
+        <p>IRISRESTAURA reúne procesos de restauración, documentación e intervención sobre obra pictórica y soportes históricos.</p>
+        <div class="hero-cta">
+          <a class="button primary" href="#trabajos">Ver trabajos</a>
+          <a class="button secondary" href="#contacto">Contacto</a>
         </div>
       </div>
+
+      <div class="carousel-stage" role="region" aria-label="Trabajos destacados">
+        <div class="carousel-track" id="carouselTrack">
+          <article class="c-card" data-href="trabajos/parroquia-sant-agusti.html">
+            <img src="assets/trabajos/parroquia-sant-agusti/portada.jpg" alt="Parroquia de Sant Agustí" />
+            <div class="c-label">Parroquia de Sant Agustí <span>Raval, Barcelona · 2025</span></div>
+          </article>
+          <article class="c-card" data-href="trabajos/palau-de-noguera.html">
+            <img src="assets/trabajos/palau-de-noguera/portada.jpg" alt="Palau de Noguera" />
+            <div class="c-label">Palau de Noguera <span>Tremp · 2025</span></div>
+          </article>
+          <article class="c-card">
+            <img src="assets/images/varnish-cleaning.jpg" alt="Limpieza de barniz" />
+            <div class="c-label">Proceso manual <span>Limpieza de barniz</span></div>
+          </article>
+          <article class="c-card">
+            <img src="assets/images/frame-detail.jpg" alt="Intervención sobre marco" />
+            <div class="c-label">Intervención <span>Marco histórico</span></div>
+          </article>
+          <article class="c-card">
+            <img src="assets/images/surface-retouching.jpg" alt="Reintegración" />
+            <div class="c-label">Reintegración <span>Proceso</span></div>
+          </article>
+          <article class="c-card">
+            <img src="assets/images/studio-easel.jpg" alt="Taller" />
+            <div class="c-label">Taller <span>Estudio</span></div>
+          </article>
+          <article class="c-card">
+            <img src="assets/images/portrait-before.jpg" alt="Documentación" />
+            <div class="c-label">Documentación <span>Antes / Después</span></div>
+          </article>
+        </div>
+        <button class="c-nav c-prev" aria-label="Anterior">←</button>
+        <button class="c-nav c-next" aria-label="Siguiente">→</button>
+      </div>
+
+      <div class="c-dots" id="carouselDots"></div>
       <div class="scroll-note">Scroll</div>
     </section>
 
@@ -779,6 +848,7 @@
   </div>
 
   <script>
+    /* === Lightbox === */
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightboxImg');
     const closeLightbox = document.getElementById('closeLightbox');
@@ -791,19 +861,116 @@
       });
     });
 
-    function close() {
+    function closeLB() {
       lightbox.classList.remove('is-open');
       lightbox.setAttribute('aria-hidden', 'true');
       lightboxImg.src = '';
     }
+    closeLightbox.addEventListener('click', closeLB);
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLB(); });
+    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLB(); });
 
-    closeLightbox.addEventListener('click', close);
-    lightbox.addEventListener('click', (event) => {
-      if (event.target === lightbox) close();
-    });
-    window.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') close();
-    });
+    /* === 3D Card Carousel === */
+    (function () {
+      const cards = Array.from(document.querySelectorAll('.c-card'));
+      const dotsEl = document.getElementById('carouselDots');
+      const stage = document.querySelector('.carousel-stage');
+      const n = cards.length;
+      let active = 0;
+      let autoTimer = null;
+
+      /* positions[absOffset] = { rotY, z, x, scale, opacity } */
+      const POS = [
+        { rotY: 0,   z: 300, x: 0,    scale: 1,    opacity: 1    }, // center
+        { rotY: 38,  z: 160, x: 240,  scale: 0.83, opacity: 0.88 }, // ±1
+        { rotY: 68,  z: 30,  x: 420,  scale: 0.67, opacity: 0.55 }, // ±2
+        { rotY: 85,  z: 0,   x: 540,  scale: 0.55, opacity: 0.22 }, // ±3
+      ];
+
+      /* build dots */
+      cards.forEach((_, i) => {
+        const d = document.createElement('button');
+        d.className = 'c-dot';
+        d.setAttribute('aria-label', 'Ir a tarjeta ' + (i + 1));
+        d.addEventListener('click', () => goTo(i));
+        dotsEl.appendChild(d);
+      });
+      const dots = Array.from(dotsEl.querySelectorAll('.c-dot'));
+
+      function render() {
+        cards.forEach((card, i) => {
+          let offset = ((i - active) % n + n) % n;
+          if (offset > n / 2) offset -= n; // wrap to [-n/2, n/2]
+          const absOff = Math.abs(offset);
+          const pos = POS[absOff];
+
+          card.classList.toggle('is-active', offset === 0);
+
+          if (!pos) {
+            card.style.opacity = '0';
+            card.style.pointerEvents = 'none';
+            card.style.zIndex = '0';
+            return;
+          }
+
+          const dir = offset < 0 ? -1 : offset > 0 ? 1 : 0;
+          card.style.transform = `translateX(${pos.x * dir}px) translateZ(${pos.z}px) rotateY(${pos.rotY * dir}deg) scale(${pos.scale})`;
+          card.style.opacity = String(pos.opacity);
+          card.style.zIndex = String(Math.round(pos.z));
+          card.style.pointerEvents = 'auto';
+        });
+
+        dots.forEach((d, i) => d.classList.toggle('is-active', i === active));
+      }
+
+      function goTo(index) {
+        active = ((index % n) + n) % n;
+        render();
+      }
+      function next() { goTo(active + 1); }
+      function prev() { goTo(active - 1); }
+
+      function startAuto() { autoTimer = setInterval(next, 3200); }
+      function stopAuto()  { clearInterval(autoTimer); }
+
+      stage.addEventListener('mouseenter', stopAuto);
+      stage.addEventListener('mouseleave', startAuto);
+
+      document.querySelector('.c-prev').addEventListener('click', () => { stopAuto(); prev(); startAuto(); });
+      document.querySelector('.c-next').addEventListener('click', () => { stopAuto(); next(); startAuto(); });
+
+      /* click side card → focus it; click center card with href → navigate */
+      cards.forEach((card, i) => {
+        card.addEventListener('click', () => {
+          let offset = ((i - active) % n + n) % n;
+          if (offset > n / 2) offset -= n;
+          if (offset !== 0) {
+            stopAuto(); goTo(i); startAuto();
+          } else if (card.dataset.href) {
+            window.location.href = card.dataset.href;
+          }
+        });
+      });
+
+      /* keyboard */
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') { stopAuto(); next(); startAuto(); }
+        if (e.key === 'ArrowLeft')  { stopAuto(); prev(); startAuto(); }
+      });
+
+      /* touch swipe */
+      let touchX = null;
+      stage.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+      stage.addEventListener('touchend', (e) => {
+        if (touchX === null) return;
+        const dx = e.changedTouches[0].clientX - touchX;
+        if (Math.abs(dx) > 40) { stopAuto(); dx < 0 ? next() : prev(); startAuto(); }
+        touchX = null;
+      });
+
+      render();
+      startAuto();
+    })();
   </script>
 </body>
 </html>
