@@ -133,7 +133,7 @@
       white-space: nowrap;
     }
     .hero-bg-left {
-      font-size: clamp(80px, 13vw, 190px);
+      font-size: clamp(55px, 8vw, 115px);
       top: 16%;
       left: 2%;
     }
@@ -226,12 +226,12 @@
 
     .c-card {
       position: absolute;
-      width: clamp(200px, 21vw, 280px);
-      height: clamp(270px, 29vw, 385px);
+      width: clamp(175px, 18vw, 245px);
+      height: clamp(240px, 25vw, 340px);
       left: 50%;
       top: 50%;
-      margin-left: calc(clamp(200px, 21vw, 280px) / -2);
-      margin-top: calc(clamp(270px, 29vw, 385px) / -2);
+      margin-left: calc(clamp(175px, 18vw, 245px) / -2);
+      margin-top: calc(clamp(240px, 25vw, 340px) / -2);
       border-radius: 20px;
       overflow: hidden;
       border: 1px solid rgba(255,255,255,.8);
@@ -947,16 +947,20 @@
         });
       });
 
-      /* Scroll wheel drives rotation */
-      let scrollLocked = false;
+      /* Scroll wheel drives rotation — accumulated delta for smooth trackpad */
+      let wheelAcc = 0;
+      let wheelReset = null;
       hero.addEventListener('wheel', (e) => {
-        if (scrollLocked) return;
         e.preventDefault();
-        scrollLocked = true;
-        stopAuto();
-        e.deltaY > 0 ? next() : prev();
-        startAuto();
-        setTimeout(() => { scrollLocked = false; }, 950);
+        wheelAcc += e.deltaY;
+        clearTimeout(wheelReset);
+        wheelReset = setTimeout(() => { wheelAcc = 0; }, 300);
+        if (Math.abs(wheelAcc) >= 60) {
+          stopAuto();
+          wheelAcc > 0 ? next() : prev();
+          wheelAcc = 0;
+          startAuto();
+        }
       }, { passive: false });
 
       /* Keyboard */
