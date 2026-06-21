@@ -284,19 +284,20 @@
       display: flex;
       justify-content: center;
       gap: 7px;
-      margin-top: 22px;
+      margin-top: 28px;
       z-index: 5;
+      position: relative;
     }
     .c-dot {
       width: 6px; height: 6px;
       border-radius: 999px;
-      background: var(--rose-200);
+      background: var(--rose-300);
       transition: .3s ease;
       cursor: pointer;
       border: none;
       padding: 0;
     }
-    .c-dot.is-active { background: var(--ink); width: 20px; }
+    .c-dot.is-active { background: var(--ink); width: 22px; }
 
     .scroll-note {
       position: absolute;
@@ -724,7 +725,7 @@
       </div>
 
       <div class="c-dots" id="carouselDots"></div>
-      <div class="scroll-note">Scroll</div>
+      <div class="scroll-note" style="position:relative;margin-top:16px;">Scroll</div>
     </section>
 
     <div class="hero-desc container">
@@ -895,9 +896,9 @@
       /* positions[absOffset] = { rotY, z, x, scale, opacity } */
       const POS = [
         { rotY: 0,   z: 300, x: 0,    scale: 1,    opacity: 1    }, // center
-        { rotY: 38,  z: 160, x: 240,  scale: 0.83, opacity: 0.88 }, // ±1
-        { rotY: 68,  z: 30,  x: 420,  scale: 0.67, opacity: 0.55 }, // ±2
-        { rotY: 85,  z: 0,   x: 540,  scale: 0.55, opacity: 0.22 }, // ±3
+        { rotY: 42,  z: 160, x: 310,  scale: 0.83, opacity: 0.88 }, // ±1
+        { rotY: 70,  z: 30,  x: 540,  scale: 0.67, opacity: 0.55 }, // ±2
+        { rotY: 85,  z: 0,   x: 680,  scale: 0.55, opacity: 0.22 }, // ±3
       ];
 
       /* build dots */
