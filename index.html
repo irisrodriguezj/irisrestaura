@@ -112,7 +112,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 80px 0 60px;
+      padding: 60px 0 40px;
       overflow: hidden;
       isolation: isolate;
     }
@@ -131,18 +131,17 @@
       margin: 0;
       user-select: none;
       white-space: nowrap;
+      overflow: hidden;
     }
     .hero-bg-left {
-      font-size: clamp(110px, 19vw, 280px);
-      top: 6%;
-      left: -3%;
-      text-align: left;
+      font-size: clamp(80px, 13vw, 190px);
+      top: 8%;
+      left: 2%;
     }
     .hero-bg-right {
-      font-size: clamp(90px, 15vw, 220px);
-      bottom: 8%;
-      right: -3%;
-      text-align: right;
+      font-size: clamp(60px, 9vw, 130px);
+      bottom: 10%;
+      right: 2%;
     }
 
     .eyebrow {
@@ -239,7 +238,6 @@
       border: 1px solid rgba(255,255,255,.8);
       box-shadow: 0 20px 50px rgba(58,25,35,.16);
       cursor: pointer;
-      backface-visibility: hidden;
     }
     .c-card.is-active { box-shadow: 0 32px 80px rgba(58,25,35,.28); }
     .c-card img {
@@ -673,8 +671,8 @@
 
   <main id="inicio">
     <section class="hero" id="inicio" aria-label="Presentación">
-      <div class="hero-bg-left" aria-hidden="true">Materia</div>
-      <div class="hero-bg-right" aria-hidden="true">con memoria.</div>
+      <div class="hero-bg-left" aria-hidden="true">Iris</div>
+      <div class="hero-bg-right" aria-hidden="true">Rodríguez</div>
 
       <div class="carousel-stage" role="region" aria-label="Trabajos destacados">
         <div class="carousel-track" id="carouselTrack">
@@ -904,7 +902,18 @@
       /* Rotate the whole cylinder */
       function render() {
         track.style.transform = `rotateY(${-active * angleStep}deg)`;
-        cards.forEach((card, i) => card.classList.toggle('is-active', i === active));
+        cards.forEach((card, i) => {
+          // angle of this card relative to viewer after rotation
+          let a = (i * angleStep - active * angleStep % 360 + 720) % 360;
+          if (a > 180) a = 360 - a; // 0 = front, 180 = back
+          const isActive = a < angleStep * 0.5;
+          card.classList.toggle('is-active', isActive);
+          // fade out cards going to the back; side cards stay at ~0.45
+          const opacity = a < 90
+            ? 0.45 + 0.55 * Math.cos(a * Math.PI / 180)
+            : Math.max(0, 0.45 * Math.cos((a - 90) * Math.PI / 90));
+          card.style.opacity = opacity.toFixed(3);
+        });
         dots.forEach((d, i) => d.classList.toggle('is-active', i === active));
       }
 
