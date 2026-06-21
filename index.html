@@ -117,25 +117,32 @@
       isolation: isolate;
     }
 
-    .hero-bg-text {
+    .hero-bg-left,
+    .hero-bg-right {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 150%;
       font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: clamp(130px, 22vw, 320px);
       font-weight: 500;
-      line-height: 0.82;
+      line-height: 0.85;
       letter-spacing: -0.05em;
       color: var(--rose-500);
-      opacity: 0.14;
+      opacity: 0.18;
       pointer-events: none;
       z-index: 0;
-      text-align: center;
       margin: 0;
       user-select: none;
       white-space: nowrap;
+    }
+    .hero-bg-left {
+      font-size: clamp(110px, 19vw, 280px);
+      top: 6%;
+      left: -3%;
+      text-align: left;
+    }
+    .hero-bg-right {
+      font-size: clamp(90px, 15vw, 220px);
+      bottom: 8%;
+      right: -3%;
+      text-align: right;
     }
 
     .eyebrow {
@@ -203,8 +210,8 @@
     /* === Cylindrical 3D Carousel === */
     .carousel-stage {
       width: 100%;
-      height: clamp(400px, 50vw, 560px);
-      perspective: 900px;
+      height: clamp(440px, 55vw, 620px);
+      perspective: 1100px;
       perspective-origin: 50% 50%;
       position: relative;
       z-index: 2;
@@ -221,12 +228,12 @@
 
     .c-card {
       position: absolute;
-      width: clamp(170px, 18vw, 240px);
-      height: clamp(230px, 25vw, 330px);
+      width: clamp(200px, 21vw, 280px);
+      height: clamp(270px, 29vw, 385px);
       left: 50%;
       top: 50%;
-      margin-left: calc(clamp(170px, 18vw, 240px) / -2);
-      margin-top: calc(clamp(230px, 25vw, 330px) / -2);
+      margin-left: calc(clamp(200px, 21vw, 280px) / -2);
+      margin-top: calc(clamp(270px, 29vw, 385px) / -2);
       border-radius: 20px;
       overflow: hidden;
       border: 1px solid rgba(255,255,255,.8);
@@ -666,7 +673,8 @@
 
   <main id="inicio">
     <section class="hero" id="inicio" aria-label="Presentación">
-      <div class="hero-bg-text" aria-hidden="true">Materia con memoria.</div>
+      <div class="hero-bg-left" aria-hidden="true">Materia</div>
+      <div class="hero-bg-right" aria-hidden="true">con memoria.</div>
 
       <div class="carousel-stage" role="region" aria-label="Trabajos destacados">
         <div class="carousel-track" id="carouselTrack">
@@ -882,7 +890,7 @@
 
       function computeRadius() {
         const cardW = cards[0].offsetWidth;
-        radius = Math.max(320, Math.round(cardW * n / (2 * Math.PI) * 1.2));
+        radius = Math.max(480, Math.round(cardW * n / (2 * Math.PI) * 1.4));
       }
 
       /* Place each card at its fixed angle on the cylinder — never changes */
