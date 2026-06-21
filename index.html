@@ -193,8 +193,6 @@
     .carousel-stage {
       width: 100%;
       height: clamp(420px, 52vw, 620px);
-      perspective: 1400px;
-      perspective-origin: 50% 35%;
       position: relative;
       margin-top: 16px;
       flex-shrink: 0;
@@ -204,7 +202,6 @@
       width: 100%;
       height: 100%;
       position: relative;
-      transform-style: preserve-3d;
     }
 
     .c-card {
@@ -891,12 +888,12 @@
       let active = 0;
       let autoTimer = null;
 
-      /* positions[absOffset] = { rotY, z, x, scale, opacity } */
+      /* positions[absOffset]: x = lateral offset, tilt = rotateZ (cartas en abanico) */
       const POS = [
-        { rotY: 0,   z: 300, x: 0,    scale: 1,    opacity: 1    }, // center
-        { rotY: 42,  z: 160, x: 340,  scale: 0.83, opacity: 0.88 }, // ±1
-        { rotY: 68,  z: 30,  x: 600,  scale: 0.67, opacity: 0.52 }, // ±2
-        { rotY: 82,  z: 0,   x: 820,  scale: 0.55, opacity: 0.28 }, // ±3
+        { x: 0,    scale: 1,    opacity: 1,    tilt: 0   }, // center
+        { x: 330,  scale: 0.82, opacity: 0.85, tilt: 6   }, // ±1
+        { x: 590,  scale: 0.65, opacity: 0.50, tilt: 12  }, // ±2
+        { x: 800,  scale: 0.52, opacity: 0.26, tilt: 17  }, // ±3
       ];
 
       /* build dots */
@@ -926,9 +923,9 @@
           }
 
           const dir = offset < 0 ? -1 : offset > 0 ? 1 : 0;
-          card.style.transform = `translateX(${pos.x * dir}px) translateZ(${pos.z}px) rotateY(${pos.rotY * dir}deg) scale(${pos.scale})`;
+          card.style.transform = `translateX(${pos.x * dir}px) scale(${pos.scale}) rotateZ(${pos.tilt * dir}deg)`;
           card.style.opacity = String(pos.opacity);
-          card.style.zIndex = String(Math.round(pos.z));
+          card.style.zIndex = String(Math.round(pos.scale * 100));
           card.style.pointerEvents = 'auto';
         });
 
