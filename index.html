@@ -725,7 +725,6 @@
       </div>
 
       <div class="c-dots" id="carouselDots"></div>
-      <div class="scroll-note" style="position:relative;margin-top:20px;">Scroll</div>
     </section>
 
     <div class="hero-desc container">
@@ -944,7 +943,7 @@
       function next() { goTo(active + 1); }
       function prev() { goTo(active - 1); }
 
-      function startAuto() { autoTimer = setInterval(next, 5500); }
+      function startAuto() { autoTimer = setInterval(next, 4000); }
       function stopAuto()  { clearInterval(autoTimer); }
 
       stage.addEventListener('mouseenter', stopAuto);
