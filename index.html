@@ -882,7 +882,6 @@
       const n = cards.length;
       const angleStep = 360 / n;
       let active = 0;
-      let autoTimer = null;
       let radius = 420;
 
       function computeRadius() {
@@ -930,43 +929,28 @@
       function next() { goTo(active + 1); }
       function prev() { goTo(active - 1); }
 
-      function startAuto() { autoTimer = setInterval(next, 4000); }
-      function stopAuto()  { clearInterval(autoTimer); }
+      /* Dots */
+      cards.forEach((_, i) => {
+        const d = dotsEl.querySelectorAll('.c-dot')[i];
+        if (d) d.addEventListener('click', () => goTo(i));
+      });
 
-      stage.addEventListener('mouseenter', stopAuto);
-      stage.addEventListener('mouseleave', startAuto);
-
-      document.querySelector('.c-prev').addEventListener('click', () => { stopAuto(); prev(); startAuto(); });
-      document.querySelector('.c-next').addEventListener('click', () => { stopAuto(); next(); startAuto(); });
+      /* Arrows */
+      document.querySelector('.c-prev').addEventListener('click', prev);
+      document.querySelector('.c-next').addEventListener('click', next);
 
       /* Click: focus non-active, navigate active */
       cards.forEach((card, i) => {
         card.addEventListener('click', () => {
-          if (i !== active) { stopAuto(); goTo(i); startAuto(); }
+          if (i !== active) goTo(i);
           else if (card.dataset.href) window.location.href = card.dataset.href;
         });
       });
 
-      /* Scroll wheel drives rotation — accumulated delta for smooth trackpad */
-      let wheelAcc = 0;
-      let wheelReset = null;
-      hero.addEventListener('wheel', (e) => {
-        e.preventDefault();
-        wheelAcc += e.deltaY;
-        clearTimeout(wheelReset);
-        wheelReset = setTimeout(() => { wheelAcc = 0; }, 300);
-        if (Math.abs(wheelAcc) >= 60) {
-          stopAuto();
-          wheelAcc > 0 ? next() : prev();
-          wheelAcc = 0;
-          startAuto();
-        }
-      }, { passive: false });
-
-      /* Keyboard */
+      /* Keyboard arrows only */
       window.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight') { stopAuto(); next(); startAuto(); }
-        if (e.key === 'ArrowLeft')  { stopAuto(); prev(); startAuto(); }
+        if (e.key === 'ArrowRight') next();
+        if (e.key === 'ArrowLeft')  prev();
       });
 
       /* Touch swipe */
@@ -975,7 +959,7 @@
       stage.addEventListener('touchend', (e) => {
         if (!touchX) return;
         const dx = e.changedTouches[0].clientX - touchX;
-        if (Math.abs(dx) > 40) { stopAuto(); dx < 0 ? next() : prev(); startAuto(); }
+        if (Math.abs(dx) > 40) { dx < 0 ? next() : prev(); }
         touchX = null;
       });
 
@@ -984,7 +968,6 @@
 
       initCards();
       render();
-      startAuto();
     })();
   </script>
 </body>
