@@ -111,17 +111,30 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 96px 0 40px;
+      justify-content: center;
+      padding: 80px 0 60px;
       overflow: hidden;
       isolation: isolate;
     }
 
-    .hero-text {
+    .hero-bg-text {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(100px, 17vw, 240px);
+      font-weight: 500;
+      line-height: 0.82;
+      letter-spacing: -0.05em;
+      color: var(--ink);
+      opacity: 0.07;
+      pointer-events: none;
+      z-index: 0;
       text-align: center;
-      z-index: 5;
-      position: relative;
-      padding: 0 20px;
-      margin-bottom: 4px;
+      margin: 0;
+      user-select: none;
     }
 
     .eyebrow {
@@ -139,19 +152,16 @@
     }
 
     h1, h2, h3, .serif { font-family: "Cormorant Garamond", Georgia, serif; }
-    h1 {
-      margin: 20px 0 12px;
-      font-size: clamp(72px, 11.6vw, 172px);
-      line-height: .78;
-      letter-spacing: -.06em;
-      font-weight: 500;
-    }
-    .hero-text p {
-      margin: 0 auto;
-      max-width: 520px;
-      color: var(--muted);
-      font-size: clamp(15px, 1.5vw, 18px);
-      line-height: 1.65;
+    h1 { margin: 20px 0 12px; font-size: clamp(72px, 11.6vw, 172px); line-height: .78; letter-spacing: -.06em; font-weight: 500; }
+
+    .hero-cta-wrap {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 36px;
+      z-index: 5;
+      position: relative;
     }
 
     .hero-desc {
@@ -189,14 +199,14 @@
     .button.secondary { background: rgba(255,255,255,.55); color: var(--ink); }
     .button.secondary:hover { background: white; transform: translateY(-2px); }
 
-    /* === 3D Card Carousel === */
+    /* === Cylindrical 3D Carousel === */
     .carousel-stage {
       width: 100%;
-      height: clamp(420px, 52vw, 620px);
-      perspective: 1400px;
-      perspective-origin: 50% 35%;
+      height: clamp(400px, 50vw, 560px);
+      perspective: 900px;
+      perspective-origin: 50% 50%;
       position: relative;
-      margin-top: 16px;
+      z-index: 2;
       flex-shrink: 0;
     }
 
@@ -205,35 +215,30 @@
       height: 100%;
       position: relative;
       transform-style: preserve-3d;
+      transition: transform 0.9s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
     .c-card {
       position: absolute;
-      width: clamp(220px, 26vw, 360px);
-      height: clamp(300px, 36vw, 490px);
+      width: clamp(200px, 22vw, 290px);
+      height: clamp(270px, 30vw, 400px);
       left: 50%;
       top: 50%;
-      margin-left: calc(clamp(220px, 26vw, 360px) / -2);
-      margin-top: calc(clamp(300px, 36vw, 490px) / -2);
+      margin-left: calc(clamp(200px, 22vw, 290px) / -2);
+      margin-top: calc(clamp(270px, 30vw, 400px) / -2);
       border-radius: 20px;
       overflow: hidden;
       border: 1px solid rgba(255,255,255,.8);
-      box-shadow: 0 24px 60px rgba(58,25,35,.18);
+      box-shadow: 0 20px 50px rgba(58,25,35,.16);
       cursor: pointer;
-      transition: transform .75s cubic-bezier(.2,.8,.2,1), opacity .75s ease, box-shadow .3s ease;
       backface-visibility: hidden;
-      will-change: transform, opacity;
     }
-    .c-card:hover { box-shadow: 0 32px 80px rgba(58,25,35,.28); }
+    .c-card.is-active { box-shadow: 0 32px 80px rgba(58,25,35,.28); }
     .c-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
       pointer-events: none;
-      transition: transform .6s ease;
     }
-    .c-card:hover img { transform: scale(1.04); }
 
     .c-label {
       position: absolute;
@@ -244,10 +249,9 @@
       font-size: 18px;
       font-weight: 600;
       opacity: 0;
-      transition: opacity .3s ease;
+      transition: opacity .4s ease;
     }
-    .c-card.is-active .c-label,
-    .c-card:hover .c-label { opacity: 1; }
+    .c-card.is-active .c-label { opacity: 1; }
     .c-label span {
       display: block;
       font-size: 12px;
@@ -265,11 +269,8 @@
       background: rgba(255,253,249,.74);
       backdrop-filter: blur(12px);
       border-radius: 999px;
-      width: 44px;
-      height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
       cursor: pointer;
       z-index: 10;
       transition: .25s ease;
@@ -281,34 +282,17 @@
     .c-next { right: clamp(8px, 2vw, 28px); }
 
     .c-dots {
-      display: flex;
-      justify-content: center;
-      gap: 7px;
-      margin-top: 48px;
-      z-index: 5;
-      position: relative;
+      display: flex; justify-content: center; gap: 7px;
+      margin-top: 32px; z-index: 5; position: relative;
     }
     .c-dot {
       width: 6px; height: 6px;
       border-radius: 999px;
       background: var(--rose-300);
       transition: .3s ease;
-      cursor: pointer;
-      border: none;
-      padding: 0;
+      cursor: pointer; border: none; padding: 0;
     }
     .c-dot.is-active { background: var(--ink); width: 22px; }
-
-    .scroll-note {
-      position: absolute;
-      bottom: 24px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: var(--muted);
-      font-size: 11px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-    }
 
     section { padding: clamp(72px, 9vw, 132px) 0; }
     .section-head {
@@ -681,12 +665,7 @@
 
   <main id="inicio">
     <section class="hero" id="inicio" aria-label="Presentación">
-      <div class="hero-text">
-        <div class="hero-cta">
-          <a class="button primary" href="#trabajos">Ver trabajos</a>
-          <a class="button secondary" href="#contacto">Contacto</a>
-        </div>
-      </div>
+      <div class="hero-bg-text" aria-hidden="true">Materia<br/>con<br/>memoria.</div>
 
       <div class="carousel-stage" role="region" aria-label="Trabajos destacados">
         <div class="carousel-track" id="carouselTrack">
@@ -724,6 +703,11 @@
       </div>
 
       <div class="c-dots" id="carouselDots"></div>
+
+      <div class="hero-cta-wrap">
+        <a class="button primary" href="#trabajos">Ver trabajos</a>
+        <a class="button secondary" href="#contacto">Contacto</a>
+      </div>
     </section>
 
     <div class="hero-desc container">
@@ -882,63 +866,50 @@
     lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLB(); });
     window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLB(); });
 
-    /* === 3D Card Carousel === */
+    /* === Cylindrical 3D Carousel === */
     (function () {
-      const cards = Array.from(document.querySelectorAll('.c-card'));
+      const track = document.getElementById('carouselTrack');
+      const cards = Array.from(track.querySelectorAll('.c-card'));
       const dotsEl = document.getElementById('carouselDots');
       const stage = document.querySelector('.carousel-stage');
+      const hero = document.querySelector('.hero');
       const n = cards.length;
+      const angleStep = 360 / n;
       let active = 0;
       let autoTimer = null;
+      let radius = 420;
 
-      /* positions[absOffset] = { rotY, z, x, scale, opacity } */
-      const POS = [
-        { rotY: 0,   z: 300, x: 0,    scale: 1,    opacity: 1    }, // center
-        { rotY: 42,  z: 160, x: 310,  scale: 0.83, opacity: 0.88 }, // ±1
-        { rotY: 70,  z: 30,  x: 540,  scale: 0.67, opacity: 0.55 }, // ±2
-        { rotY: 85,  z: 0,   x: 680,  scale: 0.55, opacity: 0.22 }, // ±3
-      ];
+      function computeRadius() {
+        const cardW = cards[0].offsetWidth;
+        radius = Math.max(320, Math.round(cardW * n / (2 * Math.PI) * 1.2));
+      }
 
-      /* build dots */
+      /* Place each card at its fixed angle on the cylinder — never changes */
+      function initCards() {
+        computeRadius();
+        cards.forEach((card, i) => {
+          card.style.transform = `rotateY(${i * angleStep}deg) translateZ(${radius}px)`;
+        });
+      }
+
+      /* Rotate the whole cylinder */
+      function render() {
+        track.style.transform = `rotateY(${-active * angleStep}deg)`;
+        cards.forEach((card, i) => card.classList.toggle('is-active', i === active));
+        dots.forEach((d, i) => d.classList.toggle('is-active', i === active));
+      }
+
+      /* Build dots */
       cards.forEach((_, i) => {
         const d = document.createElement('button');
         d.className = 'c-dot';
         d.setAttribute('aria-label', 'Ir a tarjeta ' + (i + 1));
-        d.addEventListener('click', () => goTo(i));
+        d.addEventListener('click', () => { stopAuto(); goTo(i); startAuto(); });
         dotsEl.appendChild(d);
       });
       const dots = Array.from(dotsEl.querySelectorAll('.c-dot'));
 
-      function render() {
-        cards.forEach((card, i) => {
-          let offset = ((i - active) % n + n) % n;
-          if (offset > n / 2) offset -= n; // wrap to [-n/2, n/2]
-          const absOff = Math.abs(offset);
-          const pos = POS[absOff];
-
-          card.classList.toggle('is-active', offset === 0);
-
-          if (!pos) {
-            card.style.opacity = '0';
-            card.style.pointerEvents = 'none';
-            card.style.zIndex = '0';
-            return;
-          }
-
-          const dir = offset < 0 ? -1 : offset > 0 ? 1 : 0;
-          card.style.transform = `translateX(${pos.x * dir}px) translateZ(${pos.z}px) rotateY(${pos.rotY * dir}deg) scale(${pos.scale})`;
-          card.style.opacity = String(pos.opacity);
-          card.style.zIndex = String(Math.round(pos.z));
-          card.style.pointerEvents = 'auto';
-        });
-
-        dots.forEach((d, i) => d.classList.toggle('is-active', i === active));
-      }
-
-      function goTo(index) {
-        active = ((index % n) + n) % n;
-        render();
-      }
+      function goTo(i) { active = ((i % n) + n) % n; render(); }
       function next() { goTo(active + 1); }
       function prev() { goTo(active - 1); }
 
@@ -951,35 +922,46 @@
       document.querySelector('.c-prev').addEventListener('click', () => { stopAuto(); prev(); startAuto(); });
       document.querySelector('.c-next').addEventListener('click', () => { stopAuto(); next(); startAuto(); });
 
-      /* click side card → focus it; click center card with href → navigate */
+      /* Click: focus non-active, navigate active */
       cards.forEach((card, i) => {
         card.addEventListener('click', () => {
-          let offset = ((i - active) % n + n) % n;
-          if (offset > n / 2) offset -= n;
-          if (offset !== 0) {
-            stopAuto(); goTo(i); startAuto();
-          } else if (card.dataset.href) {
-            window.location.href = card.dataset.href;
-          }
+          if (i !== active) { stopAuto(); goTo(i); startAuto(); }
+          else if (card.dataset.href) window.location.href = card.dataset.href;
         });
       });
 
-      /* keyboard */
+      /* Scroll wheel drives rotation */
+      let scrollLocked = false;
+      hero.addEventListener('wheel', (e) => {
+        if (scrollLocked) return;
+        e.preventDefault();
+        scrollLocked = true;
+        stopAuto();
+        e.deltaY > 0 ? next() : prev();
+        startAuto();
+        setTimeout(() => { scrollLocked = false; }, 950);
+      }, { passive: false });
+
+      /* Keyboard */
       window.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowRight') { stopAuto(); next(); startAuto(); }
         if (e.key === 'ArrowLeft')  { stopAuto(); prev(); startAuto(); }
       });
 
-      /* touch swipe */
+      /* Touch swipe */
       let touchX = null;
       stage.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, { passive: true });
       stage.addEventListener('touchend', (e) => {
-        if (touchX === null) return;
+        if (!touchX) return;
         const dx = e.changedTouches[0].clientX - touchX;
         if (Math.abs(dx) > 40) { stopAuto(); dx < 0 ? next() : prev(); startAuto(); }
         touchX = null;
       });
 
+      /* Resize */
+      window.addEventListener('resize', () => { initCards(); render(); });
+
+      initCards();
       render();
       startAuto();
     })();
