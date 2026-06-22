@@ -1,0 +1,375 @@
+==========================================================================
+ IRISRESTAURA — DOCUMENTO DE TRASPASO Y CONTEXTO COMPLETO DEL PROYECTO
+==========================================================================
+ Última actualización: 22 de junio de 2026
+ Para: la persona (y su Claude) que continúe el desarrollo de la web.
+
+ LÉEME PRIMERO. Este documento contiene TODO lo necesario para seguir
+ trabajando en la web sin ayuda adicional: qué es el proyecto, cómo está
+ montado, cómo se publica, cómo añadir nuevos apartados y cómo conectar
+ todo a Cloudflare y al dominio.
+
+ >>> SI ERES UN ASISTENTE (CLAUDE U OTRO): lee este archivo entero antes
+     de tocar nada. Resume al usuario lo que vas a hacer antes de cambios
+     que afecten al despliegue, dominio o credenciales.
+
+
+==========================================================================
+ 1. QUÉ ES EL PROYECTO
+==========================================================================
+
+Portfolio web de IRIS RODRÍGUEZ — conservación y restauración de bienes
+culturales. Marca / nombre del sitio: "IRISRESTAURA".
+
+- Es un sitio ESTÁTICO. No hay backend, ni build, ni frameworks.
+- Cada página es un único archivo .html con TODO el CSS y el JS EN LÍNEA
+  (dentro de <style> y <script> en el mismo archivo). No hay archivos .css
+  ni .js separados. Esto es intencional: simplicidad y cero dependencias.
+- Tipografías: "Cormorant Garamond" (títulos, serif) + "Inter" (texto),
+  cargadas desde Google Fonts.
+- Paleta: tonos rosa/granate (variables CSS :root --rose-*, --ink, --muted,
+  --paper, --gold). Fondo con degradados melocotón/rosa.
+
+Carpeta del proyecto en el ordenador:
+  /Users/eloicalopa/Documents/irisrestaura_web_v1
+(esta es la carpeta que se entrega; la ruta puede variar en otro equipo).
+
+
+==========================================================================
+ 2. ESTRUCTURA DE ARCHIVOS
+==========================================================================
+
+irisrestaura_web_v1/
+├── index.html                  → Página de inicio (HOME). Contiene el
+│                                  carrusel 3D de trabajos, secciones de
+│                                  proceso, sobre mí y contacto.
+├── trabajos/                   → Una página .html por cada trabajo:
+│   ├── parroquia-sant-agusti.html
+│   ├── palau-de-noguera.html
+│   └── pintura-sobre-tela.html
+├── assets/
+│   ├── favicon.png             → Logo (favicon) que sale en la pestaña del
+│   │                             navegador. PNG con fondo transparente.
+│   ├── favicon.jpg             → Versión antigua (ya no se usa).
+│   ├── images/                 → Imágenes genéricas de la home.
+│   └── trabajos/               → Media de cada trabajo, una subcarpeta por
+│       ├── parroquia-sant-agusti/   apartado (fotos .jpg + vídeos .mp4).
+│       ├── palau-de-noguera/
+│       └── pintura-sobre-tela/
+├── logo/                       → Originales del logo (fuente, no se publica
+│                                  directamente; el favicon sale de aquí).
+├── .github/workflows/deploy.yml → Despliegue automático a Cloudflare (ver §6)
+├── GUIA_CLOUDFLARE.md          → Guía original de Cloudflare + dominio.
+├── TRASPASO/                   → Esta carpeta (documentación de traspaso).
+└── .git/                       → Repositorio git (ver §6 y §9).
+
+
+==========================================================================
+ 3. CÓMO FUNCIONA LA HOME (index.html)
+==========================================================================
+
+Lo más característico es el CARRUSEL 3D CILÍNDRICO de la portada:
+
+- Las tarjetas (.c-card) se colocan en un cilindro: cada una a un ángulo
+  fijo "rotateY(i*angleStep) translateZ(radius)". El conjunto (.carousel-track)
+  rota como un tiovivo cambiando un solo transform.
+- El número de tarjetas define el ángulo: angleStep = 360 / nº de tarjetas.
+  Si añades o quitas tarjetas, la geometría se recalcula sola.
+- La opacidad de cada tarjeta se calcula por JS según su ángulo (las
+  laterales se ven translúcidas; las traseras se desvanecen).
+- NAVEGACIÓN (importante, decisión del cliente):
+    * Flechas ← → , los puntitos (dots), teclado (←/→) y swipe en móvil.
+    * NO hay rotación automática.
+    * NO se mueve con la rueda/trackpad (se desactivó a propósito).
+- Detrás del carrusel hay dos textos decorativos grandes, "Iris" (arriba a
+  la izquierda) y "Rodríguez" (abajo a la derecha), con baja opacidad, que
+  se solapan con las tarjetas para dar profundidad
+  (clases .hero-bg-left / .hero-bg-right).
+
+CADA TARJETA del carrusel que enlaza a un trabajo tiene este formato
+(dentro de <div class="carousel-track" id="carouselTrack">):
+
+  <article class="c-card" data-href="trabajos/NOMBRE.html">
+    <img src="assets/trabajos/NOMBRE/portada.jpg" alt="Título" />
+    <div class="c-label">Título <span>Lugar · Año</span></div>
+  </article>
+
+- "data-href" es lo que hace que al clicar la tarjeta activa se navegue a
+  la página del trabajo. Las tarjetas sin data-href son placeholders.
+
+
+==========================================================================
+ 4. ANATOMÍA DE UNA PÁGINA DE TRABAJO (trabajos/*.html)
+==========================================================================
+
+Las tres páginas de trabajo comparten exactamente la misma estructura y
+estilos. Para crear una nueva, lo más rápido es DUPLICAR una existente
+(p. ej. pintura-sobre-tela.html) y cambiar textos e imágenes.
+
+Bloques disponibles (clases CSS ya definidas en el <style> de la página):
+
+  <header class="work-header">      → eyebrow + <h1 class="work-title"> + meta
+  <figure class="hero-image">       → imagen grande de portada
+  <div class="story"> ... </div>    → contenedor de los bloques narrativos
+
+Tipos de bloque dentro de .story (section class="story-block ..."):
+  • split weighted-text   → texto (más ancho) + 1 imagen/vídeo a la derecha
+  • split weighted-media  → texto + 1 media (media más ancha)
+  • split reverse         → media a la izquierda + texto a la derecha
+  • full                  → 1 media a todo el ancho (usar con .cinema para 21:9)
+  • duo                   → texto centrado arriba + 2 medias lado a lado
+
+Media:
+  • Imagen:  <div class="story-media portrait"><img src="..." alt="..." loading="lazy"></div>
+  • Vídeo:   <div class="story-media video-card cinema"><video autoplay loop muted
+             playsinline preload="metadata"><source src="...mp4" type="video/mp4">
+             </video></div>
+  • Proporciones: .portrait (3/4), .square, .wide (16/9), .cinema (21/9).
+
+Texto de cada bloque:
+  <div class="story-text">
+    <h2>Título con <span class="accent">palabra destacada</span>.</h2>
+    <p>Párrafo...</p>
+    <span class="note">Fase 0X · Etiqueta</span>
+  </div>
+
+REGLAS DE ESTILO ACORDADAS CON EL CLIENTE (respétalas):
+  • Los títulos (<h1> y <h2>) van en UNA SOLA LÍNEA. Para forzarlo se usa
+    "white-space: nowrap". Si un título es largo y se sale de su columna,
+    NO lo partas: redúcele el tamaño con un style en línea, p. ej.
+    style="font-size:clamp(22px,3vw,40px);"  (así caben en una línea).
+    En pintura-sobre-tela.html y palau-de-noguera.html hay ejemplos.
+  • El texto descriptivo debe estar TODO en el mismo tiempo verbal
+    (pasado / pretérito) y ser coherente y natural en castellano.
+  • Mantener la armonía: misma estructura de fases, mismo tono.
+
+Al final hay un <footer class="work-footer"> con botones a "Ver todos los
+trabajos" y a Instagram, y un <footer class="footer"> con el copyright.
+
+Cada página enlaza el favicon en el <head>:
+  <link rel="icon" type="image/png" href="../assets/favicon.png?v=2" />
+(en la home la ruta es "assets/favicon.png?v=2", sin el ../).
+
+
+==========================================================================
+ 5. CÓMO AÑADIR UN NUEVO APARTADO / TRABAJO  (receta paso a paso)
+==========================================================================
+
+1. Crear la subcarpeta de media:
+     assets/trabajos/MI-NUEVO-TRABAJO/
+
+2. Preparar las imágenes y vídeos (ver §7 para convertir HEIC y comprimir
+   vídeos). Ponles nombres claros: portada.jpg, antes-01.jpg, proceso-01.jpg,
+   video-01.mp4, etc.
+
+3. Duplicar una página existente:
+     cp trabajos/pintura-sobre-tela.html trabajos/MI-NUEVO-TRABAJO.html
+
+4. En la nueva página: cambiar <title>, el <h1 class="work-title">, el
+   bloque .work-meta (lugar · año · dirección), las rutas de las imágenes
+   (../assets/trabajos/MI-NUEVO-TRABAJO/...) y todos los textos.
+   Revisar que los títulos quepan en una línea (ver §4).
+
+5. Añadir la tarjeta al carrusel en index.html. Busca el bloque
+   <div class="carousel-track" id="carouselTrack"> y añade o sustituye una
+   tarjeta (ver formato en §3). Para no descuadrar el carrusel, lo ideal es
+   sustituir una tarjeta "placeholder" (las que NO tienen data-href) por la
+   nueva, manteniendo el total de tarjetas.
+
+6. Publicar (ver §6): git add + commit + push. Cloudflare despliega solo.
+
+7. TRUCO ANTI-CACHÉ: si reemplazas una imagen por otra con el MISMO nombre
+   de archivo, el navegador puede seguir mostrando la vieja. Añade un
+   parámetro de versión a la URL en el <img>, p. ej.:
+     src="../assets/trabajos/X/foto.jpg?v=2"
+   Cambia el número (?v=3, ?v=4...) cada vez que actualices ese archivo.
+
+
+==========================================================================
+ 6. DESPLIEGUE: GITHUB + CLOUDFLARE PAGES (cómo se publica)
+==========================================================================
+
+FLUJO ACTUAL (ya configurado y funcionando):
+
+  Editas archivos  →  git push a la rama "main" en GitHub  →  GitHub Actions
+  ejecuta el workflow  →  se despliega en Cloudflare Pages  →  web actualizada.
+
+Datos clave:
+  • Repositorio GitHub:   github.com/irisrodriguezj/irisrestaura
+  • Proyecto Cloudflare Pages:  "irisrestaura"
+  • URL de Cloudflare:   https://irisrestaura.pages.dev
+  • Rama que despliega:  main
+
+El workflow está en .github/workflows/deploy.yml y usa la acción oficial
+"cloudflare/wrangler-action@v3" con el comando:
+  pages deploy . --project-name=irisrestaura --branch=main --commit-dirty=true
+
+PARA QUE EL WORKFLOW FUNCIONE, en GitHub deben existir estos SECRETS
+(repositorio → Settings → Secrets and variables → Actions):
+  • CLOUDFLARE_API_TOKEN   → token de API de Cloudflare con permiso
+                             "Cloudflare Pages: Edit".
+  • CLOUDFLARE_ACCOUNT_ID  → el Account ID de tu cuenta de Cloudflare
+                             (visible en el panel de Cloudflare, lateral
+                             derecho de la página de inicio de la cuenta,
+                             o en la URL del dashboard).
+
+CÓMO CREAR EL CLOUDFLARE_API_TOKEN:
+  1. Cloudflare → (icono de perfil arriba dcha) → My Profile → API Tokens.
+  2. "Create Token" → plantilla "Edit Cloudflare Workers" o token
+     personalizado con permiso  Account → Cloudflare Pages → Edit.
+  3. Copia el token y pégalo como secret CLOUDFLARE_API_TOKEN en GitHub.
+
+PUBLICAR DESDE LA TERMINAL (cada cambio):
+  cd /ruta/a/irisrestaura_web_v1
+  git add -A
+  git commit -m "Descripción del cambio"
+  git push
+
+COMPROBAR QUE EL DEPLOY TERMINÓ (tarda 1-3 minutos):
+  - Abre https://irisrestaura.pages.dev y recarga con Cmd+Shift+R.
+  - O mira el estado en GitHub → pestaña "Actions", o en Cloudflare →
+    Workers & Pages → irisrestaura → Deployments.
+
+ALTERNATIVA SIN GITHUB (subida directa): en Cloudflare Pages se puede usar
+"Direct Upload" arrastrando la carpeta entera. Pero lo recomendado y ya
+montado es el flujo por GitHub (automático).
+
+
+==========================================================================
+ 7. PREPARAR IMÁGENES Y VÍDEOS (lo que se hizo en este proyecto)
+==========================================================================
+
+Las fotos del iPhone vienen en formato HEIC y los vídeos suelen ser muy
+pesados (hasta 135 MB en 4K). Para la web hay que convertir y comprimir.
+En macOS se hace con herramientas ya incluidas (sips y avconvert), sin
+instalar nada.
+
+CONVERTIR HEIC (o JPG grande) → JPG optimizado para web (máx. 1600 px):
+  sips -s format jpeg -s formatOptions 82 -Z 1600 "ORIGEN.HEIC" --out "DESTINO.jpg"
+    -s formatOptions 82  → calidad 82 (buen equilibrio peso/calidad)
+    -Z 1600              → lado mayor a 1600 px
+
+COMPRIMIR VÍDEO a MP4 H.264 (compatible con TODOS los navegadores):
+  avconvert -p Preset1280x720 -s "ORIGEN.MOV" -o "DESTINO.mp4"
+  IMPORTANTE: NO uses presets "PresetHEVC*" (H.265): no se reproducen en
+  todos los navegadores. Usa Preset1280x720 o Preset1920x1080 (H.264).
+
+VER UN FOTOGRAMA de un vídeo (para saber qué muestra):
+  qlmanage -t -s 600 -o /tmp "VIDEO.mp4"   → genera VIDEO.mp4.png en /tmp
+
+CONSEJO: pon a las imágenes nombres descriptivos (portada, antes-01,
+proceso-soldadura, etc.). Ayuda a mantener el orden y a montar los bloques.
+
+
+==========================================================================
+ 8. CONECTAR EL DOMINIO PROPIO (p. ej. irisrestaura.com)
+==========================================================================
+
+Mientras no haya dominio propio, la web vive en irisrestaura.pages.dev.
+Para usar un dominio comprado (GoDaddy u otro):
+
+EN CLOUDFLARE:
+  1. Workers & Pages → proyecto "irisrestaura" → pestaña "Custom domains".
+  2. "Set up a custom domain" → escribe el dominio (ej: irisrestaura.com).
+  3. Cloudflare indica qué hacer:
+     - Si el dominio YA está en Cloudflare como zona: crea el registro solo.
+     - Si NO, te dará unos NAMESERVERS (ej: anna.ns.cloudflare.com /
+       noah.ns.cloudflare.com).
+
+EN EL PROVEEDOR DEL DOMINIO (GoDaddy, etc.):
+  4. Entra a la gestión del dominio → DNS / Nameservers.
+  5. Sustituye los nameservers actuales por los de Cloudflare.
+  6. Guarda. La propagación tarda de 30 min a 48 h (normalmente poco).
+
+VERIFICAR:
+  7. Cuando propague, abre tu dominio en el navegador: debe cargar la web.
+  8. HTTPS/SSL lo activa Cloudflare automáticamente.
+
+(Hay una guía más detallada en el archivo GUIA_CLOUDFLARE.md de la raíz.)
+
+
+==========================================================================
+ 9. CREDENCIALES Y SEGURIDAD (IMPORTANTE — LEER)
+==========================================================================
+
+⚠️ Durante el desarrollo, el repositorio tenía un TOKEN DE GITHUB metido
+   en texto plano dentro de la URL del remoto de git (algo como
+   https://ghp_XXXX@github.com/...). ESO ES UNA FUGA DE CREDENCIAL.
+
+Acciones ya realizadas:
+  • Se quitó el token de la configuración de git (el remoto ahora es la URL
+    limpia: https://github.com/irisrodriguezj/irisrestaura.git).
+  • Se configuró el llavero de macOS como gestor de credenciales:
+        git config --global credential.helper osxkeychain
+
+ACCIÓN PENDIENTE QUE DEBE HACER EL DUEÑO DE LA CUENTA:
+  • REVOCAR el token viejo en GitHub:
+    GitHub → Settings → Developer settings → Personal access tokens →
+    localizar el token expuesto → Revoke / Delete.
+  • Crear uno nuevo si se necesita hacer push desde la terminal. La próxima
+    vez que hagas "git push", git pedirá usuario/token UNA vez y lo guardará
+    en el llavero. A partir de ahí no hace falta volver a meterlo, y NUNCA
+    debe ir incrustado en la URL del remoto.
+
+REGLA: nunca pongas tokens, contraseñas ni claves dentro de archivos del
+repo ni en la URL del remoto. Los secretos de despliegue van SOLO como
+GitHub Secrets (ver §6).
+
+
+==========================================================================
+ 10. ESTADO ACTUAL Y HISTORIAL DE LO HECHO
+==========================================================================
+
+HECHO:
+  • Rediseño de la portada con el carrusel 3D cilíndrico (flechas/dots/
+    teclado/swipe; sin auto-rotación ni rueda).
+  • Textos decorativos "Iris" / "Rodríguez" de fondo, solapados con las
+    tarjetas para dar profundidad.
+  • Apartado "Parroquia de Sant Agustí" (Raval, Barcelona · 2025): textos
+    redactados, título a una línea, imagen final de la cúpula colocada.
+  • Apartado "Palau de Noguera" (Pallars Jussà · 2025): textos traducidos al
+    castellano, títulos a una línea, slider "antes/después" ajustado.
+  • Apartado NUEVO "Pintura sobre tela" (Museo de l'Empordà · 2025, ESCRBCC):
+    14 fotos + 2 vídeos procesados, 11 bloques narrativos, texto en pasado y
+    coherente, títulos a una línea, tarjeta añadida al carrusel.
+  • Favicon (logo rosa, PNG transparente) en la pestaña del navegador, en
+    todas las páginas.
+  • Limpieza de la fuga del token de git (ver §9).
+
+POSIBLES SIGUIENTES PASOS / PENDIENTES:
+  • El apartado "Pintura sobre tela" NO tiene foto del resultado final
+    restaurado (no se disponía de ella). Si aparece, se puede añadir un
+    bloque "antes/después" como el de Palau de Noguera.
+  • Revocar el token de GitHub expuesto (acción del dueño, ver §9).
+  • Conectar dominio propio cuando se compre (ver §8).
+  • Las tarjetas "placeholder" del carrusel que aún no enlazan a trabajos
+    reales (sin data-href) se pueden ir sustituyendo por nuevos apartados.
+
+
+==========================================================================
+ 11. COMANDOS RÁPIDOS DE REFERENCIA
+==========================================================================
+
+# Publicar cambios
+cd /ruta/a/irisrestaura_web_v1
+git add -A && git commit -m "mensaje" && git push
+
+# Convertir foto HEIC a JPG web
+sips -s format jpeg -s formatOptions 82 -Z 1600 "foto.HEIC" --out "foto.jpg"
+
+# Comprimir vídeo para web (H.264)
+avconvert -p Preset1280x720 -s "video.MOV" -o "video.mp4"
+
+# Ver un fotograma de un vídeo
+qlmanage -t -s 600 -o /tmp "video.mp4"
+
+# Ver la web en local antes de publicar (abrir http://localhost:8000)
+cd /ruta/a/irisrestaura_web_v1 && python3 -m http.server 8000
+
+# Comprobar la web publicada
+# Abrir https://irisrestaura.pages.dev y recargar con Cmd+Shift+R
+
+==========================================================================
+ FIN DEL DOCUMENTO. Cualquier duda de continuidad, este archivo + los
+ propios .html (que son legibles y están comentados) bastan para seguir.
+==========================================================================

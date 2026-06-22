@@ -5,3 +5,10 @@ GUIA_CLOUDFLARE.md
 node_modules/
 .env
 .env.local
+
+# Originales pesados sin procesar (no subir al repo; solo van los assets ya optimizados)
+assets/trabajos/Restauración pintura sobre lienzo/
+*.MOV
+*.mov
+*.HEIC
+*.heic
