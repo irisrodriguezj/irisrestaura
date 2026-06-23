@@ -923,7 +923,7 @@
         const d = document.createElement('button');
         d.className = 'c-dot';
         d.setAttribute('aria-label', 'Ir a tarjeta ' + (i + 1));
-        d.addEventListener('click', () => { stopAuto(); goTo(i); startAuto(); });
+        d.addEventListener('click', () => goTo(i));
         dotsEl.appendChild(d);
       });
       const dots = Array.from(dotsEl.querySelectorAll('.c-dot'));
