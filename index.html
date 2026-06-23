@@ -920,6 +920,8 @@
           if (a > 180) a = 360 - a; // 0 = front, 180 = back
           const isActive = a < angleStep * 0.5;
           card.classList.toggle('is-active', isActive);
+          // only the front card receives clicks; the others overlap and would steal them
+          card.style.pointerEvents = isActive ? 'auto' : 'none';
           // fade out cards going to the back; side cards stay at ~0.45
           const opacity = a < 90
             ? 0.45 + 0.55 * Math.cos(a * Math.PI / 180)
