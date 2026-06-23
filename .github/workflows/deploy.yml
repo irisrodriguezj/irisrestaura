@@ -22,4 +22,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy . --project-name=irisrestaura --branch=main --commit-dirty=true
+          command: pages deploy . --project-name=irisrestaura --branch=main --commit-dirty=true --exclude=assets/trabajos/pintura-sobre-tela/video-02.mp4
