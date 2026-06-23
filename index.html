@@ -942,11 +942,11 @@
       document.querySelector('.c-prev').addEventListener('click', prev);
       document.querySelector('.c-next').addEventListener('click', next);
 
-      /* Click: focus non-active, navigate active */
+      /* Click: a card with a link opens it directly; placeholders just center */
       cards.forEach((card, i) => {
         card.addEventListener('click', () => {
-          if (i !== active) goTo(i);
-          else if (card.dataset.href) window.location.href = card.dataset.href;
+          if (card.dataset.href) window.location.href = card.dataset.href;
+          else goTo(i);
         });
       });
 
