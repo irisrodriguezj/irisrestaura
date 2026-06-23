@@ -17,6 +17,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Remove files larger than 25MB (Cloudflare Pages limit)
+        run: find . -type f -size +25M -not -path './.git/*' -print -delete
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v4
         with:
