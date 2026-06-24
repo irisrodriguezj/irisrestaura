@@ -955,12 +955,12 @@
       document.querySelector('.c-prev').addEventListener('click', prev);
       document.querySelector('.c-next').addEventListener('click', next);
 
-      /* Click: a card with a link opens it directly; placeholders just center */
-      cards.forEach((card, i) => {
-        card.addEventListener('click', () => {
-          if (card.dataset.href) window.location.href = card.dataset.href;
-          else goTo(i);
-        });
+      /* Click anywhere on the stage opens the centered card. This is robust:
+         it does not depend on hit-testing the 3D-transformed card itself. */
+      stage.addEventListener('click', (e) => {
+        if (e.target.closest('.c-nav')) return; // dejar pasar las flechas
+        const card = cards[active];
+        if (card && card.dataset.href) window.location.href = card.dataset.href;
       });
 
       /* Keyboard arrows only */
