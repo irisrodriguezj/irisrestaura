@@ -238,7 +238,11 @@
       gap: 16px;
     }
     /* Todas las fotos al mismo tamaño que las dos principales (retrato ~372px) */
-    .story .story-media.portrait { max-width: 372px; margin-left: auto; margin-right: auto; }
+    .story .story-media.portrait { max-width: 372px; }
+    /* Bloque foto + texto en la misma fila, con la foto siempre en la misma columna (alineadas) */
+    .story-block.img-text { grid-template-columns: 372px 1fr; }
+    /* Parejas de fotos (desclavado/bastidor, etc.) juntas y centradas, como anverso/reverso */
+    .story-block.duo .story-media-pair { max-width: 760px; margin-left: auto; margin-right: auto; }
     .story-text .note {
       display: inline-block;
       margin-top: 6px;
@@ -312,7 +316,8 @@
       .nav-links a:not(.pill) { display: none; }
       .story-block.split,
       .story-block.split.weighted-text,
-      .story-block.split.weighted-media { grid-template-columns: 1fr; }
+      .story-block.split.weighted-media,
+      .story-block.img-text { grid-template-columns: 1fr; }
       .story-block.split.reverse > *:first-child { order: 1; }
       .story-block.split.reverse > *:last-child { order: 2; }
       .story-block.split .story-media { order: 1; }
@@ -396,8 +401,8 @@
           </div>
         </section>
 
-        <!-- Documentación y fijación: texto + imagen fijacion.jpg -->
-        <section class="story-block split reverse reveal">
+        <!-- Documentación y fijación: foto + texto (alineado uniforme) -->
+        <section class="story-block img-text reveal">
           <div class="story-media portrait">
             <img src="../assets/trabajos/pintura-sobre-tela/fijacion-policromia.jpg" alt="Fijación de la policromía con pincel" loading="lazy" />
           </div>
@@ -408,13 +413,13 @@
         </section>
 
         <!-- B5: protección perímetro -->
-        <section class="story-block split weighted-media reveal">
+        <section class="story-block img-text reveal">
+          <div class="story-media portrait">
+            <img src="../assets/trabajos/pintura-sobre-tela/proteccion.jpg" alt="Protección del perímetro con papel japonés" loading="lazy" />
+          </div>
           <div class="story-text">
             <p>Se protegió el perímetro de la obra con papel japonés y cola de conejo. Esta protección preparó la pieza para poder desclavarla del bastidor sin comprometer la capa pictórica.</p>
             <span class="note">Fase 02 · Protección del perímetro</span>
-          </div>
-          <div class="story-media portrait">
-            <img src="../assets/trabajos/pintura-sobre-tela/proteccion.jpg" alt="Protección del perímetro con papel japonés" loading="lazy" />
           </div>
         </section>
 
@@ -443,15 +448,15 @@
         </section>
 
         <!-- B9: consolidación y tensado (+ soporte estable fusionado) -->
-        <section class="story-block split weighted-text reveal">
+        <section class="story-block img-text reveal">
+          <div class="story-media portrait">
+            <img src="../assets/trabajos/pintura-sobre-tela/consolidacion.jpg" alt="Consolidación de la tela sobre mesa caliente con succión" loading="lazy" />
+          </div>
           <div class="story-text">
             <p>La tela se consolidó con un adhesivo sintético sobre una tela de poliéster, utilizando una mesa caliente con sistema de succión y control de temperatura.</p>
             <p>Una vez estabilizado el soporte, se tensó la tela sobre un nuevo bastidor con grapas y tensión progresiva, garantizando una distribución uniforme.</p>
             <p>El reverso quedó limpio y aplanado, con la tela original consolidada sobre el nuevo soporte de poliéster y lista para los tratamientos de la capa pictórica.</p>
             <span class="note">Fase 04 · Consolidación y tensado</span>
-          </div>
-          <div class="story-media portrait">
-            <img src="../assets/trabajos/pintura-sobre-tela/consolidacion.jpg" alt="Consolidación de la tela sobre mesa caliente con succión" loading="lazy" />
           </div>
         </section>
 
