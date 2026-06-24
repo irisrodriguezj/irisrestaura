@@ -229,8 +229,14 @@
     }
     /* Texto introductorio (bajo las dos imágenes principales): algo más grande */
     .lead-text p { font-size: 18px; line-height: 1.9; }
-    /* Par de imágenes principales: un poco más pequeñas y centradas */
-    .lead-media-pair { max-width: 640px; margin: 0 auto; }
+    /* Par de imágenes principales: una al lado de la otra, más pequeñas y centradas */
+    .lead-media-pair {
+      max-width: 640px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
     .story-text .note {
       display: inline-block;
       margin-top: 6px;
@@ -378,27 +384,14 @@
           </div>
         </section>
 
-        <!-- Textos introductorios, justo debajo de las dos imágenes -->
+        <!-- Textos introductorios (juntos), justo debajo de las dos imágenes -->
         <section class="story-block reveal">
           <div class="story-text lead-text" style="max-width:760px;margin:0 auto;">
             <p>Dentro del marco académico del taller de conservación-restauración de 4.º grado, restauré una pintura sobre tela procedente del Museo de l'Empordà, cedida al ESCRBCC para su intervención. La obra estaba montada sobre un bastidor fijo de madera y presentaba un soporte de tela de lino industrial con trama de tafetán.</p>
             <p>El estado de conservación era muy afectado: deformaciones, suciedad acumulada, rasgones y pérdidas en el perímetro.</p>
-            <span class="note">Estado inicial · diagnóstico</span>
-          </div>
-        </section>
-
-        <!-- B2: análisis del soporte (pendiente de imagen) -->
-        <section class="story-block reveal">
-          <div class="story-text lead-text" style="max-width:760px;margin:0 auto;">
             <p>La capa de preparación, de naturaleza probablemente tradicional —sulfato cálcico y cola animal—, era fina e irregular. La capa pictórica mostraba una buena adhesión general al soporte, a pesar del estado de degradación de la pieza. La superficie presentaba un barniz oxidado, identificado como posible barniz dammar, que alteraba los colores originales.</p>
-          </div>
-        </section>
-
-        <!-- B4: documentación y fijación (pendiente de imagen) -->
-        <section class="story-block reveal">
-          <div class="story-text lead-text" style="max-width:760px;margin:0 auto;">
             <p>La intervención empezó con la documentación gráfica y analítica, seguida del examen organoléptico. Después se retiró el marco y se procedió a la fijación de la policromía.</p>
-            <span class="note">Fase 01 · Documentación y fijación</span>
+            <span class="note">Estado inicial · diagnóstico</span>
           </div>
         </section>
 
