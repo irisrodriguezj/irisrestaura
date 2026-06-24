@@ -1,0 +1,8 @@
+# Las páginas HTML nunca se guardan en caché: siempre se piden frescas.
+# Así el navegador no muestra versiones antiguas tras una actualización.
+/
+  Cache-Control: no-store
+/index.html
+  Cache-Control: no-store
+/trabajos/*
+  Cache-Control: no-store
