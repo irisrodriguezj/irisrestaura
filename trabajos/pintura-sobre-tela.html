@@ -227,6 +227,10 @@
       font-size: 16px;
       text-align: justify;
     }
+    /* Texto introductorio (bajo las dos imágenes principales): algo más grande */
+    .lead-text p { font-size: 18px; line-height: 1.9; }
+    /* Par de imágenes principales: un poco más pequeñas y centradas */
+    .lead-media-pair { max-width: 640px; margin: 0 auto; }
     .story-text .note {
       display: inline-block;
       margin-top: 6px;
@@ -360,39 +364,39 @@
         </div>
       </header>
 
-      <figure class="hero-image">
-        <img src="../assets/trabajos/pintura-sobre-tela/portada.jpg" alt="Retrato sobre tela antes de la intervención" />
-      </figure>
-
       <div class="story">
 
-        <!-- B1: estado inicial (anverso + reverso lado a lado) -->
-        <section class="story-block duo reveal">
-          <div class="story-text">
+        <!-- Imágenes principales: anverso + reverso (lo primero que se ve) -->
+        <section class="story-block reveal">
+          <div class="story-media-pair lead-media-pair">
+            <div class="story-media portrait">
+              <img src="../assets/trabajos/pintura-sobre-tela/antes-01.jpg" alt="Anverso de la obra con los rasgones y pérdidas sobre la capa pictórica" />
+            </div>
+            <div class="story-media portrait">
+              <img src="../assets/trabajos/pintura-sobre-tela/reverso-inicial.jpg" alt="Reverso de la obra con el bastidor fijo original" />
+            </div>
+          </div>
+        </section>
+
+        <!-- Textos introductorios, justo debajo de las dos imágenes -->
+        <section class="story-block reveal">
+          <div class="story-text lead-text" style="max-width:760px;margin:0 auto;">
             <p>Dentro del marco académico del taller de conservación-restauración de 4.º grado, restauré una pintura sobre tela procedente del Museo de l'Empordà, cedida al ESCRBCC para su intervención. La obra estaba montada sobre un bastidor fijo de madera y presentaba un soporte de tela de lino industrial con trama de tafetán.</p>
             <p>El estado de conservación era muy afectado: deformaciones, suciedad acumulada, rasgones y pérdidas en el perímetro.</p>
             <span class="note">Estado inicial · diagnóstico</span>
-          </div>
-          <div class="story-media-pair">
-            <div class="story-media portrait">
-              <img src="../assets/trabajos/pintura-sobre-tela/antes-01.jpg" alt="Anverso de la obra con los rasgones y pérdidas sobre la capa pictórica" loading="lazy" />
-            </div>
-            <div class="story-media portrait">
-              <img src="../assets/trabajos/pintura-sobre-tela/reverso-inicial.jpg" alt="Reverso de la obra con el bastidor fijo original" loading="lazy" />
-            </div>
           </div>
         </section>
 
         <!-- B2: análisis del soporte (pendiente de imagen) -->
         <section class="story-block reveal">
-          <div class="story-text" style="max-width:720px;margin:0 auto;text-align:center;">
+          <div class="story-text lead-text" style="max-width:760px;margin:0 auto;">
             <p>La capa de preparación, de naturaleza probablemente tradicional —sulfato cálcico y cola animal—, era fina e irregular. La capa pictórica mostraba una buena adhesión general al soporte, a pesar del estado de degradación de la pieza. La superficie presentaba un barniz oxidado, identificado como posible barniz dammar, que alteraba los colores originales.</p>
           </div>
         </section>
 
         <!-- B4: documentación y fijación (pendiente de imagen) -->
         <section class="story-block reveal">
-          <div class="story-text" style="max-width:720px;margin:0 auto;text-align:center;">
+          <div class="story-text lead-text" style="max-width:760px;margin:0 auto;">
             <p>La intervención empezó con la documentación gráfica y analítica, seguida del examen organoléptico. Después se retiró el marco y se procedió a la fijación de la policromía.</p>
             <span class="note">Fase 01 · Documentación y fijación</span>
           </div>
