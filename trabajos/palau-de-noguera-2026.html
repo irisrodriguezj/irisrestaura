@@ -134,7 +134,15 @@
       .nav-links [data-i18n="nav_cert"] { padding: 10px 8px; font-size: 11px; } }
     @media (max-width: 620px) {
       .container { width: min(100% - 24px, 1180px); }
-      .nav { top: 10px; width: calc(100% - 20px); padding: 10px 12px; }
+      .nav {
+        top: 10px; width: calc(100% - 20px); padding: 10px 12px;
+        flex-direction: column; gap: 10px; border-radius: 22px;
+      }
+      .nav-links { width: 100%; flex-wrap: wrap; justify-content: center; gap: 6px; }
+      /* En móvil mostramos TODOS los enlaces de navegación */
+      .nav-links a:not(.pill) { display: inline-flex !important; padding: 8px 10px; font-size: 11px; }
+      .nav-links .pill { padding: 8px 14px; font-size: 11px; }
+      .lang-switch { margin-left: 0; }
       .back-link { margin-top: 86px; margin-bottom: 22px; }
       .work-title { font-size: clamp(40px,12vw,64px); }
       .footer .container { display: grid; gap: 6px; }

@@ -405,6 +405,7 @@
       line-height: 1.85;
       font-size: 16px;
       margin: 0 0 18px;
+      text-align: justify;
     }
     .signature {
       margin-top: 28px;
@@ -643,6 +644,9 @@
       font-size: 11px;
     }
 
+    /* Pantalla principal móvil: oculta en escritorio (se activa en ≤620px) */
+    .mobile-home { display: none; }
+
     /* ---- Tablet (≤ 960px) ---- */
     @media (max-width: 960px) {
       .nav-links a:not(.pill):not([data-i18n="nav_cert"]) { display: none; }
@@ -674,14 +678,50 @@
       .nav-links .pill { padding: 8px 14px; font-size: 11px; }
       .lang-switch { margin-left: 0; }
 
-      .hero { padding: 118px 0 0; }
-      h1 { font-size: clamp(48px, 13vw, 72px); margin: 14px 0 10px; line-height: .84; }
+      .hero { padding: 130px 0 36px; }
       .hero-text p { font-size: 15px; }
       .scroll-note { display: none; }
-      .hero-cta { gap: 10px; margin-top: 22px; }
 
-      .carousel-stage { height: 320px; margin-top: 0; }
-      .c-nav { width: 36px; height: 36px; font-size: 15px; }
+      /* En móvil sustituimos el carrusel por una pantalla principal con botones */
+      .carousel-stage, .c-dots, .hero-cta-wrap, .c-nav { display: none !important; }
+      .hero::after { display: none; }
+      .mobile-home {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 6px;
+        padding: 8px 0 0;
+      }
+      .mobile-home-eyebrow {
+        margin: 0;
+        font-size: 11px;
+        letter-spacing: .22em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .mobile-home-title {
+        margin: 2px 0 18px;
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-weight: 700;
+        letter-spacing: .04em;
+        font-size: clamp(30px, 9vw, 48px);
+        color: var(--ink);
+        line-height: 1;
+        max-width: 100%;
+      }
+      .mobile-home-nav {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        width: 100%;
+      }
+      .mobile-home-nav .button {
+        width: 100%;
+        justify-content: center;
+        padding: 16px 12px;
+        font-size: 13px;
+      }
 
       section { padding: clamp(48px, 8vw, 72px) 0; }
       .section-head { gap: 14px; margin-bottom: 20px; }
@@ -820,6 +860,18 @@
       <div class="hero-cta-wrap">
         <a class="button primary" href="#trabajos" data-i18n="idx_hero_ver">Ver trabajos</a>
         <a class="button secondary" href="#contacto" data-i18n="idx_hero_contacto">Contacto</a>
+      </div>
+
+      <!-- Pantalla principal solo móvil (sustituye al carrusel) -->
+      <div class="mobile-home" aria-label="Navegación principal">
+        <p class="mobile-home-eyebrow" data-i18n="footer_cr">Conservación y restauración</p>
+        <h1 class="mobile-home-title">IRISRESTAURA</h1>
+        <nav class="mobile-home-nav" aria-label="Secciones">
+          <a class="button primary" href="#trabajos" data-i18n="nav_trabajos">Trabajos</a>
+          <a class="button primary" href="certificaciones.html" data-i18n="nav_cert">Certificaciones</a>
+          <a class="button primary" href="#sobre-mi" data-i18n="nav_sobremi">Sobre mí</a>
+          <button class="button primary" type="button" data-open-contact data-i18n="nav_contacto">Contacto</button>
+        </nav>
       </div>
 
       <div class="section-fade" aria-hidden="true"></div>
