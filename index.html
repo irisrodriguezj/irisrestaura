@@ -16,17 +16,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --rose-50: #fff8fa;
-      --rose-100: #f8e8ef;
-      --rose-200: #edccd7;
-      --rose-300: #dca8ba;
-      --rose-500: #b96f86;
-      --ink: #2a1a1f;
-      --muted: #7f6870;
+      --rose-50: #fff0f4;
+      --rose-100: #ffd6de;
+      --rose-200: #ffbdc5;
+      --rose-300: #c06080;
+      --rose-500: #670626;
+      --ink: #2a0a14;
+      --muted: #8a3d52;
       --paper: #fffdf9;
-      --line: rgba(81, 40, 52, 0.16);
-      --gold: #a7834f;
-      --shadow: 0 24px 80px rgba(58, 25, 35, 0.12);
+      --line: rgba(103, 6, 38, 0.18);
+      --gold: #670626;
+      --shadow: 0 24px 80px rgba(103, 6, 38, 0.12);
       --radius: 28px;
     }
 
@@ -35,7 +35,7 @@
     body {
       margin: 0;
       color: var(--ink);
-      background: #ffc9b3;
+      background: #FFBDC5;
       font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       overflow-x: hidden;
       max-width: 100%;
@@ -192,31 +192,6 @@
       isolation: isolate;
     }
 
-    .hero-bg-left,
-    .hero-bg-right {
-      position: absolute;
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-weight: 500;
-      line-height: 1;
-      letter-spacing: -0.05em;
-      color: var(--rose-500);
-      opacity: 0.18;
-      pointer-events: none;
-      z-index: 0;
-      margin: 0;
-      user-select: none;
-      white-space: nowrap;
-    }
-    .hero-bg-left {
-      font-size: clamp(70px, 10vw, 145px);
-      top: 32%;
-      left: 18%;
-    }
-    .hero-bg-right {
-      font-size: clamp(70px, 10vw, 145px);
-      bottom: 22%;
-      right: 14%;
-    }
 
     .eyebrow {
       display: inline-flex;
@@ -745,10 +720,7 @@
 
   <main id="inicio">
     <section class="hero" id="inicio" aria-label="Presentación">
-      <div class="hero-bg-left" aria-hidden="true">Iris</div>
-      <div class="hero-bg-right" aria-hidden="true">Rodríguez</div>
-
-      <div class="carousel-stage" role="region" aria-label="Trabajos destacados">
+<div class="carousel-stage" role="region" aria-label="Trabajos destacados">
         <div class="carousel-track" id="carouselTrack">
           <article class="c-card" data-href="trabajos/parroquia-sant-agusti.html">
             <img src="assets/trabajos/parroquia-sant-agusti/portada.jpg" alt="Parroquia de Sant Agustí" />
@@ -795,16 +767,18 @@
       <p>IRISRESTAURA reúne procesos de restauración, documentación e intervención sobre obra pictórica y soportes históricos, con una mirada técnica, sensible y limpia.</p>
     </div>
 
-    <section class="intro">
+    <section class="intro" id="sobre-mi">
       <div class="container intro-card">
+        <figure class="portrait-card">
+          <img src="assets/images/iris-retrat.jpg" alt="Iris Rodríguez" />
+        </figure>
         <div>
-          <span class="eyebrow">Estudio personal</span>
-          <h2>El gesto justo, en el lugar exacto.</h2>
-        </div>
-        <div>
-          <p>Una restauración no va de borrar el tiempo. Va de entenderlo. Cada pieza exige observar, documentar, probar y actuar con precisión para devolver legibilidad sin inventarse lo que la obra no pide.</p>
-          <p>Esta web funciona como portfolio vivo: una selección de procesos, detalles y resultados de Iris en su camino como conservadora-restauradora.</p>
-          <div class="signature">IRISRESTAURA</div>
+          <span class="eyebrow">Sobre mí</span>
+          <h2 style="font-size: clamp(34px, 4.5vw, 60px);">Iris Rodríguez.</h2>
+          <p>Me llamo Iris Rodríguez y soy estudiante del Grado en Conservación y Restauración de Bienes Culturales, con especialización en pintura, en la Escola Superior de Conservació i Restauració de Béns Culturals de Catalunya (ESCRBCC).</p>
+          <p>A lo largo de mi formación he participado en diferentes proyectos de conservación-restauración de pintura sobre tabla, pintura sobre lienzo, pintura mural y retablos policromados, tanto en el ámbito académico como en prácticas profesionales. Estas experiencias me han permitido adquirir conocimientos técnicos en documentación, diagnóstico, consolidación, limpieza y reintegración, así como desarrollar una visión global de los procesos de intervención sobre el patrimonio cultural.</p>
+          <p>Soy una persona responsable, curiosa y con ganas de aprender. Me gusta trabajar en equipo y participar en proyectos que contribuyan a la preservación y difusión del patrimonio cultural. Actualmente busco seguir adquiriendo experiencia profesional y afrontar nuevos retos en el ámbito de la conservación-restauración.</p>
+          <button class="button secondary" data-open-contact type="button">Contacto</button>
         </div>
       </div>
     </section>
@@ -893,20 +867,6 @@
       </div>
     </section>
 
-    <section id="sobre-mi">
-      <div class="container about-grid">
-        <figure class="portrait-card">
-          <img src="assets/images/frame-retouching-wide.jpg" alt="Iris trabajando sobre un marco en el taller" />
-        </figure>
-        <div class="about-copy">
-          <span class="eyebrow">Sobre Iris</span>
-          <h2>Restaurar también es saber cuándo no tocar.</h2>
-          <p>Iris está finalizando sus estudios de restauración y empieza a desarrollar intervenciones propias, combinando sensibilidad por la obra, método de taller y una atención especial al detalle.</p>
-          <p>IRISRESTAURA nace como una forma clara de enseñar su proceso: no solo el resultado final, también la mano, el criterio y las decisiones que hay detrás de cada pieza.</p>
-          <button class="button secondary" data-open-contact type="button">Contacto</button>
-        </div>
-      </div>
-    </section>
 
     <section id="contacto">
       <div class="container">
