@@ -706,27 +706,30 @@
     /* ---- Overrides para fondo claret oscuro ---- */
     .section-head h2 { color: var(--paper); }
     .section-head p { color: rgba(255,253,249,.72); }
-    /* Degradado — overlay que sube hasta la zona central del hero */
+    /* Degradado — ocupa el 60% inferior del hero, por encima de las tarjetas */
     .hero::after {
       content: "";
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      height: clamp(320px, 48svh, 560px);
+      height: 60%;
       background: linear-gradient(180deg,
         transparent 0%,
-        rgba(103,6,38,0.08) 18%,
-        rgba(103,6,38,0.55) 34%,
-        #670626 46%,
-        #7d1030 56%,
-        #a83858 70%,
-        #d4748c 84%,
+        rgba(160,50,85,0.18) 22%,
+        rgba(160,50,85,0.55) 42%,
+        rgba(176,70,100,0.82) 60%,
+        #c0607a 74%,
+        #e0a0b2 88%,
         #FFBDC5 100%);
-      z-index: 1;
+      z-index: 3;
       pointer-events: none;
     }
     .section-fade { display: none; }
+    /* Sección Trabajos — fondo rosado que enlaza con el degradado del hero */
+    .featured {
+      background: linear-gradient(180deg, #c0607a 0%, rgba(158,55,85,0.35) 22%, transparent 55%);
+    }
     /* Texto de sobre mí más legible (más oscuro/opaco) */
     .intro-card h2 { color: var(--ink); }
     .intro-card p { color: #3a0712; opacity: 1; }

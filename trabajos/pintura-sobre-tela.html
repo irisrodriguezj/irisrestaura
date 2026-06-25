@@ -288,6 +288,7 @@
       display: block;
     }
     .story-media.portrait { aspect-ratio: 3/4; }
+    .story-media.landscape { aspect-ratio: 16/10; }
 
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity .9s ease, transform .9s cubic-bezier(.2,.8,.2,1); }
     .reveal.in { opacity: 1; transform: translateY(0); }
@@ -361,6 +362,8 @@
       grid-template-columns: 1fr 1fr;
       gap: clamp(14px, 2vw, 24px);
       width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
     }
     .before-after-label {
       position: absolute;
@@ -617,13 +620,11 @@
         <!-- Fase 05: 3 imágenes (vídeo + 0422 + comparativa) encima del texto de limpieza -->
         <section class="story-block reveal">
           <div class="trio-media-pair">
-            <div class="story-media portrait video-card">
-              <video autoplay loop muted playsinline preload="metadata">
-                <source src="../assets/trabajos/pintura-sobre-tela/limpieza-video.mov" type="video/mp4">
-              </video>
+            <div class="story-media landscape">
+              <img src="../assets/trabajos/pintura-sobre-tela/limpieza-0477.jpg" alt="Proceso de limpieza superficial" loading="lazy" />
             </div>
             <div class="story-media portrait">
-              <img src="../assets/trabajos/pintura-sobre-tela/limpieza-0477.jpg" alt="Proceso de limpieza superficial" loading="lazy" />
+              <img src="../assets/trabajos/pintura-sobre-tela/limpieza-0422.jpg" alt="Detalle de limpieza superficial" loading="lazy" />
             </div>
             <div class="story-media portrait">
               <img src="../assets/trabajos/pintura-sobre-tela/comparativa-0422.jpg" alt="Comparativa de limpieza" loading="lazy" />
