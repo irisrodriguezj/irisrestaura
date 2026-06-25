@@ -166,15 +166,23 @@
     .cert-card:hover { background: rgba(255,253,249,.11); }
     .cert-icon {
       flex-shrink: 0;
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: rgba(255,189,197,.15);
-      border: 1px solid rgba(255,189,197,.25);
+      width: 64px;
+      height: 64px;
+      border-radius: 12px;
+      background: var(--paper);
+      border: 1px solid rgba(255,253,249,.25);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
+      overflow: hidden;
+      padding: 8px;
+    }
+    .cert-icon img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
     }
     .cert-body { flex: 1; min-width: 0; }
     .cert-name {
@@ -255,7 +263,7 @@
           <p class="cert-group-title" data-i18n="cert_group_seguridad">Seguridad laboral</p>
 
           <div class="cert-card">
-            <div class="cert-icon">🛡</div>
+            <div class="cert-icon"><img src="assets/certificaciones/ergasia.png" alt="Ergasia Seguretat SL" loading="lazy" onerror="this.parentElement.style.display='none'" /></div>
             <div class="cert-body">
               <p class="cert-name" data-i18n="cert_1_name">Curso de prevención de riesgos laborales para personal restauración de arte</p>
               <p class="cert-entity">Ergasia Seguretat SL</p>
@@ -264,7 +272,7 @@
           </div>
 
           <div class="cert-card">
-            <div class="cert-icon">🏗</div>
+            <div class="cert-icon"><img src="assets/certificaciones/fundacion-laboral.png" alt="Fundación Laboral de la Construcción" loading="lazy" onerror="this.parentElement.style.display='none'" /></div>
             <div class="cert-body">
               <p class="cert-name" data-i18n="cert_2_name">Prevención de riesgos laborales para trabajos de conservación y restauración de bienes culturales</p>
               <p class="cert-entity">Fundación Laboral de la Construcción</p>
@@ -273,7 +281,7 @@
           </div>
 
           <div class="cert-card">
-            <div class="cert-icon">⛰</div>
+            <div class="cert-icon"><img src="assets/certificaciones/fundacion-laboral.png" alt="Fundación Laboral de la Construcción" loading="lazy" onerror="this.parentElement.style.display='none'" /></div>
             <div class="cert-body">
               <p class="cert-name" data-i18n="cert_3_name">Seguridad en los trabajos temporales en altura: Requisitos, equipos y técnicas fundamentales</p>
               <p class="cert-entity">Fundación Laboral de la Construcción</p>
@@ -286,7 +294,7 @@
           <p class="cert-group-title" data-i18n="cert_group_idiomas">Idiomas</p>
 
           <div class="cert-card">
-            <div class="cert-icon">🎓</div>
+            <div class="cert-icon"><img src="assets/certificaciones/cambridge.png" alt="Cambridge English" loading="lazy" onerror="this.parentElement.style.display='none'" /></div>
             <div class="cert-body">
               <p class="cert-name" data-i18n="cert_4_name">B2 First</p>
               <p class="cert-entity">Cambridge English</p>
