@@ -106,7 +106,24 @@
     pin_note_cons: `Fase 04 · Consolidació i tensat`,
     pin_p_limp1: `La neteja superficial de la capa pictòrica es va realitzar mitjançant sistemes aquosos tamponats, seleccionats a partir de tests previs de pH. Es van fer proves amb el test de Cremonesi per eliminar el vernís envellit i, finalment, es va netejar amb la proporció LE3 (70 % ligroïna, 30 % etanol).`,
     pin_p_limp2: `Després de la neteja es va aplicar un primer vernissat de protecció amb vernís de retoc i es van estucar les llacunes amb carbonat càlcic i cola de conill. La reintegració cromàtica es va iniciar amb aquarel·les per establir una base i es va completar amb pigments i vernís de retoc, aplicant un criteri il·lusionista per recuperar la lectura de l'obra.`,
-    pin_note_limp: `Fase 05 · Neteja i reintegració`
+    pin_note_limp: `Fase 05 · Neteja i reintegració`,
+
+    /* --- Voluntariado DANA --- */
+    dana_eyebrow: `Voluntariat · Emergència patrimonial`,
+    dana_meta3: `#SalvemLesFotos · UPV`,
+    dana_b1_h2: `Salvar la <span class="accent">memòria</span> fotogràfica.`,
+    dana_b1_p1: `L'any 2025 vaig participar com a voluntària a la campanya #SalvemLesFotos, impulsada per la Universitat Politècnica de València amb l'objectiu de recuperar fotografies afectades per la DANA d'octubre de 2024.`,
+    dana_b1_p2: `El voluntariat es va desenvolupar al Museu Comarcal de l'Horta Sud (Torrent, València) durant una setmana. Les tasques es van organitzar en una cadena de treball destinada a estabilitzar i recuperar les fotografies danyades.`,
+    dana_b1_note: `Campanya #SalvemLesFotos · 2025`,
+    dana_b3_h2: `Retirar, netejar, <span class="accent">assecar</span>.`,
+    dana_b3_p1: `El procés incloïa la retirada de les fotografies dels àlbums, la neteja del revers i de l'anvers, i la posterior disposició sobre papers secants per facilitar l'assecat controlat.`,
+    dana_b3_note: `Cadena de treball · Estabilització`,
+    dana_b4_p: `Aquesta experiència em va permetre participar en una actuació d'emergència sobre patrimoni fotogràfic i comprendre la importància de la coordinació entre equips per preservar la memòria documental i personal de les famílies afectades.`,
+
+    /* --- Index DANA card --- */
+    idx_card4_meta: `Torrent, València · 2025`,
+    idx_card4_h3: `Voluntariat DANA`,
+    cl_dana: `Voluntariat DANA <span>Torrent, València · 2025</span>`
   };
 
   function apply(lang) {
