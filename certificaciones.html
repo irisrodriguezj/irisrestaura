@@ -12,16 +12,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --rose-50: #fff0f4;
-      --rose-100: #ffd6de;
-      --rose-200: #ffbdc5;
+      --rose-50: #FDF0EA;
+      --rose-100: #F5D5C5;
+      --rose-200: #EBA898;
       --rose-300: #c06080;
-      --rose-500: #670626;
-      --ink: #2a0a14;
-      --muted: #8a3d52;
+      --rose-500: #A8281A;
+      --ink: #3A1008;
+      --muted: #7A4030;
       --paper: #fffdf9;
-      --line: rgba(103, 6, 38, 0.18);
-      --shadow: 0 24px 80px rgba(103, 6, 38, 0.12);
+      --line: rgba(80, 25, 15, 0.2);
+      --shadow: 0 24px 80px rgba(80, 25, 15, 0.14);
       --radius: 28px;
     }
 
@@ -30,7 +30,7 @@
     body {
       margin: 0;
       color: var(--ink);
-      background: #670626;
+      background: #F5C8B8;
       font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       overflow-x: hidden;
       max-width: 100%;
@@ -47,8 +47,8 @@
       opacity: .25;
       z-index: 50;
       background-image:
-        linear-gradient(rgba(255,255,255,.45) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.35) 1px, transparent 1px);
+        linear-gradient(rgba(58,16,8,.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(58,16,8,.08) 1px, transparent 1px);
       background-size: 42px 42px;
       mask-image: linear-gradient(to bottom, black, transparent 82%);
     }
@@ -99,7 +99,7 @@
     .contact-item { display: flex; align-items: center; gap: 14px; padding: 14px 18px; border-radius: 14px; border: 1px solid var(--line); background: rgba(255,255,255,.6); transition: .2s ease; color: var(--ink); text-decoration: none; }
     .contact-item:hover { background: white; transform: translateX(4px); }
     .contact-item-label { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); min-width: 72px; }
-    .contact-item-value { font-size: 14px; color: var(--ink); }
+    .contact-item-value { font-size: 14px; color: var(--ink); overflow-wrap: break-word; word-break: break-all; min-width: 0; }
 
     /* Page header */
     .page-header {
@@ -117,7 +117,7 @@
       letter-spacing: .18em;
       text-transform: uppercase;
       color: rgba(255,253,249,.7);
-      background: rgba(255,253,249,.1);
+      background: rgba(58,16,8,.06);
       margin-bottom: 22px;
     }
     .page-title {
@@ -125,12 +125,12 @@
       line-height: .9;
       letter-spacing: -.04em;
       font-weight: 500;
-      color: var(--paper);
+      color: var(--ink);
       margin: 0 0 18px;
     }
     .page-desc {
       font-size: 16px;
-      color: rgba(255,253,249,.65);
+      color: rgba(58,16,8,.6);
       max-width: 520px;
       line-height: 1.7;
       margin: 0;
@@ -147,7 +147,7 @@
       font-size: 11px;
       letter-spacing: .2em;
       text-transform: uppercase;
-      color: rgba(255,253,249,.4);
+      color: rgba(58,16,8,.38);
       margin: 0 0 16px;
       padding-bottom: 12px;
       border-bottom: 1px solid rgba(255,253,249,.12);
@@ -158,12 +158,12 @@
       gap: 20px;
       padding: 22px 24px;
       border-radius: 18px;
-      background: rgba(255,253,249,.07);
+      background: rgba(58,16,8,.05);
       border: 1px solid rgba(255,253,249,.13);
       margin-bottom: 10px;
       transition: background .2s ease;
     }
-    .cert-card:hover { background: rgba(255,253,249,.11); }
+    .cert-card:hover { background: rgba(58,16,8,.07); }
     .cert-icon {
       flex-shrink: 0;
       width: 64px;
@@ -188,7 +188,7 @@
     .cert-name {
       font-size: 15px;
       font-weight: 500;
-      color: var(--paper);
+      color: var(--ink);
       margin: 0 0 5px;
       line-height: 1.35;
     }
@@ -212,11 +212,11 @@
     /* Footer */
     .footer {
       padding: 30px 0 42px;
-      color: rgba(255,253,249,.35);
+      color: rgba(58,16,8,.32);
       font-size: 12px;
       letter-spacing: .08em;
       text-transform: uppercase;
-      border-top: 1px solid rgba(255,253,249,.1);
+      border-top: 1px solid rgba(58,16,8,.12);
     }
     .footer .container { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
 
@@ -321,7 +321,7 @@
       <span class="eyebrow" data-i18n="mod_eyebrow">Contacto</span>
       <h2 class="contact-modal-title" data-i18n="mod_title">Hablemos.</h2>
       <div class="contact-items">
-        <a class="contact-item" href="https://www.instagram.com/irisrestraura/" target="_blank" rel="noreferrer">
+        <a class="contact-item" href="https://www.instagram.com/irisrestaura/" target="_blank" rel="noreferrer">
           <span class="contact-item-label">Instagram</span>
           <span class="contact-item-value">@irisrestaura</span>
         </a>

@@ -16,17 +16,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --rose-50: #fff0f4;
-      --rose-100: #ffd6de;
-      --rose-200: #ffbdc5;
+      --rose-50: #FDF0EA;
+      --rose-100: #F5D5C5;
+      --rose-200: #EBA898;
       --rose-300: #c06080;
-      --rose-500: #670626;
-      --ink: #2a0a14;
-      --muted: #8a3d52;
+      --rose-500: #A8281A;
+      --ink: #3A1008;
+      --muted: #7A4030;
       --paper: #fffdf9;
-      --line: rgba(103, 6, 38, 0.18);
-      --gold: #670626;
-      --shadow: 0 24px 80px rgba(103, 6, 38, 0.12);
+      --line: rgba(80, 25, 15, 0.2);
+      --gold: #A8281A;
+      --shadow: 0 24px 80px rgba(80, 25, 15, 0.14);
       --radius: 28px;
     }
 
@@ -35,7 +35,7 @@
     body {
       margin: 0;
       color: var(--ink);
-      background: #670626;
+      background: #F5C8B8;
       font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       overflow-x: hidden;
       max-width: 100%;
@@ -51,8 +51,8 @@
       opacity: .25;
       z-index: 50;
       background-image:
-        linear-gradient(rgba(255,255,255,.45) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.35) 1px, transparent 1px);
+        linear-gradient(rgba(58,16,8,.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(58,16,8,.08) 1px, transparent 1px);
       background-size: 42px 42px;
       mask-image: linear-gradient(to bottom, black, transparent 82%);
     }
@@ -100,7 +100,7 @@
     .nav-links a:hover { background: var(--rose-100); color: var(--ink); }
     .nav-links .pill {
       background: var(--ink);
-      color: var(--paper);
+      color: var(--ink);
       padding: 10px 16px;
       border: none;
       border-radius: 999px;
@@ -184,7 +184,7 @@
       color: var(--muted);
       min-width: 72px;
     }
-    .contact-item-value { font-size: 14px; color: var(--ink); }
+    .contact-item-value { font-size: 14px; color: var(--ink); overflow-wrap: break-word; word-break: break-all; min-width: 0; }
 
     .hero {
       min-height: 78svh;
@@ -257,7 +257,7 @@
       letter-spacing: .12em;
       transition: .25s ease;
     }
-    .button.primary { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+    .button.primary { background: var(--ink); color: var(--ink); border-color: var(--ink); }
     .button.primary:hover { background: var(--rose-500); border-color: var(--rose-500); transform: translateY(-2px); }
     .button.secondary { background: rgba(255,255,255,.55); color: var(--ink); }
     .button.secondary:hover { background: white; transform: translateY(-2px); }
@@ -307,7 +307,7 @@
       position: absolute;
       bottom: 0; left: 0; right: 0;
       padding: 64px 20px 22px;
-      background: linear-gradient(to top, rgba(42,26,31,.85) 0%, transparent 100%);
+      background: linear-gradient(to top, rgba(60,16,8,.75) 0%, transparent 100%);
       color: white;
       font-size: 18px;
       font-weight: 600;
@@ -705,8 +705,8 @@
     }
 
     /* ---- Overrides para fondo claret oscuro ---- */
-    .section-head h2 { color: var(--paper); }
-    .section-head p { color: rgba(255,253,249,.72); }
+    .section-head h2 { color: var(--ink); }
+    .section-head p { color: rgba(58,16,8,.65); }
     /* Degradado — sube alto por el fondo del hero, SIEMPRE detrás de las tarjetas */
     .hero::after {
       content: "";
@@ -717,32 +717,32 @@
       height: 92%;
       background: linear-gradient(180deg,
         transparent 0%,
-        rgba(160,50,85,0.15) 20%,
-        rgba(160,50,85,0.5) 38%,
-        rgba(176,70,100,0.8) 54%,
-        #c0607a 68%,
-        #e0a0b2 84%,
-        #FFBDC5 100%);
+        rgba(180,60,40,0.12) 20%,
+        rgba(180,60,40,0.42) 38%,
+        rgba(190,80,55,0.72) 54%,
+        #C06040 68%,
+        #E0A090 84%,
+        #F5C8B8 100%);
       z-index: 1;
       pointer-events: none;
     }
     .section-fade { display: none; }
     /* Sección Trabajos — fondo rosado que enlaza con el degradado del hero */
     .featured {
-      background: linear-gradient(180deg, #c0607a 0%, rgba(158,55,85,0.35) 22%, transparent 55%);
+      background: linear-gradient(180deg, #C06040 0%, rgba(180,80,55,0.32) 22%, transparent 55%);
     }
     /* Texto de sobre mí más legible (más oscuro/opaco) */
     .intro-card h2 { color: var(--ink); }
-    .intro-card p { color: #3a0712; opacity: 1; }
+    .intro-card p { color: var(--ink); opacity: 1; }
     /* La foto solo ocupa su altura natural: sin hueco vacío debajo */
     .intro-card .portrait-card { align-self: start; }
-    .button.primary { background: #FFBDC5; color: #670626; border-color: #FFBDC5; }
-    .button.primary:hover { background: white; border-color: white; color: #670626; transform: translateY(-2px); }
-    .button.secondary { background: rgba(255,253,249,.15); color: var(--paper); border-color: rgba(255,253,249,.35); }
-    .button.secondary:hover { background: rgba(255,253,249,.28); color: var(--paper); transform: translateY(-2px); }
+    .button.primary { background: #A8281A; color: #FFFDF9; border-color: #FFBDC5; }
+    .button.primary:hover { background: #FFFDF9; border-color: #FFFDF9; color: #A8281A; transform: translateY(-2px); }
+    .button.secondary { background: rgba(255,253,249,.15); color: var(--ink); border-color: rgba(58,16,8,.32); }
+    .button.secondary:hover { background: rgba(255,253,249,.28); color: var(--ink); transform: translateY(-2px); }
     .c-dot { background: rgba(255,253,249,.35); }
     .c-dot.is-active { background: #FFBDC5; width: 22px; }
-    .footer { color: rgba(255,253,249,.5); }
+    .footer { color: rgba(58,16,8,.45); }
 
     /* ---- Móvil pequeño (≤ 380px) ---- */
     @media (max-width: 380px) {
