@@ -130,7 +130,8 @@
     .footer { color: rgba(255,253,249,.5); }
     .work-footer { border-top-color: rgba(255,253,249,.2); }
 
-    @media (max-width: 960px) { .nav-links a:not(.pill) { display: none; } }
+    @media (max-width: 960px) { .nav-links a:not(.pill):not([data-i18n="nav_cert"]) { display: none; }
+      .nav-links [data-i18n="nav_cert"] { padding: 10px 8px; font-size: 11px; } }
     @media (max-width: 620px) {
       .container { width: min(100% - 24px, 1180px); }
       .nav { top: 10px; width: calc(100% - 20px); padding: 10px 12px; }

@@ -141,7 +141,7 @@
 
     /* --- Pràctiques MNAC --- */
     mnac_eyebrow: `Pràctiques curriculars · Pintura sobre tela`,
-    mnac_meta3: `Tutoritzat per Teresa Schreibweis`,
+    mnac_meta3: `Tutoritzades per Teresa Schreibweis`,
     mnac_b1_h2: `Un mes i mig al <span class="accent">MNAC</span>.`,
     mnac_b1_p1: `Al final del quart curs del Grau en Conservació i Restauració de Béns Culturals, vaig realitzar les pràctiques curriculars al Museu Nacional d'Art de Catalunya (MNAC), dins l'especialitat de pintura sobre tela. Les pràctiques, organitzades per l'ESCRBCC, van estar tutoritzades per Teresa Schreibweis i van tenir una durada d'un mes i mig.`,
     mnac_b1_note: `Pràctiques curriculars · ESCRBCC · 2026`,

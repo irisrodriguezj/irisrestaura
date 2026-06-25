@@ -221,7 +221,8 @@
     .footer .container { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
 
     @media (max-width: 960px) {
-      .nav-links a:not(.pill) { display: none; }
+      .nav-links a:not(.pill):not([data-i18n="nav_cert"]) { display: none; }
+      .nav-links [data-i18n="nav_cert"] { padding: 10px 8px; font-size: 11px; }
     }
     @media (max-width: 620px) {
       .container { width: min(100% - 24px, 860px); }
@@ -265,7 +266,7 @@
           <div class="cert-card">
             <div class="cert-icon"><img src="assets/certificaciones/ergasia.png" alt="Ergasia Seguretat SL" loading="lazy" onerror="this.parentElement.style.display='none'" /></div>
             <div class="cert-body">
-              <p class="cert-name" data-i18n="cert_1_name">Curso de prevención de riesgos laborales para personal restauración de arte</p>
+              <p class="cert-name" data-i18n="cert_1_name">Curso de prevención de riesgos laborales para personal de restauración de arte</p>
               <p class="cert-entity">Ergasia Seguretat SL</p>
               <span class="cert-date" data-i18n="cert_1_date">Jun. 2026</span>
             </div>

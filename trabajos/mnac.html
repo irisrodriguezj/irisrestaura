@@ -122,7 +122,8 @@
     .work-footer { border-top-color: rgba(255,253,249,.2); }
 
     @media (max-width: 960px) {
-      .nav-links a:not(.pill) { display: none; }
+      .nav-links a:not(.pill):not([data-i18n="nav_cert"]) { display: none; }
+      .nav-links [data-i18n="nav_cert"] { padding: 10px 8px; font-size: 11px; }
       .story-block.split, .story-block.split.weighted-text { grid-template-columns: 1fr; }
       .story-block.split.reverse > *:first-child { order: 1; }
       .story-block.split.reverse > *:last-child { order: 2; }
