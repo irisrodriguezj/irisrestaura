@@ -658,9 +658,21 @@
     @media (max-width: 620px) {
       .container { width: min(100% - 24px, 1180px); }
 
-      .nav { top: 10px; width: calc(100% - 20px); padding: 10px 12px; }
+      .nav {
+        top: 10px; width: calc(100% - 20px); padding: 10px 12px;
+        flex-direction: column; gap: 10px; border-radius: 22px;
+      }
       .brand { font-size: 16px; letter-spacing: .07em; }
-      .nav-links .pill { padding-inline: 12px; font-size: 11px; }
+      .nav-links {
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px;
+      }
+      /* En móvil mostramos TODOS los enlaces de navegación */
+      .nav-links a:not(.pill) { display: inline-flex !important; padding: 8px 10px; font-size: 11px; }
+      .nav-links .pill { padding: 8px 14px; font-size: 11px; }
+      .lang-switch { margin-left: 0; }
 
       .hero { padding: 118px 0 0; }
       h1 { font-size: clamp(48px, 13vw, 72px); margin: 14px 0 10px; line-height: .84; }
@@ -720,10 +732,8 @@
         rgba(180,60,40,0.12) 20%,
         rgba(180,60,40,0.42) 38%,
         rgba(190,80,55,0.72) 54%,
-        #C06040 70%,
-        #C06040 80%,
-        #F5C8B8 80%,
-        #F5C8B8 100%);
+        #C06040 68%,
+        #C06040 100%);
       z-index: 1;
       pointer-events: none;
     }
