@@ -735,21 +735,17 @@
         width: 100%;
         justify-content: center;
         padding: 16px 12px;
-        font-size: 14px;
-        font-weight: 600;
-        letter-spacing: .08em;
-        /* Clear iOS style */
-        background: rgba(255, 255, 255, 0.08) !important;
-        backdrop-filter: blur(20px) brightness(1.08);
-        -webkit-backdrop-filter: blur(20px) brightness(1.08);
-        border: 1.5px solid rgba(255, 255, 255, 0.5) !important;
+        font-size: 13px;
+        background: rgba(168, 40, 26, 0.82) !important;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(200, 70, 50, 0.5) !important;
         color: #fff !important;
-        text-shadow: 0 1px 8px rgba(0,0,0,0.6);
-        box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 2px 12px rgba(0,0,0,0.12);
-        border-radius: 18px;
+        text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+        box-shadow: 0 2px 12px rgba(80,10,5,0.2);
       }
       .mobile-home-nav .button:active {
-        background: rgba(255, 255, 255, 0.18) !important;
+        background: rgba(168, 40, 26, 1) !important;
       }
       /* Botón flotante volver arriba (solo móvil) */
       .back-to-top {
@@ -945,24 +941,24 @@
       <div class="mobile-home" aria-label="Navegación principal">
         <div class="mobile-home-bg" aria-hidden="true">
           <img src="assets/trabajos/parroquia-sant-agusti/portada.jpg" alt="" onerror="this.style.display='none'" />
-          <video src="assets/trabajos/palau-de-noguera/video-01.mp4" muted loop playsinline preload="auto"></video>
+          <video src="assets/trabajos/palau-de-noguera/video-01.mp4" poster="assets/trabajos/palau-de-noguera/portada.jpg" muted loop playsinline preload="metadata"></video>
           <img src="assets/trabajos/pintura-sobre-tela/portada.jpg" alt="" onerror="this.style.display='none'" />
           <img src="assets/trabajos/dana/portada.jpg?v=3" alt="" onerror="this.style.display='none'" />
           <img src="assets/trabajos/parroquia-sant-agusti/cupula.jpg" alt="" onerror="this.style.display='none'" />
-          <video src="assets/trabajos/palau-de-noguera/video-02.mp4" muted loop playsinline preload="auto"></video>
+          <video src="assets/trabajos/palau-de-noguera/video-02.mp4" poster="assets/trabajos/palau-de-noguera/foto-02.jpg" muted loop playsinline preload="metadata"></video>
           <img src="assets/trabajos/palau-de-noguera/foto-04.jpg" alt="" onerror="this.style.display='none'" />
           <img src="assets/trabajos/pintura-sobre-tela/consolidacion.jpg" alt="" onerror="this.style.display='none'" />
           <img src="assets/trabajos/dana/foto-01.jpg" alt="" onerror="this.style.display='none'" />
-          <video src="assets/trabajos/parroquia-sant-agusti/video-02.mp4" muted loop playsinline preload="auto"></video>
+          <video src="assets/trabajos/parroquia-sant-agusti/video-02.mp4" poster="assets/trabajos/parroquia-sant-agusti/portada.jpg" muted loop playsinline preload="metadata"></video>
           <img src="assets/trabajos/palau-de-noguera/antes.jpg" alt="" onerror="this.style.display='none'" />
           <img src="assets/trabajos/pintura-sobre-tela/antes-01.jpg" alt="" onerror="this.style.display='none'" />
           <img src="assets/trabajos/mnac/portada.jpg" alt="" onerror="this.style.display='none'" />
-          <video src="assets/trabajos/dana/video-02.mp4" muted loop playsinline preload="auto"></video>
+          <video src="assets/trabajos/dana/video-02.mp4" poster="assets/trabajos/dana/portada.jpg" muted loop playsinline preload="metadata"></video>
           <img src="assets/trabajos/parroquia-sant-agusti/resultadofinal.jpg" alt="" onerror="this.style.display='none'" />
           <img src="assets/trabajos/dana/foto-02.jpg" alt="" onerror="this.style.display='none'" />
           <img src="assets/trabajos/pintura-sobre-tela/reintegracion-0951.jpg" alt="" onerror="this.style.display='none'" />
           <img src="assets/trabajos/palau-de-noguera/despues.jpg" alt="" onerror="this.style.display='none'" />
-          <video src="assets/trabajos/pintura-sobre-tela/video-01.mp4" muted loop playsinline preload="auto"></video>
+          <video src="assets/trabajos/pintura-sobre-tela/video-01.mp4" poster="assets/trabajos/pintura-sobre-tela/portada.jpg" muted loop playsinline preload="metadata"></video>
           <img src="assets/trabajos/palau-de-noguera-2026/portada.jpg" alt="" onerror="this.style.display='none'" />
         </div>
         <div class="mobile-home-inner">
@@ -1268,15 +1264,14 @@
       render();
     })();
 
-    /* === Mobile home slider (crossfade solapado, 2s/slide) === */
+    /* === Mobile home slider — crossfade sin hueco garantizado === */
     (function () {
       var bg = document.querySelector('.mobile-home-bg');
       if (!bg) return;
       var all = Array.from(bg.children);
       var INTERVAL = 2000;
-      var FADE = 600; /* duración del fundido en ms */
+      var FADE = 700;
 
-      /* Init: todos ocultos, z-index 0 */
       all.forEach(function (el) {
         el.style.transition = 'opacity ' + (FADE / 1000) + 's ease';
         el.style.opacity = '0';
@@ -1284,41 +1279,59 @@
         if (el.tagName === 'VIDEO') { try { el.pause(); } catch (e) {} }
       });
 
-      /* Solo los elementos visibles (no roto) */
-      var items = all.filter(function (el) { return el.style.display !== 'none'; });
-      if (!items.length) return;
-
-      var current = 0;
-
-      function isHidden(el) { return el.style.display === 'none'; }
-
-      function nextIdx(from) {
-        var n = (from + 1) % items.length;
-        var tries = 0;
-        while (isHidden(items[n]) && tries < items.length) { n = (n + 1) % items.length; tries++; }
-        return n;
+      /* Reconstruye la lista de items válidos (excluye los que fallaron onerror) */
+      function validItems() {
+        return all.filter(function (el) { return el.style.display !== 'none'; });
       }
 
-      function goTo(next) {
-        var prevEl = items[current];
-        var nextEl = items[next];
+      var items = validItems();
+      if (!items.length) return;
+      var current = 0;
+      var busy = false;
 
-        /* Sube el nuevo encima y lo hace visible — ambos a la vez durante FADE */
+      function goTo(nextIdx) {
+        if (busy) return;
+        busy = true;
+
+        var prevEl = items[current];
+        /* Recalcula por si algún onerror se disparó tarde */
+        items = validItems();
+        nextIdx = nextIdx % items.length;
+        /* Si el item actual cambió de posición, recalcula current */
+        var ci = items.indexOf(prevEl);
+        if (ci !== -1) current = ci;
+
+        var nextEl = items[nextIdx];
+        current = nextIdx;
+
+        /* 1. El nuevo sube encima del anterior (prev sigue en opacity:1) */
         nextEl.style.zIndex = '1';
+        /* Fuerza reflow para que la transición parta de opacity:0 */
+        void nextEl.offsetWidth;
         nextEl.style.opacity = '1';
+
         if (nextEl.tagName === 'VIDEO') {
           nextEl.currentTime = 0;
           nextEl.play().catch(function () {});
         }
 
-        /* Cuando el nuevo ya es visible, baja y oculta el anterior */
+        /* 2. Cuando el nuevo ya es completamente visible → oculta el anterior */
+        function onEnd(e) {
+          if (e.target !== nextEl) return;
+          nextEl.removeEventListener('transitionend', onEnd);
+          prevEl.style.opacity = '0';
+          prevEl.style.zIndex = '0';
+          if (prevEl.tagName === 'VIDEO') { try { prevEl.pause(); } catch (err) {} }
+          busy = false;
+        }
+        nextEl.addEventListener('transitionend', onEnd);
+
+        /* Seguridad: si transitionend no llega (p.ej. reduce-motion), libera igual */
         setTimeout(function () {
           prevEl.style.opacity = '0';
           prevEl.style.zIndex = '0';
-          if (prevEl.tagName === 'VIDEO') { try { prevEl.pause(); } catch (e) {} }
-        }, FADE);
-
-        current = next;
+          busy = false;
+        }, FADE + 100);
       }
 
       /* Muestra el primero */
@@ -1326,7 +1339,11 @@
       items[0].style.opacity = '1';
       if (items[0].tagName === 'VIDEO') { items[0].play().catch(function () {}); }
 
-      setInterval(function () { goTo(nextIdx(current)); }, INTERVAL);
+      var idx = 1;
+      setInterval(function () {
+        goTo(idx);
+        idx = (idx + 1) % validItems().length;
+      }, INTERVAL);
     })();
 
     /* === Botón volver arriba (móvil) === */
