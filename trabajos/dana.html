@@ -259,11 +259,11 @@
       object-fit: cover;
       display: block;
     }
-    .story-media.portrait { aspect-ratio: 3/4; }
-    .story-media.square { aspect-ratio: 1/1; }
+    .story-media.portrait { aspect-ratio: 3/4; max-height: clamp(320px, 44vw, 500px); }
+    .story-media.square { aspect-ratio: 1/1; max-height: clamp(320px, 44vw, 500px); }
     .story-media.wide { aspect-ratio: 16/9; }
-    .story-media.cinema { aspect-ratio: 21/9; }
-    .story-media.landscape { aspect-ratio: 4/3; }
+    .story-media.cinema { aspect-ratio: 21/9; max-height: clamp(240px, 30vw, 380px); }
+    .story-media.landscape { aspect-ratio: 4/3; max-height: clamp(320px, 44vw, 500px); }
 
     .story-media.video-card:after {
       content: "▶ vídeo";
