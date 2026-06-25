@@ -8,6 +8,7 @@
     /* --- Compartido (nav, footer, modal, botones) --- */
     nav_trabajos: `Treballs`,
     nav_sobremi: `Sobre mi`,
+    nav_cert: `Certificacions`,
     nav_contacto: `Contacte`,
     mod_eyebrow: `Contacte`,
     mod_title: `Parlem.`,
@@ -143,8 +144,6 @@
     mnac_meta3: `Tutoritzat per Teresa Schreibweis`,
     mnac_b1_h2: `Un mes i mig al <span class="accent">MNAC</span>.`,
     mnac_b1_p1: `Al final del quart curs del Grau en Conservació i Restauració de Béns Culturals, vaig realitzar les pràctiques curriculars al Museu Nacional d'Art de Catalunya (MNAC), dins l'especialitat de pintura sobre tela. Les pràctiques, organitzades per l'ESCRBCC, van estar tutoritzades per Teresa Schreibweis i van tenir una durada d'un mes i mig.`,
-    mnac_eyebrow: `Pràctiques curriculars · Pintura sobre tela`,
-    mnac_meta3: `Tutoritzat per Teresa Schreibweis`,
     mnac_b1_note: `Pràctiques curriculars · ESCRBCC · 2026`,
     mnac_b2_h2: `Conservació <span class="accent">preventiva</span>.`,
     mnac_b2_p1: `Durant aquest període vaig participar en diverses tasques vinculades a la conservació i restauració de les col·leccions del museu. Entre aquestes, destaca la revisió de les sales de la col·lecció d'Art Modern I, realitzant controls de conservació preventiva, detecció d'incidències, seguiment de l'estat de les obres i tasques de manteniment bàsic.`,
@@ -161,7 +160,22 @@
     mnac_b5_note: `Embalatge · Préstecs · Exposicions temporals`,
     idx_card6_meta: `Barcelona · 2026`,
     idx_card6_h3: `Pràctiques MNAC`,
-    cl_mnac: `Pràctiques MNAC <span>Barcelona · 2026</span>`
+    cl_mnac: `Pràctiques MNAC <span>Barcelona · 2026</span>`,
+
+    /* --- Certificacions --- */
+    cert_eyebrow: `Formació complementària`,
+    cert_title: `Certificacions.`,
+    cert_desc: `Llicències i certificacions obtingudes al llarg de la meva formació.`,
+    cert_group_seguridad: `Seguretat laboral`,
+    cert_group_idiomas: `Idiomes`,
+    cert_1_name: `Curs de prevenció de riscos laborals per a personal de restauració d'art`,
+    cert_1_date: `Jun. 2026`,
+    cert_2_name: `Prevenció de riscos laborals per a treballs de conservació i restauració de béns culturals`,
+    cert_2_date: `Gen. 2025`,
+    cert_3_name: `Seguretat en els treballs temporals en alçada: Requisits, equips i tècniques fonamentals`,
+    cert_3_date: `Gen. 2025`,
+    cert_4_name: `B2 First`,
+    cert_4_date: `Jul. 2024`
   };
 
   function apply(lang) {

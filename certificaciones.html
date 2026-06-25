@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Certificaciones — IRISRESTAURA</title>
+  <meta name="description" content="Licencias y certificaciones de Iris Rodríguez, conservadora-restauradora." />
+  <link rel="icon" type="image/png" href="assets/favicon.png?v=2" />
+  <link rel="apple-touch-icon" href="assets/favicon.png?v=2" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --rose-50: #fff0f4;
+      --rose-100: #ffd6de;
+      --rose-200: #ffbdc5;
+      --rose-300: #c06080;
+      --rose-500: #670626;
+      --ink: #2a0a14;
+      --muted: #8a3d52;
+      --paper: #fffdf9;
+      --line: rgba(103, 6, 38, 0.18);
+      --shadow: 0 24px 80px rgba(103, 6, 38, 0.12);
+      --radius: 28px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #670626;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow-x: hidden;
+      max-width: 100%;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, .serif { font-family: "Cormorant Garamond", Georgia, serif; }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .25;
+      z-index: 50;
+      background-image:
+        linear-gradient(rgba(255,255,255,.45) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.35) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, black, transparent 82%);
+    }
+
+    .container {
+      width: min(860px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* Nav */
+    .nav {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1180px, calc(100% - 32px));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 14px 12px 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 253, 249, .74);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 12px 40px rgba(68, 30, 42, .08);
+      z-index: 30;
+    }
+    .brand { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 700; letter-spacing: .12em; font-size: clamp(18px, 2vw, 24px); }
+    .nav-links { display: flex; gap: 4px; align-items: center; font-size: 12px; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); }
+    .nav-links a { padding: 10px 12px; border-radius: 999px; transition: .25s ease; }
+    .nav-links a:hover { background: var(--rose-100); color: var(--ink); }
+    .nav-links a.is-current { color: var(--ink); font-weight: 500; }
+    .nav-links .pill { background: var(--ink); color: var(--paper); padding: 10px 16px; border: none; border-radius: 999px; cursor: pointer; font-family: inherit; font-size: 12px; letter-spacing: .09em; text-transform: uppercase; }
+    .nav-links .pill:hover { background: var(--rose-500); color: white; }
+    .lang-switch { display: inline-flex; gap: 4px; margin-left: 6px; }
+    .lang-btn { border: 1px solid var(--line); background: rgba(255,255,255,.5); color: var(--muted); border-radius: 999px; padding: 8px 9px; font-size: 10px; letter-spacing: .06em; cursor: pointer; font-family: inherit; text-transform: uppercase; transition: .2s ease; }
+    .lang-btn:hover { background: rgba(255,255,255,.85); color: var(--ink); }
+    .lang-btn.is-active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+    /* Contact modal */
+    .contact-modal-overlay { position: fixed; inset: 0; z-index: 200; background: rgba(42,26,31,.55); backdrop-filter: blur(8px); display: none; align-items: center; justify-content: center; padding: 24px; }
+    .contact-modal-overlay.is-open { display: flex; }
+    .contact-modal-box { background: var(--paper); border-radius: calc(var(--radius) + 12px); border: 1px solid var(--line); box-shadow: 0 32px 80px rgba(42,26,31,.24); padding: clamp(32px,5vw,56px); max-width: 480px; width: 100%; position: relative; }
+    .contact-modal-close { position: absolute; top: 16px; right: 16px; border: 1px solid var(--line); background: rgba(255,255,255,.7); border-radius: 999px; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 16px; color: var(--muted); transition: .2s ease; }
+    .contact-modal-close:hover { background: white; color: var(--ink); }
+    .contact-modal-title { margin: 16px 0 28px; font-size: clamp(36px,6vw,58px); line-height: .9; letter-spacing: -.03em; font-weight: 500; font-family: "Cormorant Garamond", Georgia, serif; }
+    .contact-items { display: flex; flex-direction: column; gap: 12px; }
+    .contact-item { display: flex; align-items: center; gap: 14px; padding: 14px 18px; border-radius: 14px; border: 1px solid var(--line); background: rgba(255,255,255,.6); transition: .2s ease; color: var(--ink); text-decoration: none; }
+    .contact-item:hover { background: white; transform: translateX(4px); }
+    .contact-item-label { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); min-width: 72px; }
+    .contact-item-value { font-size: 14px; color: var(--ink); }
+
+    /* Page header */
+    .page-header {
+      padding-top: 140px;
+      padding-bottom: 56px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 8px 14px;
+      border: 1px solid rgba(255,253,249,.3);
+      border-radius: 999px;
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(255,253,249,.7);
+      background: rgba(255,253,249,.1);
+      margin-bottom: 22px;
+    }
+    .page-title {
+      font-size: clamp(52px, 8vw, 96px);
+      line-height: .9;
+      letter-spacing: -.04em;
+      font-weight: 500;
+      color: var(--paper);
+      margin: 0 0 18px;
+    }
+    .page-desc {
+      font-size: 16px;
+      color: rgba(255,253,249,.65);
+      max-width: 520px;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* Cert list */
+    .cert-section {
+      padding-bottom: 80px;
+    }
+    .cert-group {
+      margin-bottom: 52px;
+    }
+    .cert-group-title {
+      font-size: 11px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: rgba(255,253,249,.4);
+      margin: 0 0 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,253,249,.12);
+    }
+    .cert-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 22px 24px;
+      border-radius: 18px;
+      background: rgba(255,253,249,.07);
+      border: 1px solid rgba(255,253,249,.13);
+      margin-bottom: 10px;
+      transition: background .2s ease;
+    }
+    .cert-card:hover { background: rgba(255,253,249,.11); }
+    .cert-icon {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255,189,197,.15);
+      border: 1px solid rgba(255,189,197,.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+    .cert-body { flex: 1; min-width: 0; }
+    .cert-name {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--paper);
+      margin: 0 0 5px;
+      line-height: 1.35;
+    }
+    .cert-entity {
+      font-size: 13px;
+      color: rgba(255,253,249,.55);
+      margin: 0 0 6px;
+    }
+    .cert-date {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #FFBDC5;
+      background: rgba(255,189,197,.12);
+      border: 1px solid rgba(255,189,197,.25);
+      border-radius: 999px;
+      padding: 4px 10px;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 30px 0 42px;
+      color: rgba(255,253,249,.35);
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      border-top: 1px solid rgba(255,253,249,.1);
+    }
+    .footer .container { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+
+    @media (max-width: 960px) {
+      .nav-links a:not(.pill) { display: none; }
+    }
+    @media (max-width: 620px) {
+      .container { width: min(100% - 24px, 860px); }
+      .nav { top: 10px; width: calc(100% - 20px); padding: 10px 12px; }
+      .brand { font-size: 16px; letter-spacing: .07em; }
+      .page-header { padding-top: 100px; padding-bottom: 36px; }
+      .cert-card { padding: 16px 18px; gap: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+
+  <header class="nav" aria-label="Navegación principal">
+    <a href="index.html" class="brand">IRISRESTAURA</a>
+    <nav class="nav-links">
+      <a href="index.html#sobre-mi" data-i18n="nav_sobremi">Sobre mí</a>
+      <a href="index.html#trabajos" data-i18n="nav_trabajos">Trabajos</a>
+      <a href="certificaciones.html" class="is-current" data-i18n="nav_cert">Certificaciones</a>
+      <button class="pill" data-open-contact type="button" data-i18n="nav_contacto">Contacto</button>
+      <span class="lang-switch">
+        <button class="lang-btn" data-lang="ca" type="button">CAT</button>
+        <button class="lang-btn" data-lang="es" type="button">CAST</button>
+      </span>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <header class="page-header">
+        <span class="eyebrow" data-i18n="cert_eyebrow">Formación complementaria</span>
+        <h1 class="page-title" data-i18n="cert_title">Certificaciones.</h1>
+        <p class="page-desc" data-i18n="cert_desc">Licencias y certificaciones obtenidas a lo largo de mi formación.</p>
+      </header>
+
+      <section class="cert-section">
+
+        <div class="cert-group">
+          <p class="cert-group-title" data-i18n="cert_group_seguridad">Seguridad laboral</p>
+
+          <div class="cert-card">
+            <div class="cert-icon">🛡</div>
+            <div class="cert-body">
+              <p class="cert-name" data-i18n="cert_1_name">Curso de prevención de riesgos laborales para personal restauración de arte</p>
+              <p class="cert-entity">Ergasia Seguretat SL</p>
+              <span class="cert-date" data-i18n="cert_1_date">Jun. 2026</span>
+            </div>
+          </div>
+
+          <div class="cert-card">
+            <div class="cert-icon">🏗</div>
+            <div class="cert-body">
+              <p class="cert-name" data-i18n="cert_2_name">Prevención de riesgos laborales para trabajos de conservación y restauración de bienes culturales</p>
+              <p class="cert-entity">Fundación Laboral de la Construcción</p>
+              <span class="cert-date" data-i18n="cert_2_date">Ene. 2025</span>
+            </div>
+          </div>
+
+          <div class="cert-card">
+            <div class="cert-icon">⛰</div>
+            <div class="cert-body">
+              <p class="cert-name" data-i18n="cert_3_name">Seguridad en los trabajos temporales en altura: Requisitos, equipos y técnicas fundamentales</p>
+              <p class="cert-entity">Fundación Laboral de la Construcción</p>
+              <span class="cert-date" data-i18n="cert_3_date">Ene. 2025</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cert-group">
+          <p class="cert-group-title" data-i18n="cert_group_idiomas">Idiomas</p>
+
+          <div class="cert-card">
+            <div class="cert-icon">🎓</div>
+            <div class="cert-body">
+              <p class="cert-name" data-i18n="cert_4_name">B2 First</p>
+              <p class="cert-entity">Cambridge English</p>
+              <span class="cert-date" data-i18n="cert_4_date">Jul. 2024</span>
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <span>IRISRESTAURA © 2026</span>
+      <span data-i18n="footer_cr">Conservación y restauración</span>
+    </div>
+  </footer>
+
+  <div class="contact-modal-overlay" id="contactModal" aria-hidden="true">
+    <div class="contact-modal-box">
+      <button class="contact-modal-close" id="closeContactModal" aria-label="Cerrar">&#x2715;</button>
+      <span class="eyebrow" data-i18n="mod_eyebrow">Contacto</span>
+      <h2 class="contact-modal-title" data-i18n="mod_title">Hablemos.</h2>
+      <div class="contact-items">
+        <a class="contact-item" href="https://www.instagram.com/irisrestaura/" target="_blank" rel="noreferrer">
+          <span class="contact-item-label">Instagram</span>
+          <span class="contact-item-value">@irisrestaura</span>
+        </a>
+        <a class="contact-item" href="mailto:iris.rodriguez.04.13@gmail.com">
+          <span class="contact-item-label" data-i18n="mod_email">Email</span>
+          <span class="contact-item-value">iris.rodriguez.04.13@gmail.com</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/lang.js"></script>
+  <script>
+    // Contact modal
+    const overlay = document.getElementById('contactModal');
+    const closeBtn = document.getElementById('closeContactModal');
+    document.querySelectorAll('[data-open-contact]').forEach(btn => {
+      btn.addEventListener('click', () => { overlay.classList.add('is-open'); overlay.setAttribute('aria-hidden','false'); });
+    });
+    closeBtn.addEventListener('click', () => { overlay.classList.remove('is-open'); overlay.setAttribute('aria-hidden','true'); });
+    overlay.addEventListener('click', e => { if (e.target === overlay) { overlay.classList.remove('is-open'); overlay.setAttribute('aria-hidden','true'); } });
+
+    // Lang switcher
+    const saved = localStorage.getItem('lang') || 'es';
+    function applyLang(lang) {
+      localStorage.setItem('lang', lang);
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('is-active', b.dataset.lang === lang));
+      if (lang === 'ca' && window.CA_TRANSLATIONS) {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.dataset.i18n;
+          if (window.CA_TRANSLATIONS[key]) el.innerHTML = window.CA_TRANSLATIONS[key];
+        });
+      } else {
+        location.reload();
+      }
+    }
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+    });
+    if (saved === 'ca') applyLang('ca');
+    else document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('is-active', b.dataset.lang === 'es'));
+  </script>
+</body>
+</html>
