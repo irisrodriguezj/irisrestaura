@@ -105,8 +105,82 @@
       background: var(--ink);
       color: var(--paper);
       padding-inline: 16px;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 12px;
+      letter-spacing: .09em;
+      text-transform: uppercase;
     }
     .nav-links .pill:hover { background: var(--rose-500); color: white; }
+
+    /* Contact modal */
+    .contact-modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(42, 26, 31, .55);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .contact-modal-overlay.is-open { display: flex; }
+    .contact-modal-box {
+      background: var(--paper);
+      border-radius: calc(var(--radius) + 12px);
+      border: 1px solid var(--line);
+      box-shadow: 0 32px 80px rgba(42, 26, 31, .24);
+      padding: clamp(32px, 5vw, 56px);
+      max-width: 480px;
+      width: 100%;
+      position: relative;
+    }
+    .contact-modal-close {
+      position: absolute;
+      top: 16px; right: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.7);
+      border-radius: 999px;
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      font-size: 16px;
+      color: var(--muted);
+      transition: .2s ease;
+    }
+    .contact-modal-close:hover { background: white; color: var(--ink); }
+    .contact-modal-title {
+      margin: 16px 0 28px;
+      font-size: clamp(36px, 6vw, 58px);
+      line-height: .9;
+      letter-spacing: -.03em;
+      font-weight: 500;
+      font-family: "Cormorant Garamond", Georgia, serif;
+    }
+    .contact-items { display: flex; flex-direction: column; gap: 12px; }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 18px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.6);
+      transition: .2s ease;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .contact-item:hover { background: white; transform: translateX(4px); }
+    .contact-item-label {
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      min-width: 72px;
+    }
+    .contact-item-value { font-size: 14px; color: var(--ink); }
 
     .hero {
       min-height: 100svh;
@@ -666,9 +740,8 @@
     <a href="#inicio" class="brand">IRISRESTAURA</a>
     <nav class="nav-links">
       <a href="#trabajos">Trabajos</a>
-      <a href="#proceso">Proceso</a>
       <a href="#sobre-mi">Sobre mí</a>
-      <a class="pill" href="https://www.instagram.com/irisrestaura/" target="_blank" rel="noreferrer">Instagram</a>
+      <button class="pill" data-open-contact type="button">Contacto</button>
     </nav>
   </header>
 
@@ -841,11 +914,10 @@
       <div class="container">
         <div class="contact-card">
           <span class="eyebrow">Contacto</span>
-          <h2>¿Tienes una pieza que necesita mirada?</h2>
-          <p>Para consultas, encargos pequeños o seguimiento de nuevos trabajos, puedes contactar con Iris a través de Instagram.</p>
+          <h2>¿Crees que puedo encajar en tu proyecto?</h2>
+          <p>Si tienes un encargo, una consulta o quieres hablar sobre un proyecto de conservación y restauración, escríbeme.</p>
           <div class="hero-cta">
-            <a class="button primary" href="https://www.instagram.com/irisrestaura/" target="_blank" rel="noreferrer">@irisrestaura</a>
-            <a class="button secondary" href="mailto:hola@irisrestaura.com">hola@irisrestaura.com</a>
+            <button class="button primary" data-open-contact type="button">Contactar</button>
           </div>
         </div>
       </div>
@@ -859,12 +931,50 @@
     </div>
   </footer>
 
+  <div class="contact-modal-overlay" id="contactModal" aria-hidden="true">
+    <div class="contact-modal-box">
+      <button class="contact-modal-close" id="closeContactModal" aria-label="Cerrar">&#x2715;</button>
+      <span class="eyebrow">Contacto</span>
+      <h2 class="contact-modal-title">Hablemos.</h2>
+      <div class="contact-items">
+        <a class="contact-item" href="https://www.instagram.com/irisrestaura/" target="_blank" rel="noreferrer">
+          <span class="contact-item-label">Instagram</span>
+          <span class="contact-item-value">@irisrestaura</span>
+        </a>
+        <a class="contact-item" href="mailto:iris.rodriguez.04.13@gmail.com">
+          <span class="contact-item-label">Correo</span>
+          <span class="contact-item-value">iris.rodriguez.04.13@gmail.com</span>
+        </a>
+        <a class="contact-item" href="tel:+34652244068">
+          <span class="contact-item-label">Teléfono</span>
+          <span class="contact-item-value">+34 652 244 068</span>
+        </a>
+        <a class="contact-item" href="https://www.linkedin.com/in/iris-rodriguez-jimenez/" target="_blank" rel="noreferrer">
+          <span class="contact-item-label">LinkedIn</span>
+          <span class="contact-item-value">iris-rodriguez-jimenez</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
   <div class="lightbox" id="lightbox" aria-hidden="true">
     <button type="button" id="closeLightbox">Cerrar</button>
     <img src="" alt="Imagen ampliada" id="lightboxImg" />
   </div>
 
   <script>
+    /* === Contact modal === */
+    (function() {
+      const modal = document.getElementById('contactModal');
+      const closeBtn = document.getElementById('closeContactModal');
+      const open = () => { modal.classList.add('is-open'); modal.setAttribute('aria-hidden', 'false'); };
+      const close = () => { modal.classList.remove('is-open'); modal.setAttribute('aria-hidden', 'true'); };
+      document.querySelectorAll('[data-open-contact]').forEach(b => b.addEventListener('click', open));
+      closeBtn.addEventListener('click', close);
+      modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
+      window.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('is-open')) close(); });
+    })();
+
     /* === Lightbox === */
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightboxImg');
