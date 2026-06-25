@@ -123,7 +123,45 @@
     /* --- Index DANA card --- */
     idx_card4_meta: `Torrent, València · 2025`,
     idx_card4_h3: `Voluntariat DANA`,
-    cl_dana: `Voluntariat DANA <span>Torrent, València · 2025</span>`
+    cl_dana: `Voluntariat DANA <span>Torrent, València · 2025</span>`,
+
+    /* --- Palau de Noguera 2026 --- */
+    pal26_eyebrow: `Treball · Conservació-restauració`,
+    pal26_meta3: `Retaules barrocs · ESCRBCC`,
+    pal26_badge: `Pròximament`,
+    pal26_b1_h2: `Nova campanya a Sant Joan <span class="accent">Baptista</span>.`,
+    pal26_b1_p1: `Des del 29 de juny fins al 10 de juliol participaré en una nova campanya de conservació-restauració dins el conjunt de retaules barrocs de l'església de Sant Joan Baptista de Palau de Noguera.`,
+    pal26_b1_p2: `Pròximament ampliaré aquesta secció amb els resultats i les tasques desenvolupades durant la intervenció.`,
+    pal26_b1_note: `Juny – Juliol 2026 · En curs`,
+    pal26_ver_2025: `Veure intervenció 2025 →`,
+    idx_card5_meta: `Tremp, Lleida · 2026`,
+    idx_card5_h3: `Palau de Noguera (2026)`,
+    cl_palau26: `Palau de Noguera <span>Tremp · 2026</span>`,
+
+    /* --- Pràctiques MNAC --- */
+    mnac_eyebrow: `Pràctiques curriculars · Pintura sobre tela`,
+    mnac_meta3: `Tutoritzat per Teresa Schreibweis`,
+    mnac_b1_h2: `Un mes i mig al <span class="accent">MNAC</span>.`,
+    mnac_b1_p1: `Al final del quart curs del Grau en Conservació i Restauració de Béns Culturals, vaig realitzar les pràctiques curriculars al Museu Nacional d'Art de Catalunya (MNAC), dins l'especialitat de pintura sobre tela. Les pràctiques, organitzades per l'ESCRBCC, van estar tutoritzades per Teresa Schreibweis i van tenir una durada d'un mes i mig.`,
+    mnac_eyebrow: `Pràctiques curriculars · Pintura sobre tela`,
+    mnac_meta3: `Tutoritzat per Teresa Schreibweis`,
+    mnac_b1_note: `Pràctiques curriculars · ESCRBCC · 2026`,
+    mnac_b2_h2: `Conservació <span class="accent">preventiva</span>.`,
+    mnac_b2_p1: `Durant aquest període vaig participar en diverses tasques vinculades a la conservació i restauració de les col·leccions del museu. Entre aquestes, destaca la revisió de les sales de la col·lecció d'Art Modern I, realitzant controls de conservació preventiva, detecció d'incidències, seguiment de l'estat de les obres i tasques de manteniment bàsic.`,
+    mnac_b2_note: `Col·lecció Art Modern I · Conservació preventiva`,
+    mnac_b3_h2: `Marc de <span class="accent">Milicià ferit</span>.`,
+    mnac_b3_p1: `També vaig intervenir el marc de l'obra Milicià ferit de Francisco Mateos. La intervenció va incloure la documentació gràfica, l'elaboració de mapes d'alteracions, l'estucat de les pèrdues i la posterior reintegració cromàtica.`,
+    mnac_b3_note: `Francisco Mateos · Intervenció de marc`,
+    mnac_b4_h2: `<span class="accent">Safareig</span> de Josep Frau.`,
+    mnac_b4_p1: `A més, vaig participar en la conservació-restauració de l'obra Safareig de Josep Frau, una pintura a l'oli sobre tela que presentava aixecaments de capa pictòrica amb risc de despreniment. La intervenció es va centrar en la fixació dels aixecaments per recuperar-ne l'estabilitat estructural, seguida d'una neteja superficial mitjançant l'aplicació de solucions tampó.`,
+    mnac_b4_note: `Josep Frau · Fixació i neteja superficial`,
+    mnac_b5_h2: `Préstecs i <span class="accent">exposicions</span>.`,
+    mnac_b5_p1: `Paral·lelament, vaig col·laborar en tasques d'embalatge i desembalatge d'obres destinades a préstecs i exposicions temporals, adquirint experiència en la manipulació segura de béns culturals i en els protocols de moviment d'obres dins l'àmbit museístic.`,
+    mnac_b5_p2: `Aquesta estada em va permetre conèixer de primera mà el funcionament d'un museu nacional i el treball diari dels professionals de la conservació-restauració, ampliant la meva experiència tant en intervenció directa sobre obra com en conservació preventiva i gestió de col·leccions.`,
+    mnac_b5_note: `Embalatge · Préstecs · Exposicions temporals`,
+    idx_card6_meta: `Barcelona · 2026`,
+    idx_card6_h3: `Pràctiques MNAC`,
+    cl_mnac: `Pràctiques MNAC <span>Barcelona · 2026</span>`
   };
 
   function apply(lang) {

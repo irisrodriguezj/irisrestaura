@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pràctiques al MNAC — IRISRESTAURA</title>
+  <meta name="description" content="Pràctiques curriculars al Museu Nacional d'Art de Catalunya (MNAC), especialitat pintura sobre tela. Tutoritzades per Teresa Schreibweis." />
+  <meta property="og:title" content="Pràctiques al MNAC — IRISRESTAURA" />
+  <meta property="og:description" content="Conservació preventiva, intervenció de marc i restauració de pintura sobre tela al MNAC, Barcelona." />
+  <meta property="og:image" content="../assets/trabajos/mnac/portada.jpg" />
+  <link rel="icon" type="image/png" href="../assets/favicon.png?v=2" />
+  <link rel="apple-touch-icon" href="../assets/favicon.png?v=2" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --rose-50: #fff0f4; --rose-100: #ffd6de; --rose-200: #ffbdc5;
+      --rose-300: #c06080; --rose-500: #670626; --ink: #2a0a14;
+      --muted: #8a3d52; --paper: #fffdf9; --line: rgba(103,6,38,.18);
+      --shadow: 0 24px 80px rgba(103,6,38,.12); --radius: 28px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body { margin: 0; color: var(--ink); background: #670626; font-family: Inter, system-ui, sans-serif; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, .serif { font-family: "Cormorant Garamond", Georgia, serif; }
+
+    .noise { position: fixed; inset: 0; pointer-events: none; opacity: .25; z-index: 50;
+      background-image: linear-gradient(rgba(255,255,255,.45) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.35) 1px, transparent 1px);
+      background-size: 42px 42px; mask-image: linear-gradient(to bottom, black, transparent 82%); }
+
+    .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+
+    .nav { position: fixed; top: 18px; left: 50%; transform: translateX(-50%); width: min(1180px, calc(100% - 32px));
+      display: flex; justify-content: space-between; align-items: center; padding: 12px 14px 12px 18px;
+      border: 1px solid var(--line); border-radius: 999px; background: rgba(255,253,249,.74);
+      backdrop-filter: blur(18px); box-shadow: 0 12px 40px rgba(68,30,42,.08); z-index: 30; }
+    .brand { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 700; letter-spacing: .12em; font-size: clamp(18px,2vw,24px); }
+    .nav-links { display: flex; gap: 4px; align-items: center; font-size: 12px; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); }
+    .nav-links a { padding: 10px 12px; border-radius: 999px; transition: .25s ease; }
+    .nav-links a:hover { background: var(--rose-100); color: var(--ink); }
+    .nav-links .pill { background: var(--ink); color: var(--paper); padding: 10px 16px; border: none; border-radius: 999px; cursor: pointer; font-family: inherit; font-size: 12px; letter-spacing: .09em; text-transform: uppercase; }
+    .nav-links .pill:hover { background: var(--rose-500); color: white; }
+    .lang-switch { display: inline-flex; gap: 4px; margin-left: 6px; }
+    .lang-btn { border: 1px solid var(--line); background: rgba(255,255,255,.5); color: var(--muted); border-radius: 999px; padding: 8px 9px; font-size: 10px; letter-spacing: .06em; cursor: pointer; font-family: inherit; text-transform: uppercase; transition: .2s ease; }
+    .lang-btn:hover { background: rgba(255,255,255,.85); color: var(--ink); }
+    .lang-btn.is-active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+    .contact-modal-overlay { position: fixed; inset: 0; z-index: 200; background: rgba(42,26,31,.55); backdrop-filter: blur(8px); display: none; align-items: center; justify-content: center; padding: 24px; }
+    .contact-modal-overlay.is-open { display: flex; }
+    .contact-modal-box { background: var(--paper); border-radius: calc(var(--radius) + 12px); border: 1px solid var(--line); box-shadow: 0 32px 80px rgba(42,26,31,.24); padding: clamp(32px,5vw,56px); max-width: 480px; width: 100%; position: relative; }
+    .contact-modal-close { position: absolute; top: 16px; right: 16px; border: 1px solid var(--line); background: rgba(255,255,255,.7); border-radius: 999px; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 16px; color: var(--muted); transition: .2s ease; }
+    .contact-modal-close:hover { background: white; color: var(--ink); }
+    .contact-modal-title { margin: 16px 0 28px; font-size: clamp(36px,6vw,58px); line-height: .9; letter-spacing: -.03em; font-weight: 500; font-family: "Cormorant Garamond", Georgia, serif; }
+    .contact-items { display: flex; flex-direction: column; gap: 12px; }
+    .contact-item { display: flex; align-items: center; gap: 14px; padding: 14px 18px; border-radius: 14px; border: 1px solid var(--line); background: rgba(255,255,255,.6); transition: .2s ease; color: var(--ink); }
+    .contact-item:hover { background: white; transform: translateX(4px); }
+    .contact-item-label { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); min-width: 72px; }
+    .contact-item-value { font-size: 14px; color: var(--ink); }
+
+    .back-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 110px; margin-bottom: 36px;
+      padding: 10px 18px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.55);
+      font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); transition: .25s ease; }
+    .back-link:hover { background: white; color: var(--ink); transform: translateX(-4px); }
+
+    .work-header { padding-bottom: 44px; }
+    .eyebrow { display: inline-flex; gap: 8px; align-items: center; padding: 8px 14px; border: 1px solid var(--line);
+      border-radius: 999px; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); background: rgba(255,255,255,.55); }
+    .work-title { margin: 22px 0 18px; font-size: clamp(48px,7.5vw,110px); line-height: .88; letter-spacing: -.04em; font-weight: 500; max-width: 18ch; }
+    .work-meta { display: flex; flex-wrap: wrap; gap: 12px 28px; color: var(--muted); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
+    .work-meta span { position: relative; }
+    .work-meta span + span:before { content: ""; position: absolute; left: -16px; top: 50%; width: 4px; height: 4px; border-radius: 50%; background: var(--rose-500); transform: translateY(-50%); }
+
+    .story { display: flex; flex-direction: column; gap: clamp(56px,7vw,96px); padding-bottom: 88px; }
+    .story-block { display: grid; align-items: center; gap: clamp(28px,5vw,64px); }
+    .story-block.split { grid-template-columns: 1fr 1fr; }
+    .story-block.split.weighted-text { grid-template-columns: 1.3fr .7fr; }
+    .story-block.split.reverse > *:first-child { order: 2; }
+    .story-block.split.reverse > *:last-child { order: 1; }
+
+    .story-text h2 { margin: 0 0 18px; font-size: clamp(30px,4vw,54px); line-height: .98; letter-spacing: -.03em; font-weight: 500; }
+    .story-text h2 .accent { font-style: italic; }
+    .story-text p { color: var(--muted); line-height: 1.85; margin: 0 0 14px; font-size: 16px; text-align: justify; }
+    .story-text .note { display: inline-block; margin-top: 6px; padding: 8px 14px; border-radius: 999px; background: rgba(255,255,255,.55); border: 1px solid var(--line); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+    .lead-text { text-align: center; }
+
+    .story-media { border-radius: calc(var(--radius) + 6px); overflow: hidden; box-shadow: var(--shadow); border: 1px solid rgba(255,255,255,.7); background: var(--rose-50); position: relative; }
+    .story-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .story-media.portrait { aspect-ratio: 3/4; }
+    .story-media.wide { aspect-ratio: 16/9; }
+    .story-media.square { aspect-ratio: 1/1; }
+
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .9s ease, transform .9s cubic-bezier(.2,.8,.2,1); }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+
+    .work-footer { padding: 56px 0 96px; display: flex; flex-direction: column; gap: 24px; align-items: center; text-align: center; border-top: 1px solid var(--line); }
+    .footer-buttons { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 22px; border-radius: 999px; border: 1px solid var(--line); font-size: 12px; text-transform: uppercase; letter-spacing: .12em; transition: .25s ease; }
+    .button.primary { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+    .button.primary:hover { background: var(--rose-500); border-color: var(--rose-500); transform: translateY(-2px); }
+    .footer { padding: 30px 0 42px; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+    .footer .container { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+
+    /* Overrides claret */
+    .work-title { color: var(--paper); }
+    .work-meta span { color: rgba(255,253,249,.65); }
+    .work-meta span + span:before { background: rgba(255,253,249,.4); }
+    .back-link { color: rgba(255,253,249,.8); border-color: rgba(255,253,249,.25); background: rgba(255,253,249,.1); }
+    .back-link:hover { background: rgba(255,253,249,.2); color: var(--paper); }
+    .story-text h2 { color: var(--paper); }
+    .story-text h2 .accent { color: #FFBDC5; }
+    .story-text p { color: rgba(255,253,249,.78); }
+    .lead-text p { color: rgba(255,253,249,.78); }
+    .story-text .note { background: rgba(255,253,249,.16); color: var(--paper); border-color: rgba(255,253,249,.3); }
+    .button.primary { background: #FFBDC5; color: #670626; border-color: #FFBDC5; }
+    .button.primary:hover { background: white; border-color: white; color: #670626; transform: translateY(-2px); }
+    .button:not(.primary) { background: rgba(255,253,249,.12); color: var(--paper); border-color: rgba(255,253,249,.3); }
+    .button:not(.primary):hover { background: rgba(255,253,249,.25); }
+    .footer { color: rgba(255,253,249,.5); }
+    .work-footer { border-top-color: rgba(255,253,249,.2); }
+
+    @media (max-width: 960px) {
+      .nav-links a:not(.pill) { display: none; }
+      .story-block.split, .story-block.split.weighted-text { grid-template-columns: 1fr; }
+      .story-block.split.reverse > *:first-child { order: 1; }
+      .story-block.split.reverse > *:last-child { order: 2; }
+      .story-block.split .story-media { order: 1; }
+      .story-block.split .story-text { order: 2; }
+    }
+    @media (max-width: 620px) {
+      .container { width: min(100% - 24px, 1180px); }
+      .nav { top: 10px; width: calc(100% - 20px); padding: 10px 12px; }
+      .back-link { margin-top: 86px; margin-bottom: 22px; }
+      .work-title { font-size: clamp(40px,12vw,64px); }
+      .footer .container { display: grid; gap: 6px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+
+  <header class="nav" aria-label="Navegació principal">
+    <a href="../index.html#inicio" class="brand">IRISRESTAURA</a>
+    <nav class="nav-links">
+      <a href="../index.html#sobre-mi" data-i18n="nav_sobremi">Sobre mí</a>
+      <a href="../index.html#trabajos" data-i18n="nav_trabajos">Trabajos</a>
+      <button class="pill" data-open-contact type="button" data-i18n="nav_contacto">Contacto</button>
+      <span class="lang-switch">
+        <button class="lang-btn" data-lang="ca" type="button">CAT</button>
+        <button class="lang-btn" data-lang="es" type="button">CAST</button>
+      </span>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <a class="back-link" href="../index.html#trabajos" data-i18n="back_link">← Volver a trabajos</a>
+
+      <header class="work-header">
+        <span class="eyebrow" data-i18n="mnac_eyebrow">Prácticas curriculares · Pintura sobre tela</span>
+        <h1 class="work-title">Prácticas MNAC</h1>
+        <div class="work-meta">
+          <span>Barcelona</span>
+          <span>2026</span>
+          <span data-i18n="mnac_meta3">Tutorizado por Teresa Schreibweis</span>
+        </div>
+      </header>
+
+      <div class="story">
+
+        <!-- Bloque 1: Introducción -->
+        <section class="story-block reveal">
+          <div class="story-text lead-text" style="max-width:760px;margin:0 auto;">
+            <h2 data-i18n="mnac_b1_h2">Un mes y medio en el <span class="accent">MNAC</span>.</h2>
+            <p data-i18n="mnac_b1_p1">Al final del cuarto curso del Grado en Conservación y Restauración de Bienes Culturales, realicé las prácticas curriculares en el Museu Nacional d'Art de Catalunya (MNAC), dentro de la especialidad de pintura sobre tela. Las prácticas, organizadas por la ESCRBCC, estuvieron tutorizadas por Teresa Schreibweis y tuvieron una duración de un mes y medio.</p>
+            <span class="note" data-i18n="mnac_b1_note">Prácticas curriculares · ESCRBCC · 2026</span>
+          </div>
+        </section>
+
+        <!-- Bloque 2: Conservació preventiva -->
+        <section class="story-block reveal">
+          <div class="story-text lead-text" style="max-width:760px;margin:0 auto;">
+            <h2 data-i18n="mnac_b2_h2">Conservación <span class="accent">preventiva</span>.</h2>
+            <p data-i18n="mnac_b2_p1">Durante este período participé en diversas tareas vinculadas a la conservación y restauración de las colecciones del museo. Entre estas, destaca la revisión de las salas de la colección de Arte Moderno I, realizando controles de conservación preventiva, detección de incidencias, seguimiento del estado de las obras y tareas de mantenimiento básico.</p>
+            <span class="note" data-i18n="mnac_b2_note">Colección Arte Moderno I · Conservación preventiva</span>
+          </div>
+        </section>
+
+        <!-- Bloque 3: Milicià ferit -->
+        <section class="story-block reveal">
+          <div class="story-text lead-text" style="max-width:760px;margin:0 auto;">
+            <h2 data-i18n="mnac_b3_h2">Marco de <span class="accent">Milicià ferit</span>.</h2>
+            <p data-i18n="mnac_b3_p1">También intervine el marco de la obra Milicià ferit de Francisco Mateos. La intervención incluyó la documentación gráfica, la elaboración de mapas de alteraciones, el estucado de las pérdidas y la posterior reintegración cromática.</p>
+            <span class="note" data-i18n="mnac_b3_note">Francisco Mateos · Intervención de marco</span>
+          </div>
+        </section>
+
+        <!-- Bloque 4: Safareig -->
+        <section class="story-block reveal">
+          <div class="story-text lead-text" style="max-width:760px;margin:0 auto;">
+            <h2 data-i18n="mnac_b4_h2"><span class="accent">Safareig</span> de Josep Frau.</h2>
+            <p data-i18n="mnac_b4_p1">Además, participé en la conservación-restauración de la obra Safareig de Josep Frau, una pintura al óleo sobre tela que presentaba levantamientos de capa pictórica con riesgo de desprendimiento. La intervención se centró en la fijación de los levantamientos para recuperar su estabilidad estructural, seguida de una limpieza superficial mediante la aplicación de soluciones tampón.</p>
+            <span class="note" data-i18n="mnac_b4_note">Josep Frau · Fijación y limpieza superficial</span>
+          </div>
+        </section>
+
+        <!-- Bloque 5: Embalatge + reflexió -->
+        <section class="story-block reveal">
+          <div class="story-text lead-text" style="max-width:760px;margin:0 auto;">
+            <h2 data-i18n="mnac_b5_h2">Préstamos y <span class="accent">exposiciones</span>.</h2>
+            <p data-i18n="mnac_b5_p1">Paralelamente, colaboré en tareas de embalaje y desembalaje de obras destinadas a préstamos y exposiciones temporales, adquiriendo experiencia en la manipulación segura de bienes culturales y en los protocolos de movimiento de obras dentro del ámbito museístico.</p>
+            <p data-i18n="mnac_b5_p2">Esta estancia me permitió conocer de primera mano el funcionamiento de un museo nacional y el trabajo diario de los profesionales de la conservación-restauración, ampliando mi experiencia tanto en intervención directa sobre obra como en conservación preventiva y gestión de colecciones.</p>
+            <span class="note" data-i18n="mnac_b5_note">Embalaje · Préstamos · Exposiciones temporales</span>
+          </div>
+        </section>
+
+      </div>
+
+      <section class="work-footer">
+        <div class="footer-buttons">
+          <a class="button primary" href="../index.html#trabajos" data-i18n="foot_ver">Ver todos los trabajos</a>
+          <button class="button" data-open-contact type="button" data-i18n="foot_contacto">Contacto</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <span>IRISRESTAURA © 2026</span>
+      <span data-i18n="footer_cr">Conservación y restauración</span>
+    </div>
+  </footer>
+
+  <div class="contact-modal-overlay" id="contactModal" aria-hidden="true">
+    <div class="contact-modal-box">
+      <button class="contact-modal-close" id="closeContactModal" aria-label="Cerrar">&#x2715;</button>
+      <span class="eyebrow" data-i18n="mod_eyebrow">Contacto</span>
+      <h2 class="contact-modal-title" data-i18n="mod_title">Hablemos.</h2>
+      <div class="contact-items">
+        <a class="contact-item" href="https://www.instagram.com/irisrestaura/" target="_blank" rel="noreferrer">
+          <span class="contact-item-label">Instagram</span>
+          <span class="contact-item-value">@irisrestaura</span>
+        </a>
+        <a class="contact-item" href="mailto:iris.rodriguez.04.13@gmail.com">
+          <span class="contact-item-label" data-i18n="mod_correo">Correo</span>
+          <span class="contact-item-value">iris.rodriguez.04.13@gmail.com</span>
+        </a>
+        <a class="contact-item" href="tel:+34652244068">
+          <span class="contact-item-label" data-i18n="mod_tel">Teléfono</span>
+          <span class="contact-item-value">+34 652 244 068</span>
+        </a>
+        <a class="contact-item" href="https://www.linkedin.com/in/iris-rodriguez-jimenez/" target="_blank" rel="noreferrer">
+          <span class="contact-item-label">LinkedIn</span>
+          <span class="contact-item-value">iris-rodriguez-jimenez</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/lang.js"></script>
+  <script>
+    (function() {
+      const modal = document.getElementById('contactModal');
+      const closeBtn = document.getElementById('closeContactModal');
+      const open = () => { modal.classList.add('is-open'); modal.setAttribute('aria-hidden','false'); };
+      const close = () => { modal.classList.remove('is-open'); modal.setAttribute('aria-hidden','true'); };
+      document.querySelectorAll('[data-open-contact]').forEach(b => b.addEventListener('click', open));
+      closeBtn.addEventListener('click', close);
+      modal.addEventListener('click', e => { if (e.target === modal) close(); });
+      window.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('is-open')) close(); });
+    })();
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>

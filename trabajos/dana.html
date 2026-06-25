@@ -423,7 +423,7 @@
 
       <div class="story">
 
-        <!-- Bloque 1: texto principal + foto -->
+        <!-- Bloque 1: texto principal + vídeo (1) -->
         <section class="story-block split weighted-text reveal">
           <div class="story-text">
             <h2 data-i18n="dana_b1_h2">Salvar la <span class="accent">memoria</span> fotográfica.</h2>
@@ -431,27 +431,23 @@
             <p data-i18n="dana_b1_p2">El voluntariado se desarrolló en el Museo Comarcal de l'Horta Sur (Torrent, València) durante una semana. Las tareas se organizaron en una cadena de trabajo destinada a estabilizar y recuperar las fotografías dañadas.</p>
             <span class="note" data-i18n="dana_b1_note">Campaña #SalvemLesFotos · 2025</span>
           </div>
-          <div class="story-media portrait">
-            <img src="../assets/trabajos/dana/foto-01.jpg" alt="Proceso de recuperación de fotografías DANA" loading="lazy" />
+          <div class="story-media portrait video-card">
+            <video autoplay loop muted playsinline preload="metadata">
+              <source src="../assets/trabajos/dana/video-01.mov" type="video/mp4">
+            </video>
           </div>
         </section>
 
-        <!-- Bloque 2: 3 fotos del proceso -->
-        <section class="story-block reveal">
-          <div class="trio-media-pair">
-            <div class="story-media portrait">
-              <img src="../assets/trabajos/dana/proceso-01.jpg" alt="Retirada de fotografías de los álbumes" loading="lazy" />
-            </div>
-            <div class="story-media portrait">
-              <img src="../assets/trabajos/dana/proceso-02.jpg" alt="Limpieza del reverso y anverso" loading="lazy" />
-            </div>
-            <div class="story-media portrait">
-              <img src="../assets/trabajos/dana/proceso-03.jpg" alt="Secado controlado sobre papeles secantes" loading="lazy" />
-            </div>
+        <!-- Bloque 2: vídeo (2) ancho completo -->
+        <section class="story-block full reveal">
+          <div class="story-media video-card cinema">
+            <video autoplay loop muted playsinline preload="metadata">
+              <source src="../assets/trabajos/dana/video-02.mp4" type="video/mp4">
+            </video>
           </div>
         </section>
 
-        <!-- Bloque 3: texto proceso + foto -->
+        <!-- Bloque 3: texto proceso + foto (foto-01 ya es portada, usamos foto-02) -->
         <section class="story-block split reverse reveal">
           <div class="story-media portrait">
             <img src="../assets/trabajos/dana/foto-02.jpg" alt="Cadena de trabajo de voluntarios" loading="lazy" />
@@ -463,7 +459,23 @@
           </div>
         </section>
 
-        <!-- Bloque 4: texto reflexivo -->
+        <!-- Bloque 4: vídeos (3) y (4) en duo -->
+        <section class="story-block duo reveal">
+          <div class="story-media-pair">
+            <div class="story-media portrait video-card">
+              <video autoplay loop muted playsinline preload="metadata">
+                <source src="../assets/trabajos/dana/video-03.mov" type="video/mp4">
+              </video>
+            </div>
+            <div class="story-media portrait video-card">
+              <video autoplay loop muted playsinline preload="metadata">
+                <source src="../assets/trabajos/dana/video-04.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </section>
+
+        <!-- Bloque 5: texto reflexivo -->
         <section class="story-block reveal">
           <div class="story-text lead-text" style="max-width:760px;margin:0 auto;">
             <p data-i18n="dana_b4_p">Esta experiencia me permitió participar en una actuación de emergencia sobre patrimonio fotográfico y comprender la importancia de la coordinación entre equipos para preservar la memoria documental y personal de las familias afectadas.</p>
