@@ -91,6 +91,12 @@
     .nav-links .pill { background: var(--ink); color: var(--paper); padding: 10px 16px; border: none; border-radius: 999px; cursor: pointer; font-family: inherit; font-size: 12px; letter-spacing: .09em; text-transform: uppercase; }
     .nav-links .pill:hover { background: var(--rose-500); color: white; }
 
+    /* Selector de idioma */
+    .lang-switch { display: inline-flex; gap: 4px; margin-left: 6px; }
+    .lang-btn { border: 1px solid var(--line); background: rgba(255,255,255,.5); color: var(--muted); border-radius: 999px; padding: 8px 9px; font-size: 10px; letter-spacing: .06em; cursor: pointer; font-family: inherit; text-transform: uppercase; transition: .2s ease; }
+    .lang-btn:hover { background: rgba(255,255,255,.85); color: var(--ink); }
+    .lang-btn.is-active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
     /* Contact modal */
     .contact-modal-overlay { position: fixed; inset: 0; z-index: 200; background: rgba(42,26,31,.55); backdrop-filter: blur(8px); display: none; align-items: center; justify-content: center; padding: 24px; }
     .contact-modal-overlay.is-open { display: flex; }
@@ -487,23 +493,27 @@
   <header class="nav" aria-label="Navegación principal">
     <a href="../index.html#inicio" class="brand">IRISRESTAURA</a>
     <nav class="nav-links">
-      <a href="../index.html#trabajos">Trabajos</a>
-      <a href="../index.html#sobre-mi">Sobre mí</a>
-      <button class="pill" data-open-contact type="button">Contacto</button>
+      <a href="../index.html#trabajos" data-i18n="nav_trabajos">Trabajos</a>
+      <a href="../index.html#sobre-mi" data-i18n="nav_sobremi">Sobre mí</a>
+      <button class="pill" data-open-contact type="button" data-i18n="nav_contacto">Contacto</button>
+      <span class="lang-switch">
+        <button class="lang-btn" data-lang="ca" type="button">CAT</button>
+        <button class="lang-btn" data-lang="es" type="button">CAST</button>
+      </span>
     </nav>
   </header>
 
   <main>
     <div class="container">
-      <a class="back-link" href="../index.html#trabajos">← Volver a trabajos</a>
+      <a class="back-link" href="../index.html#trabajos" data-i18n="back_link">← Volver a trabajos</a>
 
       <header class="work-header">
-        <span class="eyebrow">Trabajo · Prácticas dirigidas</span>
+        <span class="eyebrow" data-i18n="pal_eyebrow">Trabajo · Prácticas dirigidas</span>
         <h1 class="work-title">Palau de Noguera</h1>
         <div class="work-meta">
           <span>Pallars Jussà</span>
           <span>2025</span>
-          <span>Pau Claramonte y Lídia Balust · ESCRBCC</span>
+          <span data-i18n="pal_meta3">Pau Claramonte y Lídia Balust · ESCRBCC</span>
         </div>
       </header>
 
@@ -512,10 +522,10 @@
         <!-- B1: texto principal + foto vista trasera -->
         <section class="story-block split weighted-text reveal">
           <div class="story-text">
-            <h2 style="white-space:nowrap;font-size:clamp(20px,2.8vw,44px);">Retablo barroco del <span class="accent">siglo XVIII</span>.</h2>
-            <p>Restauración del retablo de la Virgen del Rosario de la iglesia parroquial de Sant Joan Baptista de Palau de Noguera (Pallars Jussà). Un retablo barroco de 505 cm de altura, 331 cm de anchura y 135 cm de profundidad, realizado con dorados, colraduras y pintura al temple sobre madera. Las esculturas actuales, de yeso policromado, son del siglo XX y sustituyen a las originales, destruidas durante la Guerra Civil Española.</p>
-            <p>Prácticas organizadas por el ESCRBCC y coordinadas por los profesores Pau Claramonte y Lídia Balust, desarrolladas a lo largo de dos semanas.</p>
-            <span class="note">Fase 01 · Documentación y examen organoléptico</span>
+            <h2 style="white-space:nowrap;font-size:clamp(20px,2.8vw,44px);" data-i18n="pal_b1_h2">Retablo barroco del <span class="accent">siglo XVIII</span>.</h2>
+            <p data-i18n="pal_b1_p1">Restauración del retablo de la Virgen del Rosario de la iglesia parroquial de Sant Joan Baptista de Palau de Noguera (Pallars Jussà). Un retablo barroco de 505 cm de altura, 331 cm de anchura y 135 cm de profundidad, realizado con dorados, colraduras y pintura al temple sobre madera. Las esculturas actuales, de yeso policromado, son del siglo XX y sustituyen a las originales, destruidas durante la Guerra Civil Española.</p>
+            <p data-i18n="pal_b1_p2">Prácticas organizadas por el ESCRBCC y coordinadas por los profesores Pau Claramonte y Lídia Balust, desarrolladas a lo largo de dos semanas.</p>
+            <span class="note" data-i18n="pal_b1_note">Fase 01 · Documentación y examen organoléptico</span>
           </div>
           <div class="story-media portrait">
             <img src="../assets/trabajos/palau-de-noguera/portada.jpg" alt="Detalle de la limpieza con pincel y aspirador sobre el retablo" loading="lazy" />
@@ -539,18 +549,18 @@
             </video>
           </div>
           <div class="story-text">
-            <h2 style="white-space:nowrap;font-size:clamp(18px,2.4vw,38px);">Consolidación, limpieza y <span class="accent">reintegración</span>.</h2>
-            <p>Los trabajos se centraron en la consolidación de la policromía y de los dorados originales, que presentaban levantamientos y riesgo de desprendimiento. Una vez estabilizada la capa pictórica, se procedió a la documentación gráfica y el examen organoléptico para determinar el estado de conservación.</p>
-            <p>Posteriormente, se llevó a cabo una limpieza mecánica y fisicoquímica de las diferentes superficies: dorados, policromías, madera vista y elementos escultóricos.</p>
-            <span class="note">Fase 02 · Consolidación y limpieza</span>
+            <h2 style="white-space:nowrap;font-size:clamp(18px,2.4vw,38px);" data-i18n="pal_b3_h2">Consolidación, limpieza y <span class="accent">reintegración</span>.</h2>
+            <p data-i18n="pal_b3_p1">Los trabajos se centraron en la consolidación de la policromía y de los dorados originales, que presentaban levantamientos y riesgo de desprendimiento. Una vez estabilizada la capa pictórica, se procedió a la documentación gráfica y el examen organoléptico para determinar el estado de conservación.</p>
+            <p data-i18n="pal_b3_p2">Posteriormente, se llevó a cabo una limpieza mecánica y fisicoquímica de las diferentes superficies: dorados, policromías, madera vista y elementos escultóricos.</p>
+            <span class="note" data-i18n="pal_b3_note">Fase 02 · Consolidación y limpieza</span>
           </div>
         </section>
 
         <!-- B4: texto centrado + 2 vídeos lado a lado -->
         <section class="story-block duo reveal">
           <div class="story-text">
-            <h2 style="white-space:nowrap;font-size:clamp(22px,3vw,46px);">Detalles del <span class="accent">proceso</span>.</h2>
-            <p>Fragmentos del trabajo diario: el gesto sobre la superficie, el detalle ornamental y el ritmo de la intervención.</p>
+            <h2 style="white-space:nowrap;font-size:clamp(22px,3vw,46px);" data-i18n="pal_b4_h2">Detalles del <span class="accent">proceso</span>.</h2>
+            <p data-i18n="pal_b4_p">Fragmentos del trabajo diario: el gesto sobre la superficie, el detalle ornamental y el ritmo de la intervención.</p>
           </div>
           <div class="story-media-pair">
             <div class="story-media video-card portrait">
@@ -569,9 +579,9 @@
         <!-- B5: texto + foto close-up dorado -->
         <section class="story-block split weighted-media reveal">
           <div class="story-text">
-            <h2 style="white-space:nowrap;font-size:clamp(22px,3vw,46px);">Reintegración <span class="accent">cromática</span>.</h2>
-            <p>Debido a la duración limitada del proyecto, no fue posible realizar el estucado de las pérdidas. Se efectuó una reintegración cromática de los perímetros de las lagunas para minimizar su impacto visual y mejorar la lectura del conjunto.</p>
-            <span class="note">Fase 03 · Reintegración cromática</span>
+            <h2 style="white-space:nowrap;font-size:clamp(22px,3vw,46px);" data-i18n="pal_b5_h2">Reintegración <span class="accent">cromática</span>.</h2>
+            <p data-i18n="pal_b5_p">Debido a la duración limitada del proyecto, no fue posible realizar el estucado de las pérdidas. Se efectuó una reintegración cromática de los perímetros de las lagunas para minimizar su impacto visual y mejorar la lectura del conjunto.</p>
+            <span class="note" data-i18n="pal_b5_note">Fase 03 · Reintegración cromática</span>
           </div>
           <div class="story-media portrait">
             <img src="../assets/trabajos/palau-de-noguera/foto-03.jpg" alt="Detalle del dorado policromado sobre el cuerpo del retablo" loading="lazy" />
@@ -593,16 +603,16 @@
             <img src="../assets/trabajos/palau-de-noguera/foto-04.jpg" alt="Limpieza con pincel sobre zona estrecha del retablo" loading="lazy" />
           </div>
           <div class="story-text">
-            <h2 style="white-space:nowrap;font-size:clamp(22px,3vw,46px);">Trabajo en <span class="accent">equipo</span>.</h2>
-            <p>Trabajar en un retablo de estas dimensiones me permitió profundizar en los procesos de consolidación y limpieza aplicados a estructuras policromadas y doradas, así como reforzar las competencias de trabajo en equipo y coordinación en una intervención de gran formato.</p>
-            <span class="note">Competencias · gran formato</span>
+            <h2 style="white-space:nowrap;font-size:clamp(22px,3vw,46px);" data-i18n="pal_b7_h2">Trabajo en <span class="accent">equipo</span>.</h2>
+            <p data-i18n="pal_b7_p">Trabajar en un retablo de estas dimensiones me permitió profundizar en los procesos de consolidación y limpieza aplicados a estructuras policromadas y doradas, así como reforzar las competencias de trabajo en equipo y coordinación en una intervención de gran formato.</p>
+            <span class="note" data-i18n="pal_b7_note">Competencias · gran formato</span>
           </div>
         </section>
 
         <!-- B8: texto centrado + 2 vídeos finales -->
         <section class="story-block duo reveal">
           <div class="story-text">
-            <p>Todos los miembros del equipo participamos en las diferentes fases de la intervención, desde la consolidación hasta la limpieza y la reintegración cromática.</p>
+            <p data-i18n="pal_b8_p">Todos los miembros del equipo participamos en las diferentes fases de la intervención, desde la consolidación hasta la limpieza y la reintegración cromática.</p>
           </div>
           <div class="story-media-pair">
             <div class="story-media video-card portrait">
@@ -621,14 +631,14 @@
         <!-- B9: Antes y después con slider arrastrable -->
         <section class="story-block ba-block reveal">
           <div class="story-text">
-            <h2 style="white-space:nowrap;font-size:clamp(22px,3vw,46px);">Antes y <span class="accent">después</span>.</h2>
-            <p>El resultado del trabajo se mide en el cambio sobre la pieza. Arrastra el control para comparar el estado del retablo antes y después de la intervención.</p>
+            <h2 style="white-space:nowrap;font-size:clamp(22px,3vw,46px);" data-i18n="pal_b9_h2">Antes y <span class="accent">después</span>.</h2>
+            <p data-i18n="pal_b9_p">El resultado del trabajo se mide en el cambio sobre la pieza. Arrastra el control para comparar el estado del retablo antes y después de la intervención.</p>
           </div>
           <div class="ba-slider" id="ba-slider" style="--pos: 50">
             <img class="ba-img" src="../assets/trabajos/palau-de-noguera/antes.jpg" alt="Retablo antes de la intervención" loading="lazy" />
             <img class="ba-img ba-after" src="../assets/trabajos/palau-de-noguera/despues.jpg" alt="Retablo después de la limpieza" loading="lazy" />
-            <span class="before-after-label ba-label-before">Antes</span>
-            <span class="before-after-label despues ba-label-after">Después</span>
+            <span class="before-after-label ba-label-before" data-i18n="pal_ba_antes">Antes</span>
+            <span class="before-after-label despues ba-label-after" data-i18n="pal_ba_despues">Después</span>
             <div class="ba-handle" aria-hidden="true">
               <div class="ba-handle-circle"><span>‹</span><span>›</span></div>
             </div>
@@ -639,8 +649,8 @@
 
       <section class="work-footer">
 <div class="footer-buttons">
-          <a class="button primary" href="../index.html#trabajos">Ver todos los trabajos</a>
-          <button class="button" data-open-contact type="button">Contacto</button>
+          <a class="button primary" href="../index.html#trabajos" data-i18n="foot_ver">Ver todos los trabajos</a>
+          <button class="button" data-open-contact type="button" data-i18n="foot_contacto">Contacto</button>
         </div>
       </section>
     </div>
@@ -649,26 +659,26 @@
   <footer class="footer">
     <div class="container">
       <span>IRISRESTAURA © 2026</span>
-      <span>Conservación y restauración</span>
+      <span data-i18n="footer_cr">Conservación y restauración</span>
     </div>
   </footer>
 
   <div class="contact-modal-overlay" id="contactModal" aria-hidden="true">
     <div class="contact-modal-box">
       <button class="contact-modal-close" id="closeContactModal" aria-label="Cerrar">&#x2715;</button>
-      <span class="eyebrow">Contacto</span>
-      <h2 class="contact-modal-title">Hablemos.</h2>
+      <span class="eyebrow" data-i18n="mod_eyebrow">Contacto</span>
+      <h2 class="contact-modal-title" data-i18n="mod_title">Hablemos.</h2>
       <div class="contact-items">
         <a class="contact-item" href="https://www.instagram.com/irisrestaura/" target="_blank" rel="noreferrer">
           <span class="contact-item-label">Instagram</span>
           <span class="contact-item-value">@irisrestaura</span>
         </a>
         <a class="contact-item" href="mailto:iris.rodriguez.04.13@gmail.com">
-          <span class="contact-item-label">Correo</span>
+          <span class="contact-item-label" data-i18n="mod_correo">Correo</span>
           <span class="contact-item-value">iris.rodriguez.04.13@gmail.com</span>
         </a>
         <a class="contact-item" href="tel:+34652244068">
-          <span class="contact-item-label">Teléfono</span>
+          <span class="contact-item-label" data-i18n="mod_tel">Teléfono</span>
           <span class="contact-item-value">+34 652 244 068</span>
         </a>
         <a class="contact-item" href="https://www.linkedin.com/in/iris-rodriguez-jimenez/" target="_blank" rel="noreferrer">
@@ -679,6 +689,7 @@
     </div>
   </div>
 
+  <script src="../assets/lang.js"></script>
   <script>
     // Contact modal
     (function() {

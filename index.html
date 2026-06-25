@@ -112,6 +112,12 @@
     }
     .nav-links .pill:hover { background: var(--rose-500); color: white; }
 
+    /* Selector de idioma */
+    .lang-switch { display: inline-flex; gap: 4px; margin-left: 6px; }
+    .lang-btn { border: 1px solid var(--line); background: rgba(255,255,255,.5); color: var(--muted); border-radius: 999px; padding: 8px 9px; font-size: 10px; letter-spacing: .06em; cursor: pointer; font-family: inherit; text-transform: uppercase; transition: .2s ease; }
+    .lang-btn:hover { background: rgba(255,255,255,.85); color: var(--ink); }
+    .lang-btn.is-active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
     /* Contact modal */
     .contact-modal-overlay {
       position: fixed;
@@ -181,13 +187,13 @@
     .contact-item-value { font-size: 14px; color: var(--ink); }
 
     .hero {
-      min-height: 100svh;
+      min-height: 78svh;
       position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 85px 0 40px;
+      padding: 85px 0 16px;
       overflow: hidden;
       isolation: isolate;
     }
@@ -707,6 +713,8 @@
     /* Texto de sobre mí más legible (más oscuro/opaco) */
     .intro-card h2 { color: var(--ink); }
     .intro-card p { color: #3a0712; opacity: 1; }
+    /* La foto solo ocupa su altura natural: sin hueco vacío debajo */
+    .intro-card .portrait-card { align-self: start; }
     .button.primary { background: #FFBDC5; color: #670626; border-color: #FFBDC5; }
     .button.primary:hover { background: white; border-color: white; color: #670626; transform: translateY(-2px); }
     .button.secondary { background: rgba(255,253,249,.15); color: var(--paper); border-color: rgba(255,253,249,.35); }
@@ -731,9 +739,13 @@
   <header class="nav" aria-label="Navegación principal">
     <a href="#inicio" class="brand">IRISRESTAURA</a>
     <nav class="nav-links">
-      <a href="#trabajos">Trabajos</a>
-      <a href="#sobre-mi">Sobre mí</a>
-      <button class="pill" data-open-contact type="button">Contacto</button>
+      <a href="#trabajos" data-i18n="nav_trabajos">Trabajos</a>
+      <a href="#sobre-mi" data-i18n="nav_sobremi">Sobre mí</a>
+      <button class="pill" data-open-contact type="button" data-i18n="nav_contacto">Contacto</button>
+      <span class="lang-switch">
+        <button class="lang-btn" data-lang="ca" type="button">CAT</button>
+        <button class="lang-btn" data-lang="es" type="button">CAST</button>
+      </span>
     </nav>
   </header>
 
@@ -743,31 +755,31 @@
         <div class="carousel-track" id="carouselTrack">
           <article class="c-card" data-href="trabajos/parroquia-sant-agusti.html">
             <img src="assets/trabajos/parroquia-sant-agusti/portada.jpg" alt="Parroquia de Sant Agustí" />
-            <div class="c-label">Parroquia de Sant Agustí <span>Raval, Barcelona · 2025</span></div>
+            <div class="c-label" data-i18n="cl_parroquia">Parroquia de Sant Agustí <span>Raval, Barcelona · 2025</span></div>
           </article>
           <article class="c-card" data-href="trabajos/palau-de-noguera.html">
             <img src="assets/trabajos/palau-de-noguera/portada.jpg" alt="Palau de Noguera" />
-            <div class="c-label">Palau de Noguera <span>Tremp · 2025</span></div>
+            <div class="c-label" data-i18n="cl_palau">Palau de Noguera <span>Tremp · 2025</span></div>
           </article>
           <article class="c-card" data-href="trabajos/pintura-sobre-tela.html">
             <img src="assets/trabajos/pintura-sobre-tela/portada.jpg" alt="Pintura sobre tela" />
-            <div class="c-label">Pintura sobre tela <span>Museo de l'Empordà · 2025</span></div>
+            <div class="c-label" data-i18n="cl_pintura">Pintura sobre tela <span>Museo de l'Empordà · 2025</span></div>
           </article>
           <article class="c-card">
             <img src="assets/images/frame-detail.jpg" alt="Intervención sobre marco" />
-            <div class="c-label">Intervención <span>Marco histórico</span></div>
+            <div class="c-label" data-i18n="cl_interv">Intervención <span>Marco histórico</span></div>
           </article>
           <article class="c-card">
             <img src="assets/images/surface-retouching.jpg" alt="Reintegración" />
-            <div class="c-label">Reintegración <span>Proceso</span></div>
+            <div class="c-label" data-i18n="cl_reint">Reintegración <span>Proceso</span></div>
           </article>
           <article class="c-card">
             <img src="assets/images/studio-easel.jpg" alt="Taller" />
-            <div class="c-label">Taller <span>Estudio</span></div>
+            <div class="c-label" data-i18n="cl_taller">Taller <span>Estudio</span></div>
           </article>
           <article class="c-card">
             <img src="assets/images/portrait-before.jpg" alt="Documentación" />
-            <div class="c-label">Documentación <span>Antes / Después</span></div>
+            <div class="c-label" data-i18n="cl_doc">Documentación <span>Antes / Después</span></div>
           </article>
         </div>
         <button class="c-nav c-prev" aria-label="Anterior">←</button>
@@ -777,8 +789,8 @@
       <div class="c-dots" id="carouselDots"></div>
 
       <div class="hero-cta-wrap">
-        <a class="button primary" href="#trabajos">Ver trabajos</a>
-        <a class="button secondary" href="#contacto">Contacto</a>
+        <a class="button primary" href="#trabajos" data-i18n="idx_hero_ver">Ver trabajos</a>
+        <a class="button secondary" href="#contacto" data-i18n="idx_hero_contacto">Contacto</a>
       </div>
     </section>
 
@@ -790,12 +802,12 @@
           <img src="assets/images/iris-retrat.jpg" alt="Iris Rodríguez" />
         </figure>
         <div>
-          <span class="eyebrow">Sobre mí</span>
+          <span class="eyebrow" data-i18n="idx_sobre_eyebrow">Sobre mí</span>
           <h2 style="font-size: clamp(34px, 4.5vw, 60px);">Iris Rodríguez.</h2>
-          <p>Me llamo Iris Rodríguez y soy estudiante del Grado en Conservación y Restauración de Bienes Culturales, con especialización en pintura, en la Escola Superior de Conservació i Restauració de Béns Culturals de Catalunya (ESCRBCC).</p>
-          <p>A lo largo de mi formación he participado en diferentes proyectos de conservación-restauración de pintura sobre tabla, pintura sobre lienzo, pintura mural y retablos policromados, tanto en el ámbito académico como en prácticas profesionales. Estas experiencias me han permitido adquirir conocimientos técnicos en documentación, diagnóstico, consolidación, limpieza y reintegración, así como desarrollar una visión global de los procesos de intervención sobre el patrimonio cultural.</p>
-          <p>Soy una persona responsable, curiosa y con ganas de aprender. Me gusta trabajar en equipo y participar en proyectos que contribuyan a la preservación y difusión del patrimonio cultural. Actualmente busco seguir adquiriendo experiencia profesional y afrontar nuevos retos en el ámbito de la conservación-restauración.</p>
-          <button class="button secondary" data-open-contact type="button">Contacto</button>
+          <p data-i18n="idx_sobre_p1">Me llamo Iris Rodríguez y soy estudiante del Grado en Conservación y Restauración de Bienes Culturales, con especialización en pintura, en la Escola Superior de Conservació i Restauració de Béns Culturals de Catalunya (ESCRBCC).</p>
+          <p data-i18n="idx_sobre_p2">A lo largo de mi formación he participado en diferentes proyectos de conservación-restauración de pintura sobre tabla, pintura sobre lienzo, pintura mural y retablos policromados, tanto en el ámbito académico como en prácticas profesionales. Estas experiencias me han permitido adquirir conocimientos técnicos en documentación, diagnóstico, consolidación, limpieza y reintegración, así como desarrollar una visión global de los procesos de intervención sobre el patrimonio cultural.</p>
+          <p data-i18n="idx_sobre_p3">Soy una persona responsable, curiosa y con ganas de aprender. Me gusta trabajar en equipo y participar en proyectos que contribuyan a la preservación y difusión del patrimonio cultural. Actualmente busco seguir adquiriendo experiencia profesional y afrontar nuevos retos en el ámbito de la conservación-restauración.</p>
+          <button class="button secondary" data-open-contact type="button" data-i18n="idx_sobre_btn">Contacto</button>
         </div>
       </div>
     </section>
@@ -803,8 +815,8 @@
     <section id="trabajos" class="featured">
       <div class="container">
         <div class="section-head">
-          <h2>Trabajos</h2>
-          <p>Una selección de prácticas, intervenciones y proyectos personales. Cada uno cuenta su propio recorrido: estado inicial, decisiones, proceso y resultado.</p>
+          <h2 data-i18n="idx_trab_h2">Trabajos</h2>
+          <p data-i18n="idx_trab_p">Una selección de prácticas, intervenciones y proyectos personales. Cada uno cuenta su propio recorrido: estado inicial, decisiones, proceso y resultado.</p>
         </div>
 
         <div class="works-grid">
@@ -814,8 +826,8 @@
             </div>
             <div class="work-card-body">
               <span class="work-card-meta">Raval, Barcelona · 2025</span>
-              <h3>Prácticas en la parroquia de Sant Agustí</h3>
-              <span class="work-card-arrow">Ver trabajo →</span>
+              <h3 data-i18n="idx_card1_h3">Prácticas en la parroquia de Sant Agustí</h3>
+              <span class="work-card-arrow" data-i18n="idx_arrow">Ver trabajo →</span>
             </div>
           </a>
 
@@ -825,8 +837,8 @@
             </div>
             <div class="work-card-body">
               <span class="work-card-meta">Tremp · 2025</span>
-              <h3>Prácticas en la església de Palau de Noguera</h3>
-              <span class="work-card-arrow">Ver trabajo →</span>
+              <h3 data-i18n="idx_card2_h3">Prácticas en la església de Palau de Noguera</h3>
+              <span class="work-card-arrow" data-i18n="idx_arrow">Ver trabajo →</span>
             </div>
           </a>
 
@@ -835,9 +847,9 @@
               <img src="assets/trabajos/pintura-sobre-tela/portada.jpg" alt="Restauración de pintura sobre tela en el Museo de l'Empordà" loading="lazy" />
             </div>
             <div class="work-card-body">
-              <span class="work-card-meta">Museo de l'Empordà · 2025</span>
-              <h3>Restauración de pintura sobre tela</h3>
-              <span class="work-card-arrow">Ver trabajo →</span>
+              <span class="work-card-meta" data-i18n="idx_card3_meta">Museo de l'Empordà · 2025</span>
+              <h3 data-i18n="idx_card3_h3">Restauración de pintura sobre tela</h3>
+              <span class="work-card-arrow" data-i18n="idx_arrow">Ver trabajo →</span>
             </div>
           </a>
         </div>
@@ -848,11 +860,11 @@
     <section id="contacto">
       <div class="container">
         <div class="contact-card">
-          <span class="eyebrow">Contacto</span>
-          <h2>¿Crees que puedo encajar en tu proyecto?</h2>
-          <p>Si tienes un encargo, una consulta o quieres hablar sobre un proyecto de conservación y restauración, escríbeme.</p>
+          <span class="eyebrow" data-i18n="idx_contact_eyebrow">Contacto</span>
+          <h2 data-i18n="idx_contact_h2">¿Crees que puedo encajar en tu proyecto?</h2>
+          <p data-i18n="idx_contact_p">Si tienes un encargo, una consulta o quieres hablar sobre un proyecto de conservación y restauración, escríbeme.</p>
           <div class="hero-cta">
-            <button class="button primary" data-open-contact type="button">Contactar</button>
+            <button class="button primary" data-open-contact type="button" data-i18n="idx_contact_btn">Contactar</button>
           </div>
         </div>
       </div>
@@ -862,26 +874,26 @@
   <footer class="footer">
     <div class="container">
       <span>IRISRESTAURA © 2026</span>
-      <span>Conservación y restauración</span>
+      <span data-i18n="footer_cr">Conservación y restauración</span>
     </div>
   </footer>
 
   <div class="contact-modal-overlay" id="contactModal" aria-hidden="true">
     <div class="contact-modal-box">
       <button class="contact-modal-close" id="closeContactModal" aria-label="Cerrar">&#x2715;</button>
-      <span class="eyebrow">Contacto</span>
-      <h2 class="contact-modal-title">Hablemos.</h2>
+      <span class="eyebrow" data-i18n="mod_eyebrow">Contacto</span>
+      <h2 class="contact-modal-title" data-i18n="mod_title">Hablemos.</h2>
       <div class="contact-items">
         <a class="contact-item" href="https://www.instagram.com/irisrestaura/" target="_blank" rel="noreferrer">
           <span class="contact-item-label">Instagram</span>
           <span class="contact-item-value">@irisrestaura</span>
         </a>
         <a class="contact-item" href="mailto:iris.rodriguez.04.13@gmail.com">
-          <span class="contact-item-label">Correo</span>
+          <span class="contact-item-label" data-i18n="mod_correo">Correo</span>
           <span class="contact-item-value">iris.rodriguez.04.13@gmail.com</span>
         </a>
         <a class="contact-item" href="tel:+34652244068">
-          <span class="contact-item-label">Teléfono</span>
+          <span class="contact-item-label" data-i18n="mod_tel">Teléfono</span>
           <span class="contact-item-value">+34 652 244 068</span>
         </a>
         <a class="contact-item" href="https://www.linkedin.com/in/iris-rodriguez-jimenez/" target="_blank" rel="noreferrer">
@@ -897,6 +909,7 @@
     <img src="" alt="Imagen ampliada" id="lightboxImg" />
   </div>
 
+  <script src="assets/lang.js"></script>
   <script>
     /* === Contact modal === */
     (function() {

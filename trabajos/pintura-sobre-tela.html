@@ -91,6 +91,12 @@
     .nav-links .pill { background: var(--ink); color: var(--paper); padding: 10px 16px; border: none; border-radius: 999px; cursor: pointer; font-family: inherit; font-size: 12px; letter-spacing: .09em; text-transform: uppercase; }
     .nav-links .pill:hover { background: var(--rose-500); color: white; }
 
+    /* Selector de idioma */
+    .lang-switch { display: inline-flex; gap: 4px; margin-left: 6px; }
+    .lang-btn { border: 1px solid var(--line); background: rgba(255,255,255,.5); color: var(--muted); border-radius: 999px; padding: 8px 9px; font-size: 10px; letter-spacing: .06em; cursor: pointer; font-family: inherit; text-transform: uppercase; transition: .2s ease; }
+    .lang-btn:hover { background: rgba(255,255,255,.85); color: var(--ink); }
+    .lang-btn.is-active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
     /* Contact modal */
     .contact-modal-overlay { position: fixed; inset: 0; z-index: 200; background: rgba(42,26,31,.55); backdrop-filter: blur(8px); display: none; align-items: center; justify-content: center; padding: 24px; }
     .contact-modal-overlay.is-open { display: flex; }
@@ -385,23 +391,27 @@
   <header class="nav" aria-label="Navegación principal">
     <a href="../index.html#inicio" class="brand">IRISRESTAURA</a>
     <nav class="nav-links">
-      <a href="../index.html#trabajos">Trabajos</a>
-      <a href="../index.html#sobre-mi">Sobre mí</a>
-      <button class="pill" data-open-contact type="button">Contacto</button>
+      <a href="../index.html#trabajos" data-i18n="nav_trabajos">Trabajos</a>
+      <a href="../index.html#sobre-mi" data-i18n="nav_sobremi">Sobre mí</a>
+      <button class="pill" data-open-contact type="button" data-i18n="nav_contacto">Contacto</button>
+      <span class="lang-switch">
+        <button class="lang-btn" data-lang="ca" type="button">CAT</button>
+        <button class="lang-btn" data-lang="es" type="button">CAST</button>
+      </span>
     </nav>
   </header>
 
   <main>
     <div class="container">
-      <a class="back-link" href="../index.html#trabajos">← Volver a trabajos</a>
+      <a class="back-link" href="../index.html#trabajos" data-i18n="back_link">← Volver a trabajos</a>
 
       <header class="work-header">
-        <span class="eyebrow">Trabajo · Taller de conservación</span>
+        <span class="eyebrow" data-i18n="pin_eyebrow">Trabajo · Taller de conservación</span>
         <h1 class="work-title">Pintura sobre tela</h1>
         <div class="work-meta">
-          <span>Museo de l'Empordà</span>
+          <span data-i18n="pin_meta1">Museo de l'Empordà</span>
           <span>2025</span>
-          <span>ESCRBCC · 4.º grado</span>
+          <span data-i18n="pin_meta3">ESCRBCC · 4.º grado</span>
         </div>
       </header>
 
@@ -422,10 +432,10 @@
         <!-- Textos introductorios (juntos), justo debajo de las dos imágenes -->
         <section class="story-block reveal">
           <div class="story-text lead-text" style="max-width:760px;margin:0 auto;">
-            <p>Dentro del marco académico del taller de conservación-restauración de 4.º grado, restauré una pintura sobre tela procedente del Museo de l'Empordà, cedida al ESCRBCC para su intervención. La obra estaba montada sobre un bastidor fijo de madera y presentaba un soporte de tela de lino industrial con trama de tafetán.</p>
-            <p>El estado de conservación era muy afectado: deformaciones, suciedad acumulada, rasgones y pérdidas en el perímetro.</p>
-            <p>La capa de preparación, de naturaleza probablemente tradicional —sulfato cálcico y cola animal—, era fina e irregular. La capa pictórica mostraba una buena adhesión general al soporte, a pesar del estado de degradación de la pieza. La superficie presentaba un barniz oxidado, identificado como posible barniz dammar, que alteraba los colores originales.</p>
-            <span class="note">Estado inicial · diagnóstico</span>
+            <p data-i18n="pin_p_intro1">Dentro del marco académico del taller de conservación-restauración de 4.º grado, restauré una pintura sobre tela procedente del Museo de l'Empordà, cedida al ESCRBCC para su intervención. La obra estaba montada sobre un bastidor fijo de madera y presentaba un soporte de tela de lino industrial con trama de tafetán.</p>
+            <p data-i18n="pin_p_intro2">El estado de conservación era muy afectado: deformaciones, suciedad acumulada, rasgones y pérdidas en el perímetro.</p>
+            <p data-i18n="pin_p_intro3">La capa de preparación, de naturaleza probablemente tradicional —sulfato cálcico y cola animal—, era fina e irregular. La capa pictórica mostraba una buena adhesión general al soporte, a pesar del estado de degradación de la pieza. La superficie presentaba un barniz oxidado, identificado como posible barniz dammar, que alteraba los colores originales.</p>
+            <span class="note" data-i18n="pin_note_estado">Estado inicial · diagnóstico</span>
           </div>
         </section>
 
@@ -444,9 +454,9 @@
         <!-- Textos de fijación y protección, debajo de las dos fotos -->
         <section class="story-block reveal">
           <div class="story-text lead-text" style="max-width:760px;margin:0 auto;">
-            <p>La intervención empezó con la documentación gráfica y analítica, seguida del examen organoléptico. Después se retiró el marco y se procedió a la fijación de la policromía.</p>
-            <p>Se protegió el perímetro de la obra con papel japonés y cola de conejo. Esta protección preparó la pieza para poder desclavarla del bastidor sin comprometer la capa pictórica.</p>
-            <span class="note">Fases 01–02 · Fijación y protección del perímetro</span>
+            <p data-i18n="pin_p_fij1">La intervención empezó con la documentación gráfica y analítica, seguida del examen organoléptico. Después se retiró el marco y se procedió a la fijación de la policromía.</p>
+            <p data-i18n="pin_p_fij2">Se protegió el perímetro de la obra con papel japonés y cola de conejo. Esta protección preparó la pieza para poder desclavarla del bastidor sin comprometer la capa pictórica.</p>
+            <span class="note" data-i18n="pin_note_fij">Fases 01–02 · Fijación y protección del perímetro</span>
           </div>
         </section>
 
@@ -465,7 +475,7 @@
         <!-- Texto del desclavado, debajo de las dos fotos -->
         <section class="story-block reveal">
           <div class="story-text lead-text" style="max-width:760px;margin:0 auto;">
-            <p>Una vez desclavada la tela del bastidor fijo original, se retiró por completo y se realizó la limpieza mecánica del bastidor y del reverso del soporte, dejando la tela lista para los tratamientos posteriores.</p>
+            <p data-i18n="pin_p_descl">Una vez desclavada la tela del bastidor fijo original, se retiró por completo y se realizó la limpieza mecánica del bastidor y del reverso del soporte, dejando la tela lista para los tratamientos posteriores.</p>
           </div>
         </section>
 
@@ -486,9 +496,9 @@
         <!-- B7: deformaciones y rasgones -->
         <section class="story-block reveal">
           <div class="story-text lead-text" style="max-width:760px;margin:0 auto;">
-            <p>Las deformaciones se corrigieron mediante procesos de humectación controlada, presión y aplicación de calor localizado, consiguiendo el aplanado progresivo de la tela.</p>
-            <p>Los rasgones se estabilizaron mediante soldadura de fibras con microsoldador, usando cola de esturión y almidón de trigo.</p>
-            <span class="note">Fase 03 · Deformaciones y rasgones</span>
+            <p data-i18n="pin_p_def1">Las deformaciones se corrigieron mediante procesos de humectación controlada, presión y aplicación de calor localizado, consiguiendo el aplanado progresivo de la tela.</p>
+            <p data-i18n="pin_p_def2">Los rasgones se estabilizaron mediante soldadura de fibras con microsoldador, usando cola de esturión y almidón de trigo.</p>
+            <span class="note" data-i18n="pin_note_def">Fase 03 · Deformaciones y rasgones</span>
           </div>
         </section>
 
@@ -498,19 +508,19 @@
             <img src="../assets/trabajos/pintura-sobre-tela/consolidacion.jpg" alt="Consolidación de la tela sobre mesa caliente con succión" loading="lazy" />
           </div>
           <div class="story-text">
-            <p>La tela se consolidó con un adhesivo sintético sobre una tela de poliéster, utilizando una mesa caliente con sistema de succión y control de temperatura.</p>
-            <p>Una vez estabilizado el soporte, se tensó la tela sobre un nuevo bastidor con grapas y tensión progresiva, garantizando una distribución uniforme.</p>
-            <p>El reverso quedó limpio y aplanado, con la tela original consolidada sobre el nuevo soporte de poliéster y lista para los tratamientos de la capa pictórica.</p>
-            <span class="note">Fase 04 · Consolidación y tensado</span>
+            <p data-i18n="pin_p_cons1">La tela se consolidó con un adhesivo sintético sobre una tela de poliéster, utilizando una mesa caliente con sistema de succión y control de temperatura.</p>
+            <p data-i18n="pin_p_cons2">Una vez estabilizado el soporte, se tensó la tela sobre un nuevo bastidor con grapas y tensión progresiva, garantizando una distribución uniforme.</p>
+            <p data-i18n="pin_p_cons3">El reverso quedó limpio y aplanado, con la tela original consolidada sobre el nuevo soporte de poliéster y lista para los tratamientos de la capa pictórica.</p>
+            <span class="note" data-i18n="pin_note_cons">Fase 04 · Consolidación y tensado</span>
           </div>
         </section>
 
         <!-- B11: limpieza y reintegración (pendiente de imagen) -->
         <section class="story-block reveal">
           <div class="story-text lead-text" style="max-width:760px;margin:0 auto;">
-            <p>La limpieza superficial de la capa pictórica se realizó mediante sistemas acuosos tamponados, seleccionados a partir de tests previos de pH. Se hicieron pruebas con el test de Cremonesi para eliminar el barniz envejecido y, finalmente, se limpió con la proporción LE3 (70 % ligroína, 30 % etanol).</p>
-            <p>Tras la limpieza se aplicó un primer barnizado de protección con barniz de retoque y se estucaron las lagunas con carbonato cálcico y cola de conejo. La reintegración cromática se inició con acuarelas para establecer una base y se completó con pigmentos y barniz de retoque, aplicando un criterio ilusionista para recuperar la lectura de la obra.</p>
-            <span class="note">Fase 05 · Limpieza y reintegración</span>
+            <p data-i18n="pin_p_limp1">La limpieza superficial de la capa pictórica se realizó mediante sistemas acuosos tamponados, seleccionados a partir de tests previos de pH. Se hicieron pruebas con el test de Cremonesi para eliminar el barniz envejecido y, finalmente, se limpió con la proporción LE3 (70 % ligroína, 30 % etanol).</p>
+            <p data-i18n="pin_p_limp2">Tras la limpieza se aplicó un primer barnizado de protección con barniz de retoque y se estucaron las lagunas con carbonato cálcico y cola de conejo. La reintegración cromática se inició con acuarelas para establecer una base y se completó con pigmentos y barniz de retoque, aplicando un criterio ilusionista para recuperar la lectura de la obra.</p>
+            <span class="note" data-i18n="pin_note_limp">Fase 05 · Limpieza y reintegración</span>
           </div>
         </section>
 
@@ -518,8 +528,8 @@
 
       <section class="work-footer">
         <div class="footer-buttons">
-          <a class="button primary" href="../index.html#trabajos">Ver todos los trabajos</a>
-          <button class="button" data-open-contact type="button">Contacto</button>
+          <a class="button primary" href="../index.html#trabajos" data-i18n="foot_ver">Ver todos los trabajos</a>
+          <button class="button" data-open-contact type="button" data-i18n="foot_contacto">Contacto</button>
         </div>
       </section>
     </div>
@@ -528,26 +538,26 @@
   <footer class="footer">
     <div class="container">
       <span>IRISRESTAURA © 2026</span>
-      <span>Conservación y restauración</span>
+      <span data-i18n="footer_cr">Conservación y restauración</span>
     </div>
   </footer>
 
   <div class="contact-modal-overlay" id="contactModal" aria-hidden="true">
     <div class="contact-modal-box">
       <button class="contact-modal-close" id="closeContactModal" aria-label="Cerrar">&#x2715;</button>
-      <span class="eyebrow">Contacto</span>
-      <h2 class="contact-modal-title">Hablemos.</h2>
+      <span class="eyebrow" data-i18n="mod_eyebrow">Contacto</span>
+      <h2 class="contact-modal-title" data-i18n="mod_title">Hablemos.</h2>
       <div class="contact-items">
         <a class="contact-item" href="https://www.instagram.com/irisrestaura/" target="_blank" rel="noreferrer">
           <span class="contact-item-label">Instagram</span>
           <span class="contact-item-value">@irisrestaura</span>
         </a>
         <a class="contact-item" href="mailto:iris.rodriguez.04.13@gmail.com">
-          <span class="contact-item-label">Correo</span>
+          <span class="contact-item-label" data-i18n="mod_correo">Correo</span>
           <span class="contact-item-value">iris.rodriguez.04.13@gmail.com</span>
         </a>
         <a class="contact-item" href="tel:+34652244068">
-          <span class="contact-item-label">Teléfono</span>
+          <span class="contact-item-label" data-i18n="mod_tel">Teléfono</span>
           <span class="contact-item-value">+34 652 244 068</span>
         </a>
         <a class="contact-item" href="https://www.linkedin.com/in/iris-rodriguez-jimenez/" target="_blank" rel="noreferrer">
@@ -558,6 +568,7 @@
     </div>
   </div>
 
+  <script src="../assets/lang.js"></script>
   <script>
     // Contact modal
     (function() {

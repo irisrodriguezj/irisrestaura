@@ -92,6 +92,12 @@
     .nav-links .pill { background: var(--ink); color: var(--paper); padding: 10px 16px; border: none; border-radius: 999px; cursor: pointer; font-family: inherit; font-size: 12px; letter-spacing: .09em; text-transform: uppercase; }
     .nav-links .pill:hover { background: var(--rose-500); color: white; }
 
+    /* Selector de idioma */
+    .lang-switch { display: inline-flex; gap: 4px; margin-left: 6px; }
+    .lang-btn { border: 1px solid var(--line); background: rgba(255,255,255,.5); color: var(--muted); border-radius: 999px; padding: 8px 9px; font-size: 10px; letter-spacing: .06em; cursor: pointer; font-family: inherit; text-transform: uppercase; transition: .2s ease; }
+    .lang-btn:hover { background: rgba(255,255,255,.85); color: var(--ink); }
+    .lang-btn.is-active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
     /* Contact modal */
     .contact-modal-overlay { position: fixed; inset: 0; z-index: 200; background: rgba(42,26,31,.55); backdrop-filter: blur(8px); display: none; align-items: center; justify-content: center; padding: 24px; }
     .contact-modal-overlay.is-open { display: flex; }
@@ -386,23 +392,27 @@
   <header class="nav" aria-label="Navegación principal">
     <a href="../index.html#inicio" class="brand">IRISRESTAURA</a>
     <nav class="nav-links">
-      <a href="../index.html#trabajos">Trabajos</a>
-      <a href="../index.html#sobre-mi">Sobre mí</a>
-      <button class="pill" data-open-contact type="button">Contacto</button>
+      <a href="../index.html#trabajos" data-i18n="nav_trabajos">Trabajos</a>
+      <a href="../index.html#sobre-mi" data-i18n="nav_sobremi">Sobre mí</a>
+      <button class="pill" data-open-contact type="button" data-i18n="nav_contacto">Contacto</button>
+      <span class="lang-switch">
+        <button class="lang-btn" data-lang="ca" type="button">CAT</button>
+        <button class="lang-btn" data-lang="es" type="button">CAST</button>
+      </span>
     </nav>
   </header>
 
   <main>
     <div class="container">
-      <a class="back-link" href="../index.html#trabajos">← Volver a trabajos</a>
+      <a class="back-link" href="../index.html#trabajos" data-i18n="back_link">← Volver a trabajos</a>
 
       <header class="work-header">
-        <span class="eyebrow">Trabajo · Prácticas dirigidas</span>
+        <span class="eyebrow" data-i18n="par_eyebrow">Trabajo · Prácticas dirigidas</span>
         <h1 class="work-title" style="white-space: nowrap; font-size: clamp(32px, 5vw, 80px);">Parroquia de Sant Agustí</h1>
         <div class="work-meta">
           <span>El Raval, Barcelona</span>
           <span>2025</span>
-          <span>Dirigido por Àlex Lorenz · ESCRBCC</span>
+          <span data-i18n="par_meta3">Dirigido por Àlex Lorenz · ESCRBCC</span>
         </div>
       </header>
 
@@ -415,10 +425,10 @@
         <!-- Bloque 1: texto principal + foto detalle -->
         <section class="story-block split weighted-text reveal">
           <div class="story-text">
-            <h2>Documentar <span class="accent">antes</span> de intervenir.</h2>
-            <p>Restauración de las pinturas murales de la capilla de la Virgen María del claustro de la Parroquia de Sant Agustí (El Raval, Barcelona). Proyecto organizado por el ESCRBCC y dirigido por el profesor Àlex Lorenz, desarrollado a lo largo de tres meses.</p>
-            <p>La intervención se inició con la realización de documentación gráfica y el examen organoléptico de las pinturas murales para determinar el estado de conservación y definir los criterios de intervención.</p>
-            <span class="note">Fase 01 · Documentación y examen</span>
+            <h2 data-i18n="par_b1_h2">Documentar <span class="accent">antes</span> de intervenir.</h2>
+            <p data-i18n="par_b1_p1">Restauración de las pinturas murales de la capilla de la Virgen María del claustro de la Parroquia de Sant Agustí (El Raval, Barcelona). Proyecto organizado por el ESCRBCC y dirigido por el profesor Àlex Lorenz, desarrollado a lo largo de tres meses.</p>
+            <p data-i18n="par_b1_p2">La intervención se inició con la realización de documentación gráfica y el examen organoléptico de las pinturas murales para determinar el estado de conservación y definir los criterios de intervención.</p>
+            <span class="note" data-i18n="par_b1_note">Fase 01 · Documentación y examen</span>
           </div>
           <div class="story-media portrait">
             <img src="../assets/trabajos/parroquia-sant-agusti/foto-02.jpg" alt="Detalle de la superficie del muro" loading="lazy" />
@@ -442,17 +452,17 @@
             </video>
           </div>
           <div class="story-text">
-            <h2 style="white-space: nowrap; font-size: clamp(22px, 3vw, 46px);">Consolidar, limpiar, <span class="accent">reintegrar</span>.</h2>
-            <p>Los trabajos se centraron principalmente en la consolidación de la policromía, que presentaba levantamientos con riesgo de desprendimiento. Una vez estabilizada la capa pictórica, se procedió a la limpieza superficial de la suciedad acumulada.</p>
-            <p>Posteriormente se realizó la reintegración matérica y cromática de las zonas afectadas, devolviendo la lectura visual del conjunto.</p>
-            <span class="note">Fase 02 · Consolidación y reintegración</span>
+            <h2 style="white-space: nowrap; font-size: clamp(22px, 3vw, 46px);" data-i18n="par_b3_h2">Consolidar, limpiar, <span class="accent">reintegrar</span>.</h2>
+            <p data-i18n="par_b3_p1">Los trabajos se centraron principalmente en la consolidación de la policromía, que presentaba levantamientos con riesgo de desprendimiento. Una vez estabilizada la capa pictórica, se procedió a la limpieza superficial de la suciedad acumulada.</p>
+            <p data-i18n="par_b3_p2">Posteriormente se realizó la reintegración matérica y cromática de las zonas afectadas, devolviendo la lectura visual del conjunto.</p>
+            <span class="note" data-i18n="par_b3_note">Fase 02 · Consolidación y reintegración</span>
           </div>
         </section>
 
         <!-- Bloque 4: texto introductorio + dos vídeos cortos -->
         <section class="story-block duo reveal">
           <div class="story-text">
-            <p>Esta experiencia representó mi primer contacto con una intervención de gran formato sobre andamio. Me permitió desarrollar competencias de trabajo en equipo, planificación de tareas y organización del espacio de trabajo, aspectos fundamentales para garantizar la seguridad y la eficiencia en una intervención de conservación-restauración.</p>
+            <p data-i18n="par_b4_p">Esta experiencia representó mi primer contacto con una intervención de gran formato sobre andamio. Me permitió desarrollar competencias de trabajo en equipo, planificación de tareas y organización del espacio de trabajo, aspectos fundamentales para garantizar la seguridad y la eficiencia en una intervención de conservación-restauración.</p>
           </div>
           <div class="story-media-pair">
             <div class="story-media video-card portrait">
@@ -470,8 +480,8 @@
 
       <section class="work-footer">
 <div class="footer-buttons">
-          <a class="button primary" href="../index.html#trabajos">Ver todos los trabajos</a>
-          <button class="button" data-open-contact type="button">Contacto</button>
+          <a class="button primary" href="../index.html#trabajos" data-i18n="foot_ver">Ver todos los trabajos</a>
+          <button class="button" data-open-contact type="button" data-i18n="foot_contacto">Contacto</button>
         </div>
       </section>
     </div>
@@ -480,26 +490,26 @@
   <footer class="footer">
     <div class="container">
       <span>IRISRESTAURA © 2026</span>
-      <span>Conservación y restauración</span>
+      <span data-i18n="footer_cr">Conservación y restauración</span>
     </div>
   </footer>
 
   <div class="contact-modal-overlay" id="contactModal" aria-hidden="true">
     <div class="contact-modal-box">
       <button class="contact-modal-close" id="closeContactModal" aria-label="Cerrar">&#x2715;</button>
-      <span class="eyebrow">Contacto</span>
-      <h2 class="contact-modal-title">Hablemos.</h2>
+      <span class="eyebrow" data-i18n="mod_eyebrow">Contacto</span>
+      <h2 class="contact-modal-title" data-i18n="mod_title">Hablemos.</h2>
       <div class="contact-items">
         <a class="contact-item" href="https://www.instagram.com/irisrestaura/" target="_blank" rel="noreferrer">
           <span class="contact-item-label">Instagram</span>
           <span class="contact-item-value">@irisrestaura</span>
         </a>
         <a class="contact-item" href="mailto:iris.rodriguez.04.13@gmail.com">
-          <span class="contact-item-label">Correo</span>
+          <span class="contact-item-label" data-i18n="mod_correo">Correo</span>
           <span class="contact-item-value">iris.rodriguez.04.13@gmail.com</span>
         </a>
         <a class="contact-item" href="tel:+34652244068">
-          <span class="contact-item-label">Teléfono</span>
+          <span class="contact-item-label" data-i18n="mod_tel">Teléfono</span>
           <span class="contact-item-value">+34 652 244 068</span>
         </a>
         <a class="contact-item" href="https://www.linkedin.com/in/iris-rodriguez-jimenez/" target="_blank" rel="noreferrer">
@@ -510,6 +520,7 @@
     </div>
   </div>
 
+  <script src="../assets/lang.js"></script>
   <script>
     // Contact modal
     (function() {
