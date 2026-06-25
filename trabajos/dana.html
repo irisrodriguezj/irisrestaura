@@ -202,9 +202,14 @@
 
     .story-block.duo .story-text { max-width: 720px; margin: 0 auto 12px; text-align: center; }
     .story-block.duo .story-media-pair {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
       gap: clamp(14px, 2vw, 22px);
+    }
+    .story-block.duo .story-media-pair .story-media {
+      flex: 0 1 clamp(240px, 38vw, 480px);
     }
 
     /* Trio de 3 fotos en la misma fila */
