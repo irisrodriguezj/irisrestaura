@@ -695,26 +695,7 @@
         height: 100%;
         object-fit: cover;
         opacity: 0;
-        animation: mhFade 48s infinite;
-      }
-      .mobile-home-bg > *:nth-child(1)  { animation-delay: 0s; }
-      .mobile-home-bg > *:nth-child(2)  { animation-delay: 4s; }
-      .mobile-home-bg > *:nth-child(3)  { animation-delay: 8s; }
-      .mobile-home-bg > *:nth-child(4)  { animation-delay: 12s; }
-      .mobile-home-bg > *:nth-child(5)  { animation-delay: 16s; }
-      .mobile-home-bg > *:nth-child(6)  { animation-delay: 20s; }
-      .mobile-home-bg > *:nth-child(7)  { animation-delay: 24s; }
-      .mobile-home-bg > *:nth-child(8)  { animation-delay: 28s; }
-      .mobile-home-bg > *:nth-child(9)  { animation-delay: 32s; }
-      .mobile-home-bg > *:nth-child(10) { animation-delay: 36s; }
-      .mobile-home-bg > *:nth-child(11) { animation-delay: 40s; }
-      .mobile-home-bg > *:nth-child(12) { animation-delay: 44s; }
-      @keyframes mhFade {
-        0%    { opacity: 0; }
-        1.5%  { opacity: 1; }
-        6.8%  { opacity: 1; }
-        8.33% { opacity: 0; }
-        100%  { opacity: 0; }
+        transition: opacity 0.5s ease;
       }
       .mobile-home-inner {
         position: relative;
@@ -755,18 +736,18 @@
         justify-content: center;
         padding: 16px 12px;
         font-size: 13px;
-        /* frosted glass */
-        background: rgba(168, 48, 28, 0.22) !important;
-        backdrop-filter: blur(14px) saturate(1.4);
-        -webkit-backdrop-filter: blur(14px) saturate(1.4);
-        border: 1px solid rgba(255, 200, 180, 0.28) !important;
+        /* frosted glass neutro */
+        background: rgba(255, 255, 255, 0.14) !important;
+        backdrop-filter: blur(16px) saturate(1.6);
+        -webkit-backdrop-filter: blur(16px) saturate(1.6);
+        border: 1px solid rgba(255, 255, 255, 0.32) !important;
         color: #fff !important;
-        text-shadow: 0 1px 4px rgba(60, 10, 5, 0.35);
-        box-shadow: 0 4px 18px rgba(80, 20, 10, 0.18), inset 0 1px 0 rgba(255,220,200,0.15);
+        text-shadow: 0 1px 6px rgba(0,0,0,0.45);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.22);
       }
       .mobile-home-nav .button:hover, .mobile-home-nav .button:active {
-        background: rgba(168, 48, 28, 0.38) !important;
-        border-color: rgba(255, 200, 180, 0.45) !important;
+        background: rgba(255, 255, 255, 0.26) !important;
+        border-color: rgba(255, 255, 255, 0.5) !important;
       }
       /* Selector de idioma estilo melocotón, centrado bajo los botones */
       .mobile-home-lang {
@@ -935,18 +916,26 @@
       <!-- Pantalla principal solo móvil (sustituye al carrusel) -->
       <div class="mobile-home" aria-label="Navegación principal">
         <div class="mobile-home-bg" aria-hidden="true">
-          <img src="assets/trabajos/parroquia-sant-agusti/portada.jpg" alt="" loading="eager" />
-          <video src="assets/trabajos/palau-de-noguera/video-01.mp4" autoplay muted loop playsinline preload="metadata"></video>
-          <img src="assets/trabajos/pintura-sobre-tela/portada.jpg" alt="" loading="lazy" />
-          <img src="assets/trabajos/dana/portada.jpg?v=3" alt="" loading="lazy" />
-          <img src="assets/trabajos/palau-de-noguera/foto-03.jpg" alt="" loading="lazy" />
-          <video src="assets/trabajos/parroquia-sant-agusti/video-01.mp4" autoplay muted loop playsinline preload="metadata"></video>
-          <img src="assets/trabajos/mnac/portada.jpg" alt="" loading="lazy" />
-          <img src="assets/trabajos/pintura-sobre-tela/antes-01.jpg" alt="" loading="lazy" />
-          <video src="assets/trabajos/palau-de-noguera/video-06.mp4" autoplay muted loop playsinline preload="metadata"></video>
-          <img src="assets/trabajos/palau-de-noguera/despues.jpg" alt="" loading="lazy" />
-          <video src="assets/trabajos/dana/video-04.mp4" autoplay muted loop playsinline preload="metadata"></video>
-          <img src="assets/trabajos/palau-de-noguera-2026/portada.jpg" alt="" loading="lazy" />
+          <img src="assets/trabajos/parroquia-sant-agusti/portada.jpg" alt="" onerror="this.style.display='none'" />
+          <video src="assets/trabajos/palau-de-noguera/video-01.mp4" muted loop playsinline preload="auto"></video>
+          <img src="assets/trabajos/pintura-sobre-tela/portada.jpg" alt="" onerror="this.style.display='none'" />
+          <img src="assets/trabajos/dana/portada.jpg?v=3" alt="" onerror="this.style.display='none'" />
+          <img src="assets/trabajos/parroquia-sant-agusti/cupula.jpg" alt="" onerror="this.style.display='none'" />
+          <video src="assets/trabajos/palau-de-noguera/video-02.mp4" muted loop playsinline preload="auto"></video>
+          <img src="assets/trabajos/palau-de-noguera/foto-04.jpg" alt="" onerror="this.style.display='none'" />
+          <img src="assets/trabajos/pintura-sobre-tela/consolidacion.jpg" alt="" onerror="this.style.display='none'" />
+          <img src="assets/trabajos/dana/foto-01.jpg" alt="" onerror="this.style.display='none'" />
+          <video src="assets/trabajos/parroquia-sant-agusti/video-02.mp4" muted loop playsinline preload="auto"></video>
+          <img src="assets/trabajos/palau-de-noguera/antes.jpg" alt="" onerror="this.style.display='none'" />
+          <img src="assets/trabajos/pintura-sobre-tela/antes-01.jpg" alt="" onerror="this.style.display='none'" />
+          <img src="assets/trabajos/mnac/portada.jpg" alt="" onerror="this.style.display='none'" />
+          <video src="assets/trabajos/dana/video-02.mp4" muted loop playsinline preload="auto"></video>
+          <img src="assets/trabajos/parroquia-sant-agusti/resultadofinal.jpg" alt="" onerror="this.style.display='none'" />
+          <img src="assets/trabajos/dana/foto-02.jpg" alt="" onerror="this.style.display='none'" />
+          <img src="assets/trabajos/pintura-sobre-tela/reintegracion-0951.jpg" alt="" onerror="this.style.display='none'" />
+          <img src="assets/trabajos/palau-de-noguera/despues.jpg" alt="" onerror="this.style.display='none'" />
+          <video src="assets/trabajos/pintura-sobre-tela/video-01.mp4" muted loop playsinline preload="auto"></video>
+          <img src="assets/trabajos/palau-de-noguera-2026/portada.jpg" alt="" onerror="this.style.display='none'" />
         </div>
         <div class="mobile-home-inner">
           <p class="mobile-home-eyebrow" data-i18n="footer_cr">Conservación y restauración</p>
@@ -1247,6 +1236,53 @@
 
       initCards();
       render();
+    })();
+
+    /* === Mobile home slider (JS-driven, 2s/slide) === */
+    (function () {
+      var bg = document.querySelector('.mobile-home-bg');
+      if (!bg) return;
+      var items = Array.from(bg.children).filter(function (el) {
+        return el.style.display !== 'none';
+      });
+      if (!items.length) return;
+      var current = 0;
+      var INTERVAL = 2000;
+      var FADE = 450;
+
+      /* Pause all videos, hide all items */
+      items.forEach(function (el) {
+        el.style.opacity = '0';
+        if (el.tagName === 'VIDEO') { try { el.pause(); } catch (e) {} }
+      });
+
+      function goTo(idx) {
+        var prev = items[current];
+        prev.style.opacity = '0';
+        if (prev.tagName === 'VIDEO') {
+          setTimeout(function () { try { prev.pause(); } catch (e) {} }, FADE);
+        }
+        current = (idx + items.length) % items.length;
+        /* skip hidden (broken image) */
+        var tries = 0;
+        while (items[current].style.display === 'none' && tries < items.length) {
+          current = (current + 1) % items.length;
+          tries++;
+        }
+        var el = items[current];
+        if (el.tagName === 'VIDEO') {
+          el.currentTime = 0;
+          el.play().catch(function () {});
+        }
+        el.style.opacity = '1';
+      }
+
+      /* Show first */
+      var first = items[0];
+      first.style.opacity = '1';
+      if (first.tagName === 'VIDEO') { first.play().catch(function () {}); }
+
+      setInterval(function () { goTo(current + 1); }, INTERVAL);
     })();
   </script>
 </body>
