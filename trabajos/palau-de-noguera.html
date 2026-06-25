@@ -34,10 +34,7 @@
     body {
       margin: 0;
       color: var(--ink);
-      background:
-        radial-gradient(circle at 10% 0%, rgba(255, 170, 160, .65), transparent 34rem),
-        radial-gradient(circle at 95% 18%, rgba(255, 225, 220, 1), transparent 28rem),
-        linear-gradient(180deg, #ffddcc 0%, #fffdf9 42%, #ffc9b3 100%);
+      background: #ffc9b3;
       font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       overflow-x: hidden;
       max-width: 100%;
@@ -91,7 +88,7 @@
     .nav-links { display: flex; gap: 4px; align-items: center; font-size: 12px; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); }
     .nav-links a { padding: 10px 12px; border-radius: 999px; transition: .25s ease; }
     .nav-links a:hover { background: var(--rose-100); color: var(--ink); }
-    .nav-links .pill { background: var(--ink); color: var(--paper); padding-inline: 16px; border: none; cursor: pointer; font-family: inherit; font-size: 12px; letter-spacing: .09em; text-transform: uppercase; }
+    .nav-links .pill { background: var(--ink); color: var(--paper); padding: 10px 16px; border: none; border-radius: 999px; cursor: pointer; font-family: inherit; font-size: 12px; letter-spacing: .09em; text-transform: uppercase; }
     .nav-links .pill:hover { background: var(--rose-500); color: white; }
 
     /* Contact modal */
@@ -107,8 +104,6 @@
     .contact-item-label { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); min-width: 72px; }
     .contact-item-value { font-size: 14px; color: var(--ink); }
 
-    /* Cap portrait images to match pintura page */
-    .story-media.portrait:not(.video-card) { max-width: 372px; margin-left: auto; margin-right: auto; }
 
     .back-link {
       display: inline-flex;
@@ -624,7 +619,7 @@
       <section class="work-footer">
 <div class="footer-buttons">
           <a class="button primary" href="../index.html#trabajos">Ver todos los trabajos</a>
-          <a class="button" href="https://www.instagram.com/irisrestaura/" target="_blank" rel="noreferrer">Instagram</a>
+          <button class="button" data-open-contact type="button">Contacto</button>
         </div>
       </section>
     </div>

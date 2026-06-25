@@ -35,10 +35,7 @@
     body {
       margin: 0;
       color: var(--ink);
-      background:
-        radial-gradient(circle at 10% 0%, rgba(255, 170, 160, .75), transparent 34rem),
-        radial-gradient(circle at 95% 18%, rgba(255, 225, 220, 1), transparent 28rem),
-        linear-gradient(180deg, #ffddcc 0%, #fffdf9 42%, #ffc9b3 100%);
+      background: #ffc9b3;
       font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       overflow-x: hidden;
       max-width: 100%;
@@ -104,8 +101,9 @@
     .nav-links .pill {
       background: var(--ink);
       color: var(--paper);
-      padding-inline: 16px;
+      padding: 10px 16px;
       border: none;
+      border-radius: 999px;
       cursor: pointer;
       font-family: inherit;
       font-size: 12px;
@@ -211,8 +209,8 @@
     }
     .hero-bg-left {
       font-size: clamp(70px, 10vw, 145px);
-      top: 22%;
-      left: 8%;
+      top: 32%;
+      left: 18%;
     }
     .hero-bg-right {
       font-size: clamp(70px, 10vw, 145px);
@@ -905,7 +903,7 @@
           <h2>Restaurar también es saber cuándo no tocar.</h2>
           <p>Iris está finalizando sus estudios de restauración y empieza a desarrollar intervenciones propias, combinando sensibilidad por la obra, método de taller y una atención especial al detalle.</p>
           <p>IRISRESTAURA nace como una forma clara de enseñar su proceso: no solo el resultado final, también la mano, el criterio y las decisiones que hay detrás de cada pieza.</p>
-          <a class="button secondary" href="https://www.instagram.com/irisrestaura/" target="_blank" rel="noreferrer">Ver Instagram</a>
+          <button class="button secondary" data-open-contact type="button">Contacto</button>
         </div>
       </div>
     </section>
