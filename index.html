@@ -662,36 +662,64 @@
     @media (max-width: 620px) {
       .container { width: min(100% - 24px, 1180px); }
 
-      .nav {
-        top: 10px; width: calc(100% - 20px); padding: 10px 12px;
-        flex-direction: column; gap: 10px; border-radius: 22px;
-      }
-      .brand { font-size: 16px; letter-spacing: .07em; }
-      .nav-links {
-        width: 100%;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 6px;
-      }
-      /* En móvil mostramos TODOS los enlaces de navegación */
-      .nav-links a:not(.pill) { display: inline-flex !important; padding: 8px 10px; font-size: 11px; }
-      .nav-links .pill { padding: 8px 14px; font-size: 11px; }
-      .lang-switch { margin-left: 0; }
-
-      .hero { padding: 130px 0 36px; }
+      /* En móvil quitamos el nav superior: los botones de la portada navegan */
+      .nav { display: none !important; }
       .hero-text p { font-size: 15px; }
       .scroll-note { display: none; }
 
-      /* En móvil sustituimos el carrusel por una pantalla principal con botones */
+      /* Portada móvil a pantalla completa con slider de fondo */
       .carousel-stage, .c-dots, .hero-cta-wrap, .c-nav { display: none !important; }
       .hero::after { display: none; }
+      .hero { min-height: 100svh; padding: 0; justify-content: center; }
       .mobile-home {
+        display: flex;
+        position: relative;
+        width: 100%;
+        min-height: 100svh;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 0;
+      }
+      /* Slider de fondo (fundido cruzado, baja opacidad, decorativo) */
+      .mobile-home-bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        overflow: hidden;
+        opacity: .3;
+      }
+      .mobile-home-bg img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        animation: mhFade 36s infinite;
+      }
+      .mobile-home-bg img:nth-child(1) { animation-delay: 0s; }
+      .mobile-home-bg img:nth-child(2) { animation-delay: 6s; }
+      .mobile-home-bg img:nth-child(3) { animation-delay: 12s; }
+      .mobile-home-bg img:nth-child(4) { animation-delay: 18s; }
+      .mobile-home-bg img:nth-child(5) { animation-delay: 24s; }
+      .mobile-home-bg img:nth-child(6) { animation-delay: 30s; }
+      @keyframes mhFade {
+        0%   { opacity: 0; }
+        4%   { opacity: 1; }
+        14%  { opacity: 1; }
+        18%  { opacity: 0; }
+        100% { opacity: 0; }
+      }
+      .mobile-home-inner {
+        position: relative;
+        z-index: 2;
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
         gap: 6px;
-        padding: 8px 0 0;
+        width: 100%;
+        padding: 0 6px;
       }
       .mobile-home-eyebrow {
         margin: 0;
@@ -701,7 +729,7 @@
         color: var(--muted);
       }
       .mobile-home-title {
-        margin: 2px 0 18px;
+        margin: 2px 0 22px;
         font-family: "Cormorant Garamond", Georgia, serif;
         font-weight: 700;
         letter-spacing: .04em;
@@ -721,6 +749,30 @@
         justify-content: center;
         padding: 16px 12px;
         font-size: 13px;
+      }
+      /* Selector de idioma estilo melocotón, centrado bajo los botones */
+      .mobile-home-lang {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 16px;
+      }
+      .mobile-home-lang .lang-btn {
+        background: var(--rose-100);
+        color: var(--ink);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 12px 22px;
+        font-size: 12px;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+        cursor: pointer;
+        font-family: inherit;
+        transition: .2s ease;
+      }
+      .mobile-home-lang .lang-btn.is-active {
+        background: var(--rose-200);
+        border-color: var(--rose-200);
       }
 
       section { padding: clamp(48px, 8vw, 72px) 0; }
@@ -864,14 +916,28 @@
 
       <!-- Pantalla principal solo móvil (sustituye al carrusel) -->
       <div class="mobile-home" aria-label="Navegación principal">
-        <p class="mobile-home-eyebrow" data-i18n="footer_cr">Conservación y restauración</p>
-        <h1 class="mobile-home-title">IRISRESTAURA</h1>
-        <nav class="mobile-home-nav" aria-label="Secciones">
-          <a class="button primary" href="#trabajos" data-i18n="nav_trabajos">Trabajos</a>
-          <a class="button primary" href="certificaciones.html" data-i18n="nav_cert">Certificaciones</a>
-          <a class="button primary" href="#sobre-mi" data-i18n="nav_sobremi">Sobre mí</a>
-          <button class="button primary" type="button" data-open-contact data-i18n="nav_contacto">Contacto</button>
-        </nav>
+        <div class="mobile-home-bg" aria-hidden="true">
+          <img src="assets/trabajos/parroquia-sant-agusti/portada.jpg" alt="" loading="eager" />
+          <img src="assets/trabajos/palau-de-noguera/portada.jpg" alt="" loading="lazy" />
+          <img src="assets/trabajos/pintura-sobre-tela/portada.jpg" alt="" loading="lazy" />
+          <img src="assets/trabajos/dana/portada.jpg?v=3" alt="" loading="lazy" />
+          <img src="assets/trabajos/mnac/portada.jpg" alt="" loading="lazy" />
+          <img src="assets/trabajos/palau-de-noguera-2026/portada.jpg" alt="" loading="lazy" />
+        </div>
+        <div class="mobile-home-inner">
+          <p class="mobile-home-eyebrow" data-i18n="footer_cr">Conservación y restauración</p>
+          <h1 class="mobile-home-title">IRISRESTAURA</h1>
+          <nav class="mobile-home-nav" aria-label="Secciones">
+            <a class="button primary" href="#trabajos" data-i18n="nav_trabajos">Trabajos</a>
+            <a class="button primary" href="certificaciones.html" data-i18n="nav_cert">Certificaciones</a>
+            <a class="button primary" href="#sobre-mi" data-i18n="nav_sobremi">Sobre mí</a>
+            <button class="button primary" type="button" data-open-contact data-i18n="nav_contacto">Contacto</button>
+          </nav>
+          <div class="mobile-home-lang">
+            <button class="lang-btn" data-lang="ca" type="button">CAT</button>
+            <button class="lang-btn" data-lang="es" type="button">CAST</button>
+          </div>
+        </div>
       </div>
 
       <div class="section-fade" aria-hidden="true"></div>
