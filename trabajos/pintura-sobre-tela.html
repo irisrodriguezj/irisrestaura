@@ -34,7 +34,7 @@
     body {
       margin: 0;
       color: var(--ink);
-      background: #FFBDC5;
+      background: #670626;
       font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       overflow-x: hidden;
       max-width: 100%;
@@ -321,6 +321,23 @@
       text-transform: uppercase;
     }
     .footer .container { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+
+    /* ---- Overrides para fondo claret oscuro ---- */
+    .work-title { color: var(--paper); }
+    .work-meta span { color: rgba(255,253,249,.65); }
+    .work-meta span + span:before { background: rgba(255,253,249,.4); }
+    .back-link { color: rgba(255,253,249,.8); border-color: rgba(255,253,249,.25); background: rgba(255,253,249,.1); }
+    .back-link:hover { background: rgba(255,253,249,.2); color: var(--paper); }
+    .story-text h2 { color: var(--paper); }
+    .story-text p { color: rgba(255,253,249,.78); }
+    .lead-text p { color: rgba(255,253,249,.78); }
+    .button.primary { background: #FFBDC5; color: #670626; border-color: #FFBDC5; }
+    .button.primary:hover { background: white; border-color: white; color: #670626; transform: translateY(-2px); }
+    .button:not(.primary) { background: rgba(255,253,249,.12); color: var(--paper); border-color: rgba(255,253,249,.3); }
+    .button:not(.primary):hover { background: rgba(255,253,249,.25); }
+    .footer { color: rgba(255,253,249,.5); }
+    .work-footer { border-top-color: rgba(255,253,249,.2); }
+    .work-footer p { color: rgba(255,253,249,.72); }
 
     @media (max-width: 960px) {
       .nav-links a:not(.pill) { display: none; }
