@@ -706,23 +706,23 @@
     /* ---- Overrides para fondo claret oscuro ---- */
     .section-head h2 { color: var(--paper); }
     .section-head p { color: rgba(255,253,249,.72); }
-    /* Degradado — ocupa el 60% inferior del hero, por encima de las tarjetas */
+    /* Degradado — sube alto por el fondo del hero, SIEMPRE detrás de las tarjetas */
     .hero::after {
       content: "";
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      height: 60%;
+      height: 92%;
       background: linear-gradient(180deg,
         transparent 0%,
-        rgba(160,50,85,0.18) 22%,
-        rgba(160,50,85,0.55) 42%,
-        rgba(176,70,100,0.82) 60%,
-        #c0607a 74%,
-        #e0a0b2 88%,
+        rgba(160,50,85,0.15) 20%,
+        rgba(160,50,85,0.5) 38%,
+        rgba(176,70,100,0.8) 54%,
+        #c0607a 68%,
+        #e0a0b2 84%,
         #FFBDC5 100%);
-      z-index: 3;
+      z-index: 1;
       pointer-events: none;
     }
     .section-fade { display: none; }
