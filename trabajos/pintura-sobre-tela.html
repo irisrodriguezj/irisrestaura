@@ -347,6 +347,91 @@
     .work-footer { border-top-color: rgba(255,253,249,.2); }
     .work-footer p { color: rgba(255,253,249,.72); }
 
+    /* Trio de 3 fotos en la misma fila */
+    .trio-media-pair {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(10px, 1.5vw, 18px);
+      width: 100%;
+    }
+
+    /* Sliders antes/después */
+    .ba-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(14px, 2vw, 24px);
+      width: 100%;
+    }
+    .before-after-label {
+      position: absolute;
+      top: 18px;
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: #FFBDC5;
+      color: #670626;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      z-index: 3;
+      pointer-events: none;
+    }
+    .before-after-label.despues { background: var(--paper); color: #670626; }
+    .ba-slider {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 2/3;
+      border-radius: calc(var(--radius) + 6px);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,.7);
+      background: var(--rose-50);
+      user-select: none;
+      touch-action: none;
+      cursor: ew-resize;
+      isolation: isolate;
+    }
+    .ba-slider .ba-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      display: block;
+      -webkit-user-drag: none;
+      pointer-events: none;
+    }
+    .ba-slider .ba-img.ba-after { clip-path: inset(0 0 0 calc(var(--pos, 50) * 1%)); }
+    .ba-slider .ba-label-before { left: 18px; }
+    .ba-slider .ba-label-after { right: 18px; }
+    .ba-handle {
+      position: absolute;
+      top: 0; bottom: 0;
+      left: calc(var(--pos, 50) * 1%);
+      width: 3px;
+      background: white;
+      transform: translateX(-1.5px);
+      box-shadow: 0 0 24px rgba(0,0,0,.45);
+      pointer-events: none;
+      z-index: 2;
+    }
+    .ba-handle-circle {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: white;
+      box-shadow: 0 6px 24px rgba(58,25,35,.35);
+      display: flex; align-items: center; justify-content: center;
+      gap: 2px;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 22px;
+      color: var(--ink);
+    }
+
     @media (max-width: 960px) {
       .nav-links a:not(.pill) { display: none; }
       .story-block.split,
@@ -379,6 +464,12 @@
       .story-media.cinema { aspect-ratio: 16/10; }
       .story-media.video-card:after { top: 12px; left: 12px; font-size: 9px; padding: 5px 10px; }
       .story-block.duo .story-media-pair { grid-template-columns: 1fr; gap: 14px; }
+      .trio-media-pair { grid-template-columns: 1fr; gap: 14px; }
+      .ba-pair { grid-template-columns: 1fr; gap: 20px; }
+      .ba-slider { aspect-ratio: 3/4; border-radius: 22px; }
+      .before-after-label { top: 12px; font-size: 13px; padding: 6px 14px; }
+      .ba-slider .ba-label-before { left: 12px; }
+      .ba-slider .ba-label-after { right: 12px; }
       .work-footer { padding: 40px 0 64px; }
       .footer-buttons .button { flex: 1 1 100%; min-width: 0; }
       .footer .container { display: grid; gap: 6px; }
@@ -502,12 +593,20 @@
           </div>
         </section>
 
-        <!-- B9: consolidación y tensado (+ soporte estable fusionado) -->
-        <section class="story-block img-text reveal">
-          <div class="story-media portrait">
-            <img src="../assets/trabajos/pintura-sobre-tela/consolidacion.jpg" alt="Consolidación de la tela sobre mesa caliente con succión" loading="lazy" />
+        <!-- B9: consolidación — par de imágenes + texto -->
+        <section class="story-block reveal">
+          <div class="story-media-pair lead-media-pair">
+            <div class="story-media portrait">
+              <img src="../assets/trabajos/pintura-sobre-tela/consolidacion.jpg" alt="Consolidación de la tela sobre mesa caliente con succión" loading="lazy" />
+            </div>
+            <div class="story-media portrait">
+              <img src="../assets/trabajos/pintura-sobre-tela/fase4-extra.jpg" alt="Proceso de consolidación y tensado" loading="lazy" />
+            </div>
           </div>
-          <div class="story-text">
+        </section>
+
+        <section class="story-block reveal">
+          <div class="story-text lead-text" style="max-width:760px;margin:0 auto;">
             <p data-i18n="pin_p_cons1">La tela se consolidó con un adhesivo sintético sobre una tela de poliéster, utilizando una mesa caliente con sistema de succión y control de temperatura.</p>
             <p data-i18n="pin_p_cons2">Una vez estabilizado el soporte, se tensó la tela sobre un nuevo bastidor con grapas y tensión progresiva, garantizando una distribución uniforme.</p>
             <p data-i18n="pin_p_cons3">El reverso quedó limpio y aplanado, con la tela original consolidada sobre el nuevo soporte de poliéster y lista para los tratamientos de la capa pictórica.</p>
@@ -515,12 +614,72 @@
           </div>
         </section>
 
-        <!-- B11: limpieza y reintegración (pendiente de imagen) -->
+        <!-- Fase 05: 3 imágenes (vídeo + 0422 + comparativa) encima del texto de limpieza -->
+        <section class="story-block reveal">
+          <div class="trio-media-pair">
+            <div class="story-media portrait video-card">
+              <video autoplay loop muted playsinline preload="metadata">
+                <source src="../assets/trabajos/pintura-sobre-tela/limpieza-video.mov" type="video/mp4">
+              </video>
+            </div>
+            <div class="story-media portrait">
+              <img src="../assets/trabajos/pintura-sobre-tela/limpieza-0422.jpg" alt="Proceso de limpieza superficial" loading="lazy" />
+            </div>
+            <div class="story-media portrait">
+              <img src="../assets/trabajos/pintura-sobre-tela/comparativa-0422.jpg" alt="Comparativa de limpieza" loading="lazy" />
+            </div>
+          </div>
+        </section>
+
         <section class="story-block reveal">
           <div class="story-text lead-text" style="max-width:760px;margin:0 auto;">
             <p data-i18n="pin_p_limp1">La limpieza superficial de la capa pictórica se realizó mediante sistemas acuosos tamponados, seleccionados a partir de tests previos de pH. Se hicieron pruebas con el test de Cremonesi para eliminar el barniz envejecido y, finalmente, se limpió con la proporción LE3 (70 % ligroína, 30 % etanol).</p>
+          </div>
+        </section>
+
+        <!-- 3 imágenes de reintegración (0951, 0578, 0678) encima del texto fase 05 nota -->
+        <section class="story-block reveal">
+          <div class="trio-media-pair">
+            <div class="story-media portrait">
+              <img src="../assets/trabajos/pintura-sobre-tela/reintegracion-0951.jpg" alt="Reintegración cromática" loading="lazy" />
+            </div>
+            <div class="story-media portrait">
+              <img src="../assets/trabajos/pintura-sobre-tela/reintegracion-0578.jpg" alt="Proceso de estucado y reintegración" loading="lazy" />
+            </div>
+            <div class="story-media portrait">
+              <img src="../assets/trabajos/pintura-sobre-tela/reintegracion-0678.jpg" alt="Detalle de reintegración cromática" loading="lazy" />
+            </div>
+          </div>
+        </section>
+
+        <section class="story-block reveal">
+          <div class="story-text lead-text" style="max-width:760px;margin:0 auto;">
             <p data-i18n="pin_p_limp2">Tras la limpieza se aplicó un primer barnizado de protección con barniz de retoque y se estucaron las lagunas con carbonato cálcico y cola de conejo. La reintegración cromática se inició con acuarelas para establecer una base y se completó con pigmentos y barniz de retoque, aplicando un criterio ilusionista para recuperar la lectura de la obra.</p>
             <span class="note" data-i18n="pin_note_limp">Fase 05 · Limpieza y reintegración</span>
+          </div>
+        </section>
+
+        <!-- Sliders antes/después: anverso y reverso en paralelo -->
+        <section class="story-block reveal">
+          <div class="ba-pair">
+            <div class="ba-slider" style="--pos: 50">
+              <img class="ba-img" src="../assets/trabajos/pintura-sobre-tela/antes-anverso.jpg" alt="Anverso antes de la intervención" loading="lazy" />
+              <img class="ba-img ba-after" src="../assets/trabajos/pintura-sobre-tela/despues-anverso.jpg" alt="Anverso después de la restauración" loading="lazy" />
+              <span class="before-after-label ba-label-before">Antes</span>
+              <span class="before-after-label despues ba-label-after">Después</span>
+              <div class="ba-handle" aria-hidden="true">
+                <div class="ba-handle-circle"><span>‹</span><span>›</span></div>
+              </div>
+            </div>
+            <div class="ba-slider" style="--pos: 50">
+              <img class="ba-img" src="../assets/trabajos/pintura-sobre-tela/antes-reverso.jpg" alt="Reverso antes de la intervención" loading="lazy" />
+              <img class="ba-img ba-after" src="../assets/trabajos/pintura-sobre-tela/despues-reverso.jpg" alt="Reverso después de la restauración" loading="lazy" />
+              <span class="before-after-label ba-label-before">Antes</span>
+              <span class="before-after-label despues ba-label-after">Después</span>
+              <div class="ba-handle" aria-hidden="true">
+                <div class="ba-handle-circle"><span>‹</span><span>›</span></div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -600,6 +759,34 @@
       };
       window.addEventListener('scroll', playIfVisible, { passive: true });
       playIfVisible();
+    });
+
+    // Sliders antes/después (múltiples)
+    document.querySelectorAll('.ba-slider').forEach((slider) => {
+      let dragging = false;
+      const setPos = (clientX) => {
+        const r = slider.getBoundingClientRect();
+        let p = ((clientX - r.left) / r.width) * 100;
+        p = Math.max(0, Math.min(100, p));
+        slider.style.setProperty('--pos', p);
+      };
+      const start = (e) => {
+        dragging = true;
+        setPos(e.touches ? e.touches[0].clientX : e.clientX);
+        e.preventDefault();
+      };
+      const move = (e) => {
+        if (!dragging) return;
+        setPos(e.touches ? e.touches[0].clientX : e.clientX);
+        e.preventDefault();
+      };
+      const end = () => { dragging = false; };
+      slider.addEventListener('mousedown', start);
+      slider.addEventListener('touchstart', start, { passive: false });
+      window.addEventListener('mousemove', move);
+      window.addEventListener('touchmove', move, { passive: false });
+      window.addEventListener('mouseup', end);
+      window.addEventListener('touchend', end);
     });
   </script>
 </body>

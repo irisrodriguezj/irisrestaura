@@ -193,7 +193,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 85px 0 16px;
+      padding: 85px 0 0;
       overflow: hidden;
       isolation: isolate;
     }
@@ -660,7 +660,7 @@
       .brand { font-size: 16px; letter-spacing: .07em; }
       .nav-links .pill { padding-inline: 12px; font-size: 11px; }
 
-      .hero { padding: 118px 0 40px; }
+      .hero { padding: 118px 0 0; }
       h1 { font-size: clamp(48px, 13vw, 72px); margin: 14px 0 10px; line-height: .84; }
       .hero-text p { font-size: 15px; }
       .scroll-note { display: none; }
@@ -705,11 +705,20 @@
     /* ---- Overrides para fondo claret oscuro ---- */
     .section-head h2 { color: var(--paper); }
     .section-head p { color: rgba(255,253,249,.72); }
-    /* Banda degradada en la separación hero / sobre mí */
-    .section-fade {
-      height: clamp(160px, 22vw, 280px);
-      background: linear-gradient(180deg, #670626 0%, #8a1a3a 30%, #c0607a 65%, #FFBDC5 100%);
+    /* Degradado — overlay fijo en la parte inferior del hero */
+    .hero::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: clamp(140px, 20vw, 240px);
+      background: linear-gradient(180deg, transparent 0%, #670626 18%, #8a1a3a 42%, #c0607a 68%, #FFBDC5 100%);
+      z-index: 1;
+      pointer-events: none;
     }
+    /* Sin div separado — se puede dejar vacío */
+    .section-fade { display: none; }
     /* Texto de sobre mí más legible (más oscuro/opaco) */
     .intro-card h2 { color: var(--ink); }
     .intro-card p { color: #3a0712; opacity: 1; }
@@ -792,9 +801,9 @@
         <a class="button primary" href="#trabajos" data-i18n="idx_hero_ver">Ver trabajos</a>
         <a class="button secondary" href="#contacto" data-i18n="idx_hero_contacto">Contacto</a>
       </div>
-    </section>
 
-    <div class="section-fade" aria-hidden="true"></div>
+      <div class="section-fade" aria-hidden="true"></div>
+    </section>
 
     <section class="intro" id="sobre-mi">
       <div class="container intro-card">
