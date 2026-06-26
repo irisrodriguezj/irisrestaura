@@ -415,8 +415,9 @@
       pointer-events: none;
       clip-path: inset(0 0 0 calc(var(--pos, 50) * 1%));
     }
-    .ba-slider .ba-label-before { left: 18px; }
-    .ba-slider .ba-label-after { right: 18px; }
+    .ba-wrap { position: relative; }
+    .ba-wrap .ba-label-before { left: 18px; }
+    .ba-wrap .ba-label-after { right: 18px; }
     .ba-handle {
       position: absolute;
       top: 0; bottom: 0;
@@ -488,8 +489,8 @@
       .ba-pair { grid-template-columns: 1fr; gap: 20px; }
       .ba-slider { aspect-ratio: 3/4; border-radius: 22px; }
       .before-after-label { top: 12px; font-size: 13px; padding: 6px 14px; }
-      .ba-slider .ba-label-before { left: 12px; }
-      .ba-slider .ba-label-after { right: 12px; }
+      .ba-wrap .ba-label-before { left: 12px; }
+      .ba-wrap .ba-label-after { right: 12px; }
       .work-footer { padding: 40px 0 64px; }
       .footer-buttons .button { flex: 1 1 100%; min-width: 0; }
       .footer .container { display: grid; gap: 6px; }
@@ -503,7 +504,7 @@
     <a href="../index.html#inicio" class="brand">IRISRESTAURA</a>
     <nav class="nav-links">
       <a href="../index.html#sobre-mi" data-i18n="nav_sobremi">Sobre mí</a>
-      <a href="../index.html#trabajos" data-i18n="nav_trabajos">Trabajos</a>
+      <a href="../index.html#trabajos" data-i18n="nav_trabajos">Experiencia laboral</a>
       <a href="../certificaciones.html" data-i18n="nav_cert">Certificaciones</a>
       <button class="pill" data-open-contact type="button" data-i18n="nav_contacto">Contacto</button>
       <span class="lang-switch">
@@ -683,23 +684,27 @@
         <!-- Sliders antes/después: anverso y reverso en paralelo -->
         <section class="story-block reveal">
           <div class="ba-pair">
-            <div class="ba-slider" style="--pos: 50">
-              <img class="ba-img" src="../assets/trabajos/pintura-sobre-tela/antes-anverso.jpg" alt="Anverso antes de la intervención" loading="lazy" />
-              <img class="ba-img ba-after" src="../assets/trabajos/pintura-sobre-tela/despues-anverso.jpg" alt="Anverso después de la restauración" loading="lazy" />
+            <div class="ba-wrap">
+              <div class="ba-slider" style="--pos: 50">
+                <img class="ba-img" src="../assets/trabajos/pintura-sobre-tela/antes-anverso.jpg" alt="Anverso antes de la intervención" loading="lazy" />
+                <img class="ba-img ba-after" src="../assets/trabajos/pintura-sobre-tela/despues-anverso.jpg" alt="Anverso después de la restauración" loading="lazy" />
+                <div class="ba-handle" aria-hidden="true">
+                  <div class="ba-handle-circle"><span>‹</span><span>›</span></div>
+                </div>
+              </div>
               <span class="before-after-label ba-label-before">Antes</span>
               <span class="before-after-label despues ba-label-after">Después</span>
-              <div class="ba-handle" aria-hidden="true">
-                <div class="ba-handle-circle"><span>‹</span><span>›</span></div>
-              </div>
             </div>
-            <div class="ba-slider" style="--pos: 50">
-              <img class="ba-img" src="../assets/trabajos/pintura-sobre-tela/antes-reverso.jpg" alt="Reverso antes de la intervención" loading="lazy" />
-              <img class="ba-img ba-after" src="../assets/trabajos/pintura-sobre-tela/despues-reverso.jpg" alt="Reverso después de la restauración" loading="lazy" />
+            <div class="ba-wrap">
+              <div class="ba-slider" style="--pos: 50">
+                <img class="ba-img" src="../assets/trabajos/pintura-sobre-tela/antes-reverso.jpg" alt="Reverso antes de la intervención" loading="lazy" />
+                <img class="ba-img ba-after" src="../assets/trabajos/pintura-sobre-tela/despues-reverso.jpg" alt="Reverso después de la restauración" loading="lazy" />
+                <div class="ba-handle" aria-hidden="true">
+                  <div class="ba-handle-circle"><span>‹</span><span>›</span></div>
+                </div>
+              </div>
               <span class="before-after-label ba-label-before">Antes</span>
               <span class="before-after-label despues ba-label-after">Después</span>
-              <div class="ba-handle" aria-hidden="true">
-                <div class="ba-handle-circle"><span>‹</span><span>›</span></div>
-              </div>
             </div>
           </div>
         </section>

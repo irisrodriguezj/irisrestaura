@@ -279,8 +279,9 @@
     .ba-slider .ba-img.ba-after {
       clip-path: inset(0 0 0 calc(var(--pos, 50) * 1%));
     }
-    .ba-slider .ba-label-before { left: 18px; }
-    .ba-slider .ba-label-after { right: 18px; }
+    .ba-wrap { position: relative; }
+    .ba-wrap .ba-label-before { left: 18px; }
+    .ba-wrap .ba-label-after { right: 18px; }
 
     .ba-handle {
       position: absolute;
@@ -484,8 +485,8 @@
       .story-media.cinema { aspect-ratio: 16/10; }
       .story-media.video-card:after { top: 12px; left: 12px; font-size: 9px; padding: 5px 10px; }
       .before-after-label { top: 12px; font-size: 13px; padding: 6px 14px; }
-      .ba-slider .ba-label-before { left: 12px; }
-      .ba-slider .ba-label-after { right: 12px; }
+      .ba-wrap .ba-label-before { left: 12px; }
+      .ba-wrap .ba-label-after { right: 12px; }
       .ba-slider { aspect-ratio: 3/4; border-radius: 22px; }
       .ba-handle-circle { width: 48px; height: 48px; font-size: 20px; }
       .story-block.duo .story-media-pair { grid-template-columns: 1fr; gap: 14px; }
@@ -503,7 +504,7 @@
     <a href="../index.html#inicio" class="brand">IRISRESTAURA</a>
     <nav class="nav-links">
       <a href="../index.html#sobre-mi" data-i18n="nav_sobremi">Sobre mí</a>
-      <a href="../index.html#trabajos" data-i18n="nav_trabajos">Trabajos</a>
+      <a href="../index.html#trabajos" data-i18n="nav_trabajos">Experiencia laboral</a>
       <a href="../certificaciones.html" data-i18n="nav_cert">Certificaciones</a>
       <button class="pill" data-open-contact type="button" data-i18n="nav_contacto">Contacto</button>
       <span class="lang-switch">
@@ -644,14 +645,16 @@
             <h2 style="white-space:nowrap;font-size:clamp(22px,3vw,46px);" data-i18n="pal_b9_h2">Antes y <span class="accent">después</span>.</h2>
             <p data-i18n="pal_b9_p">El resultado del trabajo se mide en el cambio sobre la pieza. Arrastra el control para comparar el estado del retablo antes y después de la intervención.</p>
           </div>
-          <div class="ba-slider" id="ba-slider" style="--pos: 50">
-            <img class="ba-img" src="../assets/trabajos/palau-de-noguera/antes.jpg" alt="Retablo antes de la intervención" loading="lazy" />
-            <img class="ba-img ba-after" src="../assets/trabajos/palau-de-noguera/despues.jpg" alt="Retablo después de la limpieza" loading="lazy" />
+          <div class="ba-wrap">
+            <div class="ba-slider" id="ba-slider" style="--pos: 50">
+              <img class="ba-img" src="../assets/trabajos/palau-de-noguera/antes.jpg" alt="Retablo antes de la intervención" loading="lazy" />
+              <img class="ba-img ba-after" src="../assets/trabajos/palau-de-noguera/despues.jpg" alt="Retablo después de la limpieza" loading="lazy" />
+              <div class="ba-handle" aria-hidden="true">
+                <div class="ba-handle-circle"><span>‹</span><span>›</span></div>
+              </div>
+            </div>
             <span class="before-after-label ba-label-before" data-i18n="pal_ba_antes">Antes</span>
             <span class="before-after-label despues ba-label-after" data-i18n="pal_ba_despues">Después</span>
-            <div class="ba-handle" aria-hidden="true">
-              <div class="ba-handle-circle"><span>‹</span><span>›</span></div>
-            </div>
           </div>
         </section>
 
