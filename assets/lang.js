@@ -15,12 +15,12 @@
     mod_correo: `Correu`,
     mod_tel: `Telèfon`,
     footer_cr: `Conservació i restauració`,
-    back_link: `← Tornar a treballs`,
-    foot_ver: `Veure tots els treballs`,
+    back_link: `← Tornar a l'experiència laboral`,
+    foot_ver: `Veure tota l'experiència laboral`,
     foot_contacto: `Contacte`,
 
     /* --- Inicio --- */
-    idx_hero_ver: `Veure treballs`,
+    idx_hero_ver: `Veure experiència laboral`,
     idx_hero_contacto: `Contacte`,
     idx_sobre_eyebrow: `Sobre mi`,
     idx_sobre_p1: `Em dic Iris Rodríguez i sóc estudiant del Grau en Conservació i Restauració de Béns Culturals, amb especialització en pintura, a l'Escola Superior de Conservació i Restauració de Béns Culturals de Catalunya (ESCRBCC).`,
