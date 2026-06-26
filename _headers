@@ -4,5 +4,13 @@
   Cache-Control: no-store
 /index.html
   Cache-Control: no-store
+/certificaciones.html
+  Cache-Control: no-store
+/legal.html
+  Cache-Control: no-store
 /trabajos/*
+  Cache-Control: no-store
+# El script de idiomas también debe ser siempre fresco para que las
+# traducciones (ES/CA) se actualicen al instante en todas las páginas.
+/assets/lang.js
   Cache-Control: no-store
