@@ -69,7 +69,7 @@
     pal_b1_p2: `Pràctiques organitzades per l'ESCRBCC i coordinades pels professors Pau Claramonte i Lídia Balust, desenvolupades al llarg de dues setmanes.`,
     pal_b1_note: `Fase 01 · Documentació i examen organolèptic`,
     pal_b3_h2: `Consolidació, neteja i <span class="accent">reintegració</span>.`,
-    pal_b3_p1: `Els treballs es van centrar en la consolidació de la policromia i dels daurats originals, que presentaven aixecaments i risc de despreniment. Un cop estabilitzada la capa pictòrica, es va procedir a la documentació gràfica i l'examen organolèptic per determinar l'estat de conservació.`,
+    pal_b3_p1: `Els treballs es van centrar en la consolidació de la policromia i dels daurats originals, que presentaven aixecaments i risc de despreniment.`,
     pal_b3_p2: `Posteriorment, es va dur a terme una neteja mecànica i fisicoquímica de les diferents superfícies: daurats, policromies, fusta vista i elements escultòrics.`,
     pal_b3_note: `Fase 02 · Consolidació i neteja`,
     pal_b4_h2: `Detalls del <span class="accent">procés</span>.`,
