@@ -168,6 +168,8 @@
     cert_desc: `Llicències i certificacions obtingudes al llarg de la meva formació.`,
     cert_group_seguridad: `Seguretat laboral`,
     cert_group_idiomas: `Idiomes`,
+    cert_0_name: `Tècnic de Prevenció de Nivell Bàsic (Recurs Preventiu) · 60 h`,
+    cert_0_date: `Pròximament · Jul. 2026`,
     cert_1_name: `Curs de prevenció de riscos laborals per a personal de restauració d'art`,
     cert_1_date: `Jun. 2026`,
     cert_2_name: `Prevenció de riscos laborals per a treballs de conservació i restauració de béns culturals`,

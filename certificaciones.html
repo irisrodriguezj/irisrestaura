@@ -208,6 +208,11 @@
       border-radius: 999px;
       padding: 4px 10px;
     }
+    .cert-date.upcoming {
+      color: var(--muted);
+      background: rgba(122,64,48,.08);
+      border: 1px dashed rgba(122,64,48,.45);
+    }
 
     /* Footer */
     .footer {
@@ -270,6 +275,15 @@
 
         <div class="cert-group">
           <p class="cert-group-title" data-i18n="cert_group_seguridad">Seguridad laboral</p>
+
+          <div class="cert-card">
+            <div class="cert-icon"><img src="assets/certificaciones/ergasia.png" alt="Ergasia Seguretat SL" loading="lazy" onerror="this.parentElement.style.display='none'" /></div>
+            <div class="cert-body">
+              <p class="cert-name" data-i18n="cert_0_name">Técnico de Prevención de Nivel Básico (Recurso Preventivo) · 60 h</p>
+              <p class="cert-entity">Ergasia Seguretat SL</p>
+              <span class="cert-date upcoming" data-i18n="cert_0_date">Próximamente · Jul. 2026</span>
+            </div>
+          </div>
 
           <div class="cert-card">
             <div class="cert-icon"><img src="assets/certificaciones/ergasia.png" alt="Ergasia Seguretat SL" loading="lazy" onerror="this.parentElement.style.display='none'" /></div>
@@ -350,7 +364,7 @@
     </div>
   </div>
 
-  <script src="assets/lang.js?v=3"></script>
+  <script src="assets/lang.js?v=4"></script>
   <script>
     // Contact modal
     const overlay = document.getElementById('contactModal');
