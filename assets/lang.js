@@ -24,7 +24,7 @@
     idx_hero_contacto: `Contacte`,
     idx_sobre_eyebrow: `Sobre mi`,
     idx_sobre_p1: `Em dic Iris Rodríguez i sóc estudiant del Grau en Conservació i Restauració de Béns Culturals, amb especialització en pintura, a l'Escola Superior de Conservació i Restauració de Béns Culturals de Catalunya (ESCRBCC).`,
-    idx_sobre_p2: `Al llarg de la meva formació he participat en diferents projectes de conservació-restauració de pintura sobre taula, pintura sobre tela, pintura mural i retaules policromats, tant en l'àmbit acadèmic com en pràctiques professionals. Aquestes experiències m'han permès adquirir coneixements tècnics en documentació, diagnòstic, consolidació, neteja i reintegració, així com desenvolupar una visió global dels processos d'intervenció sobre el patrimoni cultural.`,
+    idx_sobre_p2: `Al llarg de la meva formació he participat en diferents projectes de conservació-restauració de pintura sobre taula, pintura sobre tela i pintura mural, tant en l'àmbit acadèmic com en pràctiques professionals. Aquestes experiències m'han permès adquirir coneixements tècnics en documentació, diagnòstic, consolidació, neteja i reintegració, així com desenvolupar una visió global dels processos d'intervenció sobre el patrimoni cultural.`,
     idx_sobre_p3: `Sóc una persona responsable, curiosa i amb ganes d'aprendre. M'agrada treballar en equip i participar en projectes que contribueixin a la preservació i difusió del patrimoni cultural. Actualment busco continuar adquirint experiència professional i afrontar nous reptes en l'àmbit de la conservació-restauració.`,
     idx_sobre_btn: `Contacte`,
     idx_trab_h2: `Experiència laboral`,
