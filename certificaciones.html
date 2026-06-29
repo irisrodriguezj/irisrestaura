@@ -184,6 +184,15 @@
       height: auto;
       object-fit: contain;
     }
+    .cert-lang-code {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 600;
+      font-size: 17px;
+      letter-spacing: .04em;
+      color: var(--rose-500);
+      text-align: center;
+      line-height: 1;
+    }
     .cert-body { flex: 1; min-width: 0; }
     .cert-name {
       font-size: 15px;
@@ -317,6 +326,24 @@
           <p class="cert-group-title" data-i18n="cert_group_idiomas">Idiomas</p>
 
           <div class="cert-card">
+            <div class="cert-icon"><span class="cert-lang-code">CA·ES</span></div>
+            <div class="cert-body">
+              <p class="cert-name" data-i18n="cert_5_name">Catalán y castellano</p>
+              <p class="cert-entity" data-i18n="cert_5_entity">Lengua materna</p>
+              <span class="cert-date" data-i18n="cert_5_date">Nativo</span>
+            </div>
+          </div>
+
+          <div class="cert-card">
+            <div class="cert-icon"><span class="cert-lang-code">IT</span></div>
+            <div class="cert-body">
+              <p class="cert-name" data-i18n="cert_6_name">Italiano</p>
+              <p class="cert-entity" data-i18n="cert_6_entity">En aprendizaje</p>
+              <span class="cert-date upcoming" data-i18n="cert_6_date">Estudiante</span>
+            </div>
+          </div>
+
+          <div class="cert-card">
             <div class="cert-icon"><img src="assets/certificaciones/cambridge.png" alt="Cambridge English" loading="lazy" onerror="this.parentElement.style.display='none'" /></div>
             <div class="cert-body">
               <p class="cert-name" data-i18n="cert_4_name">B2 First</p>
@@ -364,7 +391,7 @@
     </div>
   </div>
 
-  <script src="assets/lang.js?v=5"></script>
+  <script src="assets/lang.js?v=6"></script>
   <script>
     // Contact modal
     const overlay = document.getElementById('contactModal');

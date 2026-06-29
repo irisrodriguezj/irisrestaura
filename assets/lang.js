@@ -177,7 +177,13 @@
     cert_3_name: `Seguretat en els treballs temporals en alçada: Requisits, equips i tècniques fonamentals`,
     cert_3_date: `Gen. 2025`,
     cert_4_name: `B2 First`,
-    cert_4_date: `Jul. 2024`
+    cert_4_date: `Jul. 2024`,
+    cert_5_name: `Català i castellà`,
+    cert_5_entity: `Llengua materna`,
+    cert_5_date: `Natiu`,
+    cert_6_name: `Italià`,
+    cert_6_entity: `En aprenentatge`,
+    cert_6_date: `Estudiant`
   };
 
   function apply(lang) {
