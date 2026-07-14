@@ -86,6 +86,9 @@
     .story-text .note { display: inline-block; margin-top: 6px; padding: 8px 14px; border-radius: 999px; background: rgba(255,255,255,.55); border: 1px solid var(--line); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
     .lead-text { text-align: left; }
 
+    .story-media-col { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+    .story-media-col .story-media { width: 100%; }
+    .story-media-col .note { display: inline-block; padding: 8px 14px; border-radius: 999px; background: rgba(58,16,8,.08); border: 1px solid rgba(58,16,8,.2); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink); }
     .story-media { border-radius: calc(var(--radius) + 6px); overflow: hidden; box-shadow: var(--shadow); border: 1px solid rgba(255,255,255,.7); background: var(--rose-50); position: relative; }
     .story-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .story-media.portrait { aspect-ratio: 3/4; }
@@ -193,23 +196,23 @@
             <p data-i18n="mnac_b2_p1">Durante este período participé en diversas tareas vinculadas a la conservación y restauración de las colecciones del museo. Entre estas, destaca la revisión de las salas de la colección de Arte Moderno I, realizando controles de conservación preventiva, detección de incidencias, seguimiento del estado de las obras y tareas de mantenimiento básico.</p>
             <p data-i18n="mnac_b3_p1">También intervine el marco de la obra Milicià ferit de Francisco Mateos. La intervención incluyó la documentación gráfica, la elaboración de mapas de alteraciones, el estucado de las pérdidas y la posterior reintegración cromática.</p>
           </div>
-          <div class="story-media" style="aspect-ratio: 4/3;">
-            <img src="../assets/trabajos/mnac/IMG_5381.jpg" alt="Tarea de conservación preventiva en MNAC" loading="lazy" />
+          <div class="story-media-col">
+            <div class="story-media" style="aspect-ratio: 4/3;">
+              <img src="../assets/trabajos/mnac/IMG_5381.jpg" alt="Revisión de salas en el MNAC" loading="lazy" />
+            </div>
+            <span class="note" data-i18n="mnac_b2_note">Revisión de salas</span>
           </div>
         </section>
 
-        <!-- Bloque 4: Safareig -->
-        <section class="story-block reveal">
+        <!-- Bloque 4: Safareig + reflexió (texto junto a imagen) -->
+        <section class="story-block split weighted-text reveal">
           <div class="story-text">
             <p data-i18n="mnac_b4_p1">Además, participé en la conservación-restauración de la obra Safareig de Josep Frau, una pintura al óleo sobre tela que presentaba levantamientos de capa pictórica con riesgo de desprendimiento. La intervención se centró en la fijación de los levantamientos para recuperar su estabilidad estructural, seguida de una limpieza superficial mediante la aplicación de soluciones tampón.</p>
-          </div>
-        </section>
-
-        <!-- Bloque 5: Embalatge + reflexió -->
-        <section class="story-block reveal">
-          <div class="story-text">
             <p data-i18n="mnac_b5_p1">Paralelamente, colaboré en tareas de embalaje y desembalaje de obras destinadas a préstamos y exposiciones temporales, adquiriendo experiencia en la manipulación segura de bienes culturales y en los protocolos de movimiento de obras dentro del ámbito museístico.</p>
             <p data-i18n="mnac_b5_p2">Esta estancia me permitió conocer de primera mano el funcionamiento de un museo nacional y el trabajo diario de los profesionales de la conservación-restauración, ampliando mi experiencia tanto en intervención directa sobre obra como en conservación preventiva y gestión de colecciones.</p>
+          </div>
+          <div class="story-media portrait">
+            <img src="../assets/trabajos/mnac/IMG_5203.jpg" alt="Conservación-restauración de la obra Safareig de Josep Frau" loading="lazy" />
           </div>
         </section>
 
@@ -258,7 +261,7 @@
     </div>
   </div>
 
-  <script src="../assets/lang.js?v=6"></script>
+  <script src="../assets/lang.js?v=7"></script>
   <script>
     (function() {
       const modal = document.getElementById('contactModal');
