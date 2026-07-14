@@ -152,7 +152,7 @@
     mnac_b3_note: `Francisco Mateos · Intervenció de marc`,
     mnac_b4_h2: `<span class="accent">Safareig</span> de Josep Frau.`,
     mnac_b4_p1: `A més, vaig participar en la conservació-restauració de l'obra Safareig de Josep Frau, una pintura a l'oli sobre tela que presentava aixecaments de capa pictòrica amb risc de despreniment. La intervenció es va centrar en la fixació dels aixecaments per recuperar-ne l'estabilitat estructural, seguida d'una neteja superficial mitjançant l'aplicació de solucions tampó.`,
-    mnac_b4_note: `Josep Frau · Fixació i neteja superficial`,
+    mnac_b4_note: `Obra Safareig de Josep Frau`,
     mnac_b5_h2: `Préstecs i <span class="accent">exposicions</span>.`,
     mnac_b5_p1: `Paral·lelament, vaig col·laborar en tasques d'embalatge i desembalatge d'obres destinades a préstecs i exposicions temporals, adquirint experiència en la manipulació segura de béns culturals i en els protocols de moviment d'obres dins l'àmbit museístic.`,
     mnac_b5_p2: `Aquesta estada em va permetre conèixer de primera mà el funcionament d'un museu nacional i el treball diari dels professionals de la conservació-restauració, ampliant la meva experiència tant en intervenció directa sobre obra com en conservació preventiva i gestió de col·leccions.`,
