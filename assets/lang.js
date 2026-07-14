@@ -147,7 +147,7 @@
     mnac_b2_h2: `Conservació <span class="accent">preventiva</span>.`,
     mnac_b2_p1: `Durant aquest període vaig participar en diverses tasques vinculades a la conservació i restauració de les col·leccions del museu. Entre aquestes, destaca la revisió de les sales de la col·lecció d'Art Modern I, realitzant controls de conservació preventiva, detecció d'incidències, seguiment de l'estat de les obres i tasques de manteniment bàsic.`,
     mnac_b2_note: `Revisió de sales`,
-    mnac_b3_h2: `Marc de <span class="accent">Milicià ferit</span>.`,
+    mnac_b3_h2: `Intervenció del <span class="accent">marc</span>.`,
     mnac_b3_p1: `També vaig intervenir el marc de l'obra Milicià ferit de Francisco Mateos. La intervenció va incloure la documentació gràfica, l'elaboració de mapes d'alteracions, l'estucat de les pèrdues i la posterior reintegració cromàtica.`,
     mnac_b3_note: `Marc de Milicià ferit`,
     mnac_b4_h2: `<span class="accent">Safareig</span> de Josep Frau.`,
