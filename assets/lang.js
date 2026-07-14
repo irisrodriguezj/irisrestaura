@@ -149,7 +149,7 @@
     mnac_b2_note: `Revisió de sales`,
     mnac_b3_h2: `Marc de <span class="accent">Milicià ferit</span>.`,
     mnac_b3_p1: `També vaig intervenir el marc de l'obra Milicià ferit de Francisco Mateos. La intervenció va incloure la documentació gràfica, l'elaboració de mapes d'alteracions, l'estucat de les pèrdues i la posterior reintegració cromàtica.`,
-    mnac_b3_note: `Francisco Mateos · Intervenció de marc`,
+    mnac_b3_note: `Marc de Milicià ferit`,
     mnac_b4_h2: `<span class="accent">Safareig</span> de Josep Frau.`,
     mnac_b4_p1: `A més, vaig participar en la conservació-restauració de l'obra Safareig de Josep Frau, una pintura a l'oli sobre tela que presentava aixecaments de capa pictòrica amb risc de despreniment. La intervenció es va centrar en la fixació dels aixecaments per recuperar-ne l'estabilitat estructural, seguida d'una neteja superficial mitjançant l'aplicació de solucions tampó.`,
     mnac_b4_note: `Obra Safareig de Josep Frau`,

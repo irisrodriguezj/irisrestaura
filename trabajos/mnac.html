@@ -87,9 +87,10 @@
     .lead-text { text-align: left; }
 
     @media (min-width: 621px) {
-      .story-block.split.mnac-right { grid-template-columns: 1fr 280px; }
-      .story-block.split.mnac-left  { grid-template-columns: 280px 1fr; }
+      .story-block.split.img-r-w { grid-template-columns: 1fr 340px; }
+      .story-block.split.img-l-w { grid-template-columns: 340px 1fr; }
     }
+    .mnac-feature { width: 100%; max-width: 620px; margin: 0 auto; display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
     .story-media-col { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
     .story-media-col .story-media { width: 100%; }
     .story-media-col .note { display: inline-block; padding: 8px 14px; border-radius: 999px; background: rgba(58,16,8,.08); border: 1px solid rgba(58,16,8,.2); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink); }
@@ -196,7 +197,7 @@
         </section>
 
         <!-- Bloque 2: texto (preventiva + Milicià) + imagen apaisada a la derecha -->
-        <section class="story-block split mnac-right reveal">
+        <section class="story-block split img-r-w reveal">
           <div class="story-text">
             <p data-i18n="mnac_b2_p1">Durante este período participé en diversas tareas vinculadas a la conservación y restauración de las colecciones del museo. Entre estas, destaca la revisión de las salas de la colección de Arte Moderno I, realizando controles de conservación preventiva, detección de incidencias, seguimiento del estado de las obras y tareas de mantenimiento básico.</p>
             <p data-i18n="mnac_b3_p1">También intervine el marco de la obra Milicià ferit de Francisco Mateos. La intervención incluyó la documentación gráfica, la elaboración de mapas de alteraciones, el estucado de las pérdidas y la posterior reintegración cromática.</p>
@@ -209,8 +210,18 @@
           </div>
         </section>
 
+        <!-- Bloque 3: imagen del marco de Milicià ferit (destacada, debajo del texto) -->
+        <section class="story-block reveal">
+          <figure class="mnac-feature">
+            <div class="story-media" style="aspect-ratio: 4/3;">
+              <img src="../assets/trabajos/mnac/IMG_4065.jpg" alt="Marco de la obra Milicià ferit de Francisco Mateos" loading="lazy" />
+            </div>
+            <span class="note" data-i18n="mnac_b3_note">Marco de Milicià ferit</span>
+          </figure>
+        </section>
+
         <!-- Bloque 4: imagen retrato a la izquierda + texto (Safareig + reflexión) a la derecha -->
-        <section class="story-block split mnac-left reveal">
+        <section class="story-block split img-l-w reveal">
           <div class="story-media-col">
             <div class="story-media portrait">
               <img src="../assets/trabajos/mnac/IMG_5203.jpg" alt="Conservación-restauración de la obra Safareig de Josep Frau" loading="lazy" />
@@ -269,7 +280,7 @@
     </div>
   </div>
 
-  <script src="../assets/lang.js?v=8"></script>
+  <script src="../assets/lang.js?v=9"></script>
   <script>
     (function() {
       const modal = document.getElementById('contactModal');
