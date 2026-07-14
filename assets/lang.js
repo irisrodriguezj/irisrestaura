@@ -80,7 +80,6 @@
     pal_b7_h2: `Treball en <span class="accent">equip</span>.`,
     pal_b7_p: `Treballar en un retaule d'aquestes dimensions em va permetre aprofundir en els processos de consolidació i neteja aplicats a estructures policromades i daurades, així com reforçar les competències de treball en equip i coordinació en una intervenció de gran format.`,
     pal_b7_note: `Competències · gran format`,
-    pal_b8_p: `Tots els membres de l'equip vam participar en les diferents fases de la intervenció, des de la consolidació fins a la neteja i la reintegració cromàtica.`,
     pal_b9_h2: `Abans i <span class="accent">després</span>.`,
     pal_b9_p: `El resultat del treball es mesura en el canvi sobre la peça. Arrossega el control per comparar l'estat del retaule abans i després de la intervenció.`,
     pal_ba_antes: `Abans`,
