@@ -76,11 +76,10 @@
     .story { display: flex; flex-direction: column; gap: 4px; padding-bottom: 88px; }
     .story-block { display: grid; align-items: center; gap: clamp(28px,5vw,64px); }
     .story-block.split { grid-template-columns: 1fr 1fr; }
-    .story-block.split.weighted-text { grid-template-columns: 2.8fr 1fr; }
-    .story-block.split.weighted-media { grid-template-columns: 2.8fr 1fr; }
+    .story-block.split.weighted-text { grid-template-columns: 1.15fr .85fr; }
+    .story-block.split.weighted-media { grid-template-columns: 1.15fr .85fr; }
     .story-block.split.reverse > *:first-child { order: 2; }
     .story-block.split.reverse > *:last-child { order: 1; }
-    .story-block.fullwidth { grid-template-columns: 1fr; }
 
     .story-text h2 { margin: 0 0 18px; font-size: clamp(30px,4vw,54px); line-height: .98; letter-spacing: -.03em; font-weight: 500; }
     .story-text h2 .accent { font-style: italic; }
@@ -194,22 +193,15 @@
             <p data-i18n="mnac_b2_p1">Durante este período participé en diversas tareas vinculadas a la conservación y restauración de las colecciones del museo. Entre estas, destaca la revisión de las salas de la colección de Arte Moderno I, realizando controles de conservación preventiva, detección de incidencias, seguimiento del estado de las obras y tareas de mantenimiento básico.</p>
             <span class="note" data-i18n="mnac_b2_note">Revisión de salas</span>
           </div>
-          <div class="story-media">
-            <img src="../assets/trabajos/mnac/IMG_5381.jpg" alt="Revisión de salas en el MNAC" loading="lazy" style="aspect-ratio: 4/3; object-fit: cover;" />
+          <div class="story-media wide">
+            <img src="../assets/trabajos/mnac/IMG_5381.jpg" alt="Revisión de salas en el MNAC" loading="lazy" />
           </div>
         </section>
 
-        <!-- B1 fullwidth: revisión de salas imagen grande -->
-        <section class="story-block fullwidth reveal">
-          <div class="story-media" style="aspect-ratio: 16/9;">
-            <img src="../assets/trabajos/mnac/IMG_5381.jpg" alt="Revisión de salas en el MNAC" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;" />
-          </div>
-        </section>
-
-        <!-- B2: marco de Milicià — imagen pequeña izquierda + texto derecha (reverse) -->
+        <!-- B2: marco de Milicià — imagen izquierda + texto derecha (reverse) -->
         <section class="story-block split reverse reveal">
-          <div class="story-media">
-            <img src="../assets/trabajos/mnac/IMG_4065.jpg" alt="Marco de la obra Milicià ferit de Francisco Mateos" loading="lazy" style="aspect-ratio: 4/3; object-fit: cover;" />
+          <div class="story-media wide">
+            <img src="../assets/trabajos/mnac/IMG_4065.jpg" alt="Marco de la obra Milicià ferit de Francisco Mateos" loading="lazy" />
           </div>
           <div class="story-text">
             <h2 style="font-size:clamp(18px,2.4vw,38px);" data-i18n="mnac_b3_h2">Intervención del <span class="accent">marco</span>.</h2>
@@ -218,14 +210,7 @@
           </div>
         </section>
 
-        <!-- B2 fullwidth: marco imagen grande -->
-        <section class="story-block fullwidth reveal">
-          <div class="story-media" style="aspect-ratio: 16/9;">
-            <img src="../assets/trabajos/mnac/IMG_4065.jpg" alt="Marco de la obra Milicià ferit de Francisco Mateos" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;" />
-          </div>
-        </section>
-
-        <!-- B3: Safareig — texto + imagen pequeña retrato derecha -->
+        <!-- B3: Safareig — texto + imagen retrato derecha -->
         <section class="story-block split weighted-media reveal">
           <div class="story-text">
             <h2 style="font-size:clamp(22px,3vw,46px);" data-i18n="mnac_b4_h2"><span class="accent">Safareig</span> de Josep Frau.</h2>
@@ -236,13 +221,6 @@
           </div>
           <div class="story-media portrait">
             <img src="../assets/trabajos/mnac/IMG_5203.jpg" alt="Conservación-restauración de la obra Safareig de Josep Frau" loading="lazy" />
-          </div>
-        </section>
-
-        <!-- B3 fullwidth: safareig imagen grande -->
-        <section class="story-block fullwidth reveal">
-          <div class="story-media" style="aspect-ratio: 16/9;">
-            <img src="../assets/trabajos/mnac/IMG_5203.jpg" alt="Conservación-restauración de la obra Safareig de Josep Frau" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;" />
           </div>
         </section>
 
