@@ -73,7 +73,7 @@
     .work-meta span { position: relative; }
     .work-meta span + span:before { content: ""; position: absolute; left: -16px; top: 50%; width: 4px; height: 4px; border-radius: 50%; background: var(--rose-500); transform: translateY(-50%); }
 
-    .story { display: flex; flex-direction: column; gap: 4px; padding-bottom: 88px; }
+    .story { display: flex; flex-direction: column; gap: clamp(64px,9vw,120px); padding-bottom: 88px; }
     .story-block { display: grid; align-items: center; gap: clamp(28px,5vw,64px); }
     .story-block.split { grid-template-columns: 1.25fr .75fr; }
     .story-block.split.weighted-text { grid-template-columns: 1.25fr .75fr; }
@@ -201,15 +201,15 @@
           </div>
         </section>
 
-        <!-- B2: marco de Milicià — imagen izquierda (misma columna estrecha) + texto derecha -->
-        <section class="story-block split media-left reveal">
-          <div class="story-media portrait">
-            <img src="../assets/trabajos/mnac/IMG_4065.jpg" alt="Marco de la obra Milicià ferit de Francisco Mateos" loading="lazy" />
-          </div>
+        <!-- B2: marco de Milicià — texto izquierda + imagen derecha -->
+        <section class="story-block split weighted-media reveal">
           <div class="story-text">
             <h2 style="font-size:clamp(18px,2.4vw,38px);" data-i18n="mnac_b3_h2">Intervención del <span class="accent">marco</span>.</h2>
             <p data-i18n="mnac_b3_p1">También intervine el marco de la obra Milicià ferit de Francisco Mateos. La intervención incluyó la documentación gráfica, la elaboración de mapas de alteraciones, el estucado de las pérdidas y la posterior reintegración cromática.</p>
             <span class="note" data-i18n="mnac_b3_note">Marco de Milicià ferit</span>
+          </div>
+          <div class="story-media portrait">
+            <img src="../assets/trabajos/mnac/IMG_4065.jpg" alt="Marco de la obra Milicià ferit de Francisco Mateos" loading="lazy" />
           </div>
         </section>
 
