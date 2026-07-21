@@ -75,9 +75,11 @@
 
     .story { display: flex; flex-direction: column; gap: 4px; padding-bottom: 88px; }
     .story-block { display: grid; align-items: center; gap: clamp(28px,5vw,64px); }
-    .story-block.split { grid-template-columns: 1fr 1fr; }
-    .story-block.split.weighted-text { grid-template-columns: 1.15fr .85fr; }
-    .story-block.split.weighted-media { grid-template-columns: 1.15fr .85fr; }
+    .story-block.split { grid-template-columns: 1.25fr .75fr; }
+    .story-block.split.weighted-text { grid-template-columns: 1.25fr .75fr; }
+    .story-block.split.weighted-media { grid-template-columns: 1.25fr .75fr; }
+    /* imagen a la izquierda, misma columna estrecha (.75fr) para igual tamaño */
+    .story-block.split.media-left { grid-template-columns: .75fr 1.25fr; }
     .story-block.split.reverse > *:first-child { order: 2; }
     .story-block.split.reverse > *:last-child { order: 1; }
 
@@ -128,7 +130,8 @@
     @media (max-width: 960px) {
       .nav-links a:not(.pill):not([data-i18n="nav_cert"]) { display: none; }
       .nav-links [data-i18n="nav_cert"] { padding: 10px 8px; font-size: 11px; }
-      .story-block.split, .story-block.split.weighted-text { grid-template-columns: 1fr; }
+      .story-block.split, .story-block.split.weighted-text,
+      .story-block.split.weighted-media, .story-block.split.media-left { grid-template-columns: 1fr; }
       .story-block.split.reverse > *:first-child { order: 1; }
       .story-block.split.reverse > *:last-child { order: 2; }
       .story-block.split > .story-media { order: 1; }
@@ -193,14 +196,14 @@
             <p data-i18n="mnac_b2_p1">Durante este período participé en diversas tareas vinculadas a la conservación y restauración de las colecciones del museo. Entre estas, destaca la revisión de las salas de la colección de Arte Moderno I, realizando controles de conservación preventiva, detección de incidencias, seguimiento del estado de las obras y tareas de mantenimiento básico.</p>
             <span class="note" data-i18n="mnac_b2_note">Revisión de salas</span>
           </div>
-          <div class="story-media wide">
+          <div class="story-media portrait">
             <img src="../assets/trabajos/mnac/IMG_5381.jpg" alt="Revisión de salas en el MNAC" loading="lazy" />
           </div>
         </section>
 
-        <!-- B2: marco de Milicià — imagen izquierda + texto derecha (reverse) -->
-        <section class="story-block split reverse reveal">
-          <div class="story-media wide">
+        <!-- B2: marco de Milicià — imagen izquierda (misma columna estrecha) + texto derecha -->
+        <section class="story-block split media-left reveal">
+          <div class="story-media portrait">
             <img src="../assets/trabajos/mnac/IMG_4065.jpg" alt="Marco de la obra Milicià ferit de Francisco Mateos" loading="lazy" />
           </div>
           <div class="story-text">
