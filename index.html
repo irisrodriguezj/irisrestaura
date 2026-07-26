@@ -378,6 +378,45 @@
       line-height: 1.7;
       max-width: 620px;
     }
+    .section-head-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+    .cv-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 24px 13px 16px;
+      border-radius: 14px;
+      background: var(--rose-500);
+      color: #FFFDF9;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 21px;
+      font-weight: 600;
+      letter-spacing: .01em;
+      line-height: 1;
+      border: 1px solid var(--rose-500);
+      box-shadow: 0 10px 30px rgba(168,40,26,.22);
+      transition: .25s ease;
+    }
+    .cv-button:hover {
+      background: #FFFDF9;
+      color: var(--rose-500);
+      transform: translateY(-2px);
+    }
+    .cv-button .cv-ico {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: rgba(255,253,249,.18);
+    }
+    .cv-button:hover .cv-ico { background: rgba(168,40,26,.12); }
+    .cv-button svg { width: 16px; height: 16px; display: block; }
 
     .intro {
       padding-top: 34px;
@@ -1000,7 +1039,15 @@
       <div class="container">
         <div class="section-head">
           <h2 data-i18n="idx_trab_h2">Experiencia laboral</h2>
-          <p data-i18n="idx_trab_p">Selección de prácticas que me han proporcionado experiencia a lo largo de estos años. En cada una se explica el trabajo que se ha realizado y los resultados.</p>
+          <div class="section-head-right">
+            <a class="cv-button" href="assets/docs/cv-iris-rodriguez-jimenez.pdf" target="_blank" rel="noopener">
+              <span class="cv-ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              </span>
+              Currículum
+            </a>
+            <p data-i18n="idx_trab_p">Selección de prácticas que me han proporcionado experiencia a lo largo de estos años. En cada una se explica el trabajo que se ha realizado y los resultados.</p>
+          </div>
         </div>
 
         <div class="works-grid">
