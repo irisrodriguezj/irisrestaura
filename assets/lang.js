@@ -213,8 +213,8 @@
   }
 
   function init() {
-    let lang = 'es';
-    try { lang = localStorage.getItem('lang') || 'es'; } catch (e) {}
+    let lang = 'ca';
+    try { lang = localStorage.getItem('lang') || 'ca'; } catch (e) {}
     document.querySelectorAll('.lang-btn').forEach((b) => {
       b.addEventListener('click', () => apply(b.dataset.lang));
     });
