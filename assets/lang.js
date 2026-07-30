@@ -201,6 +201,11 @@
       if (lang === 'ca' && CA[k] != null) el.innerHTML = CA[k];
       else el.innerHTML = el.dataset.es;
     });
+    // Enllaços que canvien de destí segons l'idioma (p. ex. el CV en PDF)
+    document.querySelectorAll('[data-href-ca]').forEach((el) => {
+      if (el.dataset.hrefEs === undefined) el.dataset.hrefEs = el.getAttribute('href');
+      el.setAttribute('href', lang === 'ca' ? el.getAttribute('data-href-ca') : el.dataset.hrefEs);
+    });
     document.querySelectorAll('.lang-btn').forEach((b) => {
       b.classList.toggle('is-active', b.dataset.lang === lang);
     });
