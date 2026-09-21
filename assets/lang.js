@@ -109,6 +109,9 @@
     pin_note_limp: `Neteja i reintegració`,
     ba_antes: `Abans`,
     ba_despues: `Després`,
+    pin_comp_1: `Sense neteja`,
+    pin_comp_2: `Neteja superficial`,
+    pin_comp_3: `Neteja superficial + vernís oxidat`,
 
     /* --- Voluntariado DANA --- */
     dana_eyebrow: `Voluntariat · Emergència patrimonial`,

@@ -379,6 +379,19 @@
       pointer-events: none;
     }
     .before-after-label.despues { background: var(--paper); color: var(--rose-500); }
+    /* Etiquetas de la imagen comparativa (texto HTML, traducible) */
+    .comp-labels {
+      position: absolute; inset: 0; z-index: 3; pointer-events: none;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 6px; padding: 0 16px;
+      background: linear-gradient(90deg, rgba(74,52,42,.28) 0%, rgba(74,52,42,.06) 35%, rgba(74,52,42,.06) 65%, rgba(74,52,42,.28) 100%);
+    }
+    .comp-labels span {
+      flex: 1; color: #fff; font-size: clamp(12px, 1.5vw, 16px); line-height: 1.25;
+      text-shadow: 0 1px 6px rgba(0,0,0,.6);
+    }
+    .comp-labels span:nth-child(2) { text-align: center; }
+    .comp-labels span:last-child { text-align: right; }
     .ba-slider {
       position: relative;
       width: 100%;
@@ -649,7 +662,12 @@
               <img src="../assets/trabajos/pintura-sobre-tela/limpieza-0422.jpg" alt="Detalle de limpieza superficial" loading="lazy" />
             </div>
             <div class="story-media portrait">
-              <img src="../assets/trabajos/pintura-sobre-tela/comparativa-0422.jpg" alt="Comparativa de limpieza" loading="lazy" />
+              <img src="../assets/trabajos/pintura-sobre-tela/antes-02.jpg" alt="Comparativa de limpieza" loading="lazy" />
+              <div class="comp-labels">
+                <span data-i18n="pin_comp_1">Sin limpieza</span>
+                <span data-i18n="pin_comp_2">Limpieza superficial</span>
+                <span data-i18n="pin_comp_3">Limpieza superficial + barniz oxidado</span>
+              </div>
             </div>
           </div>
         </section>
@@ -755,7 +773,7 @@
     </div>
   </div>
 
-  <script src="../assets/lang.js?v=13"></script>
+  <script src="../assets/lang.js?v=14"></script>
   <script>
     // Contact modal
     (function() {
