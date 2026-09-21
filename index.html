@@ -16,17 +16,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --rose-50: #FDF0EA;
-      --rose-100: #F5D5C5;
-      --rose-200: #EBA898;
-      --rose-300: #c06080;
-      --rose-500: #A8281A;
-      --ink: #3A1008;
-      --muted: #7A4030;
-      --paper: #fffdf9;
-      --line: rgba(80, 25, 15, 0.2);
-      --gold: #A8281A;
-      --shadow: 0 24px 80px rgba(80, 25, 15, 0.14);
+      --rose-50: #F5F1EA;
+      --rose-100: #D7C9B8;
+      --rose-200: #B2967D;
+      --rose-300: #B2967D;
+      --rose-500: #7D5A44;
+      --ink: #4A342A;
+      --muted: #7D5A44;
+      --paper: #F5F1EA;
+      --line: rgba(74, 52, 42, 0.2);
+      --gold: #7D5A44;
+      --shadow: 0 24px 80px rgba(74, 52, 42, 0.14);
       --radius: 28px;
     }
 
@@ -35,7 +35,7 @@
     body {
       margin: 0;
       color: var(--ink);
-      background: #F5C8B8;
+      background: #D7C9B8;
       font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       overflow-x: hidden;
       max-width: 100%;
@@ -51,8 +51,8 @@
       opacity: .25;
       z-index: 50;
       background-image:
-        linear-gradient(rgba(58,16,8,.12) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(58,16,8,.08) 1px, transparent 1px);
+        linear-gradient(rgba(74,52,42,.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(74,52,42,.08) 1px, transparent 1px);
       background-size: 42px 42px;
       mask-image: linear-gradient(to bottom, black, transparent 82%);
     }
@@ -74,9 +74,9 @@
       padding: 12px 14px 12px 18px;
       border: 1px solid var(--line);
       border-radius: 999px;
-      background: rgba(255, 253, 249, .74);
+      background: rgba(245, 241, 234, .74);
       backdrop-filter: blur(18px);
-      box-shadow: 0 12px 40px rgba(68, 30, 42, .08);
+      box-shadow: 0 12px 40px rgba(74, 52, 42, .08);
       z-index: 30;
     }
 
@@ -123,7 +123,7 @@
       position: fixed;
       inset: 0;
       z-index: 200;
-      background: rgba(42, 26, 31, .55);
+      background: rgba(74, 52, 42, .55);
       backdrop-filter: blur(8px);
       display: none;
       align-items: center;
@@ -135,7 +135,7 @@
       background: var(--paper);
       border-radius: calc(var(--radius) + 12px);
       border: 1px solid var(--line);
-      box-shadow: 0 32px 80px rgba(42, 26, 31, .24);
+      box-shadow: 0 32px 80px rgba(74, 52, 42, .24);
       padding: clamp(32px, 5vw, 56px);
       max-width: 480px;
       width: 100%;
@@ -293,10 +293,10 @@
       border-radius: 20px;
       overflow: hidden;
       border: 1px solid rgba(255,255,255,.8);
-      box-shadow: 0 20px 50px rgba(58,25,35,.16);
+      box-shadow: 0 20px 50px rgba(74,52,42,.16);
       cursor: pointer;
     }
-    .c-card.is-active { box-shadow: 0 32px 80px rgba(58,25,35,.28); }
+    .c-card.is-active { box-shadow: 0 32px 80px rgba(74,52,42,.28); }
     .c-card img {
       width: 100%; height: 100%;
       object-fit: cover; display: block;
@@ -307,7 +307,7 @@
       position: absolute;
       bottom: 0; left: 0; right: 0;
       padding: 64px 20px 22px;
-      background: linear-gradient(to top, rgba(60,16,8,.75) 0%, transparent 100%);
+      background: linear-gradient(to top, rgba(74,52,42,.75) 0%, transparent 100%);
       color: white;
       font-size: 18px;
       font-weight: 600;
@@ -329,7 +329,7 @@
       top: 50%;
       transform: translateY(-50%);
       border: 1px solid var(--line);
-      background: rgba(255,253,249,.74);
+      background: rgba(245,241,234,.74);
       backdrop-filter: blur(12px);
       border-radius: 999px;
       width: 44px; height: 44px;
@@ -340,7 +340,7 @@
       font-size: 18px;
       color: var(--ink);
     }
-    .c-nav:hover { background: white; box-shadow: 0 8px 24px rgba(58,25,35,.12); }
+    .c-nav:hover { background: white; box-shadow: 0 8px 24px rgba(74,52,42,.12); }
     .c-prev { left: clamp(8px, 2vw, 28px); }
     .c-next { right: clamp(8px, 2vw, 28px); }
 
@@ -391,18 +391,18 @@
       padding: 13px 24px 13px 16px;
       border-radius: 14px;
       background: var(--rose-500);
-      color: #FFFDF9;
+      color: #F5F1EA;
       font-family: "Cormorant Garamond", Georgia, serif;
       font-size: 21px;
       font-weight: 600;
       letter-spacing: .01em;
       line-height: 1;
       border: 1px solid var(--rose-500);
-      box-shadow: 0 10px 30px rgba(168,40,26,.22);
+      box-shadow: 0 10px 30px rgba(125,90,68,.22);
       transition: .25s ease;
     }
     .cv-button:hover {
-      background: #FFFDF9;
+      background: #F5F1EA;
       color: var(--rose-500);
       transform: translateY(-2px);
     }
@@ -413,9 +413,9 @@
       width: 30px;
       height: 30px;
       border-radius: 8px;
-      background: rgba(255,253,249,.18);
+      background: rgba(245,241,234,.18);
     }
-    .cv-button:hover .cv-ico { background: rgba(168,40,26,.12); }
+    .cv-button:hover .cv-ico { background: rgba(125,90,68,.12); }
     .cv-button svg { width: 16px; height: 16px; display: block; }
 
     .intro {
@@ -472,9 +472,9 @@
       flex-direction: column;
       border-radius: calc(var(--radius) + 6px);
       overflow: hidden;
-      background: rgba(255,253,249,.82);
+      background: rgba(245,241,234,.82);
       border: 1px solid var(--line);
-      box-shadow: 0 18px 60px rgba(58, 25, 35, .09);
+      box-shadow: 0 18px 60px rgba(74, 52, 42, .09);
       transition: transform .45s cubic-bezier(.2, .8, .2, 1), box-shadow .45s ease;
       text-decoration: none;
       color: inherit;
@@ -482,7 +482,7 @@
     }
     .work-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 32px 90px rgba(58, 25, 35, .16);
+      box-shadow: 0 32px 90px rgba(74, 52, 42, .16);
     }
     .work-card-media {
       aspect-ratio: 4/5;
@@ -571,7 +571,7 @@
       border-radius: var(--radius);
       overflow: hidden;
       cursor: pointer;
-      box-shadow: 0 14px 40px rgba(58, 25, 35, .10);
+      box-shadow: 0 14px 40px rgba(74, 52, 42, .10);
       isolation: isolate;
     }
     .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: .5s ease; }
@@ -584,7 +584,7 @@
       bottom: 14px;
       padding: 10px 12px;
       border-radius: 999px;
-      background: rgba(255,253,249,.78);
+      background: rgba(245,241,234,.78);
       backdrop-filter: blur(10px);
       font-size: 10px;
       letter-spacing: .14em;
@@ -636,7 +636,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(248,232,239,.92), rgba(255,253,249,.82));
+      background: linear-gradient(135deg, rgba(245,241,234,.92), rgba(245,241,234,.82));
       z-index: -1;
     }
     .contact-card h2 { margin: 0 auto 18px; max-width: 780px; font-size: clamp(50px, 8vw, 116px); line-height: .86; font-weight: 500; letter-spacing: -.05em; }
@@ -654,7 +654,7 @@
       position: fixed;
       inset: 0;
       z-index: 100;
-      background: rgba(42, 26, 31, .88);
+      background: rgba(74, 52, 42, .88);
       display: none;
       align-items: center;
       justify-content: center;
@@ -775,16 +775,16 @@
         justify-content: center;
         padding: 16px 12px;
         font-size: 13px;
-        background: rgba(168, 40, 26, 0.82) !important;
+        background: rgba(125, 90, 68, 0.82) !important;
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
-        border: 1px solid rgba(200, 70, 50, 0.5) !important;
+        border: 1px solid rgba(178, 150, 125, 0.5) !important;
         color: #fff !important;
         text-shadow: 0 1px 4px rgba(0,0,0,0.3);
-        box-shadow: 0 2px 12px rgba(80,10,5,0.2);
+        box-shadow: 0 2px 12px rgba(74,52,42,0.2);
       }
       .mobile-home-nav .button:active {
-        background: rgba(168, 40, 26, 1) !important;
+        background: rgba(125, 90, 68, 1) !important;
       }
       /* Botón flotante volver arriba (solo móvil) */
       .back-to-top {
@@ -871,7 +871,7 @@
 
     /* ---- Overrides para fondo claret oscuro ---- */
     .section-head h2 { color: var(--ink); }
-    .section-head p { color: rgba(58,16,8,.65); }
+    .section-head p { color: rgba(74,52,42,.65); }
     /* Degradado — sube alto por el fondo del hero, SIEMPRE detrás de las tarjetas */
     .hero::after {
       content: "";
@@ -882,18 +882,18 @@
       height: 92%;
       background: linear-gradient(180deg,
         transparent 0%,
-        rgba(180,60,40,0.12) 20%,
-        rgba(180,60,40,0.42) 38%,
-        rgba(190,80,55,0.72) 54%,
-        #C06040 68%,
-        #C06040 100%);
+        rgba(178,150,125,0.12) 20%,
+        rgba(178,150,125,0.42) 38%,
+        rgba(178,150,125,0.72) 54%,
+        #B2967D 68%,
+        #B2967D 100%);
       z-index: 1;
       pointer-events: none;
     }
     .section-fade { display: none; }
     /* Sección Trabajos — fondo rosado que enlaza con el degradado del hero */
     .featured {
-      background: linear-gradient(180deg, #C06040 0%, rgba(180,80,55,0.32) 22%, transparent 55%);
+      background: linear-gradient(180deg, #B2967D 0%, rgba(178,150,125,0.32) 22%, transparent 55%);
     }
     /* Texto de sobre mí más legible (más oscuro/opaco) */
     .intro-card h2 { color: var(--ink); }
@@ -901,13 +901,13 @@
     .back-to-top { display: flex; }
     /* La foto solo ocupa su altura natural: sin hueco vacío debajo */
     .intro-card .portrait-card { align-self: start; }
-    .button.primary { background: #A8281A; color: #FFFDF9; border-color: #A8281A; }
-    .button.primary:hover { background: #FFFDF9; border-color: #FFFDF9; color: #A8281A; transform: translateY(-2px); }
-    .button.secondary { background: rgba(255,253,249,.15); color: var(--ink); border-color: rgba(58,16,8,.32); }
-    .button.secondary:hover { background: rgba(255,253,249,.28); color: var(--ink); transform: translateY(-2px); }
-    .c-dot { background: rgba(255,253,249,.35); }
+    .button.primary { background: #7D5A44; color: #F5F1EA; border-color: #7D5A44; }
+    .button.primary:hover { background: #F5F1EA; border-color: #F5F1EA; color: #7D5A44; transform: translateY(-2px); }
+    .button.secondary { background: rgba(245,241,234,.15); color: var(--ink); border-color: rgba(74,52,42,.32); }
+    .button.secondary:hover { background: rgba(245,241,234,.28); color: var(--ink); transform: translateY(-2px); }
+    .c-dot { background: rgba(245,241,234,.35); }
     .c-dot.is-active { background: var(--rose-500); width: 22px; }
-    .footer { color: rgba(58,16,8,.45); }
+    .footer { color: rgba(74,52,42,.45); }
 
     /* ---- Móvil pequeño (≤ 380px) ---- */
     @media (max-width: 380px) {
