@@ -107,6 +107,8 @@
     pin_p_limp1: `La neteja superficial de la capa pictòrica es va realitzar mitjançant sistemes aquosos tamponats, seleccionats a partir de tests previs de pH. Es van fer proves amb el test de Cremonesi per eliminar el vernís envellit i, finalment, es va netejar amb la proporció LE3 (70 % ligroïna, 30 % etanol).`,
     pin_p_limp2: `Després de la neteja es va aplicar un primer vernissat de protecció amb vernís de retoc i es van estucar les llacunes amb carbonat càlcic i cola de conill. La reintegració cromàtica es va iniciar amb aquarel·les per establir una base i es va completar amb pigments i vernís de retoc, aplicant un criteri il·lusionista per recuperar la lectura de l'obra.`,
     pin_note_limp: `Neteja i reintegració`,
+    ba_antes: `Abans`,
+    ba_despues: `Després`,
 
     /* --- Voluntariado DANA --- */
     dana_eyebrow: `Voluntariat · Emergència patrimonial`,
