@@ -108,7 +108,7 @@
     .contact-item { display: flex; align-items: center; gap: 14px; padding: 14px 18px; border-radius: 14px; border: 1px solid var(--line); background: rgba(255,255,255,.6); transition: .2s ease; color: var(--ink); text-decoration: none; }
     .contact-item:hover { background: white; transform: translateX(4px); }
     .contact-item-label { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); min-width: 72px; }
-    .contact-item-value { font-size: 14px; color: var(--ink); overflow-wrap: break-word; word-break: break-all; min-width: 0; }
+    .contact-item-value { font-size: 14px; color: var(--ink); overflow-wrap: anywhere; word-break: normal; min-width: 0; }
 
     .back-link {
       display: inline-flex;
@@ -508,7 +508,12 @@
       .footer-buttons .button { flex: 1 1 100%; min-width: 0; }
       .footer .container { display: grid; gap: 6px; }
     }
-  </style>
+      @media (max-width: 620px) {
+      .contact-item { flex-direction: column; align-items: flex-start; gap: 4px; }
+      .contact-item-label { min-width: 0; }
+      .contact-item-value { font-size: 15px; }
+    }
+</style>
 </head>
 <body>
   <div class="noise"></div>

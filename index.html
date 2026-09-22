@@ -184,7 +184,7 @@
       color: var(--muted);
       min-width: 72px;
     }
-    .contact-item-value { font-size: 14px; color: var(--ink); overflow-wrap: break-word; word-break: break-all; min-width: 0; }
+    .contact-item-value { font-size: 14px; color: var(--ink); overflow-wrap: anywhere; word-break: normal; min-width: 0; }
 
     .hero {
       min-height: 78svh;
@@ -917,7 +917,12 @@
       .gallery-item { height: 155px; }
       .g1 { height: 200px; }
     }
-  </style>
+      @media (max-width: 620px) {
+      .contact-item { flex-direction: column; align-items: flex-start; gap: 4px; }
+      .contact-item-label { min-width: 0; }
+      .contact-item-value { font-size: 15px; }
+    }
+</style>
 </head>
 <body>
   <div class="noise"></div>
