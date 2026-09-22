@@ -201,7 +201,7 @@
     cert_5_date: `Natiu`,
     cert_6_name: `Italià`,
     cert_6_entity: `En aprenentatge`,
-    cert_6_date: `Estudiant`
+    cert_6_date: `Nivell A1`
   };
 
   function apply(lang) {
