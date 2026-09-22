@@ -78,6 +78,50 @@
 
     .story { display: flex; flex-direction: column; gap: clamp(56px,7vw,96px); padding-bottom: 88px; }
     .story-block { display: grid; align-items: center; gap: clamp(28px,5vw,64px); }
+    .story-block.split { grid-template-columns: 1fr 1fr; }
+    .story-block.split.weighted-text { grid-template-columns: 1.3fr .7fr; }
+    .story-block.split.weighted-media { grid-template-columns: .85fr 1.15fr; }
+    .story-block.split.reverse > *:first-child { order: 2; }
+    .story-block.split.reverse > *:last-child { order: 1; }
+    .story-block.full { grid-template-columns: 1fr; }
+    .story-block.full .story-media { width: 100%; }
+    .story-block.duo, .story-block.trio { grid-template-columns: 1fr; }
+    .story-block.duo .story-media-pair { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(14px,2vw,22px); }
+    .story-block.trio .story-media-pair { display: grid; grid-template-columns: repeat(3,1fr); gap: clamp(14px,2vw,22px); }
+
+    .story-media { border-radius: calc(var(--radius) + 6px); overflow: hidden; box-shadow: var(--shadow); border: 1px solid rgba(255,255,255,.7); background: var(--rose-50); position: relative; }
+    .story-media img, .story-media video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .story-media.portrait { aspect-ratio: 3/4; }
+    .story-media.wide { aspect-ratio: 16/9; }
+    .story-media.video-card:after {
+      content: "\25B6 vídeo"; position: absolute; top: 16px; left: 16px; padding: 6px 12px; border-radius: 999px;
+      background: rgba(245,241,234,.88); backdrop-filter: blur(6px); font-family: Inter, sans-serif; font-size: 10px;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--ink); pointer-events: none; z-index: 1;
+    }
+
+    /* Antes/después con slider */
+    .story-block.ba-block { grid-template-columns: 1fr; }
+    .story-block.ba-block .story-text { max-width: 720px; margin: 0 auto 24px; text-align: center; }
+    .before-after-label {
+      position: absolute; top: 18px; padding: 8px 18px; border-radius: 999px; background: var(--ink); color: var(--paper);
+      font-family: "Cormorant Garamond", Georgia, serif; font-size: 15px; font-weight: 500; letter-spacing: .14em;
+      text-transform: uppercase; z-index: 3; pointer-events: none;
+    }
+    .before-after-label.despues { background: var(--rose-500); color: var(--paper); }
+    .ba-wrap { position: relative; min-width: 0; }
+    .ba-wrap .ba-label-before { left: 18px; }
+    .ba-wrap .ba-label-after { right: 18px; }
+    .ba-slider {
+      position: relative; width: 100%; max-width: 620px; margin: 0 auto; aspect-ratio: 2/3;
+      border-radius: calc(var(--radius) + 6px); overflow: hidden; box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,.7); background: var(--rose-50);
+      user-select: none; touch-action: none; cursor: ew-resize; isolation: isolate;
+    }
+    .ba-slider .ba-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; -webkit-user-drag: none; pointer-events: none; }
+    .ba-slider .ba-img.ba-after { clip-path: inset(0 0 0 calc(var(--pos, 50) * 1%)); }
+    .ba-handle { position: absolute; top: 0; bottom: 0; left: calc(var(--pos, 50) * 1%); width: 3px; background: white; transform: translateX(-1.5px); box-shadow: 0 0 24px rgba(0,0,0,.45); pointer-events: none; z-index: 2; }
+    .ba-handle-circle { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 56px; height: 56px; border-radius: 50%; background: white; box-shadow: 0 6px 24px rgba(74,52,42,.35); display: flex; align-items: center; justify-content: center; gap: 2px; font-family: "Cormorant Garamond", Georgia, serif; font-size: 24px; color: var(--ink); line-height: 1; pointer-events: none; }
+    .ba-handle-circle span { display: inline-block; }
 
     .story-text h2 { margin: 0 0 18px; font-size: clamp(30px,4vw,54px); line-height: .98; letter-spacing: -.03em; font-weight: 500; }
     .story-text h2 .accent { color: var(--rose-500); font-style: italic; }
@@ -132,6 +176,14 @@
 
     @media (max-width: 960px) { .nav-links a:not(.pill):not([data-i18n="nav_cert"]) { display: none; }
       .nav-links [data-i18n="nav_cert"] { padding: 10px 8px; font-size: 11px; } }
+    @media (max-width: 860px) {
+      .story-block.split, .story-block.split.weighted-text, .story-block.split.weighted-media { grid-template-columns: 1fr; }
+      .story-block.split.reverse > *:first-child { order: 1; }
+      .story-block.split.reverse > *:last-child { order: 2; }
+      .story-block.split > .story-media { order: 1; }
+      .story-block.split > .story-text { order: 2; }
+      .story-block.trio .story-media-pair, .story-block.duo .story-media-pair { grid-template-columns: 1fr; gap: 14px; }
+    }
     @media (max-width: 620px) {
       .container { width: min(100% - 24px, 1180px); }
       .nav {
@@ -177,19 +229,83 @@
         <div class="work-meta">
           <span>Tremp, Lleida</span>
           <span>2026</span>
-          <span data-i18n="pal26_meta3">Retablos barrocos · ESCRBCC</span>
+          <span data-i18n="pal26_meta3">Retablo mayor · ESCRBCC</span>
         </div>
       </header>
 
       <div class="story">
 
-        <section class="story-block reveal">
-          <div class="story-text" style="max-width:760px;margin:0 auto;text-align:center;">
-            <div class="proximamente-badge" data-i18n="pal26_badge">Próximamente</div>
-            <h2 data-i18n="pal26_b1_h2">Nueva campaña en Sant Joan <span class="accent">Baptista</span>.</h2>
-            <p data-i18n="pal26_b1_p1">Desde el 29 de junio hasta el 10 de julio participaré en una nueva campaña de conservación-restauración dentro del conjunto de retablos barrocos de la iglesia de Sant Joan Baptista de Palau de Noguera.</p>
-            <p data-i18n="pal26_b1_p2">Próximamente ampliaré esta sección con los resultados y las tareas desarrolladas durante la intervención.</p>
-            <span class="note" data-i18n="pal26_b1_note">Junio – Julio 2026 · En curso</span>
+        <!-- B1: intro + foto del equipo -->
+        <section class="story-block split weighted-text reveal">
+          <div class="story-text">
+            <h2 data-i18n="pal26_b1_h2">Lateral izquierdo del <span class="accent">retablo mayor</span>.</h2>
+            <p data-i18n="pal26_b1_p1">Restauración del lateral izquierdo del retablo mayor de la iglesia parroquial de Sant Joan Baptista de Palau de Noguera, Tremp. Estas prácticas, organizadas por la ESCRBCC y coordinadas por los profesores Pau Claramonte y Lídia Balust, se desarrollaron a lo largo de dos semanas.</p>
+            <span class="note" data-i18n="pal26_b1_note">ESCRBCC · Dos semanas · 2026</span>
+          </div>
+          <div class="story-media portrait">
+            <img src="../assets/trabajos/palau-de-noguera-2026/equipo.jpg" alt="Equipo de conservación-restauración en Palau de Noguera" loading="lazy" />
+          </div>
+        </section>
+
+        <!-- B2: reverso + vídeo limpiando reverso -->
+        <section class="story-block split reverse reveal">
+          <div class="story-media portrait video-card">
+            <video autoplay loop muted playsinline preload="metadata">
+              <source src="../assets/trabajos/palau-de-noguera-2026/video-reverso.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="story-text">
+            <h2 data-i18n="pal26_b2_h2">El <span class="accent">reverso</span> del retablo.</h2>
+            <p data-i18n="pal26_b2_p1">El trabajo se llevó a cabo por el reverso y el anverso del retablo. En cuanto al reverso, se limpió, desinfectó y consolidó toda la estructura de madera, que sufría grandes ataques xilófagos.</p>
+            <span class="note" data-i18n="pal26_b2_note">Limpieza · Desinfección · Consolidación</span>
+          </div>
+        </section>
+
+        <!-- B3: anverso + vídeo limpiando policromía -->
+        <section class="story-block split weighted-media reveal">
+          <div class="story-text">
+            <h2 data-i18n="pal26_b3_h2">El anverso: policromía y <span class="accent">dorados</span>.</h2>
+            <p data-i18n="pal26_b3_p1">En cuanto al anverso, el trabajo se centró en la consolidación de la policromía y los dorados originales, que presentaban levantamientos y riesgo de desprendimiento. Posteriormente se realizó la limpieza mecánica y fisicoquímica de las diferentes superficies del retablo, incluyendo dorados, policromías y madera vista.</p>
+            <span class="note" data-i18n="pal26_b3_note">Consolidación · Limpieza mecánica y fisicoquímica</span>
+          </div>
+          <div class="story-media portrait video-card">
+            <video autoplay loop muted playsinline preload="metadata">
+              <source src="../assets/trabajos/palau-de-noguera-2026/video-policromia.mp4" type="video/mp4">
+            </video>
+          </div>
+        </section>
+
+        <!-- B4: trío de fotos de limpieza -->
+        <section class="story-block trio reveal">
+          <div class="story-media-pair">
+            <div class="story-media portrait">
+              <img src="../assets/trabajos/palau-de-noguera-2026/limpiando-dorado.jpg" alt="Limpieza de un dorado del retablo" loading="lazy" />
+            </div>
+            <div class="story-media portrait">
+              <img src="../assets/trabajos/palau-de-noguera-2026/limpiando-policromia.jpg" alt="Limpieza de la policromía del retablo" loading="lazy" />
+            </div>
+            <div class="story-media portrait">
+              <img src="../assets/trabajos/palau-de-noguera-2026/limpiando-polvo.jpg" alt="Limpieza de polvo sobre el retablo" loading="lazy" />
+            </div>
+          </div>
+        </section>
+
+        <!-- B5: antes/después de la reintegración cromática -->
+        <section class="story-block ba-block reveal">
+          <div class="story-text">
+            <h2 data-i18n="pal26_b5_h2">Reintegración <span class="accent">cromática</span>.</h2>
+            <span class="note" data-i18n="pal26_b5_note">Reintegración de la policromía · Antes / Después</span>
+          </div>
+          <div class="ba-wrap">
+            <div class="ba-slider" id="ba-slider" style="--pos: 50">
+              <img class="ba-img" src="../assets/trabajos/palau-de-noguera-2026/reintegracion-antes.jpg" alt="Policromía antes de la reintegración" loading="lazy" />
+              <img class="ba-img ba-after" src="../assets/trabajos/palau-de-noguera-2026/reintegracion-despues.jpg" alt="Policromía después de la reintegración" loading="lazy" />
+              <div class="ba-handle" aria-hidden="true">
+                <div class="ba-handle-circle"><span>&lsaquo;</span><span>&rsaquo;</span></div>
+              </div>
+            </div>
+            <span class="before-after-label ba-label-before" data-i18n="ba_antes">Antes</span>
+            <span class="before-after-label despues ba-label-after" data-i18n="ba_despues">Después</span>
           </div>
         </section>
 
@@ -238,7 +354,7 @@
     </div>
   </div>
 
-  <script src="../assets/lang.js?v=14"></script>
+  <script src="../assets/lang.js?v=15"></script>
   <script>
     (function() {
       const modal = document.getElementById('contactModal');
@@ -254,6 +370,40 @@
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
     }, { threshold: 0.15 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Reproducir vídeos cuando son visibles (iOS Safari)
+    document.querySelectorAll('video').forEach(v => {
+      v.muted = true;
+      const playIfVisible = () => {
+        const r = v.getBoundingClientRect();
+        if (r.top < innerHeight && r.bottom > 0) v.play().catch(() => {});
+      };
+      window.addEventListener('scroll', playIfVisible, { passive: true });
+      playIfVisible();
+    });
+
+    // Antes/después: slider arrastrable
+    (function() {
+      const slider = document.getElementById('ba-slider');
+      if (!slider) return;
+      let dragging = false;
+      const setPos = (clientX) => {
+        const r = slider.getBoundingClientRect();
+        let p = ((clientX - r.left) / r.width) * 100;
+        p = Math.max(0, Math.min(100, p));
+        slider.style.setProperty('--pos', p);
+      };
+      const start = (e) => { dragging = true; const x = e.touches ? e.touches[0].clientX : e.clientX; setPos(x); e.preventDefault(); };
+      const move = (e) => { if (!dragging) return; const x = e.touches ? e.touches[0].clientX : e.clientX; setPos(x); e.preventDefault(); };
+      const end = () => { dragging = false; };
+      slider.addEventListener('mousedown', start);
+      slider.addEventListener('touchstart', start, { passive: false });
+      window.addEventListener('mousemove', move);
+      window.addEventListener('touchmove', move, { passive: false });
+      window.addEventListener('mouseup', end);
+      window.addEventListener('touchend', end);
+      window.addEventListener('touchcancel', end);
+    })();
   </script>
 </body>
 </html>
