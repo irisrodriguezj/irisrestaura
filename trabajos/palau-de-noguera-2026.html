@@ -369,22 +369,27 @@
     }, { threshold: 0.15 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-    // Reproducir vídeos (mismo método que la página 2025: reproduce, nunca pausa)
-    document.querySelectorAll('video').forEach(v => {
-      v.muted = true;
-      v.setAttribute('playsinline', '');
-      const tryPlay = () => { v.play().catch(() => {}); };
-      const playIfVisible = () => {
+    // Reproducción de vídeos robusta (móvil + portátil/escritorio)
+    (function() {
+      const vids = Array.from(document.querySelectorAll('video'));
+      vids.forEach(v => { v.muted = true; v.setAttribute('playsinline', ''); });
+      const playAll = () => vids.forEach(v => { const p = v.play(); if (p) p.catch(() => {}); });
+      const playVisible = () => vids.forEach(v => {
         const r = v.getBoundingClientRect();
-        if (r.top < innerHeight && r.bottom > 0) tryPlay();
+        if (r.top < innerHeight && r.bottom > 0) { const p = v.play(); if (p) p.catch(() => {}); }
+      });
+      // 1) Intento de autoplay donde el navegador lo permite
+      playVisible();
+      window.addEventListener('scroll', playVisible, { passive: true });
+      vids.forEach(v => { v.addEventListener('loadeddata', playVisible); v.addEventListener('canplay', playVisible); });
+      // 2) Desbloqueo con el primer gesto del usuario (portátiles con autoplay restringido)
+      const unlock = () => {
+        playAll();
+        ['pointerdown', 'click', 'keydown', 'touchstart', 'wheel'].forEach(ev => document.removeEventListener(ev, unlock));
       };
-      // Intento inmediato + cuando el vídeo esté listo + al hacer scroll
-      tryPlay();
-      v.addEventListener('loadeddata', playIfVisible);
-      v.addEventListener('canplay', playIfVisible);
-      window.addEventListener('scroll', playIfVisible, { passive: true });
-      playIfVisible();
-    });
+      ['pointerdown', 'click', 'keydown', 'touchstart', 'wheel'].forEach(ev =>
+        document.addEventListener(ev, unlock, { once: true, passive: true }));
+    })();
 
     // Antes/después: slider arrastrable
     (function() {
