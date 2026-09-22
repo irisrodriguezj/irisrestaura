@@ -79,8 +79,10 @@
     .story { display: flex; flex-direction: column; gap: clamp(56px,7vw,96px); padding-bottom: 88px; }
     .story-block { display: grid; align-items: center; gap: clamp(28px,5vw,64px); }
     .story-block.split { grid-template-columns: 1fr 1fr; }
-    .story-block.split.weighted-text { grid-template-columns: 1.3fr .7fr; }
-    .story-block.split.weighted-media { grid-template-columns: .85fr 1.15fr; }
+    /* media siempre en la columna estrecha (.72fr) para que todos tengan el mismo tamaño */
+    .story-block.split.weighted-text { grid-template-columns: 1.28fr .72fr; }
+    .story-block.split.weighted-media { grid-template-columns: 1.28fr .72fr; }
+    .story-block.split.media-left { grid-template-columns: .72fr 1.28fr; }
     .story-block.split.reverse > *:first-child { order: 2; }
     .story-block.split.reverse > *:last-child { order: 1; }
     .story-block.full { grid-template-columns: 1fr; }
@@ -112,7 +114,7 @@
     .ba-wrap .ba-label-before { left: 18px; }
     .ba-wrap .ba-label-after { right: 18px; }
     .ba-slider {
-      position: relative; width: 100%; max-width: 620px; margin: 0 auto; aspect-ratio: 2/3;
+      position: relative; width: 100%; max-width: 360px; margin: 0 auto; aspect-ratio: 2/3;
       border-radius: calc(var(--radius) + 6px); overflow: hidden; box-shadow: var(--shadow);
       border: 1px solid rgba(255,255,255,.7); background: var(--rose-50);
       user-select: none; touch-action: none; cursor: ew-resize; isolation: isolate;
@@ -177,7 +179,7 @@
     @media (max-width: 960px) { .nav-links a:not(.pill):not([data-i18n="nav_cert"]) { display: none; }
       .nav-links [data-i18n="nav_cert"] { padding: 10px 8px; font-size: 11px; } }
     @media (max-width: 860px) {
-      .story-block.split, .story-block.split.weighted-text, .story-block.split.weighted-media { grid-template-columns: 1fr; }
+      .story-block.split, .story-block.split.weighted-text, .story-block.split.weighted-media, .story-block.split.media-left { grid-template-columns: 1fr; }
       .story-block.split.reverse > *:first-child { order: 1; }
       .story-block.split.reverse > *:last-child { order: 2; }
       .story-block.split > .story-media { order: 1; }
@@ -240,15 +242,14 @@
           <div class="story-text">
             <h2 data-i18n="pal26_b1_h2">Lateral izquierdo del <span class="accent">retablo mayor</span>.</h2>
             <p data-i18n="pal26_b1_p1">Restauración del lateral izquierdo del retablo mayor de la iglesia parroquial de Sant Joan Baptista de Palau de Noguera, Tremp. Estas prácticas, organizadas por la ESCRBCC y coordinadas por los profesores Pau Claramonte y Lídia Balust, se desarrollaron a lo largo de dos semanas.</p>
-            <span class="note" data-i18n="pal26_b1_note">ESCRBCC · Dos semanas · 2026</span>
           </div>
           <div class="story-media portrait">
             <img src="../assets/trabajos/palau-de-noguera-2026/equipo.jpg" alt="Equipo de conservación-restauración en Palau de Noguera" loading="lazy" />
           </div>
         </section>
 
-        <!-- B2: reverso + vídeo limpiando reverso -->
-        <section class="story-block split reverse reveal">
+        <!-- B2: reverso + vídeo limpiando reverso (media izquierda, mismo tamaño) -->
+        <section class="story-block split media-left reveal">
           <div class="story-media portrait video-card">
             <video autoplay loop muted playsinline preload="metadata">
               <source src="../assets/trabajos/palau-de-noguera-2026/video-reverso.mp4" type="video/mp4">
@@ -257,16 +258,14 @@
           <div class="story-text">
             <h2 data-i18n="pal26_b2_h2">El <span class="accent">reverso</span> del retablo.</h2>
             <p data-i18n="pal26_b2_p1">El trabajo se llevó a cabo por el reverso y el anverso del retablo. En cuanto al reverso, se limpió, desinfectó y consolidó toda la estructura de madera, que sufría grandes ataques xilófagos.</p>
-            <span class="note" data-i18n="pal26_b2_note">Limpieza · Desinfección · Consolidación</span>
           </div>
         </section>
 
-        <!-- B3: anverso + vídeo limpiando policromía -->
-        <section class="story-block split weighted-media reveal">
+        <!-- B3: anverso + vídeo limpiando policromía (media derecha, mismo tamaño) -->
+        <section class="story-block split weighted-text reveal">
           <div class="story-text">
             <h2 data-i18n="pal26_b3_h2">El anverso: policromía y <span class="accent">dorados</span>.</h2>
             <p data-i18n="pal26_b3_p1">En cuanto al anverso, el trabajo se centró en la consolidación de la policromía y los dorados originales, que presentaban levantamientos y riesgo de desprendimiento. Posteriormente se realizó la limpieza mecánica y fisicoquímica de las diferentes superficies del retablo, incluyendo dorados, policromías y madera vista.</p>
-            <span class="note" data-i18n="pal26_b3_note">Consolidación · Limpieza mecánica y fisicoquímica</span>
           </div>
           <div class="story-media portrait video-card">
             <video autoplay loop muted playsinline preload="metadata">
@@ -294,7 +293,6 @@
         <section class="story-block ba-block reveal">
           <div class="story-text">
             <h2 data-i18n="pal26_b5_h2">Reintegración <span class="accent">cromática</span>.</h2>
-            <span class="note" data-i18n="pal26_b5_note">Reintegración de la policromía · Antes / Después</span>
           </div>
           <div class="ba-wrap">
             <div class="ba-slider" id="ba-slider" style="--pos: 50">
