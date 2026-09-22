@@ -125,6 +125,12 @@
     .ba-handle-circle { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 56px; height: 56px; border-radius: 50%; background: white; box-shadow: 0 6px 24px rgba(74,52,42,.35); display: flex; align-items: center; justify-content: center; gap: 2px; font-family: "Cormorant Garamond", Georgia, serif; font-size: 24px; color: var(--ink); line-height: 1; pointer-events: none; }
     .ba-handle-circle span { display: inline-block; }
 
+    /* Galería 2x2: 3 fotos + slider, todas del mismo tamaño */
+    .gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(14px,2vw,22px); max-width: 900px; margin: 0 auto; }
+    .gallery-grid .story-media { aspect-ratio: 3/4; }
+    .gallery-ba { min-width: 0; }
+    .gallery-ba .ba-slider { max-width: none; width: 100%; margin: 0; aspect-ratio: 3/4; }
+
     .story-text h2 { margin: 0 0 18px; font-size: clamp(30px,4vw,54px); line-height: .98; letter-spacing: -.03em; font-weight: 500; }
     .story-text h2 .accent { color: var(--rose-500); font-style: italic; }
     .story-text p { color: var(--muted); line-height: 1.85; margin: 0 0 14px; font-size: 16px; text-align: justify; }
@@ -199,6 +205,7 @@
       .lang-switch { margin-left: 0; }
       .back-link { margin-top: 86px; margin-bottom: 22px; }
       .work-title { font-size: clamp(40px,12vw,64px); }
+      .gallery-grid { grid-template-columns: 1fr; max-width: 420px; }
       .footer .container { display: grid; gap: 6px; }
     }
   </style>
@@ -274,9 +281,9 @@
           </div>
         </section>
 
-        <!-- B4: trío de fotos de limpieza -->
-        <section class="story-block trio reveal">
-          <div class="story-media-pair">
+        <!-- B4: galería 2x2 — 3 fotos de limpieza + slider de reintegración (mismo tamaño) -->
+        <section class="story-block reveal">
+          <div class="gallery-grid">
             <div class="story-media portrait">
               <img src="../assets/trabajos/palau-de-noguera-2026/limpiando-dorado.jpg" alt="Limpieza de un dorado del retablo" loading="lazy" />
             </div>
@@ -286,24 +293,17 @@
             <div class="story-media portrait">
               <img src="../assets/trabajos/palau-de-noguera-2026/limpiando-polvo.jpg" alt="Limpieza de polvo sobre el retablo" loading="lazy" />
             </div>
-          </div>
-        </section>
-
-        <!-- B5: antes/después de la reintegración cromática -->
-        <section class="story-block ba-block reveal">
-          <div class="story-text">
-            <h2 data-i18n="pal26_b5_h2">Reintegración <span class="accent">cromática</span>.</h2>
-          </div>
-          <div class="ba-wrap">
-            <div class="ba-slider" id="ba-slider" style="--pos: 50">
-              <img class="ba-img" src="../assets/trabajos/palau-de-noguera-2026/reintegracion-antes.jpg" alt="Policromía antes de la reintegración" loading="lazy" />
-              <img class="ba-img ba-after" src="../assets/trabajos/palau-de-noguera-2026/reintegracion-despues.jpg" alt="Policromía después de la reintegración" loading="lazy" />
-              <div class="ba-handle" aria-hidden="true">
-                <div class="ba-handle-circle"><span>&lsaquo;</span><span>&rsaquo;</span></div>
+            <div class="ba-wrap gallery-ba">
+              <div class="ba-slider" id="ba-slider" style="--pos: 50">
+                <img class="ba-img" src="../assets/trabajos/palau-de-noguera-2026/reintegracion-antes.jpg" alt="Policromía antes de la reintegración" loading="lazy" />
+                <img class="ba-img ba-after" src="../assets/trabajos/palau-de-noguera-2026/reintegracion-despues.jpg" alt="Policromía después de la reintegración" loading="lazy" />
+                <div class="ba-handle" aria-hidden="true">
+                  <div class="ba-handle-circle"><span>&lsaquo;</span><span>&rsaquo;</span></div>
+                </div>
               </div>
+              <span class="before-after-label ba-label-before" data-i18n="ba_antes">Antes</span>
+              <span class="before-after-label despues ba-label-after" data-i18n="ba_despues">Después</span>
             </div>
-            <span class="before-after-label ba-label-before" data-i18n="ba_antes">Antes</span>
-            <span class="before-after-label despues ba-label-after" data-i18n="ba_despues">Después</span>
           </div>
         </section>
 
@@ -369,15 +369,18 @@
     }, { threshold: 0.15 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-    // Reproducir vídeos cuando son visibles (iOS Safari)
+    // Reproducir vídeos cuando entran en pantalla (fiable en todos los navegadores)
+    const vObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        const v = e.target;
+        if (e.isIntersecting) { v.play().catch(() => {}); }
+        else { v.pause(); }
+      });
+    }, { threshold: 0.25 });
     document.querySelectorAll('video').forEach(v => {
       v.muted = true;
-      const playIfVisible = () => {
-        const r = v.getBoundingClientRect();
-        if (r.top < innerHeight && r.bottom > 0) v.play().catch(() => {});
-      };
-      window.addEventListener('scroll', playIfVisible, { passive: true });
-      playIfVisible();
+      v.setAttribute('playsinline', '');
+      vObs.observe(v);
     });
 
     // Antes/después: slider arrastrable
