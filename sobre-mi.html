@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sobre mí — IRISRESTAURA</title>
+  <meta name="description" content="Iris Rodríguez, estudiante de Conservación y Restauración de Bienes Culturales (ESCRBCC), especialidad en pintura." />
+  <link rel="icon" type="image/png" href="assets/favicon.png?v=2" />
+  <link rel="apple-touch-icon" href="assets/favicon.png?v=2" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --rose-50: #F5F1EA;
+      --rose-100: #D7C9B8;
+      --rose-200: #B2967D;
+      --rose-300: #B2967D;
+      --rose-500: #7D5A44;
+      --ink: #4A342A;
+      --muted: #7D5A44;
+      --paper: #F5F1EA;
+      --line: rgba(74, 52, 42, 0.2);
+      --shadow: 0 24px 80px rgba(74, 52, 42, 0.14);
+      --radius: 28px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #D7C9B8;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow-x: hidden;
+      max-width: 100%;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, .serif { font-family: "Cormorant Garamond", Georgia, serif; }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .25;
+      z-index: 50;
+      background-image:
+        linear-gradient(rgba(74,52,42,.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(74,52,42,.08) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, black, transparent 82%);
+    }
+
+    .container {
+      width: min(1000px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* Nav */
+    .nav {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1320px, calc(100% - 32px));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 14px 12px 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(245, 241, 234, .74);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 12px 40px rgba(74, 52, 42, .08);
+      z-index: 30;
+    }
+    .brand { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 700; letter-spacing: .12em; font-size: clamp(18px, 2vw, 24px); }
+    .nav-links { display: flex; gap: 4px; align-items: center; font-size: 12px; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); }
+    .nav-links a { padding: 10px 12px; border-radius: 999px; transition: .25s ease; }
+    .nav-links a:hover { background: var(--rose-100); color: var(--ink); }
+    .nav-links a.is-current { color: var(--ink); font-weight: 500; }
+    .nav-links .pill { background: var(--ink); color: var(--paper); padding: 10px 16px; border: none; border-radius: 999px; cursor: pointer; font-family: inherit; font-size: 12px; letter-spacing: .09em; text-transform: uppercase; }
+    .nav-links .pill:hover { background: var(--rose-500); color: white; }
+    .lang-switch { display: inline-flex; gap: 4px; margin-left: 6px; }
+    .lang-btn { border: 1px solid var(--line); background: rgba(255,255,255,.5); color: var(--muted); border-radius: 999px; padding: 8px 9px; font-size: 10px; letter-spacing: .06em; cursor: pointer; font-family: inherit; text-transform: uppercase; transition: .2s ease; }
+    .lang-btn:hover { background: rgba(255,255,255,.85); color: var(--ink); }
+    .lang-btn.is-active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+    /* Contact modal */
+    .contact-modal-overlay { position: fixed; inset: 0; z-index: 200; background: rgba(74,52,42,.55); backdrop-filter: blur(8px); display: none; align-items: center; justify-content: center; padding: 24px; }
+    .contact-modal-overlay.is-open { display: flex; }
+    .contact-modal-box { background: var(--paper); border-radius: calc(var(--radius) + 12px); border: 1px solid var(--line); box-shadow: 0 32px 80px rgba(74,52,42,.24); padding: clamp(32px,5vw,56px); max-width: 480px; width: 100%; position: relative; }
+    .contact-modal-close { position: absolute; top: 16px; right: 16px; border: 1px solid var(--line); background: rgba(255,255,255,.7); border-radius: 999px; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 16px; color: var(--muted); transition: .2s ease; }
+    .contact-modal-close:hover { background: white; color: var(--ink); }
+    .contact-modal-title { margin: 16px 0 28px; font-size: clamp(36px,6vw,58px); line-height: .9; letter-spacing: -.03em; font-weight: 500; font-family: "Cormorant Garamond", Georgia, serif; }
+    .contact-items { display: flex; flex-direction: column; gap: 12px; }
+    .contact-item { display: flex; align-items: center; gap: 14px; padding: 14px 18px; border-radius: 14px; border: 1px solid var(--line); background: rgba(255,255,255,.6); transition: .2s ease; color: var(--ink); text-decoration: none; }
+    .contact-item:hover { background: white; transform: translateX(4px); }
+    .contact-item-label { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); min-width: 72px; }
+    .contact-item-value { font-size: 14px; color: var(--ink); overflow-wrap: anywhere; word-break: normal; min-width: 0; }
+
+    /* Page header */
+    .page-header {
+      padding-top: 140px;
+      padding-bottom: 56px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 8px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: rgba(74,52,42,.06);
+      margin-bottom: 22px;
+    }
+    .page-title {
+      font-size: clamp(52px, 8vw, 96px);
+      line-height: .9;
+      letter-spacing: -.04em;
+      font-weight: 500;
+      color: var(--ink);
+      margin: 0 0 18px;
+    }
+    .page-desc {
+      font-size: 16px;
+      color: rgba(74,52,42,.6);
+      max-width: 520px;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* Cert list */
+    .cert-section {
+      padding-bottom: 80px;
+    }
+    .cert-group {
+      margin-bottom: 52px;
+    }
+    .cert-group-title {
+      font-size: 11px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: rgba(74,52,42,.38);
+      margin: 0 0 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(74,52,42,.14);
+    }
+    .cert-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 22px 24px;
+      border-radius: 18px;
+      background: rgba(74,52,42,.05);
+      border: 1px solid rgba(74,52,42,.1);
+      margin-bottom: 10px;
+      transition: background .2s ease;
+    }
+    .cert-card:hover { background: rgba(74,52,42,.07); }
+    .cert-icon {
+      flex-shrink: 0;
+      width: 64px;
+      height: 64px;
+      border-radius: 12px;
+      background: var(--paper);
+      border: 1px solid rgba(74,52,42,.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 8px;
+    }
+    .cert-icon img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+    .cert-lang-code {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 600;
+      font-size: 17px;
+      letter-spacing: .04em;
+      color: var(--rose-500);
+      text-align: center;
+      line-height: 1;
+    }
+    .cert-body { flex: 1; min-width: 0; }
+    .cert-name {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ink);
+      margin: 0 0 5px;
+      line-height: 1.35;
+    }
+    .cert-entity {
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0 0 6px;
+    }
+    .cert-date {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--rose-500);
+      background: rgba(125,90,68,.1);
+      border: 1px solid rgba(125,90,68,.28);
+      border-radius: 999px;
+      padding: 4px 10px;
+    }
+    .cert-date.upcoming {
+      color: var(--muted);
+      background: rgba(125,90,68,.08);
+      border: 1px dashed rgba(125,90,68,.45);
+    }
+
+    /* Footer */
+    .footer {
+      padding: 30px 0 42px;
+      color: rgba(74,52,42,.32);
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      border-top: 1px solid rgba(74,52,42,.12);
+    }
+    .footer .container { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+
+    @media (max-width: 960px) {
+      .nav-links a:not(.pill):not([data-i18n="nav_cert"]) { display: none; }
+      .nav-links [data-i18n="nav_cert"] { padding: 10px 8px; font-size: 11px; }
+    }
+    @media (max-width: 620px) {
+      .container { width: min(100% - 24px, 860px); }
+      .nav {
+        top: 10px; width: calc(100% - 20px); padding: 10px 12px;
+        flex-direction: column; gap: 10px; border-radius: 22px;
+      }
+      .nav-links { width: 100%; flex-wrap: wrap; justify-content: center; gap: 6px; }
+      /* En móvil mostramos TODOS los enlaces de navegación */
+      .nav-links a:not(.pill) { display: inline-flex !important; padding: 8px 10px; font-size: 11px; }
+      .nav-links .pill { padding: 8px 14px; font-size: 11px; }
+      .lang-switch { margin-left: 0; }
+      .brand { font-size: 16px; letter-spacing: .07em; }
+      .page-header { padding-top: 100px; padding-bottom: 36px; }
+      .cert-card { padding: 16px 18px; gap: 14px; }
+    }
+      @media (max-width: 620px) {
+      .contact-item { flex-direction: column; align-items: flex-start; gap: 4px; }
+      .contact-item-label { min-width: 0; }
+      .contact-item-value { font-size: 15px; }
+    }
+    /* === Sobre mí === */
+    .about-section { padding-bottom: 90px; }
+    .about-grid { display: grid; grid-template-columns: 320px 1fr; gap: clamp(28px,5vw,56px); align-items: start; }
+    .about-portrait { margin: 0; border-radius: calc(var(--radius) + 6px); overflow: hidden; box-shadow: var(--shadow); border: 1px solid rgba(255,255,255,.7); }
+    .about-portrait img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; }
+    .about-text p { font-size: 16px; line-height: 1.85; color: rgba(74,52,42,.78); margin: 0 0 16px; text-align: justify; }
+    .about-contact { display: inline-flex; align-items: center; min-height: 46px; margin-top: 10px; padding: 0 24px; border-radius: 999px; background: var(--ink); color: var(--paper); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; cursor: pointer; border: 1px solid var(--ink); font-family: inherit; transition: .25s ease; }
+    .about-contact:hover { background: var(--rose-500); border-color: var(--rose-500); transform: translateY(-2px); }
+    @media (max-width: 760px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .about-portrait { max-width: 320px; }
+      .about-text p { text-align: left; }
+    }
+</style>
+</head>
+<body>
+  <div class="noise"></div>
+
+  <header class="nav" aria-label="Navegación principal">
+    <a href="index.html" class="brand">IRISRESTAURA</a>
+    <nav class="nav-links">
+      <a href="sobre-mi.html" class="is-current" data-i18n="nav_sobremi">Sobre mí</a>
+      <a href="index.html#trabajos" data-i18n="nav_trabajos">Experiencia laboral</a>
+      <a class="pill" href="assets/docs/cv-iris-rodriguez-jimenez-es.pdf?v=2" data-href-ca="assets/docs/cv-iris-rodriguez-jimenez-ca.pdf?v=2" target="_blank" rel="noopener">Currículum</a>
+      <a href="certificaciones.html" data-i18n="nav_cert">Certificaciones</a>
+      <button class="pill" data-open-contact type="button" data-i18n="nav_contacto">Contacto</button>
+      <span class="lang-switch">
+        <button class="lang-btn" data-lang="ca" type="button">CAT</button>
+        <button class="lang-btn" data-lang="es" type="button">CAST</button>
+      </span>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <header class="page-header">
+        <span class="eyebrow" data-i18n="idx_sobre_eyebrow">Sobre mí</span>
+        <h1 class="page-title">Iris Rodríguez.</h1>
+      </header>
+
+      <section class="about-section">
+        <div class="about-grid">
+          <figure class="about-portrait">
+            <img src="assets/images/iris-retrat.jpg" alt="Iris Rodríguez" loading="lazy" />
+          </figure>
+          <div class="about-text">
+            <p data-i18n="idx_sobre_p1">Me llamo Iris Rodríguez y soy estudiante del Grado en Conservación y Restauración de Bienes Culturales, con especialización en pintura, en la Escola Superior de Conservació i Restauració de Béns Culturals de Catalunya (ESCRBCC).</p>
+            <p data-i18n="idx_sobre_p2">A lo largo de mi formación he participado en diferentes proyectos de conservación-restauración de pintura sobre tabla, pintura sobre lienzo y pintura mural, tanto en el ámbito académico como en prácticas profesionales. Estas experiencias me han permitido adquirir conocimientos técnicos en documentación, diagnóstico, consolidación, limpieza y reintegración, así como desarrollar una visión global de los procesos de intervención sobre el patrimonio cultural.</p>
+            <p data-i18n="idx_sobre_p3">Soy una persona responsable, curiosa y con ganas de aprender. Me gusta trabajar en equipo y participar en proyectos que contribuyan a la preservación y difusión del patrimonio cultural. Actualmente busco seguir adquiriendo experiencia profesional y afrontar nuevos retos en el ámbito de la conservación-restauración.</p>
+            <button class="about-contact" data-open-contact type="button" data-i18n="idx_sobre_btn">Contacto</button>
+          </div>
+        </div>
+      </section>
+
+          </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <span>IRISRESTAURA © 2026</span>
+      <a href="legal.html" style="color:inherit;text-decoration:none;opacity:.6;font-size:11px;letter-spacing:.08em;text-transform:uppercase;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.6">Aviso legal</a>
+      <span data-i18n="footer_cr">Conservación y restauración</span>
+    </div>
+  </footer>
+
+  <div class="contact-modal-overlay" id="contactModal" aria-hidden="true">
+    <div class="contact-modal-box">
+      <button class="contact-modal-close" id="closeContactModal" aria-label="Cerrar">&#x2715;</button>
+      <span class="eyebrow" data-i18n="mod_eyebrow">Contacto</span>
+      <div class="contact-items">
+        <a class="contact-item" href="https://www.instagram.com/irisrestaura/" target="_blank" rel="noreferrer">
+          <span class="contact-item-label">Instagram</span>
+          <span class="contact-item-value">@irisrestaura</span>
+        </a>
+        <a class="contact-item" href="mailto:irisrestauracio@gmail.com">
+          <span class="contact-item-label" data-i18n="mod_correo">Correo</span>
+          <span class="contact-item-value">irisrestauracio@gmail.com</span>
+        </a>
+        <a class="contact-item" href="tel:+34652244068">
+          <span class="contact-item-label" data-i18n="mod_tel">Teléfono</span>
+          <span class="contact-item-value">+34 652 244 068</span>
+        </a>
+        <a class="contact-item" href="https://www.linkedin.com/in/iris-rodriguez-jimenez/" target="_blank" rel="noreferrer">
+          <span class="contact-item-label">LinkedIn</span>
+          <span class="contact-item-value">iris-rodriguez-jimenez</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/lang.js?v=17"></script>
+  <script>
+    // Contact modal
+    const overlay = document.getElementById('contactModal');
+    const closeBtn = document.getElementById('closeContactModal');
+    document.querySelectorAll('[data-open-contact]').forEach(btn => {
+      btn.addEventListener('click', () => { overlay.classList.add('is-open'); overlay.setAttribute('aria-hidden','false'); });
+    });
+    closeBtn.addEventListener('click', () => { overlay.classList.remove('is-open'); overlay.setAttribute('aria-hidden','true'); });
+    overlay.addEventListener('click', e => { if (e.target === overlay) { overlay.classList.remove('is-open'); overlay.setAttribute('aria-hidden','true'); } });
+    // El cambio de idioma lo gestiona assets/lang.js (no duplicar aquí).
+  </script>
+</body>
+</html>
