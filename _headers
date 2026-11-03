@@ -8,6 +8,8 @@
   Cache-Control: no-store
 /sobre-mi.html
   Cache-Control: no-store
+/experiencia-laboral.html
+  Cache-Control: no-store
 /legal.html
   Cache-Control: no-store
 /trabajos/*
