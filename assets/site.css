@@ -1,0 +1,30 @@
+/* ============================================================
+   Estética portfolio común a todas las páginas: esquinas rectas.
+   Se carga la última para prevalecer sobre los estilos de cada página.
+   ============================================================ */
+
+/* Barra superior (también en móvil) */
+.nav { border-radius: 0 !important; }
+.nav-links a,
+.nav-links .pill,
+.nav .lang-btn { border-radius: 0 !important; }
+
+/* Botón "volver" y botones del pie de las tarjetas de trabajo */
+.back-link,
+.work-footer .button { border-radius: 0 !important; }
+
+/* Certificaciones: tarjetas, logos y etiquetas */
+.cert-card,
+.cert-icon,
+.cert-date { border-radius: 0 !important; }
+
+/* Etiqueta de cabecera (Sobre mí, Certificaciones) y botón de contacto */
+.page-header .eyebrow,
+.about-contact { border-radius: 0 !important; }
+
+/* Sobre mí: retrato */
+.about-portrait {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  border: 1px solid rgba(74, 52, 42, .12) !important;
+}

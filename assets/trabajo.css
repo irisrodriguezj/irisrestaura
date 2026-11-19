@@ -50,14 +50,18 @@
 }
 
 /* ---------- Texto ---------- */
+/* El texto ocupa el mismo ancho que la fila de imágenes, para que ambos
+   bloques terminen en el mismo borde; letra mayor para líneas largas. */
 .pf-lead,
 .pf-text p {
-  max-width: 70ch;
-  margin: 0 0 16px;
-  font-size: 18px;
-  line-height: 1.78;
-  color: rgba(74, 52, 42, .88);
+  max-width: none;
+  margin: 0 0 18px;
+  font-size: 20px;
+  line-height: 1.8;
+  color: rgba(74, 52, 42, .9);
 }
+/* Segundo bloque de texto dentro de una misma fase (tras una fila de imágenes) */
+.pf-grid + .pf-text { margin-top: 32px; }
 .pf-lead,
 .pf-text p {
   text-align: justify;
