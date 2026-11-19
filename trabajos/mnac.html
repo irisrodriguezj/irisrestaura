@@ -22,7 +22,7 @@
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; overflow-x: hidden; }
-    body { margin: 0; color: var(--ink); background: #D7C9B8; font-family: Inter, system-ui, sans-serif; overflow-x: hidden; }
+    body { margin: 0; color: var(--ink); background: #EEE7DD; font-family: Inter, system-ui, sans-serif; overflow-x: hidden; }
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
     h1, h2, h3, .serif { font-family: "Cormorant Garamond", Georgia, serif; }
@@ -160,6 +160,7 @@
     }
     .contact-modal-box .eyebrow { margin-bottom: 22px; }
 </style>
+  <link rel="stylesheet" href="../assets/trabajo.css?v=3" />
 </head>
 <body>
   <div class="noise"></div>
@@ -183,54 +184,61 @@
     <div class="container">
       <a class="back-link" href="../experiencia-laboral.html" data-i18n="back_link">← Volver a experiencia laboral</a>
 
-      <header class="work-header">
-        <span class="eyebrow" data-i18n="mnac_eyebrow">Prácticas curriculares · Pintura sobre tela</span>
-        <h1 class="work-title" data-i18n="mnac_title">Prácticas MNAC</h1>
-        <div class="work-meta">
-          <span>Barcelona</span>
-          <span>2026</span>
-          <span data-i18n="mnac_meta3">Tutorizado por Teresa Schreibweis</span>
-        </div>
-      </header>
+      <article class="pf">
+        <header class="pf-header">
+          <span class="pf-eyebrow" data-i18n="mnac_eyebrow">Prácticas curriculares · Pintura sobre tela</span>
+          <h1 class="pf-title" data-i18n="mnac_title">Prácticas MNAC</h1>
+          <p class="pf-meta">
+            <span>Barcelona</span>
+            <span>2026</span>
+            <span data-i18n="mnac_meta3">Tutorizado por Teresa Schreibweis</span>
+          </p>
+        </header>
 
-      <div class="story">
-
-        <!-- B1: intro + revisión de salas — texto + imagen pequeña derecha -->
-        <section class="story-block split weighted-text reveal">
-          <div class="story-text">
+        <section class="pf-section">
+          <span class="pf-step">01 · <span data-i18n="mnac_b2_note">Revisión de salas</span></span>
+          <div class="pf-text">
             <p data-i18n="mnac_b1_p1">Al final del cuarto curso del Grado en Conservación y Restauración de Bienes Culturales, realicé las prácticas curriculares en el Museu Nacional d'Art de Catalunya (MNAC), dentro de la especialidad de pintura sobre tela. Las prácticas, organizadas por la ESCRBCC, estuvieron tutorizadas por Teresa Schreibweis y tuvieron una duración de un mes y medio.</p>
             <p data-i18n="mnac_b2_p1">Durante este período participé en diversas tareas vinculadas a la conservación y restauración de las colecciones del museo. Entre estas, destaca la revisión de las salas de la colección de Arte Moderno I, realizando controles de conservación preventiva, detección de incidencias, seguimiento del estado de las obras y tareas de mantenimiento básico.</p>
           </div>
-          <div class="story-media portrait">
-            <img src="../assets/trabajos/mnac/IMG_5381.jpg" alt="Revisión de salas en el MNAC" loading="lazy" />
+          <div class="pf-grid c3">
+            <figure class="pf-media land">
+              <img src="../assets/trabajos/mnac/IMG_5381.jpg" alt="Revisión de salas en el MNAC" loading="lazy" />
+            </figure>
           </div>
         </section>
 
-        <!-- B2: marco de Milicià — texto izquierda + imagen derecha -->
-        <section class="story-block split weighted-media reveal">
-          <div class="story-text">
-            <h2 style="font-size:clamp(18px,2.4vw,38px);" data-i18n="mnac_b3_h2">Intervención del <span class="accent">marco</span>.</h2>
+        <section class="pf-section">
+          <span class="pf-step">02 · <span data-i18n="mnac_b3_note">Marco de Milicià ferit</span></span>
+          <h2 data-i18n="mnac_b3_h2">Intervención del <span class="accent">marco</span>.</h2>
+          <div class="pf-text">
             <p data-i18n="mnac_b3_p1">También intervine el marco de la obra Milicià ferit de Francisco Mateos. La intervención incluyó la documentación gráfica, la elaboración de mapas de alteraciones, el estucado de las pérdidas y la posterior reintegración cromática.</p>
           </div>
-          <div class="story-media portrait">
-            <img src="../assets/trabajos/mnac/IMG_4065.jpg" alt="Marco de la obra Milicià ferit de Francisco Mateos" loading="lazy" />
+          <div class="pf-grid c3">
+            <figure class="pf-media land">
+              <img src="../assets/trabajos/mnac/IMG_4065.jpg" alt="Marco de la obra Milicià ferit de Francisco Mateos" loading="lazy" />
+            </figure>
           </div>
         </section>
 
-        <!-- B3: Safareig — texto + imagen retrato derecha -->
-        <section class="story-block split weighted-media reveal">
-          <div class="story-text">
-            <h2 style="font-size:clamp(22px,3vw,46px);" data-i18n="mnac_b4_h2"><span class="accent">Safareig</span> de Josep Frau.</h2>
+        <section class="pf-section">
+          <span class="pf-step">03 · <span data-i18n="mnac_b4_note">Obra Safareig de Josep Frau</span></span>
+          <h2 data-i18n="mnac_b4_h2"><span class="accent">Safareig</span> de Josep Frau.</h2>
+          <div class="pf-text">
             <p data-i18n="mnac_b4_p1">Además, participé en la conservación-restauración de la obra Safareig de Josep Frau, una pintura al óleo sobre tela que presentaba levantamientos de capa pictórica con riesgo de desprendimiento. La intervención se centró en la fijación de los levantamientos para recuperar su estabilidad estructural, seguida de una limpieza superficial mediante la aplicación de soluciones tampón.</p>
-            <p data-i18n="mnac_b5_p1">Paralelamente, colaboré en tareas de embalaje y desembalaje de obras destinadas a préstamos y exposiciones temporales, adquiriendo experiencia en la manipulación segura de bienes culturales y en los protocolos de movimiento de obras dentro del ámbito museístico.</p>
-            <p data-i18n="mnac_b5_p2">Esta estancia me permitió conocer de primera mano el funcionamiento de un museo nacional y el trabajo diario de los profesionales de la conservación-restauración, ampliando mi experiencia tanto en intervención directa sobre obra como en conservación preventiva y gestión de colecciones.</p>
           </div>
-          <div class="story-media portrait">
-            <img src="../assets/trabajos/mnac/IMG_5203.jpg" alt="Conservación-restauración de la obra Safareig de Josep Frau" loading="lazy" />
+          <div class="pf-grid c3">
+            <figure class="pf-media">
+              <img src="../assets/trabajos/mnac/IMG_5203.jpg" alt="Conservación-restauración de la obra Safareig de Josep Frau" loading="lazy" />
+            </figure>
           </div>
         </section>
 
-      </div>
+        <section class="pf-closing pf-text">
+          <p data-i18n="mnac_b5_p1">Paralelamente, colaboré en tareas de embalaje y desembalaje de obras destinadas a préstamos y exposiciones temporales, adquiriendo experiencia en la manipulación segura de bienes culturales y en los protocolos de movimiento de obras dentro del ámbito museístico.</p>
+          <p data-i18n="mnac_b5_p2">Esta estancia me permitió conocer de primera mano el funcionamiento de un museo nacional y el trabajo diario de los profesionales de la conservación-restauración, ampliando mi experiencia tanto en intervención directa sobre obra como en conservación preventiva y gestión de colecciones.</p>
+        </section>
+      </article>
 
       <section class="work-footer">
         <div class="footer-buttons">
@@ -274,7 +282,7 @@
     </div>
   </div>
 
-  <script src="../assets/lang.js?v=17"></script>
+  <script src="../assets/lang.js?v=18"></script>
   <script>
     (function() {
       const modal = document.getElementById('contactModal');
@@ -291,5 +299,6 @@
     }, { threshold: 0.15 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   </script>
+  <script src="../assets/trabajo.js?v=2"></script>
 </body>
 </html>

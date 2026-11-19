@@ -34,7 +34,7 @@
     body {
       margin: 0;
       color: var(--ink);
-      background: #D7C9B8;
+      background: #EEE7DD;
       font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       overflow-x: hidden;
       max-width: 100%;
@@ -502,6 +502,7 @@
     }
     .contact-modal-box .eyebrow { margin-bottom: 22px; }
 </style>
+  <link rel="stylesheet" href="../assets/trabajo.css?v=3" />
 </head>
 <body>
   <div class="noise"></div>
@@ -525,129 +526,115 @@
     <div class="container">
       <a class="back-link" href="../experiencia-laboral.html" data-i18n="back_link">← Volver a experiencia laboral</a>
 
-      <header class="work-header">
-        <span class="eyebrow" data-i18n="pal_eyebrow">Trabajo · Prácticas dirigidas</span>
-        <h1 class="work-title">Palau de Noguera</h1>
-        <div class="work-meta">
-          <span>Pallars Jussà</span>
-          <span>2025</span>
-          <span data-i18n="pal_meta3">Pau Claramonte y Lídia Balust · ESCRBCC</span>
-        </div>
-      </header>
+      <article class="pf">
+        <header class="pf-header">
+          <span class="pf-eyebrow" data-i18n="pal_eyebrow">Trabajo · Prácticas dirigidas</span>
+          <h1 class="pf-title">Palau de Noguera</h1>
+          <p class="pf-meta">
+            <span>Pallars Jussà</span>
+            <span>2025</span>
+            <span data-i18n="pal_meta3">Pau Claramonte y Lídia Balust · ESCRBCC</span>
+          </p>
+        </header>
 
-      <div class="story">
-
-        <!-- B1: texto principal + foto vista trasera -->
-        <section class="story-block split weighted-text reveal">
-          <div class="story-text">
-            <h2 style="white-space:nowrap;font-size:clamp(20px,2.8vw,44px);" data-i18n="pal_b1_h2">Retablo barroco del <span class="accent">siglo XVIII</span>.</h2>
+        <section class="pf-section">
+          <span class="pf-step">01 · <span data-i18n="pal_b1_note">Documentación y examen organoléptico</span></span>
+          <h2 data-i18n="pal_b1_h2">Retablo barroco del <span class="accent">siglo XVIII</span>.</h2>
+          <div class="pf-text">
             <p data-i18n="pal_b1_p1">Restauración del retablo de la Virgen del Rosario de la iglesia parroquial de Sant Joan Baptista de Palau de Noguera (Pallars Jussà). Un retablo barroco de 505 cm de altura, 331 cm de anchura y 135 cm de profundidad, realizado con dorados, colraduras y pintura al temple sobre madera. Las esculturas actuales, de yeso policromado, son del siglo XX y sustituyen a las originales, destruidas durante la Guerra Civil Española.</p>
             <p data-i18n="pal_b1_p2">Prácticas organizadas por el ESCRBCC y coordinadas por los profesores Pau Claramonte y Lídia Balust, desarrolladas a lo largo de dos semanas.</p>
-            <span class="note" data-i18n="pal_b1_note">Documentación y examen organoléptico</span>
           </div>
-          <div class="ba-wrap">
-            <div class="ba-slider" id="ba-slider" style="--pos: 50">
-              <img class="ba-img" src="../assets/trabajos/palau-de-noguera/antes.jpg" alt="Retablo antes de la intervención" loading="lazy" />
-              <img class="ba-img ba-after" src="../assets/trabajos/palau-de-noguera/despues.jpg" alt="Retablo después de la limpieza" loading="lazy" />
-              <div class="ba-handle" aria-hidden="true">
-                <div class="ba-handle-circle"><span>‹</span><span>›</span></div>
+        </section>
+
+        <section class="pf-ba-section">
+          <span class="pf-step"><span data-i18n="pf_ba_hint">Arrastra para comparar</span></span>
+          <h2 data-i18n="pf_ba_title">Antes y después</h2>
+          <div class="pf-ba-grid c1">
+            <figure class="pf-ba-item">
+              <div class="pf-ba" style="--pos: 50">
+                <img src="../assets/trabajos/palau-de-noguera/antes.jpg" alt="Retablo antes de la intervención" loading="lazy" />
+                <img class="pf-ba-after" src="../assets/trabajos/palau-de-noguera/despues.jpg" alt="Retablo después de la limpieza" loading="lazy" />
+                <span class="pf-ba-tag before" data-i18n="pal_ba_antes">Antes</span>
+                <span class="pf-ba-tag after" data-i18n="pal_ba_despues">Después</span>
+                <div class="pf-ba-handle" aria-hidden="true"><span>&lsaquo;&rsaquo;</span></div>
               </div>
-            </div>
-            <span class="before-after-label ba-label-before" data-i18n="pal_ba_antes">Antes</span>
-            <span class="before-after-label despues ba-label-after" data-i18n="pal_ba_despues">Después</span>
+              <figcaption data-i18n="pal_ba_cap">Limpieza del retablo</figcaption>
+            </figure>
           </div>
         </section>
 
-        <!-- B2: vídeo cinemático ancho completo -->
-        <section class="story-block full reveal">
-          <div class="story-media video-card cinema">
-            <video autoplay loop muted playsinline preload="metadata">
-              <source src="../assets/trabajos/palau-de-noguera/video-01.mp4" type="video/mp4">
-            </video>
-          </div>
-        </section>
-
-        <!-- B3: vídeo portrait + texto método (reverse) -->
-        <section class="story-block split reverse reveal">
-          <div class="story-media video-card portrait">
-            <video autoplay loop muted playsinline preload="metadata">
-              <source src="../assets/trabajos/palau-de-noguera/video-02.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="story-text">
-            <h2 style="white-space:nowrap;font-size:clamp(18px,2.4vw,38px);" data-i18n="pal_b3_h2">Consolidación, limpieza y <span class="accent">reintegración</span>.</h2>
+        <section class="pf-section">
+          <span class="pf-step">02 · <span data-i18n="pal_b3_note">Consolidación y limpieza</span></span>
+          <h2 data-i18n="pal_b3_h2">Consolidación, limpieza y <span class="accent">reintegración</span>.</h2>
+          <div class="pf-text">
             <p data-i18n="pal_b3_p1">Los trabajos se centraron en la consolidación de la policromía y de los dorados originales, que presentaban levantamientos y riesgo de desprendimiento.</p>
             <p data-i18n="pal_b3_p2">Posteriormente, se llevó a cabo una limpieza mecánica y fisicoquímica de las diferentes superficies: dorados, policromías, madera vista y elementos escultóricos.</p>
-            <span class="note" data-i18n="pal_b3_note">Consolidación y limpieza</span>
           </div>
-        </section>
-
-        <!-- B4: 2 vídeos lado a lado -->
-        <section class="story-block duo reveal">
-          <div class="story-media-pair">
-            <div class="story-media video-card portrait">
+          <div class="pf-grid c3">
+            <figure class="pf-media is-video land">
+              <video autoplay loop muted playsinline preload="metadata">
+                <source src="../assets/trabajos/palau-de-noguera/video-01.mp4" type="video/mp4">
+              </video>
+            </figure>
+            <figure class="pf-media is-video">
+              <video autoplay loop muted playsinline preload="metadata">
+                <source src="../assets/trabajos/palau-de-noguera/video-02.mp4" type="video/mp4">
+              </video>
+            </figure>
+            <figure class="pf-media is-video">
               <video autoplay loop muted playsinline preload="metadata">
                 <source src="../assets/trabajos/palau-de-noguera/video-03.mp4" type="video/mp4">
               </video>
-            </div>
-            <div class="story-media video-card portrait">
+            </figure>
+            <figure class="pf-media is-video">
               <video autoplay loop muted playsinline preload="metadata">
                 <source src="../assets/trabajos/palau-de-noguera/video-04.mp4" type="video/mp4">
               </video>
-            </div>
+            </figure>
           </div>
         </section>
 
-        <!-- B5: texto + foto close-up dorado -->
-        <section class="story-block split weighted-media reveal">
-          <div class="story-text">
-            <h2 style="white-space:nowrap;font-size:clamp(22px,3vw,46px);" data-i18n="pal_b5_h2">Reintegración <span class="accent">cromática</span>.</h2>
+        <section class="pf-section">
+          <span class="pf-step">03 · <span data-i18n="pal_b5_note">Reintegración cromática</span></span>
+          <h2 data-i18n="pal_b5_h2">Reintegración <span class="accent">cromática</span>.</h2>
+          <div class="pf-text">
             <p data-i18n="pal_b5_p">Debido a la duración limitada del proyecto, no fue posible realizar el estucado de las pérdidas. Se efectuó una reintegración cromática de los perímetros de las lagunas para minimizar su impacto visual y mejorar la lectura del conjunto.</p>
-            <span class="note" data-i18n="pal_b5_note">Reintegración cromática</span>
           </div>
-          <div class="story-media portrait">
-            <img src="../assets/trabajos/palau-de-noguera/foto-03.jpg" alt="Detalle del dorado policromado sobre el cuerpo del retablo" loading="lazy" />
-          </div>
-        </section>
-
-        <!-- B6: vídeo cinemático ancho -->
-        <section class="story-block full reveal">
-          <div class="story-media video-card cinema">
-            <video autoplay loop muted playsinline preload="metadata">
-              <source src="../assets/trabajos/palau-de-noguera/video-05.mp4" type="video/mp4">
-            </video>
+          <div class="pf-grid c3">
+            <figure class="pf-media">
+              <img src="../assets/trabajos/palau-de-noguera/foto-03.jpg" alt="Reintegración cromática del dorado" loading="lazy" />
+            </figure>
+            <figure class="pf-media is-video">
+              <video autoplay loop muted playsinline preload="metadata">
+                <source src="../assets/trabajos/palau-de-noguera/video-05.mp4" type="video/mp4">
+              </video>
+            </figure>
           </div>
         </section>
 
-        <!-- B7: foto zona estrecha + texto técnica -->
-        <section class="story-block split reveal">
-          <div class="story-media portrait">
-            <img src="../assets/trabajos/palau-de-noguera/foto-04.jpg" alt="Limpieza con pincel sobre zona estrecha del retablo" loading="lazy" />
-          </div>
-          <div class="story-text">
-            <h2 style="white-space:nowrap;font-size:clamp(22px,3vw,46px);" data-i18n="pal_b7_h2">Trabajo en <span class="accent">equipo</span>.</h2>
+        <section class="pf-section">
+          <span class="pf-step">04 · <span data-i18n="pal_b7_note">Competencias · gran formato</span></span>
+          <h2 data-i18n="pal_b7_h2">Trabajo en <span class="accent">equipo</span>.</h2>
+          <div class="pf-text">
             <p data-i18n="pal_b7_p">Trabajar en un retablo de estas dimensiones me permitió profundizar en los procesos de consolidación y limpieza aplicados a estructuras policromadas y doradas, así como reforzar las competencias de trabajo en equipo y coordinación en una intervención de gran formato.</p>
-            <span class="note" data-i18n="pal_b7_note">Competencias · gran formato</span>
           </div>
-        </section>
-
-        <!-- B8: 2 vídeos finales -->
-        <section class="story-block duo reveal">
-          <div class="story-media-pair">
-            <div class="story-media video-card portrait">
+          <div class="pf-grid c3">
+            <figure class="pf-media">
+              <img src="../assets/trabajos/palau-de-noguera/foto-04.jpg" alt="Trabajo en equipo sobre el retablo" loading="lazy" />
+            </figure>
+            <figure class="pf-media is-video">
               <video autoplay loop muted playsinline preload="metadata">
                 <source src="../assets/trabajos/palau-de-noguera/video-06.mp4" type="video/mp4">
               </video>
-            </div>
-            <div class="story-media video-card portrait">
+            </figure>
+            <figure class="pf-media is-video">
               <video autoplay loop muted playsinline preload="metadata">
                 <source src="../assets/trabajos/palau-de-noguera/video-07.mp4" type="video/mp4">
               </video>
-            </div>
+            </figure>
           </div>
         </section>
-
-      </div>
+      </article>
 
       <section class="work-footer">
 <div class="footer-buttons">
@@ -691,7 +678,7 @@
     </div>
   </div>
 
-  <script src="../assets/lang.js?v=17"></script>
+  <script src="../assets/lang.js?v=18"></script>
   <script>
     // Contact modal
     (function() {
@@ -763,5 +750,6 @@
       window.addEventListener('touchcancel', end);
     })();
   </script>
+  <script src="../assets/trabajo.js?v=2"></script>
 </body>
 </html>

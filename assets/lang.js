@@ -112,6 +112,16 @@
     pin_comp_1: `Sense neteja`,
     pin_comp_2: `Neteja superficial`,
     pin_comp_3: `Neteja superficial + vernís oxidat`,
+    /* --- Plantilla de tarjetas (portfolio) --- */
+    pf_ba_title: `Abans i després`,
+    pf_ba_hint: `Arrossega per comparar`,
+    pal_ba_cap: `Neteja del retaule`,
+    pal26_ba_cap: `Reintegració de la policromia`,
+    pin_ba_anv: `Anvers`,
+    pin_ba_rev: `Revers`,
+    pin_step_descl: `Desclavat i neteja del revers`,
+    pin_step_limp: `Neteja de la capa pictòrica`,
+    pin_step_reint: `Vernissat, estucat i reintegració`,
 
     /* --- Voluntariado DANA --- */
     dana_eyebrow: `Voluntariat · Emergència patrimonial`,

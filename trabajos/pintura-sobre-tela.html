@@ -34,7 +34,7 @@
     body {
       margin: 0;
       color: var(--ink);
-      background: #D7C9B8;
+      background: #EEE7DD;
       font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       overflow-x: hidden;
       max-width: 100%;
@@ -399,7 +399,7 @@
       overflow: hidden;
       box-shadow: var(--shadow);
       border: 1px solid rgba(255,255,255,.7);
-      background: #D7C9B8;
+      background: #EEE7DD;
       user-select: none;
       touch-action: none;
       cursor: ew-resize;
@@ -515,6 +515,7 @@
     }
     .contact-modal-box .eyebrow { margin-bottom: 22px; }
 </style>
+  <link rel="stylesheet" href="../assets/trabajo.css?v=3" />
 </head>
 <body>
   <div class="noise"></div>
@@ -538,203 +539,180 @@
     <div class="container">
       <a class="back-link" href="../experiencia-laboral.html" data-i18n="back_link">← Volver a experiencia laboral</a>
 
-      <header class="work-header">
-        <span class="eyebrow" data-i18n="pin_eyebrow">Trabajo · Taller de conservación</span>
-        <h1 class="work-title">Pintura sobre tela</h1>
-        <div class="work-meta">
-          <span data-i18n="pin_meta1">Museo de l'Empordà</span>
-          <span>2025</span>
-          <span data-i18n="pin_meta3">ESCRBCC · 4.º grado</span>
-        </div>
-      </header>
+      <article class="pf">
+        <header class="pf-header">
+          <span class="pf-eyebrow" data-i18n="pin_eyebrow">Trabajo · Taller de conservación</span>
+          <h1 class="pf-title">Pintura sobre tela</h1>
+          <p class="pf-meta">
+            <span data-i18n="pin_meta1">Museo de l'Empordà</span>
+            <span>2025</span>
+            <span data-i18n="pin_meta3">ESCRBCC · 4.º grado</span>
+          </p>
+        </header>
 
-      <div class="story">
-
-        <!-- Imágenes principales: anverso + reverso (lo primero que se ve) -->
-        <section class="story-block reveal">
-          <div class="story-media-pair lead-media-pair">
-            <div class="story-media portrait">
-              <img src="../assets/trabajos/pintura-sobre-tela/antes-01.jpg" alt="Anverso de la obra con los rasgones y pérdidas sobre la capa pictórica" />
-            </div>
-            <div class="story-media portrait">
-              <img src="../assets/trabajos/pintura-sobre-tela/reverso-inicial.jpg" alt="Reverso de la obra con el bastidor fijo original" />
-            </div>
-          </div>
-        </section>
-
-        <!-- Textos introductorios (juntos), justo debajo de las dos imágenes -->
-        <section class="story-block reveal">
-          <div class="story-text lead-text" style="max-width:760px;margin:0 auto;">
+        <section class="pf-section">
+          <span class="pf-step">01</span>
+          <h2 data-i18n="pin_note_estado">Estado inicial · diagnóstico</h2>
+          <div class="pf-text">
             <p data-i18n="pin_p_intro1">Dentro del marco académico del taller de conservación-restauración de 4.º grado, restauré una pintura sobre tela procedente del Museo de l'Empordà, cedida al ESCRBCC para su intervención. La obra estaba montada sobre un bastidor fijo de madera y presentaba un soporte de tela de lino industrial con trama de tafetán.</p>
             <p data-i18n="pin_p_intro2">El estado de conservación era muy afectado: deformaciones, suciedad acumulada, rasgones y pérdidas en el perímetro.</p>
             <p data-i18n="pin_p_intro3">La capa de preparación, de naturaleza probablemente tradicional —sulfato cálcico y cola animal—, era fina e irregular. La capa pictórica mostraba una buena adhesión general al soporte, a pesar del estado de degradación de la pieza. La superficie presentaba un barniz oxidado, identificado como posible barniz dammar, que alteraba los colores originales.</p>
-            <span class="note" data-i18n="pin_note_estado">Estado inicial · diagnóstico</span>
+          </div>
+          <div class="pf-grid c3">
+            <figure class="pf-media">
+              <img src="../assets/trabajos/pintura-sobre-tela/antes-01.jpg" alt="Anverso de la pintura en su estado inicial" loading="lazy" />
+            </figure>
+            <figure class="pf-media">
+              <img src="../assets/trabajos/pintura-sobre-tela/reverso-inicial.jpg" alt="Reverso de la pintura en su estado inicial" loading="lazy" />
+            </figure>
           </div>
         </section>
 
-        <!-- Fijación + Protección: las dos fotos en la misma línea -->
-        <section class="story-block reveal">
-          <div class="story-media-pair lead-media-pair">
-            <div class="story-media portrait">
-              <img src="../assets/trabajos/pintura-sobre-tela/fijacion-policromia.jpg" alt="Fijación de la policromía con pincel" loading="lazy" />
-            </div>
-            <div class="story-media portrait">
-              <img src="../assets/trabajos/pintura-sobre-tela/proteccion.jpg" alt="Protección del perímetro con papel japonés" loading="lazy" />
-            </div>
+        <section class="pf-ba-section">
+          <span class="pf-step"><span data-i18n="pf_ba_hint">Arrastra para comparar</span></span>
+          <h2 data-i18n="pf_ba_title">Antes y después</h2>
+          <div class="pf-ba-grid c2">
+            <figure class="pf-ba-item">
+              <div class="pf-ba" style="--pos: 50">
+                <img src="../assets/trabajos/pintura-sobre-tela/antes-anverso.jpg" alt="Anverso antes de la intervención" loading="lazy" />
+                <img class="pf-ba-after" src="../assets/trabajos/pintura-sobre-tela/despues-anverso.jpg" alt="Anverso después de la restauración" loading="lazy" />
+                <span class="pf-ba-tag before" data-i18n="ba_antes">Antes</span>
+                <span class="pf-ba-tag after" data-i18n="ba_despues">Después</span>
+                <div class="pf-ba-handle" aria-hidden="true"><span>&lsaquo;&rsaquo;</span></div>
+              </div>
+              <figcaption data-i18n="pin_ba_anv">Anverso</figcaption>
+            </figure>
+            <figure class="pf-ba-item">
+              <div class="pf-ba" style="--pos: 50">
+                <img src="../assets/trabajos/pintura-sobre-tela/antes-reverso.jpg" alt="Reverso antes de la intervención" loading="lazy" />
+                <img class="pf-ba-after" src="../assets/trabajos/pintura-sobre-tela/despues-reverso.jpg" alt="Reverso después de la restauración" loading="lazy" />
+                <span class="pf-ba-tag before" data-i18n="ba_antes">Antes</span>
+                <span class="pf-ba-tag after" data-i18n="ba_despues">Después</span>
+                <div class="pf-ba-handle" aria-hidden="true"><span>&lsaquo;&rsaquo;</span></div>
+              </div>
+              <figcaption data-i18n="pin_ba_rev">Reverso</figcaption>
+            </figure>
           </div>
         </section>
 
-        <!-- Textos de fijación y protección, debajo de las dos fotos -->
-        <section class="story-block reveal">
-          <div class="story-text lead-text" style="max-width:760px;margin:0 auto;">
+        <section class="pf-section">
+          <span class="pf-step">02</span>
+          <h2 data-i18n="pin_note_fij">Fijación y protección del perímetro</h2>
+          <div class="pf-text">
             <p data-i18n="pin_p_fij1">La intervención empezó con la documentación gráfica y analítica, seguida del examen organoléptico. Después se retiró el marco y se procedió a la fijación de la policromía.</p>
             <p data-i18n="pin_p_fij2">Se protegió el perímetro de la obra con papel japonés y cola de conejo. Esta protección preparó la pieza para poder desclavarla del bastidor sin comprometer la capa pictórica.</p>
-            <span class="note" data-i18n="pin_note_fij">Fijación y protección del perímetro</span>
+          </div>
+          <div class="pf-grid c3">
+            <figure class="pf-media">
+              <img src="../assets/trabajos/pintura-sobre-tela/fijacion-policromia.jpg" alt="Fijación de la policromía" loading="lazy" />
+            </figure>
+            <figure class="pf-media">
+              <img src="../assets/trabajos/pintura-sobre-tela/proteccion.jpg" alt="Protección del perímetro con papel japonés" loading="lazy" />
+            </figure>
           </div>
         </section>
 
-        <!-- Desclavado + bastidor: las dos fotos en la misma línea -->
-        <section class="story-block reveal">
-          <div class="story-media-pair lead-media-pair">
-            <div class="story-media portrait">
-              <img src="../assets/trabajos/pintura-sobre-tela/desclavado.jpg" alt="Desclavado de la tela del bastidor" loading="lazy" />
-            </div>
-            <div class="story-media portrait">
-              <img src="../assets/trabajos/pintura-sobre-tela/bastidor.jpg" alt="Bastidor fijo original y obra desmontada" loading="lazy" />
-            </div>
-          </div>
-        </section>
-
-        <!-- Texto del desclavado, debajo de las dos fotos -->
-        <section class="story-block reveal">
-          <div class="story-text lead-text" style="max-width:760px;margin:0 auto;">
+        <section class="pf-section">
+          <span class="pf-step">03</span>
+          <h2 data-i18n="pin_step_descl">Desclavado y limpieza del reverso</h2>
+          <div class="pf-text">
             <p data-i18n="pin_p_descl">Una vez desclavada la tela del bastidor fijo original, se retiró por completo y se realizó la limpieza mecánica del bastidor y del reverso del soporte, dejando la tela lista para los tratamientos posteriores.</p>
           </div>
-        </section>
-
-        <!-- Corregir y soldar: foto + vídeo en la misma línea, encima del texto -->
-        <section class="story-block reveal">
-          <div class="story-media-pair lead-media-pair">
-            <div class="story-media portrait">
-              <img src="../assets/trabajos/pintura-sobre-tela/soldadura-01.jpg" alt="Corrección de deformaciones y soldadura de fibras del rasgón" loading="lazy" />
-            </div>
-            <div class="story-media video-card portrait">
-              <video autoplay loop muted playsinline preload="metadata">
-                <source src="../assets/trabajos/pintura-sobre-tela/soldadura-video.mp4" type="video/mp4">
-              </video>
-            </div>
+          <div class="pf-grid c3">
+            <figure class="pf-media">
+              <img src="../assets/trabajos/pintura-sobre-tela/desclavado.jpg" alt="Desclavado de la tela del bastidor" loading="lazy" />
+            </figure>
+            <figure class="pf-media land">
+              <img src="../assets/trabajos/pintura-sobre-tela/bastidor.jpg" alt="Bastidor original" loading="lazy" />
+            </figure>
           </div>
         </section>
 
-        <!-- B7: deformaciones y rasgones -->
-        <section class="story-block reveal">
-          <div class="story-text lead-text" style="max-width:760px;margin:0 auto;">
+        <section class="pf-section">
+          <span class="pf-step">04</span>
+          <h2 data-i18n="pin_note_def">Deformaciones y rasgones</h2>
+          <div class="pf-text">
             <p data-i18n="pin_p_def1">Las deformaciones se corrigieron mediante procesos de humectación controlada, presión y aplicación de calor localizado, consiguiendo el aplanado progresivo de la tela.</p>
             <p data-i18n="pin_p_def2">Los rasgones se estabilizaron mediante soldadura de fibras con microsoldador, usando cola de esturión y almidón de trigo.</p>
-            <span class="note" data-i18n="pin_note_def">Deformaciones y rasgones</span>
+          </div>
+          <div class="pf-grid c3">
+            <figure class="pf-media">
+              <img src="../assets/trabajos/pintura-sobre-tela/soldadura-01.jpg" alt="Soldadura de fibras con microsoldador" loading="lazy" />
+            </figure>
+            <figure class="pf-media is-video">
+              <video autoplay loop muted playsinline preload="metadata">
+                <source src="../assets/trabajos/pintura-sobre-tela/soldadura-video.mp4?v=2" type="video/mp4">
+              </video>
+            </figure>
           </div>
         </section>
 
-        <!-- B9: consolidación — par de imágenes + texto -->
-        <section class="story-block reveal">
-          <div class="story-media-pair lead-media-pair">
-            <div class="story-media portrait">
-              <img src="../assets/trabajos/pintura-sobre-tela/consolidacion.jpg" alt="Consolidación de la tela sobre mesa caliente con succión" loading="lazy" />
-            </div>
-            <div class="story-media portrait">
-              <img src="../assets/trabajos/pintura-sobre-tela/fase4-extra.jpg" alt="Proceso de consolidación y tensado" loading="lazy" />
-            </div>
-          </div>
-        </section>
-
-        <section class="story-block reveal">
-          <div class="story-text lead-text" style="max-width:760px;margin:0 auto;">
+        <section class="pf-section">
+          <span class="pf-step">05</span>
+          <h2 data-i18n="pin_note_cons">Consolidación y tensado</h2>
+          <div class="pf-text">
             <p data-i18n="pin_p_cons1">La tela se consolidó con un adhesivo sintético sobre una tela de poliéster, utilizando una mesa caliente con sistema de succión y control de temperatura.</p>
             <p data-i18n="pin_p_cons2">Una vez estabilizado el soporte, se tensó la tela sobre un nuevo bastidor con grapas y tensión progresiva, garantizando una distribución uniforme.</p>
             <p data-i18n="pin_p_cons3">El reverso quedó limpio y aplanado, con la tela original consolidada sobre el nuevo soporte de poliéster y lista para los tratamientos de la capa pictórica.</p>
-            <span class="note" data-i18n="pin_note_cons">Consolidación y tensado</span>
+          </div>
+          <div class="pf-grid c3">
+            <figure class="pf-media">
+              <img src="../assets/trabajos/pintura-sobre-tela/consolidacion.jpg" alt="Consolidación de la tela" loading="lazy" />
+            </figure>
+            <figure class="pf-media">
+              <img src="../assets/trabajos/pintura-sobre-tela/fase4-extra.jpg" alt="Tensado sobre el nuevo bastidor" loading="lazy" />
+            </figure>
           </div>
         </section>
 
-        <!-- Fase 05: 3 imágenes (vídeo + 0422 + comparativa) encima del texto de limpieza -->
-        <section class="story-block reveal">
-          <div class="trio-media-pair">
-            <div class="story-media portrait video-card">
+        <section class="pf-section">
+          <span class="pf-step">06</span>
+          <h2 data-i18n="pin_step_limp">Limpieza de la capa pictórica</h2>
+          <div class="pf-text">
+            <p data-i18n="pin_p_limp1">La limpieza superficial de la capa pictórica se realizó mediante sistemas acuosos tamponados, seleccionados a partir de tests previos de pH. Se hicieron pruebas con el test de Cremonesi para eliminar el barniz envejecido y, finalmente, se limpió con la proporción LE3 (70 % ligroína, 30 % etanol).</p>
+          </div>
+          <div class="pf-grid c3">
+            <figure class="pf-media is-video">
               <video autoplay loop muted playsinline preload="metadata">
-                <source src="../assets/trabajos/pintura-sobre-tela/limpieza-video.mov" type="video/mp4">
+                <source src="../assets/trabajos/pintura-sobre-tela/limpieza-video.mp4" type="video/mp4">
               </video>
-            </div>
-            <div class="story-media portrait">
+            </figure>
+            <figure class="pf-media">
               <img src="../assets/trabajos/pintura-sobre-tela/limpieza-0422.jpg" alt="Detalle de limpieza superficial" loading="lazy" />
-            </div>
-            <div class="story-media portrait">
+            </figure>
+            <figure class="pf-media">
               <img src="../assets/trabajos/pintura-sobre-tela/antes-02.jpg" alt="Comparativa de limpieza" loading="lazy" />
               <div class="comp-labels">
                 <span data-i18n="pin_comp_1">Sin limpieza</span>
                 <span data-i18n="pin_comp_2">Limpieza superficial</span>
                 <span data-i18n="pin_comp_3">Limpieza superficial + barniz oxidado</span>
               </div>
-            </div>
+            </figure>
           </div>
         </section>
 
-        <section class="story-block reveal">
-          <div class="story-text lead-text" style="max-width:760px;margin:0 auto;">
-            <p data-i18n="pin_p_limp1">La limpieza superficial de la capa pictórica se realizó mediante sistemas acuosos tamponados, seleccionados a partir de tests previos de pH. Se hicieron pruebas con el test de Cremonesi para eliminar el barniz envejecido y, finalmente, se limpió con la proporción LE3 (70 % ligroína, 30 % etanol).</p>
-          </div>
-        </section>
-
-        <!-- 3 imágenes de reintegración (0951, 0578, 0678) encima del texto fase 05 nota -->
-        <section class="story-block reveal">
-          <div class="trio-media-pair">
-            <div class="story-media portrait">
-              <img src="../assets/trabajos/pintura-sobre-tela/limpieza-0477.jpg" alt="Reintegración cromática" loading="lazy" />
-            </div>
-            <div class="story-media portrait">
-              <img src="../assets/trabajos/pintura-sobre-tela/reintegracion-0578.jpg" alt="Proceso de estucado y reintegración" loading="lazy" />
-            </div>
-            <div class="story-media portrait">
-              <img src="../assets/trabajos/pintura-sobre-tela/reintegracion-0678.jpg" alt="Detalle de reintegración cromática" loading="lazy" />
-            </div>
-          </div>
-        </section>
-
-        <section class="story-block reveal">
-          <div class="story-text lead-text" style="max-width:760px;margin:0 auto;">
+        <section class="pf-section">
+          <span class="pf-step">07</span>
+          <h2 data-i18n="pin_step_reint">Barnizado, estucado y reintegración</h2>
+          <div class="pf-text">
             <p data-i18n="pin_p_limp2">Tras la limpieza se aplicó un primer barnizado de protección con barniz de retoque y se estucaron las lagunas con carbonato cálcico y cola de conejo. La reintegración cromática se inició con acuarelas para establecer una base y se completó con pigmentos y barniz de retoque, aplicando un criterio ilusionista para recuperar la lectura de la obra.</p>
-            <span class="note" data-i18n="pin_note_limp">Limpieza y reintegración</span>
+          </div>
+          <div class="pf-grid c2">
+            <figure class="pf-media land">
+              <img src="../assets/trabajos/pintura-sobre-tela/limpieza-0477.jpg" alt="Barnizado de protección" loading="lazy" />
+            </figure>
+            <figure class="pf-media land">
+              <img src="../assets/trabajos/pintura-sobre-tela/reintegracion-0578.jpg" alt="Proceso de estucado y reintegración" loading="lazy" />
+            </figure>
+            <figure class="pf-media land">
+              <img src="../assets/trabajos/pintura-sobre-tela/reintegracion-0678.jpg" alt="Detalle de reintegración cromática" loading="lazy" />
+            </figure>
+            <figure class="pf-media land">
+              <img src="../assets/trabajos/pintura-sobre-tela/reintegracion-0951.jpg" alt="Reintegración cromática con criterio ilusionista" loading="lazy" />
+            </figure>
           </div>
         </section>
-
-        <!-- Sliders antes/después: anverso y reverso en paralelo -->
-        <section class="story-block reveal">
-          <div class="ba-pair">
-            <div class="ba-wrap">
-              <div class="ba-slider" style="--pos: 50">
-                <img class="ba-img" src="../assets/trabajos/pintura-sobre-tela/antes-anverso.jpg" alt="Anverso antes de la intervención" loading="lazy" />
-                <img class="ba-img ba-after" src="../assets/trabajos/pintura-sobre-tela/despues-anverso.jpg" alt="Anverso después de la restauración" loading="lazy" />
-                <div class="ba-handle" aria-hidden="true">
-                  <div class="ba-handle-circle"><span>‹</span><span>›</span></div>
-                </div>
-              </div>
-              <span class="before-after-label ba-label-before" data-i18n="ba_antes">Antes</span>
-              <span class="before-after-label despues ba-label-after" data-i18n="ba_despues">Después</span>
-            </div>
-            <div class="ba-wrap">
-              <div class="ba-slider" style="--pos: 50">
-                <img class="ba-img" src="../assets/trabajos/pintura-sobre-tela/antes-reverso.jpg" alt="Reverso antes de la intervención" loading="lazy" />
-                <img class="ba-img ba-after" src="../assets/trabajos/pintura-sobre-tela/despues-reverso.jpg" alt="Reverso después de la restauración" loading="lazy" />
-                <div class="ba-handle" aria-hidden="true">
-                  <div class="ba-handle-circle"><span>‹</span><span>›</span></div>
-                </div>
-              </div>
-              <span class="before-after-label ba-label-before" data-i18n="ba_antes">Antes</span>
-              <span class="before-after-label despues ba-label-after" data-i18n="ba_despues">Después</span>
-            </div>
-          </div>
-        </section>
-
-      </div>
+      </article>
 
       <section class="work-footer">
         <div class="footer-buttons">
@@ -778,7 +756,7 @@
     </div>
   </div>
 
-  <script src="../assets/lang.js?v=17"></script>
+  <script src="../assets/lang.js?v=18"></script>
   <script>
     // Contact modal
     (function() {
@@ -840,5 +818,6 @@
       window.addEventListener('touchend', end);
     });
   </script>
+  <script src="../assets/trabajo.js?v=2"></script>
 </body>
 </html>
