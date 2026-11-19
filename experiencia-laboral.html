@@ -958,6 +958,10 @@
     }
     .exp-main { padding-top: clamp(118px, 15vh, 150px); }
     .featured { background: transparent !important; }
+    /* Portfolio: tarjetas rectas y planas */
+    .work-card { border-radius: 0 !important; box-shadow: none !important; }
+    .work-card:hover { box-shadow: 0 14px 36px rgba(74, 52, 42, .12) !important; }
+    .work-card-media { border-radius: 0 !important; }
     /* Esta página no tiene portada: el menú superior debe verse también en móvil */
     @media (max-width: 620px) {
       .nav { display: flex !important; top: 10px; width: calc(100% - 20px); padding: 10px 12px; flex-direction: column; gap: 10px; border-radius: 22px; }
