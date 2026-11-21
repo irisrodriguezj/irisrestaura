@@ -258,3 +258,16 @@
 .pf-ba-tile .pf-ba-tag.before { left: 10px; }
 .pf-ba-tile .pf-ba-tag.after { right: 10px; }
 
+/* Antes / después: las dos fotos ocupan exactamente la misma caja (sin recortes) */
+.pf-ba-grid .pf-ba { aspect-ratio: 4 / 5; background: var(--rose-50); }
+.pf-ba-grid .pf-ba > img:not(.pf-ba-after) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+
+/* Texto y foto juntos: foto cuadrada completa; texto algo mayor para igualar alturas */
+.pf-split { align-items: center; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); }
+.pf-split > * { min-width: 0; }
+.pf-split video { width: 100%; height: 100%; }
+.pf-split .pf-media.is-video { aspect-ratio: 3 / 4; }
+.pf-split .pf-text p { font-size: 21px; line-height: 1.75; }
+.pf-split .pf-media:not(.is-video) { aspect-ratio: 3 / 4; background: var(--rose-50); }
+.pf-split .pf-media:not(.is-video) img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+
