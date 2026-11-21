@@ -28,3 +28,8 @@
   box-shadow: none !important;
   border: 1px solid rgba(74, 52, 42, .12) !important;
 }
+
+/* Botones, idioma, Currículum y ventana de contacto: esquinas rectas */
+.button, .lang-btn, .cv-button, .cv-ico, .back-to-top,
+.contact-modal-close, .contact-item, .contact-modal-box,
+.contact-modal-box .eyebrow, .mobile-home-lang .lang-btn { border-radius: 0 !important; }
