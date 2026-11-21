@@ -263,7 +263,7 @@
 .pf-ba-grid .pf-ba > img:not(.pf-ba-after) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
 
 /* Texto y foto juntos: foto cuadrada completa; texto algo mayor para igualar alturas */
-.pf-split { align-items: center; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); }
+.pf-split { align-items: start; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); }
 .pf-split > * { min-width: 0; }
 .pf-split video { width: 100%; height: 100%; }
 .pf-split .pf-media.is-video { aspect-ratio: 3 / 4; }
