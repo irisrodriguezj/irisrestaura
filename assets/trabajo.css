@@ -271,3 +271,7 @@
 .pf-split .pf-media:not(.is-video) { aspect-ratio: 3 / 4; background: var(--rose-50); }
 .pf-split .pf-media:not(.is-video) img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
 
+/* Foto sin caja: se ve tal cual, con su proporción original (p. ej. MNAC) */
+.pf-split .pf-media.natural:not(.is-video) { aspect-ratio: auto; background: none; border: 0; }
+.pf-split .pf-media.natural:not(.is-video) img { position: relative; inset: auto; height: auto; object-fit: initial; }
+
